@@ -1,4 +1,4 @@
-# Project Name
+# Academic Research Manager
 
 ## Overview
 This project is a continuation of a previous version developed by senior students. It is part of the **Software Engineering** course. Our development team for this iteration consists of:
