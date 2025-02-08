@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCategoriesTable extends Migration
+class CreateAcademicTitlesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateCategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('categories', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('title_ar');
-            $table->string('title_en');
+        Schema::create('academic_titles', function (Blueprint $table) {
+            $table->id(); // Primary Key ชื่อ id
+            $table->string('title_en'); // ชื่อภาษาอังกฤษ
+            $table->string('title_th'); // ชื่อภาษาไทย
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('categories');
+        Schema::dropIfExists('academic_titles');
     }
 }

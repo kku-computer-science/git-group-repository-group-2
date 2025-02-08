@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSourceDatasTable extends Migration
+class CreateGroupTypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class CreateSourceDatasTable extends Migration
      */
     public function up()
     {
-        Schema::create('source_data', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('source_name');
+        Schema::create('group_types', function (Blueprint $table) {
+            $table->id('typeId'); // Primary Key
+            $table->string('typeName_en', 50);
+            $table->string('typeName_th', 50);
             $table->timestamps();
         });
     }
@@ -27,6 +28,6 @@ class CreateSourceDatasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('source_datas');
+        Schema::dropIfExists('group_types');
     }
 }

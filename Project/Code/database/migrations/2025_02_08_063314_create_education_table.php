@@ -14,14 +14,16 @@ class CreateEducationTable extends Migration
     public function up()
     {
         Schema::create('education', function (Blueprint $table) {
-            $table->id();
-            $table->string('uname');
-            $table->string('qua_name');
-            $table->string('level');
-            $table->unsignedBigInteger('user_id')->nullable();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->id('EduId'); // Primary Key
+            $table->unsignedBigInteger('userId'); // Foreign Key to Users
+            $table->string('year', 4);
+            $table->string('degree', 50);
+            $table->string('field_of_study', 100);
+            $table->string('institution', 100);
             $table->timestamps();
-        
+
+            // Foreign Key
+            $table->foreign('userId')->references('userId')->on('users')->onDelete('cascade');
         });
     }
 
