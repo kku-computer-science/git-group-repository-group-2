@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 	<title>Login</title>
 	<meta charset="UTF-8">
@@ -19,6 +18,8 @@
 	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<!--===============================================================================================-->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.1.0/css/flag-icon.min.css" rel="stylesheet">
 	<!--===============================================================================================-->
 	<style>
 		html {
@@ -375,11 +376,32 @@
 		</div>
 	</div> -->
 
+	<!-- dropdown swith languages -->
+	<div class="language-switcher" style="position: absolute; top: 20px; right: 20px;">
+		<li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            <span
+                                class="flag-icon flag-icon-{{Config::get('languages')[App::getLocale()]['flag-icon']}}"></span>
+                            {{ Config::get('languages')[App::getLocale()]['display'] }}
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            @foreach (Config::get('languages') as $lang => $language)
+                            @if ($lang != App::getLocale())
+                            <a class="dropdown-item" href="{{ route('langswitch', $lang) }}"><span
+                                    class="flag-icon flag-icon-{{$language['flag-icon']}}"></span>
+                                {{$language['display']}}</a>
+                            @endif
+                            @endforeach
+                        </div>
+                    </li>
+	</div>
+
 	<div class="form">
 		<div class="form-toggle"></div>
 		<div class="form-panel one">
 			<div class="form-header">
-				<h1>Account Login</h1>
+				<h1>{{trans('message.AccountLogin')}}</h1>
 			</div>
 			<div class="form-content">
 				<form method="POST" class="validate-form" autocomplete="off" action="{{ route('login') }}">
@@ -392,7 +414,7 @@
 					@endif
 					<!-- <div class="form-group validate-input" data-validate="Valid email is required: ex@abc.xyz"> -->
 					<div class="form-group validate-input">
-						<label for="email">Username</label>
+						<label for="email">{{trans('message.Username')}}</label>
 						<input id="username" type="username" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autofocus>
 						@error('username')
 						<span class="invalid-feedback" role="alert">
@@ -401,23 +423,23 @@
 						@enderror
 					</div>
 					<div class="form-group validate-input" data-validate="Password is required">
-						<label for="password">Password</label>
+						<label for="password">{{trans('message.Password')}}</label>
 						<input id="password" class="input" type="password" name="password" required="required" />
 					</div>
 					<div class="form-group">
 						<label class="form-remember">
-							<input id="ckb1" name="remember" type="checkbox" />Remember Me
+							<input id="ckb1" name="remember" type="checkbox" />{{trans('message.RememberMe')}}
 						</label>
 					</div>
 					<div class="form-group">
-						<button type="submit">Log In</button>
+						<button type="submit">{{trans('message.Login')}}</button>
 					</div>
 					<div class="form-remember pb-3">
-							<p style="color: red; text-align: right;"> *** หากลืมรหัสผ่าน ให้ติดต่อผู้ดูแลระบบ</p>
+							<p style="color: red; text-align: right;">{{trans('message.ForgetPassword')}}</p>
 					</div>
 					<ul>
-						<li>สำหรับ Username ใช้ KKU-Mail ในการเข้าสู่ระบบ</li>
-						<li>สำหรับนักศึกษาที่เข้าระบบเป็นครั้งแรกให้เข้าสู่ระด้วยรหัสนักศึกษา</li>
+						<li>{{trans('message.LoginRecommend1')}}</li>
+						<li>{{trans('message.LoginRecommend2')}}</li>
 					</ul>
 				</form>
 			</div>
