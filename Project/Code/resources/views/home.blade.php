@@ -42,17 +42,44 @@
                 <!-- <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
                 aria-label="Slide 3"></button> -->
             </div>
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="{{asset('img/Banner1.png')}}" class="d-block w-100" alt="...">
+             <!-- banner -->
+             <div id="language-carousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active" id="banner-1">
+                        <img src="{{ asset('img/Banner1.png') }}" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item" id="banner-2">
+                        <img src="{{ asset('img/Banner2.png') }}" class="d-block w-100" alt="...">
+                    </div>
                 </div>
-                <div class="carousel-item">
-                    <img src="{{asset('img/Banner2.png')}}" class="d-block w-100" alt="...">
-                </div>
-                <!-- <div class="carousel-item">
-                <img src="..." class="d-block w-100" alt="...">
-            </div> -->
             </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const languageDropdown = document.querySelector('[data-toggle="dropdown"]');
+        
+        function updateBannerImages(lang) {
+            const banner1 = document.getElementById('banner-1');
+            const banner2 = document.getElementById('banner-2');
+
+            if (lang === 'th') {
+                banner1.querySelector('img').src = '{{ asset('img/banner1.png') }}';
+                banner2.querySelector('img').src = '{{ asset('img/banner2.png') }}';
+            } else {
+                banner1.querySelector('img').src = '{{ asset('img/banner3.png') }}';
+                banner2.querySelector('img').src = '{{ asset('img/banner4.png') }}';
+            }
+        }
+
+        languageDropdown.addEventListener('click', function() {
+            const lang = '{{ app()->getLocale() }}'; 
+            updateBannerImages(lang);  
+        });
+
+        const initialLang = '{{ app()->getLocale() }}';
+        updateBannerImages(initialLang); 
+    });
+</script>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Previous</span>
