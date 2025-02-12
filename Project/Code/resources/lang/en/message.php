@@ -79,4 +79,6 @@ return [
 'Report5Year' => 'Report the total number of articles ( 5 years : cumulative)',
 'Reference' => 'Reference',
 'Search2' => 'Search',
+'Report5YearReport' => 'The statistics of the total number of articles over 5 years.',
+'ArticleReport' => 'The statistics of the number of cited articles.',
 ];
