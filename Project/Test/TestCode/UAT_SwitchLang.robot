@@ -106,7 +106,7 @@ Verify Dropdown Contains Specific Word TH
     [Teardown]    Close Browser
 
 Switch Language And Verify Summary Texts In Nav Bar
-    [Tags]    UAT005-VerifySummaryTextHomePage
+    [Tags]    UAT005-VerifySummaryTextNavBar
     Open Browser To Home Page
     Sleep    5s
     Click Element    id=navbarDropdownMenuLink
@@ -138,7 +138,7 @@ Switch Language And Verify Summary Texts In Home Page
     [Teardown]    Close Browser
 
 Switch Language And Verify Summary Texts In Researcher_CS Page
-    [Tags]    UAT007-VerifySummaryTextHomePage
+    [Tags]    UAT007-VerifySummaryTextResearcherCSPage
     Open Browser To Researcher_CS Page
     Sleep    5s
     Click Element    id=navbarDropdownMenuLink
@@ -154,7 +154,7 @@ Switch Language And Verify Summary Texts In Researcher_CS Page
     [Teardown]    Close Browser
 
 Switch Language And Verify Summary Texts In Researcher_IT Page
-    [Tags]    UAT008-VerifySummaryTextHomePage
+    [Tags]    UAT008-VerifySummaryTextResearcherITPage
     Open Browser To Researcher_IT Page
     Sleep    5s
     Click Element    id=navbarDropdownMenuLink
@@ -170,7 +170,7 @@ Switch Language And Verify Summary Texts In Researcher_IT Page
     [Teardown]    Close Browser
 
 Switch Language And Verify Summary Texts In Researcher_GIS Page
-    [Tags]    UAT009-VerifySummaryTextHomePage
+    [Tags]    UAT009-VerifySummaryText ResearcherGISPage
     Open Browser To Researcher_GIS Page
     Sleep    5s
     Click Element    id=navbarDropdownMenuLink
@@ -186,7 +186,7 @@ Switch Language And Verify Summary Texts In Researcher_GIS Page
     [Teardown]    Close Browser
 
 Switch Language And Verify Summary Texts In Research_Project Page
-    [Tags]    UAT010-VerifySummaryTextHomePage
+    [Tags]    UAT010-VerifySummaryTextResearchProjectPage
     Open Browser To Research_Project Page
     Sleep    5s
     Click Element    id=navbarDropdownMenuLink
@@ -202,7 +202,7 @@ Switch Language And Verify Summary Texts In Research_Project Page
     [Teardown]    Close Browser
 
 Switch Language And Verify Summary Texts In Research_Group Page
-    [Tags]    UAT011-VerifySummaryTextHomePage
+    [Tags]    UAT011-VerifySummaryTextResearchGroupPage
     Open Browser To Research_Group Page
     Sleep    5s
     Click Element    id=navbarDropdownMenuLink
@@ -218,7 +218,7 @@ Switch Language And Verify Summary Texts In Research_Group Page
     [Teardown]    Close Browser
 
 Switch Language And Verify Summary Texts In Research_Group_Detail Page
-    [Tags]    UAT012-VerifySummaryTextHomePage
+    [Tags]    UAT012-VerifySummaryTextResearchGroupDetailPage
     Open Browser To Research_Group_Detail Page
     Sleep    5s
     Click Element    id=navbarDropdownMenuLink
@@ -234,7 +234,7 @@ Switch Language And Verify Summary Texts In Research_Group_Detail Page
     [Teardown]    Close Browser
 
 Switch Language And Verify Summary Texts In Report Page
-    [Tags]    UAT013-VerifySummaryTextHomePage
+    [Tags]    UAT013-VerifySummaryTextReportPage
     Open Browser To Report Page
     Sleep    5s
     Click Element    id=navbarDropdownMenuLink
