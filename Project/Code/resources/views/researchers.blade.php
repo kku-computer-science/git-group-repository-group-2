@@ -1,18 +1,25 @@
 @extends('layouts.layout')
 @section('content')
 <div class="container card-2">
-    <p class="title"> {{ __('message.Researchers') }} </p>
+    <p class="title">{{ trans('message.Researchers' )}}</p>
     @foreach($request as $res)
     <span>
-    <ion-icon name="caret-forward-outline" size="small"></ion-icon>{{ __('message.' . $res->program_name_en) }}
-
+        @if(app()->getLocale() == 'en')
+        <ion-icon name="caret-forward-outline" size="small"></ion-icon> {{$res->program_name_en}}
+        @else
+        <ion-icon name="caret-forward-outline" size="small"></ion-icon> {{$res->program_name_th}}
+        @endif
     </span>
     <div class="d-flex">
         <div class="ml-auto">
             <form class="row row-cols-lg-auto g-3" method="GET" action="{{ route('searchresearchers',['id'=>$res->id])}}">
                 <div class="col-md-8">
                     <div class="input-group">
-                         <input type="text" class="form-control" name="textsearch" placeholder="{{ __('message.search_placeholder') }}">
+                        @if(app()->getLocale() == 'en')
+                        <input type="text" class="form-control" name="textsearch" placeholder="Research interests">
+                        @else
+                        <input type="text" class="form-control" name="textsearch" placeholder="งานวิจัยที่สนใจ">
+                        @endif
                     </div>
                 </div>
                 <!-- <div class="col-12">
@@ -25,7 +32,7 @@
                         </select>
                     </div> -->
                 <div class="col-md-4">
-                    <button type="submit" class="btn btn-outline-primary">{{ __('message.Search') }}</button>
+                    <button type="submit" class="btn btn-outline-primary">{{ trans('message.Search2') }}</button>
                 </div>
             </form>
         </div>

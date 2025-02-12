@@ -79,11 +79,4 @@ return [
 'Report5Year' => 'Report the total number of articles ( 5 years : cumulative)',
 'Reference' => 'Reference',
 'Search2' => 'Search',
-'total_articles' => 'Total Articles in 5 Years',
-'referenced_articles' => 'Statistics of Referenced Articles',
-'search_placeholder' => 'Search placeholder',
-'Computer Science' => 'Computer Science',
-'Infomation Technology' => 'Information Technology',
-'Geo-Informatics' => 'Geo-Information',
-
 ];

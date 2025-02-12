@@ -79,13 +79,4 @@ return [
 'Report5Year' => 'รายงานจำนวนบทความทั้งหมด (สะสมในช่วง 5 ปี)',
 'Reference' => 'อ้างอิง',
 'Search2' => 'ค้นหา',
-'total_articles' => 'จำนวนบทความทั้งหมด 5 ปี',
-'referenced_articles' => 'สถิติจำนวนบทความที่ได้รับการอ้างอิง',
-'search_placeholder' => 'ค้นหา...',
-'Computer Science' => 'สาขาวิทยาการคอมพิวเตอร์',
-'Infomation Technology' => 'สาขาเทคโนโลยีสารสนเทศ',
-'Geo-Informatics' => 'สาขาภูมิสารสนเทศศาสตร์',
-
-
-
 ];
