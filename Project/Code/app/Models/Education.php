@@ -8,12 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class Education extends Model
 {
     use HasFactory;
+    protected $table = 'education';
+    protected $primaryKey = 'EduId';
+    public $timestamps = true;
 
     protected $fillable = [
-        'uname','qua_name','level','year'
+        'userId',
+        'year',
+        'degree',
+        'field_of_study',
+        'institution',
     ];
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
+
 }

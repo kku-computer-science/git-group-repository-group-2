@@ -8,45 +8,27 @@ use Illuminate\Database\Eloquent\Model;
 class Paper extends Model
 {
     use HasFactory;
-    protected $hidden = [
-        
-        'pivot'
-    ];
+    protected $table = 'papers';  // กำหนดชื่อของตารางที่ใช้ในฐานข้อมูล
+    protected $primaryKey = 'paperId';  // กำหนด primary key
+    public $timestamps = false;  // ถ้าไม่ใช้ timestamps
     protected $fillable = [
-        'paper_name',
-        'paper_type',
-        'paper_subtype',
-        'paper_sourcetitle',
-        'paper_url',
-        'paper_yearpub',
-        'paper_volume',
-        'paper_issue',
-        'paper_citation',
-        'paper_page',
-        'paper_doi',
-        'paper_funder',
-        'reference_number',
-        'patent_date',
-        'abstract',
-        'keyword',
-        'publication'
-    
+        'paperId', 'groupId', 'sourceId', 'paperName', 'paperType',
+        'paperSubType', 'paperYear', 'paperVolume', 'paperCite', 'paperPage', 'paperDoi'
     ];
-    protected $casts = [
-        'keyword' => 'array',
-    ];
-    public function teacher()
+
+    // ความสัมพันธ์กับตารางอื่น ๆ เช่น
+    public function papergroup()
     {
-        return $this->belongsToMany(User::class,'user_papers')->withPivot('author_type');
+        return $this->belongsTo(Papergroup::class, 'groupId');
     }
 
-    public function source()
+    public function sourcepaper()
     {
-        return $this->belongsToMany(Source_data::class,'source_papers');
+        return $this->belongsTo(Sourcepaper::class, 'sourceId');
     }
-    public function author()
+
+    public function authors()
     {
-        return $this->belongsToMany(Author::class,'author_of_papers')->withPivot('author_type');
-        // OR return $this->hasOne('App\Phone');
+        return $this->belongsToMany(Author::class, 'paper_authors', 'paperId', 'authorId');
     }
 }
