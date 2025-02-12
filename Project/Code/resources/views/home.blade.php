@@ -54,7 +54,7 @@
                 </div>
             </div>
 
-<script>
+<!-- <script>
     document.addEventListener('DOMContentLoaded', function () {
         const languageDropdown = document.querySelector('[data-toggle="dropdown"]');
         
@@ -79,7 +79,7 @@
         const initialLang = '{{ app()->getLocale() }}';
         updateBannerImages(initialLang); 
     });
-</script>
+</script> -->
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Previous</span>
