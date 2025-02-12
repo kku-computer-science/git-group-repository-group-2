@@ -42,8 +42,10 @@
                 <!-- <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
                 aria-label="Slide 3"></button> -->
             </div>
-            <!-- banner -->
-            <div id="language-carousel" class="carousel slide" data-bs-ride="carousel">
+           <!-- banner -->
+
+             <!-- banner -->
+             <div id="language-carousel" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active" id="banner-1">
                         <img src="{{ asset('img/Banner1.png') }}" class="d-block w-100" alt="...">
@@ -80,9 +82,6 @@
         updateBannerImages(initialLang); 
     });
 </script>
-
-
-
 
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -192,7 +191,7 @@
                                     <!-- <a href="{{ route('bibtex',['id'=>$p['id']])}}">
                                         [อ้างอิง]
                                     </a> -->
-                                    <button style="padding: 0;"class="btn btn-link open_modal" value="{{$p['id']}}">[อ้างอิง]</button>
+                                    <button style="padding: 0;"class="btn btn-link open_modal" value="{{$p['id']}}">[{{ trans('message.Reference') }}]</button>
                                 </p>
                             </div>
                         </div>
@@ -280,43 +279,41 @@
     barChartData.datasets[0] = temp1
     barChartData.datasets[1] = temp0
 
-    var chartTitle = @json(__('message.title'));
-    var yAxisLabel = @json(__('message.yAxisLabel'));
-    var xAxisLabel = @json(__('message.xAxisLabel'));
-
     var barChartOptions = {
-    responsive: true,
-    maintainAspectRatio: false,
-    datasetFill: false,
-    scales: {
-        yAxes: [{
-            formatter: function() {
-                return Math.abs(this.value);
-            },
-            scaleLabel: {
-                display: true,
-                labelString: yAxisLabel,  // แทนที่ข้อความด้วยค่าที่แปล
-            },
-            ticks: {
-                reverse: false,
-                stepSize: 10
-            },
-        }],
-        xAxes: [{
-            scaleLabel: {
-                display: true,
-                labelString: xAxisLabel  // แทนที่ข้อความด้วยค่าที่แปล
-            }
-        }]
-    },
+        responsive: true,
+        maintainAspectRatio: false,
+        datasetFill: false,
+        scales: {
+            yAxes: [{
+                formatter: function() {
+                    return Math.abs(this.value);
+                },
+                scaleLabel: {
+                    display: true,
+                    labelString: "{{ trans('message.Number2') }}",
 
-    title: {
-        display: true,
-        text: chartTitle,  // แทนที่ข้อความด้วยค่าที่แปล
-        fontSize: 20
+                },
+                ticks: {
+                    reverse: false,
+                    stepSize: 10
+                },
+            }],
+            xAxes: [{
+                scaleLabel: {
+                    display: true,
+                    labelString: "{{ trans('message.Year') }}"
+                }
+            }]
+        },
+
+        title: {
+            display: true,
+            text: "{{ trans('message.Report5Year') }}",
+            fontSize: 20
+        }
+
+
     }
-};
-
 
     new Chart(barChartCanvas, {
         type: 'bar',
@@ -340,7 +337,7 @@
         document.getElementById("all").innerHTML += `
                 <i class="count-icon fa fa-book fa-2x"></i>
                 <h2 class="timer count-title count-number" data-to="${sum}" data-speed="1500"></h2>
-                <p class="count-text ">SUMMARY</p>`
+                <p class="count-text ">{{ trans('message.Summary') }}</p>`
         document.getElementById("scopus").innerHTML += `
                 <i class="count-icon fa fa-book fa-2x"></i>
                 <h2 class="timer count-title count-number" data-to="${sumsco}" data-speed="1500"></h2>

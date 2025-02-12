@@ -57,7 +57,11 @@
                         <!-- <h6 class="card-text1">Department of {{$res->program->program_name_en}}</h6> -->
                         <!-- <h6 class="card-text1">College of Computing</h6>
                     <h6 class="card-text1">Khon Kaen University</h6> -->
-                        <h6 class="card-text1">E-mail: {{$res->email}}</h6>
+                        @if(app()->getLocale() == 'en')
+                        <h6 class="card-text1">E-mail : {{$res->email}}</h6>
+                        @else
+                        <h6 class="card-text1">อีเมล : {{$res->email}}</h6>
+                        @endif
                         <h6 class="card-title">{{ trans('message.education') }}</h6>
                         @foreach( $res->education as $edu)
                         <h6 class="card-text2 col-sm-10"> {{$edu->year}} {{$edu->qua_name}} {{$edu->uname}}</h6>
@@ -131,7 +135,7 @@
 
     <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item" role="presentation">
-            <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Summary</button>
+            <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">{{trans('message.Summary')}}</button>
         </li>
         <li class="nav-item" role="presentation">
             <button class="nav-link" id="scopus-tab" data-bs-toggle="tab" data-bs-target="#scopus" type="button" role="tab" aria-controls="scopus" aria-selected="false">SCOPUS</button>
@@ -143,10 +147,10 @@
             <button class="nav-link" id="tci-tab" data-bs-toggle="tab" data-bs-target="#tci" type="button" role="tab" aria-controls="tci" aria-selected="false">TCI</button>
         </li>
         <li class="nav-item" role="presentation">
-            <button class="nav-link" id="book-tab" data-bs-toggle="tab" data-bs-target="#book" type="button" role="tab" aria-controls="book" aria-selected="false">หนังสือ</button>
+            <button class="nav-link" id="book-tab" data-bs-toggle="tab" data-bs-target="#book" type="button" role="tab" aria-controls="book" aria-selected="false">{{trans('message.Book')}}</button>
         </li>
         <li class="nav-item" role="presentation">
-            <button class="nav-link" id="patent-tab" data-bs-toggle="tab" data-bs-target="#patent" type="button" role="tab" aria-controls="patent" aria-selected="false">ผลงานวิชาการด้านอื่นๆ</button>
+            <button class="nav-link" id="patent-tab" data-bs-toggle="tab" data-bs-target="#patent" type="button" role="tab" aria-controls="patent" aria-selected="false">{{trans('message.OtherAcademicWorks')}}</button>
         </li>
     </ul>
     <br>
@@ -154,7 +158,7 @@
 
         <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
             <div class="tab-content" style="padding-bottom: 20px;">
-                <a class="btn btn-success" href="{{ route('excel', ['id' => $res->id]) }}" target="_blank">Export To Excel</a>
+                <a class="btn btn-success" href="{{ route('excel', ['id' => $res->id]) }}" target="_blank">{{trans('message.ExportToExcel')}}</a>
             </div>
             <table id="example1" class="table table-striped" style="width:100%">
                 <thead>
@@ -162,16 +166,16 @@
                         <th><a href="{{ route('excel', ['id' => $res->id]) }}" target="_blank">#Export</a></td>
                     </tr> -->
                     <tr>
-                        <th>No.</th>
-                        <th>Year</th>
-                        <th>Paper Name</th>
-                        <th>Author</th>
-                        <th>Document Type</th>
-                        <th>Page</th>
-                        <th>Journals/Transactions</th>
-                        <th>Ciations</th>
-                        <th>Doi</th>
-                        <th>Source</th>
+                        <th>{{trans('message.No.')}}</th>
+                        <th>{{trans('message.Year')}}</th>
+                        <th>{{trans('message.PaperName')}}</th>
+                        <th>{{trans('message.Author')}}</th>
+                        <th>{{trans('message.DocumentType')}}</th>
+                        <th>{{trans('message.Page')}}</th>
+                        <th>{{trans('message.JournalsAndTransactions')}}</th>
+                        <th>{{trans('message.Ciations')}}</th>
+                        <th>{{trans('message.Doi')}}</th>
+                        <th>{{trans('message.Source')}}</th>
                     </tr>
                 </thead>
 
@@ -191,7 +195,11 @@
                             @foreach ($paper->teacher as $author)
                             <span >
                                 <a href="{{ route('detail',Crypt::encrypt($author->id))}}">
+                                    @if(app()->getLocale() == 'en')
                                     <teacher>{{$author -> fname_en}} {{$author -> lname_en}}</teacher></a>
+                                    @else
+                                    <teacher>{{$author -> fname_th}} {{$author -> lname_th}}</teacher></a>
+                                    @endif
                             </span>
                             @endforeach
                         </td>
@@ -220,15 +228,15 @@
             <table id="example2" class="table table-striped" style="width:100%">
                 <thead>
                     <tr>
-                        <th>No.</th>
-                        <th>Year</th>
-                        <th style="width:90%;">Paper Name</th>
-                        <th>Author</th>
-                        <th>Document Type</th>
-                        <th style="width:100%;">Page</th>
-                        <th>Journals/Transactions</th>
-                        <th>Ciations</th>
-                        <th>Doi</th>
+                        <th>{{trans('message.No.')}}</th>
+                        <th>{{trans('message.Year')}}</th>
+                        <th style="width:90%;">{{trans('message.PaperName')}}</th>
+                        <th>{{trans('message.Author')}}</th>
+                        <th>{{trans('message.DocumentType')}}</th>
+                        <th style="width:100%;">{{trans('message.Page')}}</th>
+                        <th>{{trans('message.JournalsAndTransactions')}}</th>
+                        <th>{{trans('message.Ciations')}}</th>
+                        <th>{{trans('message.Doi')}}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -247,7 +255,11 @@
                             @foreach ($paper->teacher as $author)
                             <span>
                                 <a href="{{ route('detail',Crypt::encrypt($author->id))}}">
+                                    @if(app()->getLocale() == 'en')
                                     <teacher>{{$author -> fname_en}} {{$author -> lname_en}}</teacher></a>
+                                    @else
+                                    <teacher>{{$author -> fname_th}} {{$author -> lname_th}}</teacher></a>
+                                    @endif
                             </span>
                             @endforeach
                         </td>
@@ -271,15 +283,15 @@
             <table id="example3" class="table table-striped" style="width:100%">
                 <thead>
                     <tr>
-                        <th>No.</th>
-                        <th>Year</th>
-                        <th style="width:90%;">Paper Name</th>
-                        <th>Author</th>
-                        <th>Document Type</th>
-                        <th style="width:100%;">Page</th>
-                        <th>Journals/Transactions</th>
-                        <th>Ciations</th>
-                        <th>Doi</th>
+                        <th>{{trans('message.No.')}}</th>
+                        <th>{{trans('message.Year')}}</th>
+                        <th style="width:90%;">{{trans('message.PaperName')}}</th>
+                        <th>{{trans('message.Author')}}</th>
+                        <th>{{trans('message.DocumentType')}}</th>
+                        <th style="width:100%;">{{trans('message.Page')}}</th>
+                        <th>{{trans('message.JournalsAndTransactions')}}</th>
+                        <th>{{trans('message.Ciations')}}</th>
+                        <th>{{trans('message.Doi')}}</th>
                     </tr>
                 </thead>
 
@@ -299,7 +311,11 @@
                             @foreach ($paper->teacher as $author)
                             <span>
                                 <a href="{{ route('detail',Crypt::encrypt($author->id))}}">
+                                    @if(app()->getLocale() == 'en')
                                     <teacher>{{$author -> fname_en}} {{$author -> lname_en}}</teacher></a>
+                                    @else
+                                    <teacher>{{$author -> fname_th}} {{$author -> lname_th}}</teacher></a>
+                                    @endif
                             </span>
                             @endforeach
                         </td>
@@ -323,15 +339,15 @@
             <table id="example4" class="table table-striped" style="width:100%">
                 <thead>
                     <tr>
-                        <th>No.</th>
-                        <th>Year</th>
-                        <th style="width:90%;">Paper Name</th>
-                        <th>Author</th>
-                        <th>Document Type</th>
-                        <th style="width:100%;">Page</th>
-                        <th>Journals/Transactions</th>
-                        <th>Ciations</th>
-                        <th>Doi</th>
+                    <th>{{trans('message.No.')}}</th>
+                        <th>{{trans('message.Year')}}</th>
+                        <th style="width:90%;">{{trans('message.PaperName')}}</th>
+                        <th>{{trans('message.Author')}}</th>
+                        <th>{{trans('message.DocumentType')}}</th>
+                        <th style="width:100%;">{{trans('message.Page')}}</th>
+                        <th>{{trans('message.JournalsAndTransactions')}}</th>
+                        <th>{{trans('message.Ciations')}}</th>
+                        <th>{{trans('message.Doi')}}</th>
                     </tr>
                 </thead>
 
@@ -351,7 +367,11 @@
                             @foreach ($paper->teacher as $author)
                             <span>
                                 <a href="{{ route('detail',Crypt::encrypt($author->id))}}">
+                                    @if(app()->getLocale() == 'en')
                                     <teacher>{{$author -> fname_en}} {{$author -> lname_en}}</teacher></a>
+                                    @else
+                                    <teacher>{{$author -> fname_th}} {{$author -> lname_th}}</teacher></a>
+                                    @endif
                             </span>
                             @endforeach
                         </td>
@@ -371,13 +391,12 @@
             <table id="example5" class="table table-striped" style="width:100%">
                 <thead>
                     <tr>
-                        <th scope="col">Number</th>
-                        <th scope="col">Year</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Author</th>
-                        <th scope="col">สถานที่พิมพ์</th>
-                        <th scope="col">Page</th>
-
+                        <th scope="col">{{trans('message.Number')}}</th>
+                        <th scope="col">{{trans('message.Year')}}</th>
+                        <th scope="col">{{trans('message.Name')}}</th>
+                        <th scope="col">{{trans('message.Author')}}</th>
+                        <th scope="col">{{trans('message.PlaceofPublication')}}</th>
+                        <th scope="col">{{trans('message.Page')}}</th>
                     </tr>
                 </thead>
 
@@ -396,7 +415,11 @@
                             @endforeach
                             @foreach ($paper->user as $author)
                             <span>
+                                @if(app()->getLocale() == 'en')
                                 <a> {{$author -> fname_en}} {{$author -> lname_en}}</a>
+                                @else
+                                <a> {{$author -> fname_th}} {{$author -> lname_th}}</a>
+                                @endif
                             </span>
                             @endforeach
                         </td>
@@ -413,13 +436,12 @@
             <table id="example6" class="table table-striped" style="width:100%">
                 <thead>
                     <tr>
-                        <th scope="col">Number</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Author</th>
-                        <th scope="col">ประเภท</th>
-                        <th scope="col">หมายเลขทะเบียน</th>
-                        <th scope="col">วันที่จดทะเบียน</th>
-
+                        <th scope="col">{{trans('message.Number')}}</th>
+                        <th scope="col">{{trans('message.Name')}}</th>
+                        <th scope="col">{{trans('message.Author')}}</th>
+                        <th scope="col">{{trans('message.Type')}}</th>
+                        <th scope="col">{{trans('message.RegistrationNumber')}}</th>
+                        <th scope="col">{{trans('message.RegistrationDate')}}</th>
                     </tr>
                 </thead>
 
@@ -438,8 +460,11 @@
                             @foreach ($paper->user as $author)
                             <span>
                                 <a href="{{ route('detail',Crypt::encrypt($author->id))}}">
+                                    @if(app()->getLocale() == 'en')
                                     <teacher>{{$author -> fname_en}} {{$author -> lname_en}}</teacher></a>
-
+                                    @else
+                                    <teacher>{{$author -> fname_th}} {{$author -> lname_th}}</teacher></a>
+                                    @endif
                             </span>
                             @endforeach
                         </td>
@@ -465,25 +490,101 @@
 
 <script>
     $(document).ready(function() {
-
+        //switch language function for show, search, lengthmenu of Summary
         var table1 = $('#example1').DataTable({
             responsive: true,
+            language: {
+                search: "{{ trans('message.Search') }}",
+                lengthMenu: "{{ trans('message.Show') }} _MENU_ {{ trans('message.Entries') }}",
+                info: "{{ trans('message.Info') }}",
+                infoEmpty: "{{ trans('message.InfoEmpty') }}",
+                paginate: {
+                    first: "{{ trans('message.First') }}",
+                    previous: "{{ trans('message.Previous') }}",
+                    next: "{{ trans('message.Next') }}",
+                    last: "{{ trans('message.Last') }}"
+                }
+            }
         });
-
+        //switch language function for show, search, lengthmenu of SCOPUS
         var table2 = $('#example2').DataTable({
             responsive: true,
+            language: {
+                search: "{{ trans('message.Search') }}",
+                lengthMenu: "{{ trans('message.Show') }} _MENU_ {{ trans('message.Entries') }}",
+                info: "{{ trans('message.Info') }}",
+                infoEmpty: "{{ trans('message.InfoEmpty') }}",
+                paginate: {
+                    first: "{{ trans('message.First') }}",
+                    previous: "{{ trans('message.Previous') }}",
+                    next: "{{ trans('message.Next') }}",
+                    last: "{{ trans('message.Last') }}"
+                }
+            }
         });
+        //switch language function for show, search, lengthmenu of WOS
         var table3 = $('#example3').DataTable({
             responsive: true,
+            language: {
+                search: "{{ trans('message.Search') }}",
+                lengthMenu: "{{ trans('message.Show') }} _MENU_ {{ trans('message.Entries') }}",
+                info: "{{ trans('message.Info') }}",
+                infoEmpty: "{{ trans('message.InfoEmpty') }}",
+                paginate: {
+                    first: "{{ trans('message.First') }}",
+                    previous: "{{ trans('message.Previous') }}",
+                    next: "{{ trans('message.Next') }}",
+                    last: "{{ trans('message.Last') }}"
+                }
+            }
         });
+        //switch language function for show, search, lengthmenu of TCI
         var table4 = $('#example4').DataTable({
             responsive: true,
+            language: {
+                search: "{{ trans('message.Search') }}",
+                lengthMenu: "{{ trans('message.Show') }} _MENU_ {{ trans('message.Entries') }}",
+                info: "{{ trans('message.Info') }}",
+                infoEmpty: "{{ trans('message.InfoEmpty') }}",
+                paginate: {
+                    first: "{{ trans('message.First') }}",
+                    previous: "{{ trans('message.Previous') }}",
+                    next: "{{ trans('message.Next') }}",
+                    last: "{{ trans('message.Last') }}"
+                }
+            }
         });
+        //switch language function for show, search, lengthmenu of Book
         var table5 = $('#example5').DataTable({
             responsive: true,
+            language: {
+                search: "{{ trans('message.Search') }}",
+                lengthMenu: "{{ trans('message.Show') }} _MENU_ {{ trans('message.Entries') }}",
+                info: "{{ trans('message.Info') }}",
+                infoEmpty: "{{ trans('message.InfoEmpty') }}",
+                paginate: {
+                    first: "{{ trans('message.First') }}",
+                    previous: "{{ trans('message.Previous') }}",
+                    next: "{{ trans('message.Next') }}",
+                    last: "{{ trans('message.Last') }}"
+                }
+            }
         });
+        //switch language function for show, search, lengthmenu of OtherAcademicWorks
         var table6 = $('#example6').DataTable({
             responsive: true,
+            language: {
+                search: "{{ trans('message.Search') }}",
+                lengthMenu: "{{ trans('message.Show') }} _MENU_ {{ trans('message.Entries') }}",
+                info: "{{ trans('message.Info') }}",
+                infoEmpty: "{{ trans('message.InfoEmpty') }}",
+                paginate: {
+                    first: "{{ trans('message.First') }}",
+                    previous: "{{ trans('message.Previous') }}",
+                    next: "{{ trans('message.Next') }}",
+                    last: "{{ trans('message.Last') }}"
+                }
+            }
         });
 
 
@@ -663,7 +764,7 @@
         //$("#scopus").append('data-to="100"');
         document.getElementById("all").innerHTML += `   
                 <h2 class="timer count-title count-number" data-to="${sum}" data-speed="1500"></h2>
-                <p class="count-text ">SUMMARY</p>`
+                <p class="count-text ">{{ trans('message.Summary') }}</p>`
 
         document.getElementById("scopus_sum").innerHTML += `   
                 <h2 class="timer count-title count-number" data-to="${sumsco}" data-speed="1500"></h2>
