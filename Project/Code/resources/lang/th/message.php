@@ -81,5 +81,11 @@ return [
 'Search2' => 'ค้นหา',
 'total_articles' => 'จำนวนบทความทั้งหมด 5 ปี',
 'referenced_articles' => 'สถิติจำนวนบทความที่ได้รับการอ้างอิง',
-'search_placeholder' => 'ค้นหา...'
+'search_placeholder' => 'ค้นหา...',
+'Computer Science' => 'สาขาวิทยาการคอมพิวเตอร์',
+'Infomation Technology' => 'สาขาเทคโนโลยีสารสนเทศ',
+'Geo-Informatics' => 'สาขาภูมิสารสนเทศศาสตร์',
+
+
+
 ];
