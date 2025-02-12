@@ -3,7 +3,7 @@
         'name' => 'laravel/laravel',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '37b8fd947e95b3050cb5b63d84a2e665f23571fd',
+        'reference' => '1e00a7b1c916a1eabea9f3bc1a1c5eef462615a7',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -469,7 +469,7 @@
         'laravel/laravel' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '37b8fd947e95b3050cb5b63d84a2e665f23571fd',
+            'reference' => '1e00a7b1c916a1eabea9f3bc1a1c5eef462615a7',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -617,9 +617,9 @@
             ),
         ),
         'myclabs/deep-copy' => array(
-            'pretty_version' => '1.12.1',
-            'version' => '1.12.1.0',
-            'reference' => '123267b2c49fbf30d78a7b2d333f6be754b94845',
+            'pretty_version' => '1.13.0',
+            'version' => '1.13.0.0',
+            'reference' => '024473a478be9df5fdaca2c793f2232fe788e414',
             'type' => 'library',
             'install_path' => __DIR__ . '/../myclabs/deep-copy',
             'aliases' => array(),
@@ -907,8 +907,8 @@
         'psr/log-implementation' => array(
             'dev_requirement' => false,
             'provided' => array(
-                0 => '1.0.0 || 2.0.0 || 3.0.0',
-                1 => '1.0|2.0',
+                0 => '1.0|2.0',
+                1 => '1.0.0 || 2.0.0 || 3.0.0',
             ),
         ),
         'psr/simple-cache' => array(
