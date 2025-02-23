@@ -31,6 +31,7 @@ return array(
     'App\\Http\\Controllers\\FileUpload' => $baseDir . '/app/Http/Controllers/FileUpload.php',
     'App\\Http\\Controllers\\FundController' => $baseDir . '/app/Http/Controllers/FundController.php',
     'App\\Http\\Controllers\\HomeController' => $baseDir . '/app/Http/Controllers/HomeController.php',
+    'App\\Http\\Controllers\\ImageManagementController' => $baseDir . '/app/Http/Controllers/ImageManagementController.php',
     'App\\Http\\Controllers\\ImportExportController' => $baseDir . '/app/Http/Controllers/ImportExportController.php',
     'App\\Http\\Controllers\\LocalizationController' => $baseDir . '/app/Http/Controllers/LocalizationController.php',
     'App\\Http\\Controllers\\PDFController' => $baseDir . '/app/Http/Controllers/PDFController.php',
