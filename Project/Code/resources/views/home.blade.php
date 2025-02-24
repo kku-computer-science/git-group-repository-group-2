@@ -109,6 +109,7 @@
     <div class="container mixpaper pb-10 mt-3">
         <h3>{{ trans('message.publications') }}</h3>
         @foreach($papers as $n => $pe)
+<<<<<<< HEAD
             <div class="accordion" id="accordionExample">
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="headingOne">
@@ -137,6 +138,39 @@
                                     </div>
                                 </div>
                             @endforeach
+=======
+        <div class="accordion" id="accordionExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{$n}}" aria-expanded="true" aria-controls="collapseOne">
+                        @if (!$loop->last)
+                        {{$n}}
+                        @else
+                        Before {{$n}}
+                        @endif
+
+                    </button>
+                </h2>
+                <div id="collapse{{$n}}" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        @foreach($pe as $n => $p)
+                        <div class="row mt-2 mb-3 border-bottom">
+                            <div id="number" class="col-sm-1">
+                                <h6>[{{$n+1}}]</h6>
+                            </div>
+                            <div id="paper2" class="col-sm-11">
+                                <p class="hidden">
+                                    <b>{{$p['paper_name']}}</b> (
+                                    <link>{{$p['author']}}</link>), {{$p['paper_sourcetitle']}}, {{$p['paper_volume']}},
+                                    {{$p['paper_yearpub']}}.
+                                    <a href="{{$p['paper_url']}} " target="_blank">[url]</a> <a href="https://doi.org/{{$p['paper_doi']}}" target="_blank">[doi]</a>
+                                    <!-- <a href="{{ route('bibtex',['id'=>$p['id']])}}">
+                                        [อ้างอิง]
+                                    </a> -->
+                                    <button style="padding: 0;"class="btn btn-link open_modal" value="{{$p['id']}}">[{{ trans('message.Reference') }}]</button>
+                                </p>
+                            </div>
+>>>>>>> f888ffb358f599a7d0a99285066c25e2cd4cf49d
                         </div>
                     </div>
                 </div>
@@ -231,7 +265,7 @@
                 },
                 scaleLabel: {
                     display: true,
-                    labelString: 'Number',
+                    labelString: "{{ trans('message.Number2') }}",
 
                 },
                 ticks: {
@@ -242,14 +276,14 @@
             xAxes: [{
                 scaleLabel: {
                     display: true,
-                    labelString: 'Year'
+                    labelString: "{{ trans('message.Year') }}"
                 }
             }]
         },
 
         title: {
             display: true,
-            text: 'Report the total number of articles ( 5 years : cumulative)',
+            text: "{{ trans('message.Report5Year') }}",
             fontSize: 20
         }
 
@@ -278,7 +312,7 @@
         document.getElementById("all").innerHTML += `
                 <i class="count-icon fa fa-book fa-2x"></i>
                 <h2 class="timer count-title count-number" data-to="${sum}" data-speed="1500"></h2>
-                <p class="count-text ">SUMMARY</p>`
+                <p class="count-text ">{{ trans('message.Summary') }}</p>`
         document.getElementById("scopus").innerHTML += `
                 <i class="count-icon fa fa-book fa-2x"></i>
                 <h2 class="timer count-title count-number" data-to="${sumsco}" data-speed="1500"></h2>

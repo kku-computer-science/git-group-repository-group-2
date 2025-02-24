@@ -19,6 +19,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
 
+    <!-- Flag Icon CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.1.0/css/flag-icon.min.css" rel="stylesheet">
+
     <!-- plugins:css -->
     <link rel="stylesheet" href="{{asset('vendors/feather/feather.css')}}">
     <link rel="stylesheet" href="{{asset('vendors/mdi/css/materialdesignicons.min.css')}}">
@@ -63,7 +66,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <div class="navbar-menu-wrapper d-flex align-items-top">
                 <ul class="navbar-nav">
                     <li class="nav-item font-weight-semibold d-none d-lg-block ms-0">
-                        <h1 class="welcome-text">Research Information Management System <span
+                        <h1 class="welcome-text">{{trans('message.ResearchInformationManagementSystem')}}<span
                                 class="text-black fw-bold"></span></h1>
                         <h3 class="welcome-sub-text"> </h3>
                     </li>
@@ -119,7 +122,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     class="dropdown-item-icon mdi mdi-power text-primary me-2"></i>Sign Out</a> -->
                     <li class="nav-item d-none d-sm-inline-block">
                         <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); 
-                        document.getElementById ('logout-form').submit();"> {{ __('Logout') }} <i class="mdi mdi-logout"></i></a>
+                        document.getElementById ('logout-form').submit();"> {{trans('message.Logout')}} <i class="mdi mdi-logout"></i></a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                             @csrf
                         </form>
@@ -144,15 +147,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <a class="nav-link {{ (request()->is('dashboard*')) ? 'active' : '' }}"
                             href="{{ route('dashboard')}}">
                             <i class="menu-icon mdi mdi-grid-large"></i>
-                            <span class="menu-title">Dashboard</span>
+                            <span class="menu-title">{{trans('message.Dashboard')}}</span>
                         </a>
                     </li>
-                    <li class="nav-item nav-category">Profile</li>
+                    <li class="nav-item nav-category">{{trans('message.Profile')}}</li>
                     <li class="nav-item">
                         <a class="nav-link {{ (request()->is('admin/profile*')) ? 'active' : '' }}"
                             href="{{ route('profile')}}">
                             <i class="menu-icon mdi mdi-account-circle-outline"></i>
-                            <span class="menu-title">User Profile</span>
+                            <span class="menu-title">{{trans('message.UserProfile')}}</span>
 
                         </a>
                     </li>
@@ -164,12 +167,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                         </a>
                     </li> -->
-                    <li class="nav-item nav-category">Option</li>
+                    <li class="nav-item nav-category">{{trans('message.Options')}}</li>
                     @can('funds-list')
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('funds.index')}}">
                             <i class="menu-icon mdi mdi-file-document-box-outline"></i>
-                            <span class="menu-title">Manage Fund</span>
+                            <span class="menu-title">{{trans('message.ManageFund')}}</span>
 
                         </a>
                     </li>
@@ -178,7 +181,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('researchProjects.index')}}">
                             <i class="menu-icon mdi mdi-book-outline"></i>
-                            <span class="menu-title">Research Project</span>
+                            <span class="menu-title">{{trans('message.ResearchProj')}}</span>
 
                         </a>
                     </li>
@@ -187,7 +190,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('researchGroups.index')}}">
                             <i class="menu-icon mdi mdi-view-dashboard-outline"></i>
-                            <span class="menu-title">Research Group</span>
+                            <span class="menu-title">{{trans('message.ResearchGroup')}}</span>
 
                         </a>
                     </li>
@@ -196,17 +199,27 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="collapse" href="#ManagePublications" aria-expanded="false" aria-controls="ManagePublications">
                             <i class="menu-icon mdi mdi-book-open-page-variant"></i>
-                            <span class="menu-title">Manage Publications</span>
+                            <span class="menu-title">{{trans('message.ManagePublications')}}</span>
                             <i class="menu-arrow"></i>
                         </a>
                         <div class="collapse" id="ManagePublications">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="{{ route('papers.index')}}">Published research</a></li>
-                                <li class="nav-item"> <a class="nav-link" href="/books">Book</a></li>
-                                <li class="nav-item"> <a class="nav-link" href="/patents">ผลงานวิชาการอื่นๆ</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="{{ route('papers.index')}}">{{trans('message.Publishedresearch')}}</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="/books">{{trans('message.Book')}}</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="/patents">{{trans('message.OtherAcademicWorks')}}</a></li>
                             </ul>
                         </div>
                     </li>
+                    <li class="nav-item">
+                        @foreach (Config::get('languages') as $lang => $language)
+                        @if ($lang != App::getLocale())
+                        <a class="nav-link" href="{{ route('langswitch', $lang) }}">
+                        <span
+                        class="flag-icon flag-icon-{{$language['flag-icon']}}"></span>
+                            <span class="menu-title">{{$language['display']}}</span>   
+                        @endif
+                        @endforeach
+                        </a>
                     @endcan
                     @can('export')
                     <li class="nav-item">
