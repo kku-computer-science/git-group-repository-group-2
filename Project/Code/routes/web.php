@@ -38,6 +38,8 @@ use App\Http\Controllers\TestController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\TcicallController;
+use App\Http\Controllers\BannerController;
+use App\Http\Controllers\ImageManagementController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -138,7 +140,15 @@ Route::group(['middleware' => ['auth', 'PreventBackHistory']], function () {
     Route::get('/ajax-get-subcat', [UserController::class, 'getCategory']);
     Route::get('tests', [TestController::class, 'index']); //call department
     Route::get('tests/{id}', [TestController::class, 'getCategory'])->name('tests'); //call program
-
+    Route::get('image_management', [ImageManagementController::class, 'index'])->name('image_management.index');
+    Route::resource('banners', BannerController::class);
+    Route::get('language/switch/{lang}', function($lang) {
+        if (in_array($lang, ['en', 'th'])) {
+            session(['locale' => $lang]);
+        }
+        return redirect()->back();
+    })->name('language.switch');
+    
 });
 
 

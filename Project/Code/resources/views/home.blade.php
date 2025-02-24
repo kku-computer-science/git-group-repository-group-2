@@ -37,21 +37,16 @@
     <div class="container d-sm-flex justify-content-center mt-5">
         <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                <!-- <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-                aria-label="Slide 3"></button> -->
+                @foreach ($banners as $index => $banner)
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ $index }}" class="{{ $index == 0 ? 'active' : '' }}" aria-current="{{ $index == 0 ? 'true' : 'false' }}" aria-label="Slide {{ $index + 1 }}"></button>
+                @endforeach
             </div>
             <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="{{asset('img/Banner1.png')}}" class="d-block w-100" alt="...">
-                </div>
-                <div class="carousel-item">
-                    <img src="{{asset('img/Banner2.png')}}" class="d-block w-100" alt="...">
-                </div>
-                <!-- <div class="carousel-item">
-                <img src="..." class="d-block w-100" alt="...">
-            </div> -->
+                @foreach ($banners as $index => $banner)
+                    <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
+                        <img src="{{ asset('storage/' . $banner->image_path) }}" class="d-block w-100" alt="Banner Image">
+                    </div>
+                @endforeach
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -64,11 +59,7 @@
         </div>
     </div>
 
-
     <!-- Modal -->
-
-
-
     <div class="container card-cart d-sm-flex justify-content-center mt-5">
         <div class="col-md-8">
             <div class="card">
@@ -79,36 +70,27 @@
                 </div>
             </div>
         </div>
-
     </div>
     <br>
 
     <div class="container mt-3">
-
         <div class="row text-center">
             <div class="col">
-                <div class="count" id='all'>
-
-                </div>
+                <div class="count" id='all'></div>
             </div>
             <div class="col">
-                <div class="count" id='scopus'>
-
-                </div>
+                <div class="count" id='scopus'></div>
             </div>
             <div class="col">
-                <div class="count" id='wos'>
-
-                </div>
+                <div class="count" id='wos'></div>
             </div>
             <div class="col">
-                <div class="count" id='tci'>
-
-                </div>
+                <div class="count" id='tci'></div>
             </div>
         </div>
     </div>
 
+    <!-- Modal -->
     <div class="modal" id="myModal" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -116,65 +98,54 @@
                     <h5 class="modal-title">Reference (APA)</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body" id="name">
-                    <!-- <p>Modal body text goes here.</p> -->
-                </div>
+                <div class="modal-body" id="name"></div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
                 </div>
             </div>
         </div>
     </div>
-
-
-
 
     <div class="container mixpaper pb-10 mt-3">
         <h3>{{ trans('message.publications') }}</h3>
         @foreach($papers as $n => $pe)
-        <div class="accordion" id="accordionExample">
-            <div class="accordion-item">
-                <h2 class="accordion-header" id="headingOne">
-                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{$n}}" aria-expanded="true" aria-controls="collapseOne">
-                        @if (!$loop->last)
-                        {{$n}}
-                        @else
-                        Before {{$n}}
-                        @endif
-
-                    </button>
-                </h2>
-                <div id="collapse{{$n}}" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                    <div class="accordion-body">
-                        @foreach($pe as $n => $p)
-                        <div class="row mt-2 mb-3 border-bottom">
-                            <div id="number" class="col-sm-1">
-                                <h6>[{{$n+1}}]</h6>
-                            </div>
-                            <div id="paper2" class="col-sm-11">
-                                <p class="hidden">
-                                    <b>{{$p['paper_name']}}</b> (
-                                    <link>{{$p['author']}}</link>), {{$p['paper_sourcetitle']}}, {{$p['paper_volume']}},
-                                    {{$p['paper_yearpub']}}.
-                                    <a href="{{$p['paper_url']}} " target="_blank">[url]</a> <a href="https://doi.org/{{$p['paper_doi']}}" target="_blank">[doi]</a>
-                                    <!-- <a href="{{ route('bibtex',['id'=>$p['id']])}}">
-                                        [อ้างอิง]
-                                    </a> -->
-                                    <button style="padding: 0;"class="btn btn-link open_modal" value="{{$p['id']}}">[อ้างอิง]</button>
-                                </p>
-                            </div>
+            <div class="accordion" id="accordionExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{$n}}" aria-expanded="true" aria-controls="collapseOne">
+                            @if (!$loop->last)
+                                {{$n}}
+                            @else
+                                Before {{$n}}
+                            @endif
+                        </button>
+                    </h2>
+                    <div id="collapse{{$n}}" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            @foreach($pe as $n => $p)
+                                <div class="row mt-2 mb-3 border-bottom">
+                                    <div id="number" class="col-sm-1">
+                                        <h6>[{{$n+1}}]</h6>
+                                    </div>
+                                    <div id="paper2" class="col-sm-11">
+                                        <p class="hidden">
+                                            <b>{{$p['paper_name']}}</b> (<link>{{$p['author']}}</link>), {{$p['paper_sourcetitle']}}, {{$p['paper_volume']}},
+                                            {{$p['paper_yearpub']}}.
+                                            <a href="{{$p['paper_url']}}" target="_blank">[url]</a> <a href="https://doi.org/{{$p['paper_doi']}}" target="_blank">[doi]</a>
+                                            <button style="padding: 0;" class="btn btn-link open_modal" value="{{$p['id']}}">[อ้างอิง]</button>
+                                        </p>
+                                    </div>
+                                </div>
+                            @endforeach
                         </div>
-                        @endforeach
                     </div>
                 </div>
-
             </div>
-
-        </div>
         @endforeach
     </div>
 </div>
+   
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 
 <script>

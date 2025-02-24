@@ -3,7 +3,7 @@
         'name' => 'laravel/laravel',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '1e00a7b1c916a1eabea9f3bc1a1c5eef462615a7',
+        'reference' => '92f5eeae9aaa7631f2869c3d50ca709b323ed9c6',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -449,9 +449,9 @@
             ),
         ),
         'laminas/laminas-escaper' => array(
-            'pretty_version' => '2.15.0',
-            'version' => '2.15.0.0',
-            'reference' => 'c612b0488ae486284c39885efca494c180f16351',
+            'pretty_version' => '2.16.0',
+            'version' => '2.16.0.0',
+            'reference' => '9cf1f5317ca65b4fd5c6a3c2855e24a187b288c8',
             'type' => 'library',
             'install_path' => __DIR__ . '/../laminas/laminas-escaper',
             'aliases' => array(),
@@ -469,7 +469,7 @@
         'laravel/laravel' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '1e00a7b1c916a1eabea9f3bc1a1c5eef462615a7',
+            'reference' => '92f5eeae9aaa7631f2869c3d50ca709b323ed9c6',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -557,9 +557,9 @@
             'dev_requirement' => false,
         ),
         'maatwebsite/excel' => array(
-            'pretty_version' => '3.1.62',
-            'version' => '3.1.62.0',
-            'reference' => 'decfb9140161fcc117571e47e35ddf27983189ce',
+            'pretty_version' => '3.1.63',
+            'version' => '3.1.63.0',
+            'reference' => 'fccd234da23b39ab03e1a1f6fe9178fb96ec1be1',
             'type' => 'library',
             'install_path' => __DIR__ . '/../maatwebsite/excel',
             'aliases' => array(),
@@ -907,8 +907,8 @@
         'psr/log-implementation' => array(
             'dev_requirement' => false,
             'provided' => array(
-                0 => '1.0|2.0',
-                1 => '1.0.0 || 2.0.0 || 3.0.0',
+                0 => '1.0.0 || 2.0.0 || 3.0.0',
+                1 => '1.0|2.0',
             ),
         ),
         'psr/simple-cache' => array(

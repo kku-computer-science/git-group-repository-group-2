@@ -374,8 +374,8 @@ class ComposerStaticInitdf12afa23ac71fe1005569e1ca54098b
         ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-message/src',
-            1 => __DIR__ . '/..' . '/psr/http-factory/src',
+            0 => __DIR__ . '/..' . '/psr/http-factory/src',
+            1 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
         'Psr\\Http\\Client\\' => 
         array (
@@ -639,6 +639,7 @@ class ComposerStaticInitdf12afa23ac71fe1005569e1ca54098b
         'App\\Http\\Controllers\\Auth\\RegisterController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/RegisterController.php',
         'App\\Http\\Controllers\\Auth\\ResetPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ResetPasswordController.php',
         'App\\Http\\Controllers\\Auth\\VerificationController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/VerificationController.php',
+        'App\\Http\\Controllers\\BannerController' => __DIR__ . '/../..' . '/app/Http/Controllers/BannerController.php',
         'App\\Http\\Controllers\\BibtexController' => __DIR__ . '/../..' . '/app/Http/Controllers/BibtexController.php',
         'App\\Http\\Controllers\\BookController' => __DIR__ . '/../..' . '/app/Http/Controllers/BookController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
@@ -652,6 +653,7 @@ class ComposerStaticInitdf12afa23ac71fe1005569e1ca54098b
         'App\\Http\\Controllers\\FileUpload' => __DIR__ . '/../..' . '/app/Http/Controllers/FileUpload.php',
         'App\\Http\\Controllers\\FundController' => __DIR__ . '/../..' . '/app/Http/Controllers/FundController.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
+        'App\\Http\\Controllers\\ImageManagementController' => __DIR__ . '/../..' . '/app/Http/Controllers/ImageManagementController.php',
         'App\\Http\\Controllers\\ImportExportController' => __DIR__ . '/../..' . '/app/Http/Controllers/ImportExportController.php',
         'App\\Http\\Controllers\\LocalizationController' => __DIR__ . '/../..' . '/app/Http/Controllers/LocalizationController.php',
         'App\\Http\\Controllers\\PDFController' => __DIR__ . '/../..' . '/app/Http/Controllers/PDFController.php',
@@ -696,6 +698,7 @@ class ComposerStaticInitdf12afa23ac71fe1005569e1ca54098b
         'App\\Imports\\UsersImport' => __DIR__ . '/../..' . '/app/Imports/UsersImport.php',
         'App\\Models\\Academicwork' => __DIR__ . '/../..' . '/app/Models/Academicwork.php',
         'App\\Models\\Author' => __DIR__ . '/../..' . '/app/Models/Author.php',
+        'App\\Models\\Banner' => __DIR__ . '/../..' . '/app/Models/Banner.php',
         'App\\Models\\Category' => __DIR__ . '/../..' . '/app/Models/Category.php',
         'App\\Models\\Course' => __DIR__ . '/../..' . '/app/Models/Course.php',
         'App\\Models\\Customer' => __DIR__ . '/../..' . '/app/Models/Customer.php',
