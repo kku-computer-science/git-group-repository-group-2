@@ -7,7 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 class Banner extends Model
 {
     use HasFactory;
-
-    // กำหนดให้สามารถกรอกข้อมูลได้จากฟอร์ม
-    protected $fillable = ['image_path'];
+    protected $fillable = ['image_path_th','image_path_en','image_path_zh'];
 }

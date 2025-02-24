@@ -15,15 +15,27 @@
     <div class="card" style="padding: 16px;">
         <div class="card-body">
             <h4 class="card-title text-center">จัดการรูปภาพ</h4>
-
+    
             <form action="{{ route('banners.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
-                    <input type="file" name="image" class="form-control">
+                    <label for="image_th">รูปภาษาไทย</label>
+                    <input type="file" class="form-control" name="image_th" id="image_th">
                 </div>
-                <button type="submit" class="btn btn-primary">อัปโหลดรูป</button>
+                
+                <div class="form-group">
+                    <label for="image_en">รูปภาษาอังกฤษ</label>
+                    <input type="file" class="form-control" name="image_en" id="image_en">
+                </div>
+                
+                <div class="form-group">
+                    <label for="image_zh">รูปภาษาจีน</label>
+                    <input type="file" class="form-control" name="image_zh" id="image_zh">
+                </div>
+                
+                <button type="submit" class="btn btn-primary">บันทึก</button>
             </form>
-
+    
             <table id="imageTable" class="table table-striped">
                 <thead>
                     <tr>
@@ -33,13 +45,25 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @isset($banners)  <!-- ตรวจสอบว่า $banners ถูกตั้งค่าแล้ว -->
+                    @isset($banners)
                         @forelse ($banners as $banner)
                         <tr>
                             <td>{{ $banner->id }}</td>
                             <td>
-                                <!-- เพิ่มคลาส `image-clickable` สำหรับการคลิกที่รูปภาพ -->
-                                <img class="image-clickable" src="{{ asset('storage/' . $banner->image_path) }}" width="150" data-toggle="modal" data-target="#imageModal" data-img="{{ asset('storage/' . $banner->image_path) }}">
+                                <div style="display: flex; gap: 10px;">
+                                    <div>
+                                        <strong>TH:</strong>
+                                        <img class="image-clickable" src="{{ asset('storage/' . $banner->image_path_th) }}" width="100" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="showImageModal('{{ asset('storage/' . $banner->image_path_th) }}')">
+                                    </div>
+                                    <div>
+                                        <strong>EN:</strong>
+                                        <img class="image-clickable" src="{{ asset('storage/' . $banner->image_path_en) }}" width="100" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="showImageModal('{{ asset('storage/' . $banner->image_path_en) }}')">
+                                    </div>
+                                    <div>
+                                        <strong>ZH:</strong>
+                                        <img class="image-clickable" src="{{ asset('storage/' . $banner->image_path_zh) }}" width="100" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="showImageModal('{{ asset('storage/' . $banner->image_path_zh) }}')">
+                                    </div>
+                                </div>
                             </td>
                             <td>
                                 <form action="{{ route('banners.destroy', $banner->id) }}" method="POST">
@@ -61,27 +85,25 @@
                     @endisset
                 </tbody>
             </table>
-
+    
         </div>
     </div>
 
     <!-- Modal สำหรับแสดงรูปภาพขนาดใหญ่ -->
-    <div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">รูปภาพ</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <!-- ที่นี่จะแสดงรูปภาพขนาดใหญ่ -->
-                    <img id="modalImage" class="img-fluid" src="" alt="Image">
-                </div>
+    <!-- Modal -->
+<div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="imageModalLabel">ดูรูปภาพ</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center">
+                <img id="modalImage" src="" class="img-fluid" alt="Expanded Image">
             </div>
         </div>
     </div>
+</div>
 
 </div>
 
@@ -101,5 +123,11 @@
             $('#modalImage').attr('src', imageSrc);
         });
     });
+</script>
+
+<script>
+    function showImageModal(imageSrc) {
+        document.getElementById('modalImage').src = imageSrc;
+    }
 </script>
 @stop
