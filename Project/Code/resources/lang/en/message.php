@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
 return [
 'Home' => 'Home',
@@ -81,4 +82,18 @@ return [
 'Search2' => 'Search',
 'Report5YearReport' => 'The statistics of the total number of articles over 5 years.',
 'ArticleReport' => 'The statistics of the number of cited articles.',
+=======
+<?php
+return [
+'Home' => 'Home',
+'Researchers' => 'Researchers',
+'ResearchProj' => 'Research Project',
+'ResearchGroup' => 'Research Group',
+'Report' => 'Reports',
+'details' =>'More details',
+'expertise' => 'Research interests',
+'publications' => 'Publications (In the Last 5 Years)',
+'education'=>'Education',
+'publications2' => 'Publications',
+>>>>>>> c1a2cdf63af96119ce5aad2bdbeaed9987827f05
 ];

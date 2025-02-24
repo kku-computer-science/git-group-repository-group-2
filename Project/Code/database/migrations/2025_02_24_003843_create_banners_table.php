@@ -15,18 +15,15 @@ class CreateBannersTable extends Migration
 {
     Schema::create('banners', function (Blueprint $table) {
         $table->id();
-        $table->string('image_path'); // เก็บ path ของรูป
+        $table->string('image_path_th')->nullable();
+        $table->string('image_path_en')->nullable();
+        $table->string('image_path_zh')->nullable();
         $table->timestamps();
     });
 }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::dropIfExists('banners');
-    }
+public function down()
+{
+    Schema::dropIfExists('banners');
+}
 }

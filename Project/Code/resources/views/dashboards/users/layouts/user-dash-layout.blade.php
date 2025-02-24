@@ -1,8 +1,4 @@
 <!DOCTYPE html>
-<!--
-This is a starter template page. Use this page to start your new project from
-scratch. This page gets rid of all links and provides the needed markup only.
--->
 <html lang="en">
 
 <head>
@@ -11,61 +7,89 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <title>Dashboard</title>
     <base href="{{ \URL::to('/') }}">
     <link href="img/Newlogo.png" rel="shortcut icon" type="image/x-icon" />
+
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
-    <link rel="stylesheet" href="{{ asset('plugins/ijaboCropTool/ijaboCropTool.min.css') }}">
-    <!-- Theme style -->
-    <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Include Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 
+<<<<<<< HEAD
     <!-- Flag Icon CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.1.0/css/flag-icon.min.css" rel="stylesheet">
 
     <!-- plugins:css -->
+=======
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="{{ asset('plugins/ijaboCropTool/ijaboCropTool.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/styleadmin.css') }}">
+
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+
+    <!-- Vendor Styles -->
+>>>>>>> c1a2cdf63af96119ce5aad2bdbeaed9987827f05
     <link rel="stylesheet" href="{{asset('vendors/feather/feather.css')}}">
     <link rel="stylesheet" href="{{asset('vendors/mdi/css/materialdesignicons.min.css')}}">
     <link rel="stylesheet" href="{{asset('vendors/ti-icons/css/themify-icons.css')}}">
     <link rel="stylesheet" href="{{asset('vendors/typicons/typicons.css')}}">
     <link rel="stylesheet" href="{{asset('vendors/simple-line-icons/css/simple-line-icons.css')}}">
     <link rel="stylesheet" href="{{asset('vendors/css/vendor.bundle.base.css')}}">
-    <!-- endinject -->
-    <!-- Plugin css for this page -->
-    <!-- <link rel="stylesheet" href="{{asset('vendors/datatables.net-bs4/dataTables.bootstrap4.css')}}"> -->
+
+    <!-- Plugin Styles -->
     <link rel="stylesheet" href="{{asset('js/select.dataTables.min.css')}}">
-    <!-- End plugin css for this page -->
-    <!-- inject:css -->
-    <link rel="stylesheet" href="{{asset('css/styleadmin.css')}}">
-
-    <!-- endinject -->
-    <!-- <link rel="shortcut icon" href="images/favicon.png" /> -->
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-    <!-- <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"> </script> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
 
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
-        <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"> -->
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+    <style>
+        .navbar-menu-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .navbar-nav.ms-auto {
+            display: flex;
+            align-items: center;
+            margin-left: auto;
+        }
+
+        .nav-item.dropdown {
+            margin-left: 10px;
+        }
+
+        .navbar-brand-wrapper .navbar-toggler {
+            border: none;
+        }
+
+        .navbar-nav .nav-item {
+            margin-right: 15px;
+        }
+
+        .navbar-nav .nav-item a {
+            font-weight: 500;
+            color: #343a40;
+        }
+    </style>
 </head>
 
 <body>
-    <div class=" container-scroller sidebar-dark">
-        <!-- navbar ข้างบน 
-    -->
-        <nav class=" navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex align-items-top flex-row">
+    <div class="container-scroller sidebar-dark">
+        <!-- Navbar -->
+        <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex align-items-top flex-row">
             <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start">
                 <div class="me-3">
-                    <button class="navbar-toggler navbar-toggler align-self-center" type="button"
-                        data-bs-toggle="minimize">
+                    <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-bs-toggle="minimize">
                         <span class="icon-menu"></span>
                     </button>
                 </div>
             </div>
-            <!-- {{ Auth::user()->fname }} {{ Auth::user()->lname }} -->
-            <!-- Left navbar links -->
-            <div class="navbar-menu-wrapper d-flex align-items-top">
+            <div class="navbar-menu-wrapper d-flex align-items-top justify-content-between">
                 <ul class="navbar-nav">
                     <li class="nav-item font-weight-semibold d-none d-lg-block ms-0">
+<<<<<<< HEAD
                         <h1 class="welcome-text">{{trans('message.ResearchInformationManagementSystem')}}<span
                                 class="text-black fw-bold"></span></h1>
                         <h3 class="welcome-sub-text"> </h3>
@@ -133,14 +157,61 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 data-bs-toggle="offcanvas">
                 <span class="mdi mdi-menu"></span>
             </button>
+=======
+                        <h1 class="welcome-text">Research Information Management System</h1>
+                    </li>
+                </ul>
+>>>>>>> c1a2cdf63af96119ce5aad2bdbeaed9987827f05
 
+                <nav class="navbar navbar-expand-lg">
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ms-auto">
+                            <!-- Language Switcher -->
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="bi bi-globe"></i>
+                                    @if (App::getLocale() == 'en') English @else ภาษาไทย @endif
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" href="{{ url('lang/en') }}">English</a></li>
+                                    <li><a class="dropdown-item" href="{{ url('lang/th') }}">ภาษาไทย</a></li>
+                                </ul>
+                            </li>
+
+                            <!-- Date Picker -->
+                            <li class="nav-item">
+                                <div id="datepicker-popup" class="input-group date datepicker navbar-date-picker">
+                                    <span class="input-group-addon input-group-prepend border-right">
+                                        <span class="icon-calendar input-group-text calendar-icon"></span>
+                                    </span>
+                                    <input type="text" class="form-control">
+                                </div>
+                            </li>
+
+                            <!-- Search -->
+                            <li class="nav-item">
+                                <form class="search-form" action="#">
+                                    <i class="icon-search"></i>
+                                    <input type="search" class="form-control" placeholder="Search Here" title="Search here">
+                                </form>
+                            </li>
+
+                            <!-- Logout -->
+                            <li class="nav-item d-none d-sm-inline-block">
+                                <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                    {{ __('Logout') }} <i class="mdi mdi-logout"></i>
+                                </a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">@csrf</form>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
         </nav>
-        <!-- navbar ข้างบน -->
+        <!-- Navbar End -->
+
         <div class="container-fluid page-body-wrapper">
-            <!-- Main Sidebar Container -->
-            <!-- <div class="theme-setting-wrapper">
-                <div id="settings-trigger"><i class="mdi mdi-home"></i></div>
-            </div> -->
+            <!-- Sidebar -->
             <nav class="sidebar sidebar-offcanvas" id="sidebar">
                 <ul class="nav">
                     <li class="nav-item">
@@ -223,7 +294,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     @endcan
                     @can('export')
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('exportfile')}}" >
+                        <a class="nav-link" href="{{route('exportfile')}}">
                             <i class="menu-icon mdi mdi-file-export"></i>
                             <span class="menu-title">Export</span>
                         </a>
@@ -348,6 +419,5 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
 </body>
-
 
 </html>

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
 return [
 'Home' => 'หน้าแรก',
@@ -81,4 +82,24 @@ return [
 'Search2' => 'ค้นหา',
 'Report5YearReport' => 'สถิติจำนวนบทความทั้งหมด 5 ปี',
 'ArticleReport' => 'สถิติจำนวนบทความที่ได้รับการอ้างอิง',
+=======
+<?php
+return [
+'Home' => 'หน้าแรก',
+'Researchers' => 'ผู้วิจัย',
+'ResearchProj' => 'โครงการวิจัย',
+'ResearchGroup' => 'กลุ่มวิจัย',
+'Report' => 'รายงาน',
+'details' =>'รายละเอียดเพิ่มเติม',
+'expertise' =>'ความเชี่ยวชาญ',
+'publications' => 'ผลงานตีพิมพ์ (5 ปี ย้อนหลัง)',
+'education'=>'การศึกษา',
+'publications2' => 'ผลงานตีพิมพ์',
+];
+
+
+// Admin Page
+return [
+    'Research Information Management System' => 'ระบบการจัดการข้อมูลงานวิจัย'
+>>>>>>> c1a2cdf63af96119ce5aad2bdbeaed9987827f05
 ];

@@ -11,7 +11,6 @@ use Bibtex;
 use RenanBr\BibTexParser\Listener;
 use RenanBr\BibTexParser\Parser;
 use RenanBr\BibTexParser\Processor;
-use Illuminate\Support\Facades\Storage;
 
 class HomeController extends Controller
 {
@@ -19,11 +18,13 @@ class HomeController extends Controller
     public function index()
     {
         //$papers = Paper::all()->orderBy, 'DESC');
-        $banners = Banner::all();
         $papers = [];
         $year = range(Carbon::now()->year - 4, Carbon::now()->year);
         //$papers =Paper::orderBy('paper_yearpub', 'desc')->where('paper_yearpub', '=', 1)->get();
         $years = range(Carbon::now()->year, Carbon::now()->year - 5);
+
+        //Create variable banner
+        $banners = Banner::all();
 
         $from = Carbon::now()->year - 16;
         $to = Carbon::now()->year - 6;
@@ -182,7 +183,7 @@ class HomeController extends Controller
 
         //$key="watchara";
         //return response()->json($bb);
-        return view('home', compact('papers','banners'))->with('year', json_encode($year, JSON_NUMERIC_CHECK))
+        return view('home', compact('papers', 'banners'))->with('year', json_encode($year, JSON_NUMERIC_CHECK))
             ->with('paper_tci', json_encode($paper_tci, JSON_NUMERIC_CHECK))
             ->with('paper_scopus', json_encode($paper_scopus, JSON_NUMERIC_CHECK))
             ->with('paper_wos', json_encode($paper_wos, JSON_NUMERIC_CHECK))

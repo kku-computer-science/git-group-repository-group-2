@@ -4,7 +4,6 @@ use Illuminate\Support\Facades\Route;
 
 
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\BannerController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PermissionController;
@@ -39,8 +38,8 @@ use App\Http\Controllers\TestController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\TcicallController;
+use App\Http\Controllers\BannerController;
 use App\Http\Controllers\ImageManagementController;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -115,7 +114,6 @@ Route::group(['middleware' => ['isAdmin', 'auth', 'PreventBackHistory']], functi
 
 Route::group(['middleware' => ['auth', 'PreventBackHistory']], function () {
     //Route::get('profile',[UserController::class,'profile'])->name('profile2');
-    Route::resource('banners', BannerController::class);
     Route::post('update-profile-info', [ProfileuserController::class, 'updateInfo'])->name('adminUpdateInfo');
     Route::post('update-edu-info', [EducationController::class, 'updateEdInfo'])->name('updateEdInfo');
     Route::post('change-profile-picture', [UserController::class, 'updatePicture'])->name('adminPictureUpdate');
@@ -126,7 +124,6 @@ Route::group(['middleware' => ['auth', 'PreventBackHistory']], function () {
     Route::resource('funds', FundController::class);
     Route::resource('experts', ExpertiseController::class);
     Route::get('experts/{id}/edit/', [ExpertiseController::class, 'edit']);
-    Route::get('image_management', [ImageManagementController::class, 'index'])->name('image_management.index');
     Route::resource('sources', SourceController::class);
     Route::get('sources/{id}/edit/', [SourceController::class, 'edit']);
     Route::resource('researchProjects', ResearchProjectController::class);
@@ -143,7 +140,15 @@ Route::group(['middleware' => ['auth', 'PreventBackHistory']], function () {
     Route::get('/ajax-get-subcat', [UserController::class, 'getCategory']);
     Route::get('tests', [TestController::class, 'index']); //call department
     Route::get('tests/{id}', [TestController::class, 'getCategory'])->name('tests'); //call program
-
+    Route::get('image_management', [ImageManagementController::class, 'index'])->name('image_management.index');
+    Route::resource('banners', BannerController::class);
+    Route::get('language/switch/{lang}', function($lang) {
+        if (in_array($lang, ['en', 'th'])) {
+            session(['locale' => $lang]);
+        }
+        return redirect()->back();
+    })->name('language.switch');
+    
 });
 
 
