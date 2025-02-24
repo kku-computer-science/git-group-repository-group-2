@@ -10,5 +10,10 @@ return [
 'publications' => 'ผลงานตีพิมพ์ (5 ปี ย้อนหลัง)',
 'education'=>'การศึกษา',
 'publications2' => 'ผลงานตีพิมพ์',
+];
 
+
+// Admin Page
+return [
+    'Research Information Management System' => 'ระบบการจัดการข้อมูลงานวิจัย'
 ];
