@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Paper;
+use App\Models\Banner;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Bibtex;
 use RenanBr\BibTexParser\Listener;
 use RenanBr\BibTexParser\Parser;
 use RenanBr\BibTexParser\Processor;
+use Illuminate\Support\Facades\Storage;
 
 class HomeController extends Controller
 {
@@ -17,6 +19,7 @@ class HomeController extends Controller
     public function index()
     {
         //$papers = Paper::all()->orderBy, 'DESC');
+        $banners = Banner::all();
         $papers = [];
         $year = range(Carbon::now()->year - 4, Carbon::now()->year);
         //$papers =Paper::orderBy('paper_yearpub', 'desc')->where('paper_yearpub', '=', 1)->get();
@@ -179,7 +182,7 @@ class HomeController extends Controller
 
         //$key="watchara";
         //return response()->json($bb);
-        return view('home', compact('papers'))->with('year', json_encode($year, JSON_NUMERIC_CHECK))
+        return view('home', compact('papers','banners'))->with('year', json_encode($year, JSON_NUMERIC_CHECK))
             ->with('paper_tci', json_encode($paper_tci, JSON_NUMERIC_CHECK))
             ->with('paper_scopus', json_encode($paper_scopus, JSON_NUMERIC_CHECK))
             ->with('paper_wos', json_encode($paper_wos, JSON_NUMERIC_CHECK))

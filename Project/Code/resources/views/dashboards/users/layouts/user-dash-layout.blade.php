@@ -272,6 +272,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </a>
                     </li>
                     @endcan
+                    @can('expertises-list')
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('image_management.index')}}">
+                            <i class="menu-icon mdi mdi-satellite"></i>
+                            <span class="menu-title">Manange Image</span>
+
+                        </a>
+                    </li>
+                    @endcan
                 </ul>
             </nav>
 

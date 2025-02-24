@@ -660,6 +660,7 @@ class ComposerStaticInitdf12afa23ac71fe1005569e1ca54098b
         'App\\Http\\Controllers\\FileUpload' => __DIR__ . '/../..' . '/app/Http/Controllers/FileUpload.php',
         'App\\Http\\Controllers\\FundController' => __DIR__ . '/../..' . '/app/Http/Controllers/FundController.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
+        'App\\Http\\Controllers\\ImageManagementController' => __DIR__ . '/../..' . '/app/Http/Controllers/ImageManagementController.php',
         'App\\Http\\Controllers\\ImportExportController' => __DIR__ . '/../..' . '/app/Http/Controllers/ImportExportController.php',
         'App\\Http\\Controllers\\LocalizationController' => __DIR__ . '/../..' . '/app/Http/Controllers/LocalizationController.php',
         'App\\Http\\Controllers\\PDFController' => __DIR__ . '/../..' . '/app/Http/Controllers/PDFController.php',
