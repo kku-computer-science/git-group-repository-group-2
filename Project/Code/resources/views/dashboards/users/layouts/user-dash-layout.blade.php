@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Dashboard</title>
+    <title>{{ __('message.dashboard') }}</title>
     <base href="{{ \URL::to('/') }}">
     <link href="img/Newlogo.png" rel="shortcut icon" type="image/x-icon" />
 
@@ -80,11 +80,10 @@
                 </div>
             </div>
             <div class="navbar-menu-wrapper d-flex align-items-top justify-content-between">
-                <ul class="navbar-nav">
-                    <li class="nav-item font-weight-semibold d-none d-lg-block ms-0">
-                        <h1 class="welcome-text">Research Information Management System</h1>
-                    </li>
-                </ul>
+                <li class="nav-item font-weight-semibold d-none d-lg-block ms-0">
+                    <h2 class="welcome-text">{{ __('message.research_system') }}</h1>
+                    <!-- แสดงค่าภาษาใน session -->
+                </li>
 
                 <nav class="navbar navbar-expand-lg">
                     <div class="collapse navbar-collapse" id="navbarNav">
@@ -93,11 +92,18 @@
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     <i class="bi bi-globe"></i>
-                                    @if (App::getLocale() == 'en') English @else ภาษาไทย @endif
+                                    @if (App::getLocale() == 'en')
+                                    <i class="flag-icon flag-icon-{{ config('languages.en.flag-icon') }}"></i> {{ config('languages.en.display') }}
+                                    @elseif (App::getLocale() == 'th')
+                                    <i class="flag-icon flag-icon-{{ config('languages.th.flag-icon') }}"></i> {{ config('languages.th.display') }}
+                                    @elseif (App::getLocale() == 'zh')
+                                    <i class="flag-icon flag-icon-{{ config('languages.zh.flag-icon') }}"></i> {{ config('languages.zh.display') }}
+                                    @endif
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" href="{{ url('lang/en') }}">English</a></li>
-                                    <li><a class="dropdown-item" href="{{ url('lang/th') }}">ภาษาไทย</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('language.switch', 'en') }}"><i class="flag-icon flag-icon-{{ config('languages.en.flag-icon') }}"></i> {{ config('languages.en.display') }}</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('language.switch', 'th') }}"><i class="flag-icon flag-icon-{{ config('languages.th.flag-icon') }}"></i> {{ config('languages.th.display') }}</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('language.switch', 'zh') }}"><i class="flag-icon flag-icon-{{ config('languages.zh.flag-icon') }}"></i> {{ config('languages.zh.display') }}</a></li>
                                 </ul>
                             </li>
 
@@ -122,7 +128,7 @@
                             <!-- Logout -->
                             <li class="nav-item d-none d-sm-inline-block">
                                 <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }} <i class="mdi mdi-logout"></i>
+                                    {{ __('message.Logout') }} <i class="mdi mdi-logout"></i>
                                 </a>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">@csrf</form>
                             </li>
@@ -141,16 +147,15 @@
                         <a class="nav-link {{ (request()->is('dashboard*')) ? 'active' : '' }}"
                             href="{{ route('dashboard')}}">
                             <i class="menu-icon mdi mdi-grid-large"></i>
-                            <span class="menu-title">Dashboard</span>
+                            <span class="menu-title">{{ __('message.dashboard') }}</span>
                         </a>
                     </li>
-                    <li class="nav-item nav-category">Profile</li>
+                    <li class="nav-item nav-category">{{ __('message.profile') }}</li>
                     <li class="nav-item">
                         <a class="nav-link {{ (request()->is('admin/profile*')) ? 'active' : '' }}"
                             href="{{ route('profile')}}">
                             <i class="menu-icon mdi mdi-account-circle-outline"></i>
-                            <span class="menu-title">User Profile</span>
-
+                            <span class="menu-title">{{ __('message.user_profile') }}</span>
                         </a>
                     </li>
                     <!-- <li class="nav-item">
@@ -161,13 +166,12 @@
 
                         </a>
                     </li> -->
-                    <li class="nav-item nav-category">Option</li>
+                    <li class="nav-item nav-category">{{ __('message.option') }}</li>
                     @can('funds-list')
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('funds.index')}}">
                             <i class="menu-icon mdi mdi-file-document-box-outline"></i>
-                            <span class="menu-title">Manage Fund</span>
-
+                            <span class="menu-title">{{ __('message.manage_fund') }}</span>
                         </a>
                     </li>
                     @endcan
@@ -175,7 +179,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('researchProjects.index')}}">
                             <i class="menu-icon mdi mdi-book-outline"></i>
-                            <span class="menu-title">Research Project</span>
+                            <span class="menu-title">{{ __('message.research_project') }}</span>
 
                         </a>
                     </li>
@@ -184,7 +188,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('researchGroups.index')}}">
                             <i class="menu-icon mdi mdi-view-dashboard-outline"></i>
-                            <span class="menu-title">Research Group</span>
+                            <span class="menu-title">{{ __('message.research_group') }}</span>
 
                         </a>
                     </li>
@@ -193,14 +197,14 @@
                     <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="collapse" href="#ManagePublications" aria-expanded="false" aria-controls="ManagePublications">
                             <i class="menu-icon mdi mdi-book-open-page-variant"></i>
-                            <span class="menu-title">Manage Publications</span>
+                            <span class="menu-title">{{ __('message.manage_publications') }}</span>
                             <i class="menu-arrow"></i>
                         </a>
                         <div class="collapse" id="ManagePublications">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="{{ route('papers.index')}}">Published research</a></li>
-                                <li class="nav-item"> <a class="nav-link" href="/books">Book</a></li>
-                                <li class="nav-item"> <a class="nav-link" href="/patents">ผลงานวิชาการอื่นๆ</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="{{ route('papers.index')}}">{{ __('message.public_research') }}</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="/books">{{ __('message.book') }}</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="/patents">{{ __('message.other_research') }}</a></li>
                             </ul>
                         </div>
                     </li>
@@ -209,16 +213,16 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('exportfile')}}">
                             <i class="menu-icon mdi mdi-file-export"></i>
-                            <span class="menu-title">Export</span>
+                            <span class="menu-title">{{ __('message.export') }}</span>
                         </a>
                     </li>
                     @endcan
                     @can('user-list')
-                    <li class="nav-item nav-category">Admin</li>
+                    <li class="nav-item nav-category">{{ __('message.admin') }}</li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('users.index')}}">
                             <i class="menu-icon mdi mdi-account-multiple-outline"></i>
-                            <span class="menu-title">Users</span>
+                            <span class="menu-title">{{ __('message.users') }}</span>
 
                         </a>
                     </li>
@@ -227,7 +231,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('roles.index')}}">
                             <i class="menu-icon mdi mdi-chart-gantt"></i>
-                            <span class="menu-title">Roles</span>
+                            <span class="menu-title">{{ __('message.role') }}</span>
 
                         </a>
                     </li>
@@ -236,7 +240,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('permissions.index')}}">
                             <i class="menu-icon mdi mdi-checkbox-marked-circle-outline"></i>
-                            <span class="menu-title">Permission</span>
+                            <span class="menu-title">{{ __('message.permission') }}</span>
 
                         </a>
                     </li>
@@ -245,7 +249,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('departments.index')}}">
                             <i class="menu-icon mdi mdi-animation-outline"></i>
-                            <span class="menu-title">Departments</span>
+                            <span class="menu-title">{{ __('message.departments') }}</span>
 
                         </a>
                     </li>
@@ -255,7 +259,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('programs.index')}}">
                             <i class="menu-icon mdi mdi-format-list-bulleted"></i>
-                            <span class="menu-title">Manage Programs</span>
+                            <span class="menu-title">{{ __('message.manage_programs') }}</span>
 
                         </a>
                     </li>
@@ -264,7 +268,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('experts.index')}}">
                             <i class="menu-icon mdi mdi-buffer"></i>
-                            <span class="menu-title">Manage Expertise</span>
+                            <span class="menu-title">{{ __('message.manage_expertise') }}</span>
 
                         </a>
                     </li>
@@ -273,7 +277,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('image_management.index')}}">
                             <i class="menu-icon mdi mdi-satellite"></i>
-                            <span class="menu-title">Manange Image</span>
+                            <span class="menu-title">{{ __('message.manage_image') }}</span>
 
                         </a>
                     </li>
