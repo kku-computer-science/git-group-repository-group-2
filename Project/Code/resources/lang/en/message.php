@@ -142,7 +142,6 @@ return [
 'submit' => 'Submit',
 'cancel' => 'Cancel',
 'add' => 'ADD',
-'action' => 'Action',
 'edit_fund' => 'Edit Fund',
 'fund_detail' => 'Fund Detail',
 'fund_detail_info' => 'Fund Detail Information',
@@ -151,6 +150,17 @@ return [
 'support_resource' => 'Support Resource',
 'added_by' => 'Added by',
 'back' => 'Back',
+'research_project' => 'Research Project',
+'add_project' => 'Add Project',
+'no' => 'No.',
+'year' => 'Year',
+'head' => 'Head',
+'member' => 'Member',
+'action' => 'Action',
+'project_name' => 'Research Project Name',
+'start_date' => 'Start Date',
+'end_date' => 'End Date',
+'fill_details' => 'Fill in the details of the research project',
 
 
 

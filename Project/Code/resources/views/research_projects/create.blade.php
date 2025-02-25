@@ -27,27 +27,27 @@
     <div class="col-md-12 grid-margin stretch-card">
         <div class="card" style="padding: 16px;">
             <div class="card-body">
-                <h4 class="card-title">เพิ่มข้อมูลโครงการวิจัย</h4>
-                <p class="card-description">กรอกข้อมูลรายละเอียดโครงการวิจัย</p>
+            <h4 class="card-title">{{ __('message.add_project') }}</h4>
+            <p class="card-description">{{ __('message.fill_details') }}</p>
                 <form action="{{ route('researchProjects.store') }}" method="POST">
                     @csrf
                     <div class="form-group row mt-5">
-                        <label for="exampleInputfund_name" class="col-sm-2 ">ชื่อโครงการวิจัย</label>
-                        <div class="col-sm-8">
-                            <input type="text" name="project_name" class="form-control" placeholder="ชื่อโครงการวิจัย" value="{{ old('project_name') }}">
-                        </div>
+                    <label for="exampleInputfund_name" class="col-sm-2">{{ __('message.project_name') }}</label>
+                    <div class="col-sm-8">
+                         <input type="text" name="project_name" class="form-control" placeholder="{{ __('message.project_name') }}" value="{{ old('project_name') }}">
+                    </div>
                     </div>
                     <div class="form-group row mt-2">
-                        <label for="exampleInputfund_name" class="col-sm-2 ">วันที่เริ่มต้น</label>
-                        <div class="col-sm-4">
-                            <input type="date" name="project_start" id="Project_start" class="form-control" value="{{ old('project_start') }}">
-                        </div>
+                    <label for="exampleInputfund_name" class="col-sm-2">{{ __('message.start_date') }}</label>
+                    <div class="col-sm-4">
+                         <input type="date" name="project_start" id="Project_start" class="form-control" value="{{ old('project_start') }}">
+                    </div>
                     </div>
                     <div class="form-group row mt-2">
-                        <label for="exampleInputfund_name" class="col-sm-2 ">วันที่สิ้นสุด</label>
-                        <div class="col-sm-4">
-                            <input type="date" name="project_end" id="Project_end" class="form-control" value="{{ old('project_end') }}">
-                        </div>
+                    <label for="exampleInputfund_name" class="col-sm-2">{{ __('message.end_date') }}</label>
+                    <div class="col-sm-4">
+                        <input type="date" name="project_end" id="Project_end" class="form-control" value="{{ old('project_end') }}">
+                    </div>
                     </div>
                     <div class="form-group row mt-2">
                         <label for="exampleInputfund_details" class="col-sm-2 ">เลือกทุน</label>

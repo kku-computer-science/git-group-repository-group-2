@@ -15,18 +15,18 @@
     @endif
     <div class="card" style="padding: 16px;">
         <div class="card-body">
-            <h4 class="card-title">โครงการวิจัย</h4>
-            <a class="btn btn-primary btn-menu btn-icon-text btn-sm mb-3" href="{{ route('researchProjects.create') }}"><i class="mdi mdi-plus btn-icon-prepend"></i> ADD</a>
+        <h4 class="card-title">{{ __('message.research_project') }}</h4>
+        <a class="btn btn-primary btn-menu btn-icon-text btn-sm mb-3" href="{{ route('researchProjects.create') }}"><i class="mdi mdi-plus btn-icon-prepend"></i>{{ __('message.add') }}</a>
             <!-- <div class="table-responsive"> -->
                 <table id="example1" class="table table-striped">
                     <thead>
                         <tr>
-                            <th>No.</th>
-                            <th>Year</th>
-                            <th>Project name</th>
-                            <th>Head</th>
-                            <th>Member</th>
-                            <th width="auto">Action</th>
+                        <th>{{ __('message.no') }}</th>
+                        <th>{{ __('message.year') }}</th>
+                        <th>{{ __('message.project_name') }}</th>
+                        <th>{{ __('message.head') }}</th>
+                        <th>{{ __('message.member') }}</th>
+                        <th>{{ __('message.action') }}</th>
                         </tr>
                         <thead>
                         <tbody>

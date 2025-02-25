@@ -151,5 +151,15 @@ return [
 'support_resource' => '资助机构',
 'added_by' => '添加者',
 'back' => '返回',
+'research_project' => '研究项目',
+'add_project' => '添加项目',
+'no' => '序号',
+'year' => '年份',
+'head' => '项目负责人',
+'member' => '成员',
+'project_name' => '研究项目名称',
+'start_date' => '开始日期',
+'end_date' => '结束日期',
+'fill_details' => '填写研究项目的详细信息',
 
 ];
