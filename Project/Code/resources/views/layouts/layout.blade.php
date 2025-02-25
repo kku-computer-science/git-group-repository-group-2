@@ -74,16 +74,21 @@
                             {{ trans('message.Department') }}
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            @foreach($dn as $department)
-                            <li><a class="dropdown-item" href="{{ route('researchers',['id'=>$department->id])}}">
+                        @foreach($dn as $department)
+                            <li>
+                                <a class="dropdown-item" href="{{ route('researchers',['id'=>$department->id])}}">
                                     @if(app()->getLocale() == 'en')
-                                    {{$department->program_name_en}}</a>
+                                        {{ $department->program_name_en }}
+                                    @elseif(app()->getLocale() == 'cn')
+                                        {{ $department->program_name_cn }}
                                     @else
-                                    {{$department->program_name_th}}</a>
+                                        {{ $department->program_name_th }}
                                     @endif
+                                </a>
                             </li>
-                            @endforeach
-                        </ul>
+                        @endforeach
+                    </ul>
+
                     </li>
                     <li class="nav-item {{ request()->is('researchproject') ? 'active' : ''}} ">
                         <a class="nav-link" href="/researchproject">{{ trans('message.ResearchProj') }}</a>
@@ -97,22 +102,23 @@
 
 
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">
-                            <span
-                                class="flag-icon flag-icon-{{Config::get('languages')[App::getLocale()]['flag-icon']}}"></span>
-                            {{ Config::get('languages')[App::getLocale()]['display'] }}
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            @foreach (Config::get('languages') as $lang => $language)
-                            @if ($lang != App::getLocale())
-                            <a class="dropdown-item" href="{{ route('langswitch', $lang) }}"><span
-                                    class="flag-icon flag-icon-{{$language['flag-icon']}}"></span>
-                                {{$language['display']}}</a>
-                            @endif
-                            @endforeach
-                        </div>
-                    </li>
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    <span class="flag-icon flag-icon-{{ Config::get('languages')[App::getLocale()]['flag-icon'] }}"></span>
+                    {{ Config::get('languages')[App::getLocale()]['display'] }}
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    @foreach (Config::get('languages') as $lang => $language)
+                        @if ($lang != App::getLocale())
+                            <a class="dropdown-item" href="{{ route('langswitch', $lang) }}">
+                                <span class="flag-icon flag-icon-{{ $language['flag-icon'] }}"></span>
+                                {{ $language['display'] }}
+                            </a>
+                        @endif
+                    @endforeach
+                </div>
+                </li>
+
 
 
                 </ul>

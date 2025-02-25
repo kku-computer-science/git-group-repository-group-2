@@ -27,50 +27,51 @@
     <div class="col-md-8 grid-margin stretch-card">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">เพิ่มทุนวิจัย</h4>
-                <p class="card-description">กรอกข้อมูลรายละเอียดทุนงานวิจัย</p>
-                <form class="forms-sample" action="{{ route('funds.store') }}" method="POST">
+            <h4 class="card-title">{{ __('message.add_research_grant') }}</h4>
+            <p class="card-description">{{ __('message.enter_research_grant_details') }}</p>
+            <form class="forms-sample" action="{{ route('funds.store') }}" method="POST">
                     @csrf
                     <div class="form-group row">
-                        <label for="exampleInputfund_type" class="col-sm-2 ">ประเภททุนวิจัย</label>
-                        <div class="col-sm-4">
+                    <label class="col-sm-2">{{ __('message.fund_type') }}</label>
+                    <div class="col-sm-4">
                             <select name="fund_type" class="custom-select my-select" id="fund_type" onchange='toggleDropdown(this);' required>
-                                <option value="" disabled selected >---- โปรดระบุประเภททุน ----</option>
-                                <option value="ทุนภายใน">ทุนภายใน</option>
-                                <option value="ทุนภายนอก">ทุนภายนอก</option>
+                            <option value="" disabled selected>{{ __('message.select_fund_type') }}</option>
+                            <option value="internal">{{ __('message.internal_fund') }}</option>
+                            <option value="external">{{ __('message.external_fund') }}</option>
                             </select>
                         </div>
                     </div>
                     <div id="fund_code">
                         <div class="form-group row">
-                            <label for="exampleInputfund_level" class="col-sm-2 ">ระดับทุน</label>
-                            <div class="col-sm-4">
-                                <select name="fund_level" class="custom-select my-select">
-                                <option value="" disabled selected >---- โปรดระบุระดับทุน ----</option>
-                                    <option value="">ไม่ระบุ</option>
-                                    <option value="สูง">สูง</option>
-                                    <option value="กลาง">กลาง</option>
-                                    <option value="ล่าง">ล่าง</option>
-                                </select>
-                            </div>
+                        <label for="exampleInputfund_level" class="col-sm-2 ">{{ __('message.fund_level') }}</label>
+                        <div class="col-sm-4">
+                            <select name="fund_level" class="custom-select my-select">
+                                <option value="" disabled selected>{{ __('message.select_fund_level') }}</option>
+                                <option value="">{{ __('message.not_specified') }}</option>
+                                <option value="สูง">{{ __('message.high') }}</option>
+                                <option value="กลาง">{{ __('message.medium') }}</option>
+                                <option value="ล่าง">{{ __('message.low') }}</option>
+                            </select>
                         </div>
+                     </div>
                     </div>
                     <div class="form-group row">
-                        <label for="exampleInputfund_name" class="col-sm-2 ">ชื่อทุน</label>
+                     <label for="exampleInputfund_name" class="col-sm-2 ">{{ __('message.fund_name') }}</label>
                         <div class="col-sm-8">
-                            <input type="text" name="fund_name" class="form-control" placeholder="name">
+                          <input type="text" name="fund_name" class="form-control" placeholder="{{ __('message.fund_name_placeholder') }}">
                         </div>
                     </div>
-                    
+
                     <div class="form-group row">
-                        <label for="exampleInputsupport_resource" class="col-sm-2 ">หน่วยงานที่สนับสนุน / โครงการวิจัย </label>
+                     <label for="exampleInputsupport_resource" class="col-sm-2 ">{{ __('message.support_resource') }}</label>
                         <div class="col-sm-8">
-                            <input type="text" name="support_resource" class="form-control" placeholder="Support Resource">
-                        </div>
+                        <input type="text" name="support_resource" class="form-control" placeholder="{{ __('message.support_resource_placeholder') }}">
                     </div>
-                    <button type="submit" class="btn btn-primary me-2">Submit</button>
-                    <a class="btn btn-light" href="{{ route('funds.index')}}">Cancel</a>
-                </form>
+                </div>
+
+                    <button type="submit" class="btn btn-primary">{{ __('message.submit') }}</button>
+                    <a class="btn btn-light" href="{{ route('funds.index') }}">{{ __('message.cancel') }}</a>
+                    </form>
             </div>
         </div>
     </div>
