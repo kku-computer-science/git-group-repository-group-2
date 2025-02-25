@@ -13,12 +13,6 @@
     <!-- Include Bootstrap Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 
-<<<<<<< HEAD
-    <!-- Flag Icon CSS -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.1.0/css/flag-icon.min.css" rel="stylesheet">
-
-    <!-- plugins:css -->
-=======
     <!-- Custom Styles -->
     <link rel="stylesheet" href="{{ asset('plugins/ijaboCropTool/ijaboCropTool.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/styleadmin.css') }}">
@@ -27,7 +21,6 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
 
     <!-- Vendor Styles -->
->>>>>>> c1a2cdf63af96119ce5aad2bdbeaed9987827f05
     <link rel="stylesheet" href="{{asset('vendors/feather/feather.css')}}">
     <link rel="stylesheet" href="{{asset('vendors/mdi/css/materialdesignicons.min.css')}}">
     <link rel="stylesheet" href="{{asset('vendors/ti-icons/css/themify-icons.css')}}">
@@ -89,79 +82,9 @@
             <div class="navbar-menu-wrapper d-flex align-items-top justify-content-between">
                 <ul class="navbar-nav">
                     <li class="nav-item font-weight-semibold d-none d-lg-block ms-0">
-<<<<<<< HEAD
-                        <h1 class="welcome-text">{{trans('message.ResearchInformationManagementSystem')}}<span
-                                class="text-black fw-bold"></span></h1>
-                        <h3 class="welcome-sub-text"> </h3>
-                    </li>
-                </ul>
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item d-none d-lg-block">
-                        <div id="datepicker-popup" class="input-group date datepicker navbar-date-picker">
-                            <span class="input-group-addon input-group-prepend border-right">
-                                <span class="icon-calendar input-group-text calendar-icon"></span>
-                            </span>
-                            <input type="text" class="form-control">
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <form class="search-form" action="#">
-                            <i class="icon-search"></i>
-                            <input type="search" class="form-control" placeholder="Search Here" title="Search here">
-                        </form>
-                    </li>
-                    <!-- <li class="nav-item dropdown">
-                        <a class="nav-link count-indicator" id="countDropdown" href="#" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            <i class="icon-bell"></i>
-                            <span class="count"></span>
-                        </a>
-                    </li> -->
-                    <!-- <li class="nav-item dropdown d-none d-lg-block user-dropdown">
-                        <a class="nav-link" id="UserDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img class="img-xs rounded-circle" src="{{ Auth::user()->picture }}"
-                                alt="User profile picture">
-                        </a>
-                    </li> -->
-                    <!-- <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
-                            <div class="dropdown-header text-center">
-                                <img class="img-md rounded-circle" src="{{ Auth::user()->picture }}"
-                                    alt="Profile image">
-                                <p class="mb-1 mt-3 font-weight-semibold">{{ Auth::user()->name }}</p>
-                                <p class="fw-light text-muted mb-0"></p>
-                            </div>
-                            <a class="dropdown-item"><i
-                                    class="dropdown-item-icon mdi mdi-account-outline text-primary me-2"></i> My
-                                Profile <span class="badge badge-pill badge-danger">1</span></a>
-                            <a class="dropdown-item"><i
-                                    class="dropdown-item-icon mdi mdi-message-text-outline text-primary me-2"></i>
-                                Messages</a>
-                            <a class="dropdown-item"><i
-                                    class="dropdown-item-icon mdi mdi-calendar-check-outline text-primary me-2"></i>
-                                Activity</a>
-                            <a class="dropdown-item"><i
-                                    class="dropdown-item-icon mdi mdi-help-circle-outline text-primary me-2"></i>
-                                FAQ</a>
-                            <a class="dropdown-item"><i
-                                    class="dropdown-item-icon mdi mdi-power text-primary me-2"></i>Sign Out</a> -->
-                    <li class="nav-item d-none d-sm-inline-block">
-                        <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); 
-                        document.getElementById ('logout-form').submit();"> {{trans('message.Logout')}} <i class="mdi mdi-logout"></i></a>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                            @csrf
-                        </form>
-                    </li>
-            </div>
-            </ul>
-            <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
-                data-bs-toggle="offcanvas">
-                <span class="mdi mdi-menu"></span>
-            </button>
-=======
                         <h1 class="welcome-text">Research Information Management System</h1>
                     </li>
                 </ul>
->>>>>>> c1a2cdf63af96119ce5aad2bdbeaed9987827f05
 
                 <nav class="navbar navbar-expand-lg">
                     <div class="collapse navbar-collapse" id="navbarNav">
@@ -218,15 +141,15 @@
                         <a class="nav-link {{ (request()->is('dashboard*')) ? 'active' : '' }}"
                             href="{{ route('dashboard')}}">
                             <i class="menu-icon mdi mdi-grid-large"></i>
-                            <span class="menu-title">{{trans('message.Dashboard')}}</span>
+                            <span class="menu-title">Dashboard</span>
                         </a>
                     </li>
-                    <li class="nav-item nav-category">{{trans('message.Profile')}}</li>
+                    <li class="nav-item nav-category">Profile</li>
                     <li class="nav-item">
                         <a class="nav-link {{ (request()->is('admin/profile*')) ? 'active' : '' }}"
                             href="{{ route('profile')}}">
                             <i class="menu-icon mdi mdi-account-circle-outline"></i>
-                            <span class="menu-title">{{trans('message.UserProfile')}}</span>
+                            <span class="menu-title">User Profile</span>
 
                         </a>
                     </li>
@@ -238,12 +161,12 @@
 
                         </a>
                     </li> -->
-                    <li class="nav-item nav-category">{{trans('message.Options')}}</li>
+                    <li class="nav-item nav-category">Option</li>
                     @can('funds-list')
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('funds.index')}}">
                             <i class="menu-icon mdi mdi-file-document-box-outline"></i>
-                            <span class="menu-title">{{trans('message.ManageFund')}}</span>
+                            <span class="menu-title">Manage Fund</span>
 
                         </a>
                     </li>
@@ -252,7 +175,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('researchProjects.index')}}">
                             <i class="menu-icon mdi mdi-book-outline"></i>
-                            <span class="menu-title">{{trans('message.ResearchProj')}}</span>
+                            <span class="menu-title">Research Project</span>
 
                         </a>
                     </li>
@@ -261,7 +184,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('researchGroups.index')}}">
                             <i class="menu-icon mdi mdi-view-dashboard-outline"></i>
-                            <span class="menu-title">{{trans('message.ResearchGroup')}}</span>
+                            <span class="menu-title">Research Group</span>
 
                         </a>
                     </li>
@@ -270,27 +193,17 @@
                     <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="collapse" href="#ManagePublications" aria-expanded="false" aria-controls="ManagePublications">
                             <i class="menu-icon mdi mdi-book-open-page-variant"></i>
-                            <span class="menu-title">{{trans('message.ManagePublications')}}</span>
+                            <span class="menu-title">Manage Publications</span>
                             <i class="menu-arrow"></i>
                         </a>
                         <div class="collapse" id="ManagePublications">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="{{ route('papers.index')}}">{{trans('message.Publishedresearch')}}</a></li>
-                                <li class="nav-item"> <a class="nav-link" href="/books">{{trans('message.Book')}}</a></li>
-                                <li class="nav-item"> <a class="nav-link" href="/patents">{{trans('message.OtherAcademicWorks')}}</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="{{ route('papers.index')}}">Published research</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="/books">Book</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="/patents">ผลงานวิชาการอื่นๆ</a></li>
                             </ul>
                         </div>
                     </li>
-                    <li class="nav-item">
-                        @foreach (Config::get('languages') as $lang => $language)
-                        @if ($lang != App::getLocale())
-                        <a class="nav-link" href="{{ route('langswitch', $lang) }}">
-                        <span
-                        class="flag-icon flag-icon-{{$language['flag-icon']}}"></span>
-                            <span class="menu-title">{{$language['display']}}</span>   
-                        @endif
-                        @endforeach
-                        </a>
                     @endcan
                     @can('export')
                     <li class="nav-item">

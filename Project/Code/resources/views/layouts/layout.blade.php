@@ -71,16 +71,12 @@
                         class="nav-item dropdown {{ Request::routeIs('researchers') ? 'active' : '' }} {{ request()->is('detail*') ? 'active' : ''}} ">
                         <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
-                            {{ trans('message.Department') }}
+                            {{ trans('message.Researchers') }}
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             @foreach($dn as $department)
                             <li><a class="dropdown-item" href="{{ route('researchers',['id'=>$department->id])}}">
-                                    @if(app()->getLocale() == 'en')
                                     {{$department->program_name_en}}</a>
-                                    @else
-                                    {{$department->program_name_th}}</a>
-                                    @endif
                             </li>
                             @endforeach
                         </ul>
@@ -123,7 +119,7 @@
                 </span>
                 @else
                 <span class="nav-item">
-                    <a class="btn-solid-sm" href="/login" target="_blank">{{ trans('message.Login') }}</a>
+                    <a class="btn-solid-sm" href="/login" target="_blank">Login</a>
                 </span>
                 @endauth
                 @endif
