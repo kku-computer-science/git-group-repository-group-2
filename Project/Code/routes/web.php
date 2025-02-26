@@ -52,7 +52,8 @@ use App\Http\Controllers\ImageManagementController;
 |
 */
 
-
+use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\Storage;
 
 
 /*Route::group(['middleware' => ['auth']], function() {
@@ -147,6 +148,47 @@ Route::group(['middleware' => ['auth', 'PreventBackHistory']], function () {
     
 });
 
+// add route for deploy
+
+Route::get('/clear-cache', function() {
+    Artisan::call('config:clear');
+    Artisan::call('cache:clear');
+    Artisan::call('config:cache');
+    Artisan::call('view:clear');
+    Artisan::call('route:clear');
+    session()->flush();
+    return 'All Cache Cleared';
+});
+
+Route::get('/migrate', function () {
+    try {
+         Artisan::call('migrate --path=/database/migrations/2025_02_24_003843_create_banners_table.php --force');
+        return 'Migration completed successfully!';
+    } catch (\Exception $e) {
+        return 'Migration failed: ' . $e->getMessage();
+    }
+});
+
+Route::get('/migrate-rollback', function () {
+    try {
+        Artisan::call('migrate:rollback --path=/database/migrations/2025_02_24_003843_create_banners_table.php --force');
+        return 'Rollback completed successfully!';
+    } catch (\Exception $e) {
+        return 'Rollback failed: ' . $e->getMessage();
+    }
+});
+
+Route::get('/migration-status', function () {
+    Artisan::call('migrate:status');
+
+    // ดึงผลลัพธ์จาก output ของ artisan
+    $output = Artisan::output();
+
+    // ส่งผลลัพธ์เป็นข้อความในหน้าเว็บ
+    return "<pre>{$output}</pre>";
+});
+
+// end
 
 
 // Route::get('/example/pdf', 'ExampleController@pdf_index');

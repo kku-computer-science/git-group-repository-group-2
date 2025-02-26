@@ -62,6 +62,7 @@
                                 $imagePath = $banner->image_path_th; // ค่าเริ่มต้นเป็นภาษาไทย
                                 $altText = 'Banner Image TH'; // ค่าเริ่มต้นเป็นภาษาไทย
                             }
+                            
                         @endphp
                         <img src="{{ asset('storage/' . $imagePath) }}" class="d-block w-100" alt="{{ $altText }}">
                     </div>

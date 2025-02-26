@@ -1,3 +1,4 @@
 .env
 Code/robot_tests/chromedriver-mac-arm64
 Test/UAT/chromedriver-mac-arm64
+env(deploy).txt
