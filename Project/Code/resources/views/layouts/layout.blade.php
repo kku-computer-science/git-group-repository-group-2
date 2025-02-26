@@ -76,8 +76,14 @@
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             @foreach($dn as $department)
                             <li><a class="dropdown-item" href="{{ route('researchers',['id'=>$department->id])}}">
-                                    {{$department->program_name_en}}</a>
-                            </li>
+                                @if(app()->getLocale() == 'en')
+                                    {{$department->program_name_en}}
+                                @elseif(app()->getLocale() == 'zh')
+                                    {{$department->program_name_zh}}
+                                @else
+                                    {{$department->program_name_th}}
+                                @endif
+                            </a></li>
                             @endforeach
                         </ul>
                     </li>
@@ -119,7 +125,7 @@
                 </span>
                 @else
                 <span class="nav-item">
-                    <a class="btn-solid-sm" href="/login" target="_blank">Login</a>
+                    <a class="btn-solid-sm" href="/login" target="_blank">{{ trans('message.login') }}</a>
                 </span>
                 @endauth
                 @endif

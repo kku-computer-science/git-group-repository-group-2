@@ -15,6 +15,9 @@ return [
     'numberChart' => 'Number',
     'yearChart' => 'Year',
 
+    //Navbar
+    'login' => 'Login',
+
     //Admin page
     'research_system' => 'Research Information Management System',
     'dashboard' => 'Dashboard',
@@ -60,5 +63,6 @@ return [
 
     //Research Project page
     'researchers_research' => 'Researchers',
-    ''
+    'search_research' => 'Search',
+    'researchinterests_research' => 'Research interests',
 ];
