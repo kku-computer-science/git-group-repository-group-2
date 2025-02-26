@@ -61,8 +61,70 @@ return [
     'new_password' => 'New Password',
     'confirm_newpassword' => 'Confirm NewPassword',
 
-    //Research Project page
+    //Researcher page
     'researchers_research' => 'Researchers',
     'search_research' => 'Search',
     'researchinterests_research' => 'Research interests',
+
+    //Researcher Detail page
+    'summary_researcherdetail' => 'Summary',
+    'book_researcherdetail' => 'Book',
+    'other_academic_researcherdetail' => 'Other academic works',
+    'No._researcherdetail' => 'No.',
+    'Year_researcherdetail' => 'Year',
+    'Author_researcherdetail' => 'Author',
+    'PaperName_researcherdetail' => 'Paper Name',
+    'Page_researcherdetail' => 'Page',
+    'Source_researcherdetail' => 'Source',
+    'Doi_researcherdetail' => 'Doi',
+    'Ciations_researcherdetail' => 'Ciations',
+    'JournalsAndTransactions_researcherdetail' => 'Journals/Transactions',
+    'DocumentType_researcherdetail' => 'Document Type',
+    'Number_researcherdetail' => 'Number',
+    'Name_researcherdetail' => 'Name',
+    'PlaceofPublication_researcherdetail' => 'Place of Publication',
+    'type_researcherdetail' => 'Type',
+    'RegistrationNumber_researcherdetail' => 'Registration Number',
+    'RegistrationDate_researcherdetail' => 'Registration Date',
+    'Show' => 'Show',
+    'Entries' => 'Entries',
+    'Info' => 'Showing _START_ to _END_ of _TOTAL_ entries',
+    'InfoEmpty'   => 'No entries to show',
+    'First' => 'First',
+    'Previous' => 'Previous',
+    'Next' => 'Next',
+    'Last' => 'Last',
+    'Search_researcherdetail' => 'Search',
+
+    //Research Project page
+    'AcademicAndResearch_researchproject' => 'Academic Service Projects / Research Projects',
+    'search_researchproject' => 'Search :',
+    'No._researchproject' => 'No.',
+    'Year_researchproject' => 'Year',
+    'ProjectName_researchproject' => 'Project Name',
+    'Details_researchproject' => 'Details',
+    'ProjectLeader_researchproject' => 'Project Leader',
+    'Status_researchproject' => 'Status',
+    'ProjectDuration_researchproject' => 'Project Duration',
+    'ResearchFundType_researchproject' => 'Research Fund Type',
+    'FundingAgency_researchproject' => 'Funding Agency',
+    'ResponsibleAgency_researchproject' => 'Responsible Agency',
+    'AllocatedBudget_researchproject' => 'Allocated Budget',
+    'Submitted_researchproject' => 'Submitted',
+    'InProgress_researchproject' => 'In Progress',
+    'ProjectClosed_researchproject' => 'Project Closed',
+    'Baht_researchproject' => 'Baht',
+
+    //Research Group page
+    'ResearchGroup_researchgroup' => 'Research Group',
+    'LaboratorySupervisor_researchgroup' => 'Laboratory Supervisor',
+
+    //Research Group Detail page
+    'LaboratorySupervisor_researchgroupdetail' => 'Laboratory Supervisor',
+    'Student_researchgroupdetail' => 'Student',
+
+    //Report page
+    'total_article_5year_report' => 'Total number of articles statistics for 5 years',
+    'total_article_cumulative_report' => 'Total number of articles statistics cumulative',
+    'sorce_report' => 'Source',
 ];
