@@ -1,93 +1,471 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.2.2 (Python 3.13.2 on darwin)" generated="2025-02-26T16:00:32.500787" rpa="false" schemaversion="5">
+<robot generator="Robot 7.2.2 (Python 3.13.2 on darwin)" generated="2025-02-27T03:05:01.680697" rpa="false" schemaversion="5">
 <suite id="s1" name="Banner Upload" source="/Users/nipatchapakdee/SoftwareEN/Project/Setup_project/git-group-repository-group-2/Project/Code/robot_tests/banner_upload.robot">
-<test id="s1-t1" name="Upload Banner Images and Verify Success Message" line="15">
+<test id="s1-t1" name="Upload Banner Images and Verify Success Message EN" line="42">
 <kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2025-02-26T16:00:32.630022" level="INFO">Opening browser 'chrome' to base url 'http://127.0.0.1:8002/login'.</msg>
+<msg time="2025-02-27T03:05:01.807009" level="INFO">Opening browser 'chrome' to base url 'http://127.0.0.1:8002/login'.</msg>
 <arg>${LOGIN_PAGE}</arg>
 <arg>chrome</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="PASS" start="2025-02-26T16:00:32.629834" elapsed="4.321887"/>
+<status status="PASS" start="2025-02-27T03:05:01.806837" elapsed="3.798472"/>
 </kw>
 <kw name="Input Text" owner="SeleniumLibrary">
-<msg time="2025-02-26T16:00:36.967923" level="INFO">Typing text 'admin@gmail.com' into text field 'id=username'.</msg>
+<msg time="2025-02-27T03:05:05.609265" level="INFO">Typing text 'admin@gmail.com' into text field 'id=username'.</msg>
 <arg>id=username</arg>
 <arg>${USER_USERNAME}</arg>
 <doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2025-02-26T16:00:36.965794" elapsed="0.305202"/>
+<status status="PASS" start="2025-02-27T03:05:05.607743" elapsed="0.187249"/>
 </kw>
 <kw name="Input Text" owner="SeleniumLibrary">
-<msg time="2025-02-26T16:00:37.271534" level="INFO">Typing text '12345678' into text field 'id=password'.</msg>
+<msg time="2025-02-27T03:05:05.795439" level="INFO">Typing text '12345678' into text field 'id=password'.</msg>
 <arg>id=password</arg>
 <arg>${USER_PASSWORD}</arg>
 <doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2025-02-26T16:00:37.271265" elapsed="0.064145"/>
+<status status="PASS" start="2025-02-27T03:05:05.795212" elapsed="0.053913"/>
 </kw>
 <kw name="Click Button" owner="SeleniumLibrary">
-<msg time="2025-02-26T16:00:37.336482" level="INFO">Clicking button 'xpath=//button[text()='Log In']'.</msg>
+<msg time="2025-02-27T03:05:05.849637" level="INFO">Clicking button 'xpath=//button[text()='Log In']'.</msg>
 <arg>xpath=//button[text()='Log In']</arg>
 <doc>Clicks the button identified by ``locator``.</doc>
-<status status="PASS" start="2025-02-26T16:00:37.336164" elapsed="0.459593"/>
+<status status="PASS" start="2025-02-27T03:05:05.849448" elapsed="0.348542"/>
 </kw>
 <kw name="Wait Until Page Contains" owner="SeleniumLibrary">
 <arg>Dashboard</arg>
 <doc>Waits until ``text`` appears on the current page.</doc>
-<status status="PASS" start="2025-02-26T16:00:37.795983" elapsed="0.571497"/>
+<status status="PASS" start="2025-02-27T03:05:06.198869" elapsed="0.624817"/>
 </kw>
 <kw name="Go To" owner="SeleniumLibrary">
-<msg time="2025-02-26T16:00:38.367814" level="INFO">Opening url 'http://127.0.0.1:8002/banners'</msg>
+<msg time="2025-02-27T03:05:06.824555" level="INFO">Opening url 'http://127.0.0.1:8002/banners'</msg>
 <arg>${BANNER_UPLOAD_PAGE}</arg>
 <doc>Navigates the current browser window to the provided ``url``.</doc>
-<status status="PASS" start="2025-02-26T16:00:38.367669" elapsed="0.550578"/>
+<status status="PASS" start="2025-02-27T03:05:06.824111" elapsed="1.000657"/>
 </kw>
 <kw name="Choose File" owner="SeleniumLibrary">
-<msg time="2025-02-26T16:00:38.918696" level="INFO">Sending /Users/nipatchapakdee/SoftwareEN/Project/Setup_project/git-group-repository-group-2/Project/Code/robot_tests/2_up.png to browser.</msg>
+<msg time="2025-02-27T03:05:07.825241" level="INFO">Sending /Users/nipatchapakdee/SoftwareEN/Project/Setup_project/git-group-repository-group-2/Project/Code/robot_tests/2_up.png to browser.</msg>
 <arg>name=image_th</arg>
 <arg>${BANNER_IMAGE_TH}</arg>
 <doc>Inputs the ``file_path`` into the file input field ``locator``.</doc>
-<status status="PASS" start="2025-02-26T16:00:38.918446" elapsed="0.028214"/>
+<status status="PASS" start="2025-02-27T03:05:07.824959" elapsed="0.030728"/>
 </kw>
 <kw name="Choose File" owner="SeleniumLibrary">
-<msg time="2025-02-26T16:00:38.947063" level="INFO">Sending /Users/nipatchapakdee/SoftwareEN/Project/Setup_project/git-group-repository-group-2/Project/Code/robot_tests/1_up.png to browser.</msg>
+<msg time="2025-02-27T03:05:07.856215" level="INFO">Sending /Users/nipatchapakdee/SoftwareEN/Project/Setup_project/git-group-repository-group-2/Project/Code/robot_tests/1_up.png to browser.</msg>
 <arg>name=image_en</arg>
 <arg>${BANNER_IMAGE_EN}</arg>
 <doc>Inputs the ``file_path`` into the file input field ``locator``.</doc>
-<status status="PASS" start="2025-02-26T16:00:38.946851" elapsed="0.016912"/>
+<status status="PASS" start="2025-02-27T03:05:07.855957" elapsed="0.016914"/>
 </kw>
 <kw name="Choose File" owner="SeleniumLibrary">
-<msg time="2025-02-26T16:00:38.964100" level="INFO">Sending /Users/nipatchapakdee/SoftwareEN/Project/Setup_project/git-group-repository-group-2/Project/Code/robot_tests/3_up.png to browser.</msg>
+<msg time="2025-02-27T03:05:07.873199" level="INFO">Sending /Users/nipatchapakdee/SoftwareEN/Project/Setup_project/git-group-repository-group-2/Project/Code/robot_tests/3_up.png to browser.</msg>
 <arg>name=image_zh</arg>
 <arg>${BANNER_IMAGE_ZH}</arg>
 <doc>Inputs the ``file_path`` into the file input field ``locator``.</doc>
-<status status="PASS" start="2025-02-26T16:00:38.963929" elapsed="0.017120"/>
+<status status="PASS" start="2025-02-27T03:05:07.873026" elapsed="0.016267"/>
 </kw>
 <kw name="Click Button" owner="SeleniumLibrary">
-<msg time="2025-02-26T16:00:38.981439" level="INFO">Clicking button 'xpath=//button[text()='บันทึก']'.</msg>
-<arg>xpath=//button[text()='บันทึก']</arg>
+<msg time="2025-02-27T03:05:07.889628" level="INFO">Clicking button 'xpath=//button[text()='Save']'.</msg>
+<arg>xpath=//button[text()='Save']</arg>
 <doc>Clicks the button identified by ``locator``.</doc>
-<status status="PASS" start="2025-02-26T16:00:38.981258" elapsed="0.100213"/>
+<status status="PASS" start="2025-02-27T03:05:07.889483" elapsed="0.226166"/>
 </kw>
 <kw name="Wait Until Page Contains" owner="SeleniumLibrary">
 <arg>อัปโหลดรูปภาพสำเร็จ</arg>
 <doc>Waits until ``text`` appears on the current page.</doc>
-<status status="PASS" start="2025-02-26T16:00:39.081918" elapsed="0.325871"/>
+<status status="PASS" start="2025-02-27T03:05:08.115854" elapsed="0.012337"/>
+</kw>
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2025-02-27T03:05:08.128498" level="INFO">Opening url 'http://127.0.0.1:8002'</msg>
+<arg>${URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2025-02-27T03:05:08.128370" elapsed="0.812110"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>css=.nav-item.dropdown</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-02-27T03:05:08.941032" elapsed="0.017744"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>xpath=//img[contains(@src, '/storage/banners/')]</arg>
+<arg>timeout=5s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-02-27T03:05:08.958952" elapsed="0.014574"/>
+</kw>
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2025-02-27T03:05:08.973834" level="INFO">Opening url 'http://127.0.0.1:8002/lang/en'</msg>
+<arg>${HOME URL}lang/en</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2025-02-27T03:05:08.973696" elapsed="0.614435"/>
+</kw>
+<kw name="Get Element Attribute" owner="SeleniumLibrary">
+<msg time="2025-02-27T03:05:09.605923" level="INFO">${banner_en} = http://127.0.0.1:8002/storage/banners/UJFlljjXLTogjABJrTIUMTYAXdgYzsiocTHmF9A1.jpg</msg>
+<var>${banner_en}</var>
+<arg>xpath=//img[@alt='Banner Image EN']</arg>
+<arg>src</arg>
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<status status="PASS" start="2025-02-27T03:05:09.588336" elapsed="0.017638"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${banner_en}</arg>
+<arg>/storage/banners/</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-02-27T03:05:09.606189" elapsed="0.000197"/>
 </kw>
 <kw name="Close Browser" owner="SeleniumLibrary">
 <doc>Closes the current browser.</doc>
-<status status="PASS" start="2025-02-26T16:00:39.408042" elapsed="0.133480"/>
+<status status="PASS" start="2025-02-27T03:05:09.606516" elapsed="0.112336"/>
 </kw>
-<status status="PASS" start="2025-02-26T16:00:32.629120" elapsed="6.913625"/>
+<status status="PASS" start="2025-02-27T03:05:01.806134" elapsed="7.912979"/>
 </test>
-<status status="PASS" start="2025-02-26T16:00:32.502188" elapsed="7.041658"/>
+<test id="s1-t2" name="Upload Banner Images and Verify Success Message TH" line="69">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-02-27T03:05:09.720003" level="INFO">Opening browser 'chrome' to base url 'http://127.0.0.1:8002/login'.</msg>
+<arg>${LOGIN_PAGE}</arg>
+<arg>chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-02-27T03:05:09.719784" elapsed="2.667891"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-02-27T03:05:12.401018" level="INFO">Typing text 'admin@gmail.com' into text field 'id=username'.</msg>
+<arg>id=username</arg>
+<arg>${USER_USERNAME}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-02-27T03:05:12.389801" elapsed="0.315423"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-02-27T03:05:12.705949" level="INFO">Typing text '12345678' into text field 'id=password'.</msg>
+<arg>id=password</arg>
+<arg>${USER_PASSWORD}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-02-27T03:05:12.705481" elapsed="0.077913"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-02-27T03:05:12.784113" level="INFO">Clicking button 'xpath=//button[text()='Log In']'.</msg>
+<arg>xpath=//button[text()='Log In']</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-02-27T03:05:12.783788" elapsed="1.191775"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>Dashboard</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" start="2025-02-27T03:05:13.976987" elapsed="0.010557"/>
+</kw>
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2025-02-27T03:05:13.988428" level="INFO">Opening url 'http://127.0.0.1:8002/banners'</msg>
+<arg>${BANNER_UPLOAD_PAGE}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2025-02-27T03:05:13.987895" elapsed="0.278292"/>
+</kw>
+<kw name="Choose File" owner="SeleniumLibrary">
+<msg time="2025-02-27T03:05:14.268808" level="INFO">Sending /Users/nipatchapakdee/SoftwareEN/Project/Setup_project/git-group-repository-group-2/Project/Code/robot_tests/2_up.png to browser.</msg>
+<arg>name=image_th</arg>
+<arg>${BANNER_IMAGE_TH}</arg>
+<doc>Inputs the ``file_path`` into the file input field ``locator``.</doc>
+<status status="PASS" start="2025-02-27T03:05:14.266512" elapsed="0.030826"/>
+</kw>
+<kw name="Choose File" owner="SeleniumLibrary">
+<msg time="2025-02-27T03:05:14.297839" level="INFO">Sending /Users/nipatchapakdee/SoftwareEN/Project/Setup_project/git-group-repository-group-2/Project/Code/robot_tests/1_up.png to browser.</msg>
+<arg>name=image_en</arg>
+<arg>${BANNER_IMAGE_EN}</arg>
+<doc>Inputs the ``file_path`` into the file input field ``locator``.</doc>
+<status status="PASS" start="2025-02-27T03:05:14.297609" elapsed="0.018754"/>
+</kw>
+<kw name="Choose File" owner="SeleniumLibrary">
+<msg time="2025-02-27T03:05:14.316814" level="INFO">Sending /Users/nipatchapakdee/SoftwareEN/Project/Setup_project/git-group-repository-group-2/Project/Code/robot_tests/3_up.png to browser.</msg>
+<arg>name=image_zh</arg>
+<arg>${BANNER_IMAGE_ZH}</arg>
+<doc>Inputs the ``file_path`` into the file input field ``locator``.</doc>
+<status status="PASS" start="2025-02-27T03:05:14.316569" elapsed="0.018366"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-02-27T03:05:14.335372" level="INFO">Clicking button 'xpath=//button[text()='Save']'.</msg>
+<arg>xpath=//button[text()='Save']</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-02-27T03:05:14.335198" elapsed="0.285765"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>อัปโหลดรูปภาพสำเร็จ</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" start="2025-02-27T03:05:14.621240" elapsed="0.016468"/>
+</kw>
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2025-02-27T03:05:14.638199" level="INFO">Opening url 'http://127.0.0.1:8002'</msg>
+<arg>${URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2025-02-27T03:05:14.637971" elapsed="1.169592"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>css=.nav-item.dropdown</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-02-27T03:05:15.808814" elapsed="0.044208"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>xpath=//img[contains(@src, '/storage/banners/')]</arg>
+<arg>timeout=5s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-02-27T03:05:15.853544" elapsed="0.033182"/>
+</kw>
+<kw name="Switch Language To">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-02-27T03:05:15.899056" level="INFO">Clicking element 'id=navbarDropdownMenuLink'.</msg>
+<arg>id=navbarDropdownMenuLink</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-02-27T03:05:15.898329" elapsed="0.117537"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>css:div.dropdown-menu[aria-labelledby="navbarDropdownMenuLink"]</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-02-27T03:05:16.016107" elapsed="0.031514"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2025-02-27T03:05:16.093089" level="INFO">${option_text} = ไทย</msg>
+<var>${option_text}</var>
+<arg>xpath=//a[contains(@href, "/lang/${lang_code}")]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-02-27T03:05:16.047903" elapsed="0.045283"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-02-27T03:05:16.094093" level="INFO">Option language is: ไทย</msg>
+<arg>Option language is: ${option_text}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-02-27T03:05:16.093445" elapsed="0.000811"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-02-27T03:05:16.094678" level="INFO">Clicking element 'xpath=//a[contains(@href, "/lang/th")]'.</msg>
+<arg>xpath=//a[contains(@href, "/lang/${lang_code}")]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-02-27T03:05:16.094413" elapsed="0.994439"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-02-27T03:05:22.090177" level="INFO">Slept 5 seconds.</msg>
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-02-27T03:05:17.089384" elapsed="5.001038"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2025-02-27T03:05:22.106305" level="INFO">${new_lang} = ไทย</msg>
+<var>${new_lang}</var>
+<arg>id=navbarDropdownMenuLink</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-02-27T03:05:22.090812" elapsed="0.015535"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-02-27T03:05:22.106639" level="INFO">New language is: ไทย</msg>
+<arg>New language is: ${new_lang}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-02-27T03:05:22.106491" elapsed="0.000186"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${new_lang}</arg>
+<arg>${expected_language}</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-02-27T03:05:22.106771" elapsed="0.000145"/>
+</kw>
+<arg>th</arg>
+<arg>ไทย</arg>
+<status status="PASS" start="2025-02-27T03:05:15.892157" elapsed="6.214835"/>
+</kw>
+<kw name="Get Element Attribute" owner="SeleniumLibrary">
+<msg time="2025-02-27T03:05:22.122364" level="INFO">${banner_th} = http://127.0.0.1:8002/storage/banners/YMfzaE9NCfkwSX7IiqNaAeHHWylhF0pkuE0J6TJU.jpg</msg>
+<var>${banner_th}</var>
+<arg>xpath=//img[@alt='Banner Image TH']</arg>
+<arg>src</arg>
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<status status="PASS" start="2025-02-27T03:05:22.107136" elapsed="0.015294"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${banner_th}</arg>
+<arg>/storage/banners/</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-02-27T03:05:22.122725" elapsed="0.000169"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2025-02-27T03:05:22.123042" elapsed="0.172250"/>
+</kw>
+<status status="PASS" start="2025-02-27T03:05:09.719373" elapsed="12.576443"/>
+</test>
+<test id="s1-t3" name="Upload Banner Images and Verify Success Message CN" line="97">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-02-27T03:05:22.296981" level="INFO">Opening browser 'chrome' to base url 'http://127.0.0.1:8002/login'.</msg>
+<arg>${LOGIN_PAGE}</arg>
+<arg>chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-02-27T03:05:22.296687" elapsed="3.830605"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-02-27T03:05:26.144186" level="INFO">Typing text 'admin@gmail.com' into text field 'id=username'.</msg>
+<arg>id=username</arg>
+<arg>${USER_USERNAME}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-02-27T03:05:26.142416" elapsed="0.187106"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-02-27T03:05:26.330476" level="INFO">Typing text '12345678' into text field 'id=password'.</msg>
+<arg>id=password</arg>
+<arg>${USER_PASSWORD}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-02-27T03:05:26.329792" elapsed="0.052245"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-02-27T03:05:26.382547" level="INFO">Clicking button 'xpath=//button[text()='Log In']'.</msg>
+<arg>xpath=//button[text()='Log In']</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-02-27T03:05:26.382274" elapsed="0.989693"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>Dashboard</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" start="2025-02-27T03:05:27.372178" elapsed="0.008628"/>
+</kw>
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2025-02-27T03:05:27.381111" level="INFO">Opening url 'http://127.0.0.1:8002/banners'</msg>
+<arg>${BANNER_UPLOAD_PAGE}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2025-02-27T03:05:27.380971" elapsed="0.257146"/>
+</kw>
+<kw name="Choose File" owner="SeleniumLibrary">
+<msg time="2025-02-27T03:05:27.638607" level="INFO">Sending /Users/nipatchapakdee/SoftwareEN/Project/Setup_project/git-group-repository-group-2/Project/Code/robot_tests/2_up.png to browser.</msg>
+<arg>name=image_th</arg>
+<arg>${BANNER_IMAGE_TH}</arg>
+<doc>Inputs the ``file_path`` into the file input field ``locator``.</doc>
+<status status="PASS" start="2025-02-27T03:05:27.638323" elapsed="0.026470"/>
+</kw>
+<kw name="Choose File" owner="SeleniumLibrary">
+<msg time="2025-02-27T03:05:27.665142" level="INFO">Sending /Users/nipatchapakdee/SoftwareEN/Project/Setup_project/git-group-repository-group-2/Project/Code/robot_tests/1_up.png to browser.</msg>
+<arg>name=image_en</arg>
+<arg>${BANNER_IMAGE_EN}</arg>
+<doc>Inputs the ``file_path`` into the file input field ``locator``.</doc>
+<status status="PASS" start="2025-02-27T03:05:27.664963" elapsed="0.017508"/>
+</kw>
+<kw name="Choose File" owner="SeleniumLibrary">
+<msg time="2025-02-27T03:05:27.682839" level="INFO">Sending /Users/nipatchapakdee/SoftwareEN/Project/Setup_project/git-group-repository-group-2/Project/Code/robot_tests/3_up.png to browser.</msg>
+<arg>name=image_zh</arg>
+<arg>${BANNER_IMAGE_ZH}</arg>
+<doc>Inputs the ``file_path`` into the file input field ``locator``.</doc>
+<status status="PASS" start="2025-02-27T03:05:27.682645" elapsed="0.017104"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-02-27T03:05:27.700083" level="INFO">Clicking button 'xpath=//button[text()='Save']'.</msg>
+<arg>xpath=//button[text()='Save']</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-02-27T03:05:27.699933" elapsed="0.246909"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>อัปโหลดรูปภาพสำเร็จ</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" start="2025-02-27T03:05:27.947290" elapsed="0.011460"/>
+</kw>
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2025-02-27T03:05:27.959082" level="INFO">Opening url 'http://127.0.0.1:8002'</msg>
+<arg>${URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2025-02-27T03:05:27.958935" elapsed="0.799999"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>css=.nav-item.dropdown</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-02-27T03:05:28.759424" elapsed="0.014992"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>xpath=//img[contains(@src, '/storage/banners/')]</arg>
+<arg>timeout=5s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-02-27T03:05:28.774582" elapsed="0.016149"/>
+</kw>
+<kw name="Switch Language To">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-02-27T03:05:28.791614" level="INFO">Clicking element 'id=navbarDropdownMenuLink'.</msg>
+<arg>id=navbarDropdownMenuLink</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-02-27T03:05:28.791475" elapsed="0.044878"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>css:div.dropdown-menu[aria-labelledby="navbarDropdownMenuLink"]</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-02-27T03:05:28.836496" elapsed="0.011599"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2025-02-27T03:05:28.871428" level="INFO">${option_text} = 中文</msg>
+<var>${option_text}</var>
+<arg>xpath=//a[contains(@href, "/lang/${lang_code}")]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-02-27T03:05:28.848248" elapsed="0.023237"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-02-27T03:05:28.872108" level="INFO">Option language is: 中文</msg>
+<arg>Option language is: ${option_text}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-02-27T03:05:28.871659" elapsed="0.000556"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-02-27T03:05:28.873300" level="INFO">Clicking element 'xpath=//a[contains(@href, "/lang/zh")]'.</msg>
+<arg>xpath=//a[contains(@href, "/lang/${lang_code}")]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-02-27T03:05:28.872683" elapsed="0.724704"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-02-27T03:05:34.599805" level="INFO">Slept 5 seconds.</msg>
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-02-27T03:05:29.597542" elapsed="5.003136"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2025-02-27T03:05:34.620930" level="INFO">${new_lang} = 中文</msg>
+<var>${new_lang}</var>
+<arg>id=navbarDropdownMenuLink</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-02-27T03:05:34.601917" elapsed="0.019061"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-02-27T03:05:34.621289" level="INFO">New language is: 中文</msg>
+<arg>New language is: ${new_lang}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-02-27T03:05:34.621132" elapsed="0.000194"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${new_lang}</arg>
+<arg>${expected_language}</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-02-27T03:05:34.621426" elapsed="0.000839"/>
+</kw>
+<arg>zh</arg>
+<arg>中文</arg>
+<status status="PASS" start="2025-02-27T03:05:28.791133" elapsed="5.831206"/>
+</kw>
+<kw name="Get Element Attribute" owner="SeleniumLibrary">
+<msg time="2025-02-27T03:05:34.638335" level="INFO">${banner_zh} = http://127.0.0.1:8002/storage/banners/PvblMX5P4LN9WKr9t2asO0INSY3qcCwQVVL3rtiQ.jpg</msg>
+<var>${banner_zh}</var>
+<arg>xpath=//img[@alt='Banner Image ZH']</arg>
+<arg>src</arg>
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<status status="PASS" start="2025-02-27T03:05:34.622483" elapsed="0.015889"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${banner_zh}</arg>
+<arg>/storage/banners/</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-02-27T03:05:34.638551" elapsed="0.000166"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2025-02-27T03:05:34.638931" elapsed="0.150214"/>
+</kw>
+<status status="PASS" start="2025-02-27T03:05:22.296157" elapsed="12.493236"/>
+</test>
+<status status="PASS" start="2025-02-27T03:05:01.681891" elapsed="33.108109"/>
 </suite>
 <statistics>
 <total>
-<stat pass="1" fail="0" skip="0">All Tests</stat>
+<stat pass="3" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat name="Banner Upload" id="s1" pass="1" fail="0" skip="0">Banner Upload</stat>
+<stat name="Banner Upload" id="s1" pass="3" fail="0" skip="0">Banner Upload</stat>
 </suite>
 </statistics>
 <errors>
