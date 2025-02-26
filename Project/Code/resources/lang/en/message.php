@@ -58,7 +58,92 @@ return [
     'new_password' => 'New Password',
     'confirm_newpassword' => 'Confirm NewPassword',
 
-    //Research Project page
-    'researchers_research' => 'Researchers',
-    ''
+    //Manage Fund Page
+    'research_grants' => 'Research Grants',
+    'add' => 'Add',
+    'no' => 'No.',
+    'fund_name' => 'Fund Name',
+    'fund_type' => 'Fund Type',
+    'fund_level' => 'Fund Level',
+    'action' => 'Action',
+
+    //Create funds Page
+    'manage_fund' => 'Manage Fund',
+    'increase_research' => 'Increase Research Funding',
+    'fill_research' => 'Fill in the research funddetails',
+    'research_type' => 'Types of research grants',
+    'specify_type' => 'Please specify the type of scholarship',
+    'internal_capital' => 'Internal Capital',
+    'external_capital' => 'External capital',
+    'level' => 'Capital Level',
+    'specify_level' => 'Please specify the capital level',
+    'not_specified' => 'Not specified',
+    'high' => 'High',
+    'medium' => 'Medium',
+    'low' => 'Low',
+    'research_fund_name' => 'Research Fund Name',
+    'supporting' => 'Supporting Agencies / Research Projects',
+    'submit' => 'Submit',
+    'cancel' => 'Cancel',
+
+    //View Detail
+    'fund_detail' => 'Fund Detail',
+    'research_fund' => 'Research Fund Details',
+    'year' => 'Year',
+    'add_detail' => 'Add details by',
+   
+    //Research Project Page
+    'research_project' => 'Research Project',
+    'projectname' => 'Project name',
+    'head' => 'Head',
+    'member' => 'Member',
+    'action' => 'Action',
+
+    //Create research project
+    'add_research' => 'Add research project information',
+    'fill_detail' => 'Fill in the research project details',
+    'name_research' => 'Name of research project',
+    'start_date' => 'Start Date',
+    'end_date' => 'End Date',
+    'select_research_funding' => 'Select research funding',
+    'year_submit' => 'Year of submission (A.D.)',
+    'budget' => 'Budget (Baht)',
+    'responsible_agency' => 'Responsible agency',
+    'select_department' => 'Select Department',
+    'project_detail' => 'Project Detail',
+    'status' => 'Status',
+    'please' => 'Please specify the status of the process.',
+    'apply' => 'Apply for',
+    'carry_out' => 'Carry out',
+    'project_closed' => 'project Closed', 
+    'project_manager' => 'Project Manager',
+    'project_manager_coIn' => 'Project Manager (Co-) Internal',
+    'project_manager_coOut' => 'External (Joint) Project Manager',
+    'position' => 'Position or title',
+    'firstname' => 'Firstname',
+    'lastname' => 'Lastname',
+
+    //Research Detail
+    'research_detail' => 'Research Projects Detail',
+    'research_funding_source' => 'Research funding sources',
+    'back' => 'Back',
+
+    //Edit Research
+    'research_edit' => 'Research Edit',
+    'fill_info_edit' => 'Fill in the information to edit the research project details',
+    
+    //Research Group
+    'research_group' => 'Research Group',
+    'group_name' => 'Group Name',
+    'create_research_group' => 'Create Research Group',
+    'create_detail' => 'Fill in the information to edit the research group details',
+    'create_group_TH' => 'Research Group Name (TH)',
+    'create_group_EN' => 'Research Group Name (EN)',
+    'description_research_TH' => 'Research Description (TH)',
+    'description_research_EN' => 'Research Description (EN)',
+    'detail_research_group_TH' => 'Research Detail (TH)',
+    'detail_research_group_EN' => 'Research Detail (EN)',
+    'image' => 'Image',
+    'head_research_group' => 'Head of Research Group',
+    'member_research' => 'Research Member',
 ];
