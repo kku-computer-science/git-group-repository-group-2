@@ -146,7 +146,7 @@
                                         <b>{{$p['paper_name']}}</b> (<link>{{$p['author']}}</link>), {{$p['paper_sourcetitle']}}, {{$p['paper_volume']}},
                                         {{$p['paper_yearpub']}}.
                                         <a href="{{$p['paper_url']}}" target="_blank">[url]</a> <a href="https://doi.org/{{$p['paper_doi']}}" target="_blank">[doi]</a>
-                                        <button style="padding: 0;" class="btn btn-link open_modal" value="{{$p['id']}}">[อ้างอิง]</button>
+                                        <button style="padding: 0;" class="btn btn-link open_modal" value="{{$p['id']}}">[{{ trans('message.reference') }}]</button>
                                     </p>
                                 </div>
                             </div>
@@ -244,7 +244,7 @@
                 },
                 scaleLabel: {
                     display: true,
-                    labelString: 'Number',
+                    labelString: '{{ trans('message.numberChart') }}',
 
                 },
                 ticks: {
@@ -255,14 +255,14 @@
             xAxes: [{
                 scaleLabel: {
                     display: true,
-                    labelString: 'Year'
+                    labelString: '{{ trans('message.yearChart') }}'
                 }
             }]
         },
 
         title: {
             display: true,
-            text: 'Report the total number of articles ( 5 years : cumulative)',
+            text: '{{ trans('message.reporttotal') }}',
             fontSize: 20
         }
 

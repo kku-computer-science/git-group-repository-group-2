@@ -11,9 +11,9 @@ class LocalizationController extends Controller
 {
     public function index()
     {
-        $resp = ResearchGroup:: all();
-        return view('welcome',compact('resp'));
-       // return view('welcome');
+        $resp = ResearchGroup::all();
+        return view('welcome', compact('resp'));
+        // return view('welcome');
     }
     public function switchLang($lang)
 {
