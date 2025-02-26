@@ -242,67 +242,26 @@ CREATE TABLE expertises (
 ) ENGINE=InnoDB AUTO_INCREMENT=225 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
-<<<<<<< HEAD
 --LOCK TABLES expertises WRITE;
 /*!40000 ALTER TABLE expertises DISABLE KEYS */;
 INSERT INTO expertises (id, expert_name_en, expert_name_th, expert_name_zh, user_id, created_at, updated_at) VALUES 
 (2, 'Big Data Analytics', 'การวิเคราะห์ข้อมูลขนาดใหญ่', '大数据分析', 7, '2022-02-26 04:52:59', '2022-02-26 04:52:59'),
 (3, 'Computer Vision', 'คอมพิวเตอร์วิทัศน์', '计算机视觉', 7, '2022-02-26 04:53:07', '2022-02-26 04:53:07'),
 (4, 'Cellular Automata', 'เซลลูลาร์ออโตมาตา', '元胞自动机', 7, '2022-02-26 04:53:15', '2022-02-26 04:53:15'),
-=======
---
--- Dumping data for table `expertises`
---
-
-DROP TABLE IF EXISTS `expertises`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `expertises` (
-  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-  `expert_name_en` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `expert_name_th` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `expert_name_zh` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `user_id` bigint(20) unsigned DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `expertises_user_id_foreign` (`user_id`),
-  CONSTRAINT `expertises_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=225 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
-LOCK TABLES `expertises` WRITE;
-/*!40000 ALTER TABLE `expertises` DISABLE KEYS */;
-INSERT INTO `expertises` (id, expert_name_en, expert_name_th, expert_name_zh, user_id, created_at, updated_at) VALUES 
-(2, 'Big Data Analytics', 'การวิเคราะห์ข้อมูลขนาดใหญ่', '大数据分析', 7, '2022-02-26 04:52:59', '2022-02-26 04:52:59'),
-(3, 'Computer Vision', 'การมองเห็นด้วยคอมพิวเตอร์', '计算机视觉', 7, '2022-02-26 04:53:07', '2022-02-26 04:53:07'),
-(4, 'Cellular Automata', 'เซลลูลาร์ออโตเมตา', '元胞自动机', 7, '2022-02-26 04:53:15', '2022-02-26 04:53:15'),
->>>>>>> 60d9f2695e64fae58976f952385f3c309cc6db25
 (100, 'Natural Language and Speech Processing', 'การประมวลผลภาษาธรรมชาติและเสียงพูด', '自然语言与语音处理', 16, NULL, NULL),
 (101, 'Machine Learning and Intelligent Systems', 'การเรียนรู้ของเครื่องและระบบอัจฉริยะ', '机器学习与智能系统', 16, NULL, NULL),
 (102, 'Database and Information Integration Systems', 'ระบบฐานข้อมูลและการบูรณาการข้อมูล', '数据库与信息集成系统', 16, NULL, NULL),
 (103, 'Data science and Artificial Intelligence', 'วิทยาศาสตร์ข้อมูลและปัญญาประดิษฐ์', '数据科学与人工智能', 16, NULL, NULL),
-<<<<<<< HEAD
 (104, 'Computational Intelligence', 'ปัญญาประดิษฐ์เชิงคำนวณ', '计算智能', 8, NULL, NULL),
-=======
-(104, 'Computational Intelligence', 'สติปัญญาเชิงคำนวณ', '计算智能', 8, NULL, NULL),
->>>>>>> 60d9f2695e64fae58976f952385f3c309cc6db25
 (105, 'Machine Learning and Intelligent Systems', 'การเรียนรู้ของเครื่องและระบบอัจฉริยะ', '机器学习与智能系统', 8, NULL, NULL),
 (106, 'Nature-Inspired Optimization Algorithm', 'อัลกอริทึมเพิ่มประสิทธิภาพที่ได้แรงบันดาลใจจากธรรมชาติ', '自然启发式优化算法', 8, NULL, NULL),
 (107, 'Data science and Artificial Intelligence', 'วิทยาศาสตร์ข้อมูลและปัญญาประดิษฐ์', '数据科学与人工智能', 8, NULL, NULL),
 (108, 'Artificial Neural Network', 'เครือข่ายประสาทเทียม', '人工神经网络', 8, NULL, NULL),
 (109, 'Machine Learning and Intelligent Systems', 'การเรียนรู้ของเครื่องและระบบอัจฉริยะ', '机器学习与智能系统', 6, NULL, NULL),
-<<<<<<< HEAD
 (110, 'Soft computing', 'ซอฟต์คอมพิวติ้ง', '软计算', 6, NULL, NULL),
 (111, 'Object-Oriented Programming Languages', 'ภาษาโปรแกรมเชิงวัตถุ', '面向对象编程语言', 6, NULL, NULL),
 (112, 'Software Engineering', 'วิศวกรรมซอฟต์แวร์', '软件工程', 6, NULL, NULL),
 (113, 'Computational Intelligence', 'ปัญญาประดิษฐ์เชิงคำนวณ', '计算智能', 9, NULL, NULL),
-=======
-(110, 'Soft computing', 'การคำนวณแบบนุ่ม', '软计算', 6, NULL, NULL),
-(111, 'Object-Oriented Programming Languages', 'ภาษาโปรแกรมเชิงวัตถุ', '面向对象编程语言', 6, NULL, NULL),
-(112, 'Software Engineering', 'วิศวกรรมซอฟต์แวร์', '软件工程', 6, NULL, NULL),
-(113, 'Computational Intelligence', 'สติปัญญาเชิงคำนวณ', '计算智能', 9, NULL, NULL),
->>>>>>> 60d9f2695e64fae58976f952385f3c309cc6db25
 (114, 'Machine Learning and Intelligent Systems', 'การเรียนรู้ของเครื่องและระบบอัจฉริยะ', '机器学习与智能系统', 9, NULL, NULL),
 (115, 'Nature-Inspired Optimization Algorithm', 'อัลกอริทึมเพิ่มประสิทธิภาพที่ได้แรงบันดาลใจจากธรรมชาติ', '自然启发式优化算法', 9, NULL, NULL),
 (116, 'Data science and Artificial Intelligence', 'วิทยาศาสตร์ข้อมูลและปัญญาประดิษฐ์', '数据科学与人工智能', 9, NULL, NULL),
@@ -311,22 +270,14 @@ INSERT INTO `expertises` (id, expert_name_en, expert_name_th, expert_name_zh, us
 (119, 'User Experience Design', 'การออกแบบประสบการณ์ผู้ใช้', '用户体验设计', 22, NULL, NULL),
 (120, 'Mobile Computing', 'การคำนวณแบบเคลื่อนที่', '移动计算', 21, NULL, NULL),
 (121, 'Cloud computing', 'การประมวลผลบนคลาวด์', '云计算', 21, NULL, NULL),
-<<<<<<< HEAD
 (122, 'Internet of Things and Smart Technology', 'อินเทอร์เน็ตของทุกสรรพสิ่งและเทคโนโลยีอัจฉริยะ', '物联网与智能技术', 21, NULL, NULL),
-=======
-(122, 'Internet of Things and Smart Technology', 'อินเทอร์เน็ตของสิ่งของและเทคโนโลยีอัจฉริยะ', '物联网与智能技术', 21, NULL, NULL),
->>>>>>> 60d9f2695e64fae58976f952385f3c309cc6db25
 (123, 'Wireless Sensor Networks', 'เครือข่ายเซ็นเซอร์ไร้สาย', '无线传感器网络', 21, NULL, NULL),
 (124, 'Wireless and Cellular Networks', 'เครือข่ายไร้สายและเครือข่ายเซลลูลาร์', '无线和蜂窝网络', 21, NULL, NULL),
 (125, 'Computer and Network Security', 'ความปลอดภัยในคอมพิวเตอร์และเครือข่าย', '计算机与网络安全', 21, NULL, NULL),
 (126, 'Network, Protocol, Optimization, and Intelligent Systems', 'เครือข่าย, โปรโตคอล, การเพิ่มประสิทธิภาพ และระบบอัจฉริยะ', '网络、协议、优化与智能系统', 21, NULL, NULL),
 (127, 'Routing Protocols and Internetworking', 'โปรโตคอลการกำหนดเส้นทางและการเชื่อมต่อเครือข่าย', '路由协议与网络互联', 13, NULL, NULL),
 (128, 'Mobile Ad Hoc Networks', 'เครือข่ายอแดฮ็อคแบบเคลื่อนที่', '移动自组网', 13, NULL, NULL),
-<<<<<<< HEAD
 (129, 'Internet of Things and Smart Technologies', 'อินเทอร์เน็ตของทุกสรรพสิ่งและเทคโนโลยีอัจฉริยะ', '物联网与智能技术', 13, NULL, NULL),
-=======
-(129, 'Internet of Things and Smart Technologies', 'อินเทอร์เน็ตของสิ่งของและเทคโนโลยีอัจฉริยะ', '物联网与智能技术', 13, NULL, NULL),
->>>>>>> 60d9f2695e64fae58976f952385f3c309cc6db25
 (130, 'Evolutionary Algorithms', 'อัลกอริทึมวิวัฒนาการ', '进化算法', 13, NULL, NULL),
 (131, 'Software Engineering', 'วิศวกรรมซอฟต์แวร์', '软件工程', 10, NULL, NULL),
 (132, 'Software Process', 'กระบวนการพัฒนาซอฟต์แวร์', '软件过程', 10, NULL, NULL),
@@ -1141,7 +1092,6 @@ UNLOCK TABLES;
 
 -- Dump completed on 2022-05-18 23:35:07
 
-<<<<<<< HEAD
 -- add banners table
 CREATE TABLE `banners` (
   `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -1153,14 +1103,3 @@ CREATE TABLE `banners` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-=======
-CREATE TABLE banners (
-  id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
-  image_path_th VARCHAR(255) DEFAULT NULL,
-  image_path_en VARCHAR(255) DEFAULT NULL,
-  image_path_zh VARCHAR(255) DEFAULT NULL,
-  created_at TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
-  updated_at TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
->>>>>>> 60d9f2695e64fae58976f952385f3c309cc6db25
