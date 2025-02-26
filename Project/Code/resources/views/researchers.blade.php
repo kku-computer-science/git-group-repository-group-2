@@ -63,9 +63,12 @@
                             @endif
 
                             <p class="card-text-1">{{ trans('message.expertise') }}</p>
+                            @php
+                                $sortColumn = app()->getLocale() === 'en' ? 'expert_name_en' : (app()->getLocale() === 'zh' ? 'expert_name_zh' : 'expert_name_th');
+                            @endphp
                             <div class="card-expertise">
-                                @foreach($r->expertise->sortBy('expert_name') as $exper)
-                                    <p class="card-text"> {{$exper->expert_name}}</p>
+                                @foreach($r->expertise->sortBy($sortColumn) as $exper)
+                                    <p class="card-text"> {{ $exper->$sortColumn }} </p>
                                 @endforeach
                             </div>
                         </div>
