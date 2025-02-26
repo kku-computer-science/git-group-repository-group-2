@@ -131,7 +131,7 @@
                         @if (!$loop->last)
                             {{$n}}
                         @else
-                            Before {{$n}}
+                        {{ trans('message.before_home') }} {{$n}}
                         @endif
                     </button>
                 </h2>
@@ -292,7 +292,7 @@
         document.getElementById("all").innerHTML += `
                 <i class="count-icon fa fa-book fa-2x"></i>
                 <h2 class="timer count-title count-number" data-to="${sum}" data-speed="1500"></h2>
-                <p class="count-text ">SUMMARY</p>`
+                <p class="count-text ">{{ trans('message.Summary_home') }}</p>`
         document.getElementById("scopus").innerHTML += `
                 <i class="count-icon fa fa-book fa-2x"></i>
                 <h2 class="timer count-title count-number" data-to="${sumsco}" data-speed="1500"></h2>
