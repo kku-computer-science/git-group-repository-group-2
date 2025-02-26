@@ -13,7 +13,7 @@
 
   <div class="card">
     <div class="card-body">
-        <h4 class="card-title">Import  Excel, CSV File</h4>
+        <h4 class="card-title">{{ __('message.import_file')}}</h4>
         <form id="import-csv-form" method="POST"  action="{{ url('import') }}" accept-charset="utf-8" enctype="multipart/form-data">
           @csrf
             <div class="row">
@@ -26,7 +26,7 @@
                     @enderror
                 </div>              
                  <div class="col-md-12">
-                    <button type="submit" class="btn btn-primary mt-3" id="submit">Submit</button>
+                    <button type="submit" class="btn btn-primary mt-3" id="submit">{{ __('message.submit')}}</button>
                 </div>
             </div>     
         </form>

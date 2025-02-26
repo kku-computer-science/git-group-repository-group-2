@@ -1,26 +1,7 @@
 @extends('dashboards.users.layouts.user-dash-layout')
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 @section('content')
-<style type="text/css">
-    .dropdown-toggle {
-        height: 40px;
-        width: 400px !important;
-    }
 
-    body label:not(.input-group-text) {
-        margin-top: 10px;
-    }
-
-    body .my-select {
-        background-color: #fff;
-        color: #212529;
-        border: #000 0.2 solid;
-        border-radius: 10px;
-        padding: 6px 20px;
-        width: 100%;
-        font-size: 14px;
-    }
-</style>
 <div class="container">
 
     @if ($errors->any())
@@ -37,70 +18,69 @@
     <div class="col-md-8 grid-margin stretch-card">
         <div class="card" style="padding: 16px;">
             <div class="card-body">
-                <h4 class="card-title">เพิ่มผลงานวิชาการด้านอื่นๆ</h4>
-                <p class="card-description">กรอกข้อมูลรายละเอียดผลงานวิชาการด้านอื่นๆ (สิทธิบัตร, อนุสิทธิบัตร,
-                    ลิขสิทธิ์)</p>
+                <h4 class="card-title">{{ __('message.add_academic')}}</h4>
+                <p class="card-description">{{ __('message.fill_detail')}}</p>
                 <form class="forms-sample" action="{{ route('patents.store') }}" method="POST">
                     @csrf
                     <div class="form-group row">
-                        <label for="exampleInputac_name" class="col-sm-3">ชื่อ (สิทธิบัตร,อนุสิทธิบัตร, ลิขสิทธิ์)</label>
+                        <label for="exampleInputac_name" class="col-sm-3">{{ __('message.name_ac')}}</label>
                         <div class="col-sm-9">
                             <input type="text" name="ac_name" class="form-control" placeholder="name">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="exampleInputac_type" class="col-sm-3 ">ประเภท</label>
+                        <label for="exampleInputac_type" class="col-sm-3 ">{{ __('message.type')}}</label>
                         <div class="col-sm-4">
                             <select id="category" class="custom-select my-select" name="ac_type">
-                                <option value="" disabled selected >---- โปรดระบุประเภท ----</option>
+                                <option value="" disabled selected >{{ __('message.select_type')}}</option>
                                 <optgroup label="สิทธิบัตร">
-                                    <option value="สิทธิบัตร">สิทธิบัตร</option>
-                                    <option value="สิทธิบัตร (การประดิษฐ์)">สิทธิบัตร (การประดิษฐ์)</option>
-                                    <option value="สิทธิบัตร (การออกแบบผลิตภัณฑ์)">สิทธิบัตร (การออกแบบผลิตภัณฑ์)</option>
+                                    <option value="สิทธิบัตร">{{ __('message.invent')}}</option>
+                                    <option value="สิทธิบัตร (การประดิษฐ์)">{{ __('message.product')}}</option>
+                                    <option value="สิทธิบัตร (การออกแบบผลิตภัณฑ์)">{{ __('message.patent')}}</option>
                                 </optgroup>
                                 <optgroup label="อนุสิทธิบัตร">
-                                    <option value="อนุสิทธิบัตร">อนุสิทธิบัตร</option>
+                                    <option value="อนุสิทธิบัตร">{{ __('message.patent')}}</option>
                                 </optgroup>
                                 <optgroup label="ลิขสิทธิ์">
-                                    <option value="ลิขสิทธิ์">ลิขสิทธิ์</option>
-                                    <option value="ลิขสิทธิ์ (วรรณกรรม)">ลิขสิทธิ์ (วรรณกรรม)</option>
-                                    <option value="ลิขสิทธิ์ (ตนตรีกรรม)">ลิขสิทธิ์ (ตนตรีกรรม)</option>
-                                    <option value="ลิขสิทธิ์ (ภาพยนตร์)">ลิขสิทธิ์ (ภาพยนตร์)</option>
-                                    <option value="ลิขสิทธิ์ (ศิลปกรรม)">ลิขสิทธิ์ (ศิลปกรรม)</option>
-                                    <option value="ลิขสิทธิ์ (งานแพร่เสี่ยงแพร่ภาพ)">ลิขสิทธิ์ (งานแพร่เสี่ยงแพร่ภาพ)</option>
-                                    <option value="ลิขสิทธิ์ (โสตทัศนวัสดุ)">ลิขสิทธิ์ (โสตทัศนวัสดุ)</option>
-                                    <option value="ลิขสิทธิ์ (งานอื่นใดในแผนกวรรณคดี/วิทยาศาสตร์/ศิลปะ)">ลิขสิทธิ์ (งานอื่นใดในแผนกวรรณคดี/วิทยาศาสตร์/ศิลปะ)</option>
-                                    <option value="ลิขสิทธิ์ (สิ่งบันทึกเสียง)">ลิขสิทธิ์ (สิ่งบันทึกเสียง)</option>
+                                    <option value="ลิขสิทธิ์">{{ __('message.copyright')}}</option>
+                                    <option value="ลิขสิทธิ์ (วรรณกรรม)">{{ __('message.literary')}}</option>
+                                    <option value="ลิขสิทธิ์ (ตนตรีกรรม)">{{ __('message.musical')}}</option>
+                                    <option value="ลิขสิทธิ์ (ภาพยนตร์)">{{ __('message.flim')}}</option>
+                                    <option value="ลิขสิทธิ์ (ศิลปกรรม)">{{ __('message.art')}}</option>
+                                    <option value="ลิขสิทธิ์ (งานแพร่เสี่ยงแพร่ภาพ)">{{ __('message.boardcast')}}</option>
+                                    <option value="ลิขสิทธิ์ (โสตทัศนวัสดุ)">{{ __('message.materials')}}</option>
+                                    <option value="ลิขสิทธิ์ (งานอื่นใดในแผนกวรรณคดี/วิทยาศาสตร์/ศิลปะ)">{{ __('message.any_other_work')}}</option>
+                                    <option value="ลิขสิทธิ์ (สิ่งบันทึกเสียง)">{{ __('message.sound')}}</option>
                                 </optgroup>
                                 <optgroup label="อื่น ๆ">
-                                    <option value="ความลับทางการค้า">ความลับทางการค้า</option>
-                                    <option value="เครื่องหมายการค้า">เครื่องหมายการค้า</option>
+                                    <option value="ความลับทางการค้า">{{ __('message.trade')}}</option>
+                                    <option value="เครื่องหมายการค้า">{{ __('message.trade_mark')}}</option>
                                 </optgroup>
                             </select>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="exampleInputac_year" class="col-sm-3 ">วันที่ได้รับลิขสิทธิ์</label>
+                        <label for="exampleInputac_year" class="col-sm-3 ">{{ __('message.copy_date')}}</label>
                         <div class="col-sm-4">
                             <input type="date" name="ac_year" class="form-control" placeholder="ac_year">
 
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="exampleInputac_refnumber" class="col-sm-3 ">เลขทะเบียน</label>
+                        <label for="exampleInputac_refnumber" class="col-sm-3 ">{{ __('message.re_number')}}</label>
                         <div class="col-sm-4">
                             <input type="text" name="ac_refnumber" class="form-control" placeholder="เลขทะเบียน">
                         </div>
                     </div>
 
                     <div class="form-group row">
-                        <label for="exampleInputac_doi" class="col-sm-3 ">อาจารย์ในสาขา</label>
+                        <label for="exampleInputac_doi" class="col-sm-3 ">{{ __('message.professor')}}</label>
                         <div class="col-sm-9">
                             <div class="table-responsive">
                                 <table class="table table-hover small-text" id="dynamicAddRemove">
                                     <tr>
                                         <td><select id='selUser0' style='width: 200px;' name="moreFields[0][userid]">
-                                                <option value=''>Select User</option>@foreach($users as $user)<option value="{{ $user->id }}">{{ $user->fname_th }} {{ $user->lname_th }}
+                                                <option value=''>{{ __('message.selectUser')}}</option>@foreach($users as $user)<option value="{{ $user->id }}">{{ $user->fname_th }} {{ $user->lname_th }}
                                                 </option>@endforeach
                                             </select>
                                         </td>
@@ -129,14 +109,14 @@
                         </div>
                     </div> -->
                     <div class="form-group row ">
-                        <label for="exampleInputpaper_doi" class="col-sm-3 ">บุคลลภายนอก</label>
+                        <label for="exampleInputpaper_doi" class="col-sm-3 ">{{ __('message.external_person')}}</label>
                         <div class="col-sm-9">
                             <div class="table-responsive">
                                 <table class="table table-hover small-text" id="tb">
                                     <tr class="tr-header">
                                         
-                                        <th>ชื่อ</th>
-                                        <th>นามสกุล</th>
+                                        <th>{{ __('message.ex_fname')}}</th>
+                                        <th>{{ __('message.ex_lname')}}</th>
                                         <!-- <th>Email Id</th> -->
                                             <!-- <button type="button" name="add" id="add" class="btn btn-success btn-sm"><i class="mdi mdi-plus"></i></button> -->
                                         <th><a href="javascript:void(0);" style="font-size:18px;" id="addMore2" title="Add More Person"><i class="mdi mdi-plus"></i></span></a></th>
@@ -152,8 +132,8 @@
                             </div>
                         </div>
                     </div>
-                    <button type="submit" name="submit" id="submit" class="btn btn-primary me-2">Submit</button>
-                    <a class="btn btn-light" href="{{ route('patents.index')}}">Cancel</a>
+                    <button type="submit" name="submit" id="submit" class="btn btn-primary me-2">{{ __('message.submit')}}</button>
+                    <a class="btn btn-light" href="{{ route('patents.index')}}">{{ __('message.cancel')}}</a>
                 </form>
             </div>
         </div>

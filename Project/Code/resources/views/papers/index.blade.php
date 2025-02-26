@@ -12,23 +12,23 @@
     @endif
     <div class="card" style="padding: 16px;">
         <div class="card-body">
-            <h4 class="card-title">Published research</h4>
-            <a class="btn btn-primary btn-menu btn-icon-text btn-sm mb-3" href="{{ route('papers.create') }}"><i class="mdi mdi-plus btn-icon-prepend"></i> ADD </a>
+            <h4 class="card-title">{{ __('message.published_research')}}</h4>
+            <a class="btn btn-primary btn-menu btn-icon-text btn-sm mb-3" href="{{ route('papers.create') }}"><i class="mdi mdi-plus btn-icon-prepend"></i>{{ __('message.add')}}</a>
             @if(Auth::user()->hasRole('teacher'))
             <!-- <a class="btn btn-primary btn-menu btn-icon-text btn-sm mb-3" href="{{ route('callscopus',Auth::user()->id) }}"><i class="mdi mdi-refresh btn-icon-prepend"></i> Call Paper</a> -->
-            <a class="btn btn-primary btn-icon-text btn-sm mb-3" href="{{ route('callscopus',Crypt::encrypt(Auth::user()->id)) }}"><i class="mdi mdi-refresh btn-icon-prepend icon-sm"></i> Call Paper</a>
+            <a class="btn btn-primary btn-icon-text btn-sm mb-3" href="{{ route('callscopus',Crypt::encrypt(Auth::user()->id)) }}"><i class="mdi mdi-refresh btn-icon-prepend icon-sm"></i>{{ __('message.call_paper')}}</a>
             @endif
             <!-- <div class="table-responsive"> -->
                 <table id="example1" class="table table-striped">
                     <thead>
                         <tr>
-                            <th>No.</th>
-                            <th>ชื่อเรื่อง</th>
-                            <th>ประเภท</th>
-                            <th>ปีที่ตีพิมพ์</th>
+                            <th>{{ __('message.no')}}</th>
+                            <th>{{ __('message.paper_name')}}</th>
+                            <th>{{ __('message.paper_type')}}</th>
+                            <th>{{ __('message.year_submit')}}</th>
                             <!-- <th>ผู้เขียน</th>   -->
                             <!-- <th>Source Title</th> -->
-                            <th width="280px">Action</th>
+                            <th width="280px">{{ __('message.action')}}</th>
                         </tr>
                         <thead>
                         <tbody>

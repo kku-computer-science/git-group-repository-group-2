@@ -24,7 +24,7 @@
                         </select>
                     </div> -->
                 <div class="col-md-4">
-                    <button type="submit" class="btn btn-outline-primary">Search</button>
+                    <button type="submit" class="btn btn-outline-primary">{{ __('message.search')}}</button>
                 </div>
             </form>
         </div>

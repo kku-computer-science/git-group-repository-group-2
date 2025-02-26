@@ -7,16 +7,20 @@ return [
     'Report' => '报告',
     'details' => '更多详情',
     'expertise' => '研究兴趣',
-    'publications' => '出版物（过去五年）',
-    'education' => '教育',
+    'publications' => '近5年的出版物',
+    'education' => '教育背景',
     'publications2' => '出版物',
+    'reference' => '参考文献',
+    'reporttotal' => '报告中涉及的文章总数（5年：累计）',
+    'numberChart' => '数量',
+    'yearChart' => '年份',
 
     //Admin page
     'research_system' => '研究信息管理系统',
-    'dashboard' => '仪表板',
-    'Logout'=>'退出',
+    'dashboard' => '仪表盘',
+    'Logout' => '登出',
     'profile' => '个人资料',
-    'user_profile' => '用户个人资料',
+    'user_profile' => '用户资料',
     'language_en' => '英语',
     'language_th' => '泰语',
     'language_zh' => '中文',
@@ -44,9 +48,9 @@ return [
     'account' => '账户',
     'password' => '密码',
     'expertise' => '专长',
-    'education' => '教育',
-    'profile_settings' => '个人资料设置',
-    'name_title' => '姓名标题',
+    'education' => '教育背景',
+    'profile_settings' => '个人设置',
+    'name_title' => '姓名称谓',
     'email' => '电子邮件',
     'update' => '更新',
     'password_settings' => '密码设置',
@@ -57,7 +61,7 @@ return [
     //Manage Fund Page
     'research_grants' => '研究资助',
     'add' => '添加',
-    'no' => '序号',
+    'no' => '编号',
     'fund_name' => '基金名称',
     'fund_type' => '基金类型',
     'fund_level' => '基金级别',
@@ -65,14 +69,14 @@ return [
 
     //Create funds Page
     'manage_fund' => '管理资金',
-    'increase_research' => '增加研究资助',
-    'fill_research' => '填写研究资助详细信息',
+    'increase_research' => '增加研究资金',
+    'fill_research' => '填写研究资金详情',
     'research_type' => '研究资助类型',
-    'specify_type' => '请指定奖学金类型',
-    'internal_capital' => '内部资本',
-    'external_capital' => '外部资本',
-    'level' => '资本级别',
-    'specify_level' => '请指定资本级别',
+    'specify_type' => '请选择资助类型',
+    'internal_capital' => '内部资金',
+    'external_capital' => '外部资金',
+    'level' => '资金级别',
+    'specify_level' => '请选择资金级别',
     'not_specified' => '未指定',
     'high' => '高',
     'medium' => '中',
@@ -86,7 +90,7 @@ return [
     'fund_detail' => '基金详情',
     'research_fund' => '研究基金详情',
     'year' => '年份',
-    'add_detail' => '添加详细信息',
+    'add_detail' => '添加详情',
 
     //Research Project Page
     'research_project' => '研究项目',
@@ -97,7 +101,7 @@ return [
 
     //Create research project
     'add_research' => '添加研究项目信息',
-    'fill_detail' => '填写研究项目详细信息',
+    'fill_detail' => '填写研究项目详情',
     'name_research' => '研究项目名称',
     'start_date' => '开始日期',
     'end_date' => '结束日期',
@@ -108,12 +112,12 @@ return [
     'select_department' => '选择部门',
     'project_detail' => '项目详情',
     'status' => '状态',
-    'please' => '请指定项目进程状态。',
+    'please' => '请指定流程状态。',
     'apply' => '申请',
     'carry_out' => '执行',
-    'project_closed' => '项目关闭',
+    'project_closed' => '项目已关闭',
     'project_manager' => '项目经理',
-    'project_manager_coIn' => '项目经理（合作）内部',
+    'project_manager_coIn' => '项目经理（内）',
     'project_manager_coOut' => '外部（联合）项目经理',
     'position' => '职位或头衔',
     'firstname' => '名字',
@@ -121,10 +125,224 @@ return [
 
     //Research Detail
     'research_detail' => '研究项目详情',
-    'research_funding_source' => '研究资金来源',
+    'research_funding_source' => '研究资助来源',
     'back' => '返回',
 
     //Edit Research
-    'research_edit' => '研究编辑',
-    'fill_info_edit' => '填写编辑研究项目信息',
+    'research_edit' => '编辑研究',
+    'fill_info_edit' => '填写编辑研究项目详情',
+
+    //Research Group
+    'research_group' => '研究小组',
+    'group_name' => '小组名称',
+    'create_research_group' => '创建研究小组',
+    'create_detail' => '填写研究小组详情',
+    'create_group_TH' => '研究小组名称（泰语）',
+    'create_group_EN' => '研究小组名称（英语）',
+    'description_research_TH' => '研究描述（泰语）',
+    'description_research_EN' => '研究描述（英语）',
+    'detail_research_group_TH' => '研究详情（泰语）',
+    'detail_research_group_EN' => '研究详情（英语）',
+    'image' => '图片',
+    'head_research_group' => '研究小组负责人',
+    'member_research' => '研究成员',
+
+    //Detial Research Group
+    'group_detail' => '研究小组详情',
+    'info_group_detail' => '研究小组详细信息',
+    'group_research_TH' => '研究小组名称（泰语）',
+    'group_research_EN' => '研究小组名称（英语）',
+
+    //Edit Research Group
+    'edit_group' => '编辑研究小组',
+    'fill_info' => '填写编辑研究小组详情',
+
+    //User page
+    'users' => '用户',
+    'new user' => '新用户',
+    'import' => '导入新用户',
+    'name' => '姓名',
+    'department' => '部门',
+    'email' => '电子邮件',
+    'role' => '角色',
+
+    //Add new user
+    'add_user' => '添加新用户',
+    'fill_user' => '填写编辑用户详情',
+    'f_name_TH' => '名字（泰语）',
+    'l_name_TH' => '姓氏（泰语）',
+    'f_name_EN' => '名字（英语）',
+    'l_name_EN' => '姓氏（英语）',
+    'full_name_TH' => '姓名（泰语）',
+    'full_name_EN' => '姓名（英语）',
+    'password' => '密码',
+    'conf_password' => '确认密码',
+    'program' => '项目',
+    'select_category' => '选择类别',
+    'select_sub' => '选择子类别',
+
+    //View user
+    'info_user' => '用户信息',
+    'info_detail' => '用户详情信息',
+    'academic_rank' => '学术职称',
+    'history' => '教育历史',
+
+    //Edit User
+    'edit_user' => '编辑用户',
+    'fill_info_edit' => '填写编辑用户详情',
+    'import_file' => '导入Excel, CSV文件',
+
+    //Create Role
+    'create_role' => '创建角色',
+    'name' => '名称',
+
+    //View role
+    'detail' => '详情',
+    'edit_role' => '编辑角色',
+
+    //Permission Page
+    'permission' => '权限',
+    'new_permission' => '新权限',
+    'create_permission' => '创建权限',
+    'edit_permission' => '编辑权限',
+
+    //Department Page
+    'department' => '部门',
+    'new_department' => '新部门',
+    'create_department' => '创建部门',
+    'department_TH' => '部门（泰语）',
+    'department_EN' => '部门（英语）',
+
+    //Mange Program
+    'course' => '课程',
+    'id' => 'ID',
+    'degree' => '学位',
+    'education' => '教育级别',
+    'name_th' => '名称（泰语）',
+    'name_en' => '名称（英语）',
+
+    //Expertise Page
+    'expertise' => '教授专长',
+    'teacher_name' => '教师名称',
+
+    //Image management
+    'img' => '图片管理',
+    'img_th' => '泰语图片',
+    'img_en' => '英语图片',
+    'img_zh' => '中文图片',
+    'save' => '保存',
+    'images' => '图片',
+
+    //Search
+    'search' => '搜索',
+
+    //Paper
+    'published_research' => '已发布的研究',
+    'call_paper' => '征稿',
+    'paper_name' => '论文名称',
+    'paper_type' => '论文类型',
+    'year_submit' => '年份',
+
+    //Add paper
+    'add_paper' => '添加出版日期',
+    'fill_paper' => '填写研究详情',
+    'paper_source' => '研究出版来源',
+    'abstract' => '摘要',
+    'keyword' => '关键词',
+    'space' => '***每个词之间请用分号（;）和空格分隔',
+    'document_type' => '文档类型',
+    'specify_type' => '请选择类型',
+    'journal' => '期刊',
+    'conference' => '会议录',
+    'books' => '书籍系列',
+    'book' => '书籍',
+    'document_subtype' => '文档子类型',
+    'specify_subtype' => '请选择子类型',
+    'article' => '文章',
+    'con_paper' => '会议论文',
+    'editorail' => '编辑',
+    'book_chapter' => '书籍章节',
+    'erratum' => '勘误',
+    'review' => '评论',
+    'publication' => '出版物',
+    'inter_jour' => '国际期刊',
+    'inter_book' => '国际书籍',
+    'inter_con' => '国际会议',
+    'nation_con' => '国内会议',
+    'nation_jour' => '国内期刊',
+    'nation_book' => '国内书籍',
+    'nation_magazine' => '国内杂志',
+    'book_chapter' => '书籍章节',
+    'journal_name' => '期刊名称',
+    'year' => '年份',
+    'volumn' => '卷号',
+    'issue_number' => '期号',
+    'citation' => '引用',
+    'page' => '页码',
+    'doi' => 'DOI',
+    'grants' => '资助',
+    'url' => '网址',
+    'authorIn_name' => '作者姓名（内部人员）',
+    'authorEx_name' => '作者姓名（外部人员）',
+    'selectUser' => '选择用户',
+    'first_author' => '第一作者',
+    'co-author' => '合著者',
+    'corresponding_author' => '通讯作者',
+
+    //Detail Journal
+    'detail_jour' => '期刊工作详情',
+    'jour' => '期刊详情',
+    'author' => '作者',
+    'journal_type' => '期刊类型',
+    'sourceTitle' => '源标题',
+
+    //Book Page
+    'book' => '书籍',
+    'book_name' => '书名',
+    'year' => '年份',
+    'published_source' => '出版来源',
+    'add_book' => '添加书籍',
+    'fill_book' => '填写书籍详情',
+    'book_detail' => '书籍详情',
+    'fill_detail_book' => '书籍信息详情',
+
+    //Patents Page
+    'other_academic' => '其他学术作品（专利、实用新型、版权）',
+    'academic_name' => '学术名称',
+    'academic_type' => '学术类型',
+    'date_re' => '注册日期',
+    're_number' => '注册号',
+    'patent_author' => '专利作者',
+    'place' => '出版地点',
+
+    //Add academic
+    'add_academic' => '添加其他领域的学术作品',
+    'fill_detail' => '填写其他学术作品（专利、实用新型、版权）的详细信息',
+    'name_ac' => '名称（专利、版权）',
+    'type' => '类型',
+    'select_type' => '请选择类型',
+    'invent' => '专利（发明）',
+    'product' => '专利（产品设计）',
+    'patent' => '专利',
+    'copyright' => '版权',
+    'literary' => '版权（文学）',
+    'musical' => '版权（音乐作品）',
+    'flim' => '版权（电影）',
+    'art' => '版权（艺术）',
+    'boardcast' => '版权（广播）',
+    'materials' => '版权（视听材料）',
+    'any_other_work' => '版权（文献/科学/艺术领域的其他作品）',
+    'sound' => '版权（音响记录）',
+    'trade' => '商业秘密',
+    'trade_mark' => '商标',
+    'copy_date' => '版权日期',
+    'professor' => '领域教授',
+    'external_person' => '外部人员',
+    'ex_fname' => '名',
+    'ex_lname' => '姓',
+
+     //Academic Detail
+    'detail_ac' => '其他学术作品（专利、实用新型、版权）的详细信息',
+    'info_ac' => '其他学术作品（专利、实用新型、版权）的详细信息',
+
 ];
