@@ -1,6 +1,7 @@
 <?php
 return [
     'Home' => '首页',
+    'Home' => '首页',
     'Researchers' => '研究人员',
     'ResearchProj' => '研究项目',
     'ResearchGroup' => '研究小组',
@@ -8,6 +9,7 @@ return [
     'details' => '更多详情',
     'expertise' => '研究兴趣',
     'publications' => '出版物（过去五年）',
+    'publications' => '近5年内的出版物',
     'education' => '教育',
     'publications2' => '出版物',
 
@@ -22,10 +24,11 @@ return [
     'language_zh' => '中文',
     'option' => '选项',
     'manage_fund' => '管理资金',
+    'manage_fund' => '资金管理',
     'research_project' => '研究项目',
     'research_group' => '研究小组',
     'manage_publications' => '管理出版物',
-    'public_research' => '已发布的研究',
+    'public_research' => '已发布研究',
     'book' => '书籍',
     'other_research' => '其他研究',
     'admin' => '管理员',
@@ -47,6 +50,8 @@ return [
     'education' => '教育',
     'profile_settings' => '个人资料设置',
     'name_title' => '姓名标题',
+    'profile_settings' => '个人设置',
+    'name_title' => '称谓',
     'email' => '电子邮件',
     'update' => '更新',
     'password_settings' => '密码设置',
@@ -127,4 +132,70 @@ return [
     //Edit Research
     'research_edit' => '研究编辑',
     'fill_info_edit' => '填写编辑研究项目信息',
+    //Researcher page
+    'researchers_research' => '研究人员',
+    'search_research' => '搜索',
+    'researchinterests_research' => '研究兴趣',
+
+    //Researcher Detail page
+    'summary_researcherdetail' => '概述',
+    'book_researcherdetail' => '书籍',
+    'other_academic_researcherdetail' => '其他学术作品',
+    'No._researcherdetail' => '编号',
+    'Year_researcherdetail' => '年份',
+    'Author_researcherdetail' => '作者',
+    'PaperName_researcherdetail' => '论文题目',
+    'Page_researcherdetail' => '页码',
+    'Source_researcherdetail' => '来源',
+    'Doi_researcherdetail' => 'DOI',
+    'Ciations_researcherdetail' => '引用',
+    'JournalsAndTransactions_researcherdetail' => '期刊/汇刊',
+    'DocumentType_researcherdetail' => '文件类型',
+    'Number_researcherdetail' => '数量',
+    'Name_researcherdetail' => '名称',
+    'PlaceofPublication_researcherdetail' => '出版地点',
+    'type_researcherdetail' => '类型',
+    'RegistrationNumber_researcherdetail' => '注册号',
+    'RegistrationDate_researcherdetail' => '注册日期',
+    'Show' => '显示',
+    'Entries' => '记录',
+    'Info' => '显示 _START_ 到 _END_ 条，共 _TOTAL_ 条',
+    'InfoEmpty' => '无记录可显示',
+    'First' => '首页',
+    'Previous' => '上一页',
+    'Next' => '下一页',
+    'Last' => '末页',
+    'Search_researcherdetail' => '搜索',
+
+    //Research Project page
+    'AcademicAndResearch_researchproject' => '学术服务项目/研究项目',
+    'search_researchproject' => '搜索：',
+    'No._researchproject' => '编号',
+    'Year_researchproject' => '年份',
+    'ProjectName_researchproject' => '项目名称',
+    'Details_researchproject' => '详情',
+    'ProjectLeader_researchproject' => '项目负责人',
+    'Status_researchproject' => '状态',
+    'ProjectDuration_researchproject' => '项目周期',
+    'ResearchFundType_researchproject' => '研究基金类型',
+    'FundingAgency_researchproject' => '资助机构',
+    'ResponsibleAgency_researchproject' => '责任机构',
+    'AllocatedBudget_researchproject' => '拨款预算',
+    'Submitted_researchproject' => '已提交',
+    'InProgress_researchproject' => '进行中',
+    'ProjectClosed_researchproject' => '项目结束',
+    'Baht_researchproject' => '泰铢',
+
+    //Research Group page
+    'ResearchGroup_researchgroup' => '研究小组',
+    'LaboratorySupervisor_researchgroup' => '实验室主管',
+
+    //Research Group Detail page
+    'LaboratorySupervisor_researchgroupdetail' => '实验室主管',
+    'Student_researchgroupdetail' => '学生',
+
+    //Report page
+    'total_article_5year_report' => '过去5年文章总数统计',
+    'total_article_cumulative_report' => '累计文章总数统计',
+    'sorce_report' => '来源',
 ];
