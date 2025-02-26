@@ -28,27 +28,27 @@
                     </div>
                     <h4 class="text-center p-2">{{ Auth::user()->fname }} {{ Auth::user()->lname }}</h4>
                     <input type="file" name="admin_image" id="admin_image" style="opacity: 0;height:1px;display:none">
-                    <a href="javascript:void(0)" class="btn btn-primary btn-block btn-sm" id="change_picture_btn"><b>Change picture</b></a>
+                    <a href="javascript:void(0)" class="btn btn-primary btn-block btn-sm" id="change_picture_btn"><b>{{ __('message.change_picture') }}</b></a>
                 </div>
 
             </div>
             <div class="nav flex-column nav-pills-1" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                 <a class="nav-link " id="account-tab" data-toggle="pill" href="#account" role="tab" aria-controls="account" aria-selected="true">
                     <i class="mdi mdi-account-card-details"></i>
-                    <span class="menu-title"> Account </span>
+                    <span class="menu-title">{{ __('message.account') }}</span>
                 </a>
                 <a class="nav-link " id="password-tab" data-toggle="pill" href="#password" role="tab" aria-controls="password" aria-selected="false">
                     <i class="mdi mdi-key-variant"></i>
-                    <span class="menu-title"> Password </span>
+                    <span class="menu-title">{{ __('message.password') }}</span>
                 </a>
                 @if(Auth::user()->hasRole('teacher'))
                 <a class="nav-link {{old('tab') == 'expertise' ? ' active' : null}}" id="expertise-tab" data-toggle="pill" href="#expertise" role="tab" aria-controls="expertise" aria-selected="false">
                     <i class="mdi mdi-account-star"></i>
-                    <span class="menu-title"> Expertise </span>
+                    <span class="menu-title">{{ __('message.expertise') }}</span>
                 </a>
                 <a class="nav-link" id="education-tab" data-toggle="pill" href="#education" role="tab" aria-controls="education" aria-selected="false">
                     <i class="mdi mdi-school"></i>
-                    <span class="menu-title"> Education </span>
+                    <span class="menu-title">{{ __('message.education') }}</span>
                 </a>
                 @endif
             </div>
@@ -56,12 +56,12 @@
         <div class="tab-content p-4 p-md-5" id="v-pills-tabContent">
             <!-- <div class="tab-pane fade show active" id="account" role="tabpanel" aria-labelledby="account-tab"> -->
             <div class="tab-pane " id="account" role="tabpanel" aria-labelledby="account-tab">
-                <h3 class="mb-4">Profile Settings</h3>
+                <h3 class="mb-4">{{ __('message.profile_settings') }}</h3>
                 <form class="form-horizontal" method="POST" action="{{ route('adminUpdateInfo') }}" id="AdminInfoForm">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group col-sm-4">
-                                <label>Name title</label>
+                                <label>{{ __('message.name_title') }}</label>
                                 <select class="custom-select my-select " name="title_name_en">
                                     <option value="Mr." {{ Auth::user()->title_name_en == 'Mr.' ? 'selected' : '' }}>Mr.</option>
                                     <option value="Miss" {{ Auth::user()->title_name_en == 'Miss' ? 'selected' : '' }}>Miss</option>
@@ -99,7 +99,7 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>Email</label>
+                                <label>{{ __('message.email') }}</label>
                                 <input type="text" class="form-control" id="inputEmail" placeholder="Email" value="{{ Auth::user()->email }}" name="email">
                                 <span class="text-danger error-text email_error"></span>
                             </div>
@@ -109,7 +109,7 @@
                         @if(Auth::user()->hasRole('teacher'))
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>Academic Ranks</label>
+                                <label>{{ __('message.academic_ranks') }}</label>
                                 <select id="category" class="custom-select my-select" name="academic_ranks_en">
                                     <option value="Professor" {{ Auth::user()->academic_ranks_en == 'Professor' ? 'selected' : '' }}>Professor</option>
                                     <option value="Associate Professor" {{ Auth::user()->academic_ranks_en == 'Associate Professor' ? 'selected' : '' }}>Associate Professor</option>
@@ -148,7 +148,7 @@
                         @endif
                     </div>
                     <div>
-                        <button type="submit" class="btn btn-primary">Update</button>
+                        <button type="submit" class="btn btn-primary">{{ __('message.update') }}</button>
                     </div>
                 </form>
             </div>
@@ -156,11 +156,11 @@
 
             <div class="tab-pane fade " id="password" role="tabpanel" aria-labelledby="password-tab">
                 <form class="form-horizontal" action="{{ route('adminChangePassword') }}" method="POST" id="changePasswordAdminForm">
-                    <h3 class="mb-4">Password Settings</h3>
+                    <h3 class="mb-4">{{ __('message.password_settings') }}</h3>
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>Old password</label>
+                                <label>{{ __('message.old_password') }}</label>
                                 <input type="password" class="form-control" id="inputpassword" placeholder="Enter current password" name="oldpassword">
                                 <span class="text-danger error-text oldpassword_error"></span>
                             </div>
@@ -169,21 +169,21 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>New password</label>
+                                <label>{{ __('message.new_password') }}</label>
                                 <input type="password" class="form-control" id="newpassword" placeholder="Enter new password" name="newpassword">
                                 <span class="text-danger error-text newpassword_error"></span>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>Confirm new password</label>
+                                <label>{{ __('message.confirm_newpassword') }}</label>
                                 <input type="password" class="form-control" id="cnewpassword" placeholder="ReEnter new password" name="cnewpassword">
                                 <span class="text-danger error-text cnewpassword_error"></span>
                             </div>
                         </div>
                     </div>
                     <div>
-                        <button class="btn btn-primary">Update!!</button>
+                        <button class="btn btn-primary">{{ __('message.update') }}</button>
                         <!-- <button class="btn btn-light">Cancel</button> -->
                     </div>
 

@@ -15,94 +15,93 @@
     @endif
     <div class="card" style="padding: 16px;">
         <div class="card-body">
-            <h4 class="card-title">โครงการวิจัย</h4>
-            <a class="btn btn-primary btn-menu btn-icon-text btn-sm mb-3" href="{{ route('researchProjects.create') }}"><i class="mdi mdi-plus btn-icon-prepend"></i> ADD</a>
+            <h4 class="card-title">{{ __('message.research_project')}}</h4>
+            <a class="btn btn-primary btn-menu btn-icon-text btn-sm mb-3" href="{{ route('researchProjects.create') }}"><i class="mdi mdi-plus btn-icon-prepend"></i> {{ __('message.add')}}</a>
             <!-- <div class="table-responsive"> -->
-                <table id="example1" class="table table-striped">
+            <table id="example1" class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>{{ __('message.no')}}</th>
+                        <th>{{ __('message.year')}}</th>
+                        <th>{{ __('message.projectname')}}</th>
+                        <th>{{ __('message.head')}}</th>
+                        <th>{{ __('message.member')}}</th>
+                        <th width="auto">{{ __('message.action')}}</th>
+                    </tr>
                     <thead>
+                    <tbody>
+                        @foreach ($researchProjects as $i=>$researchProject)
                         <tr>
-                            <th>No.</th>
-                            <th>Year</th>
-                            <th>Project name</th>
-                            <th>Head</th>
-                            <th>Member</th>
-                            <th width="auto">Action</th>
-                        </tr>
-                        <thead>
-                        <tbody>
-                            @foreach ($researchProjects as $i=>$researchProject)
-                            <tr>
-                                <td>{{ $i+1 }}</td>
-                                <td>{{ $researchProject->project_year }}</td>
-                                {{-- <td>{{ $researchProject->project_name }}</td> --}}
-                                <td>{{ Str::limit($researchProject->project_name,70) }}</td>
-                                <td>
-                                    @foreach($researchProject->user as $user)
-                                    @if ( $user->pivot->role == 1)
-                                    {{ $user->fname_en}}
-                                    @endif
+                            <td>{{ $i+1 }}</td>
+                            <td>{{ $researchProject->project_year }}</td>
+                            {{-- <td>{{ $researchProject->project_name }}</td> --}}
+                            <td>{{ Str::limit($researchProject->project_name,70) }}</td>
+                            <td>
+                                @foreach($researchProject->user as $user)
+                                @if ($user->pivot->role == 1)
+                                {{ App::getLocale() == 'th' ? $user->fname_th : $user->fname_en }}
+                                @endif
+                                @endforeach
+                            </td>
 
-                                    @endforeach
-                                </td>
-                                <td>
-                                    @foreach($researchProject->user as $user)
-                                    @if ( $user->pivot->role == 2)
-                                    {{ $user->fname_en}}
-                                    @endif
-
-                                    @endforeach
-                                </td>
-                                <td>
-                                    <form action="{{ route('researchProjects.destroy',$researchProject->id) }}"method="POST">
+                            <td>
+                                @foreach($researchProject->user as $user)
+                                @if ($user->pivot->role == 2)
+                                {{ App::getLocale() == 'th' ? $user->fname_th : $user->fname_en }}
+                                @endif
+                                @endforeach
+                            </td>
+                            <td>
+                                <form action="{{ route('researchProjects.destroy',$researchProject->id) }}" method="POST">
                                     <li class="list-inline-item">
-                                    <a class="btn btn-outline-primary btn-sm" type="button" data-toggle="tooltip"
+                                        <a class="btn btn-outline-primary btn-sm" type="button" data-toggle="tooltip"
                                             data-placement="top" title="view"
                                             href="{{ route('researchProjects.show',$researchProject->id) }}"><i
                                                 class="mdi mdi-eye"></i></a>
                                     </li>
-                                        <!-- @if(Auth::user()->can('update',$researchProject))
+                                    <!-- @if(Auth::user()->can('update',$researchProject))
                                 <a class="btn btn-primary"
                                     href="{{ route('researchProjects.edit',$researchProject->id) }}">Edit</a>
                                 @endif -->
-                               
-                                        @if(Auth::user()->can('update',$researchProject)) 
-                                        <li class="list-inline-item">
+
+                                    @if(Auth::user()->can('update',$researchProject))
+                                    <li class="list-inline-item">
                                         <a class="btn btn-outline-success btn-sm" type="button" data-toggle="tooltip"
                                             data-placement="top" title="Edit"
                                             href="{{ route('researchProjects.edit',$researchProject->id) }}"><i
                                                 class="mdi mdi-pencil"></i></a>
-                                             </li>
-                                        @endif
-                               
-                                        @if(Auth::user()->can('delete',$researchProject))
-                                        @csrf
-                                        @method('DELETE')
+                                    </li>
+                                    @endif
 
-                                        <li class="list-inline-item">
-                                            <button class="btn btn-outline-danger btn-sm show_confirm" type="submit"
-                                                data-toggle="tooltip" data-placement="top" title="Delete"><i
-                                                    class="mdi mdi-delete"></i></button>
-                                        </li>
-                                        @endif
-                                    </form>
-                                </td>
-                            </tr>
-                            @endforeach
-                    <tbody>
-                        
-                </table>
+                                    @if(Auth::user()->can('delete',$researchProject))
+                                    @csrf
+                                    @method('DELETE')
+
+                                    <li class="list-inline-item">
+                                        <button class="btn btn-outline-danger btn-sm show_confirm" type="submit"
+                                            data-toggle="tooltip" data-placement="top" title="Delete"><i
+                                                class="mdi mdi-delete"></i></button>
+                                    </li>
+                                    @endif
+                                </form>
+                            </td>
+                        </tr>
+                        @endforeach
+                <tbody>
+
+            </table>
             <!-- </div> -->
             <br>
-            
+
         </div>
     </div>
-    
+
 
 </div>
 <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-<script src = "http://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js" defer ></script>
-<script src = "https://cdn.datatables.net/1.12.0/js/dataTables.bootstrap4.min.js" defer ></script>
-<script src = "https://cdn.datatables.net/fixedheader/3.2.3/js/dataTables.fixedHeader.min.js" defer ></script>
+<script src="http://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js" defer></script>
+<script src="https://cdn.datatables.net/1.12.0/js/dataTables.bootstrap4.min.js" defer></script>
+<script src="https://cdn.datatables.net/fixedheader/3.2.3/js/dataTables.fixedHeader.min.js" defer></script>
 <script>
     $(document).ready(function() {
         var table1 = $('#example1').DataTable({

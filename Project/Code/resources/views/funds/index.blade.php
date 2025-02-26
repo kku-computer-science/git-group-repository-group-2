@@ -14,30 +14,34 @@
     @endif
     <div class="card" style="padding: 16px;">
         <div class="card-body">
-            <h4 class="card-title">ทุนวิจัย</h4>
-            <a class="btn btn-primary btn-menu btn-icon-text btn-sm mb-3" href="{{ route('funds.create') }}"><i class="mdi mdi-plus btn-icon-prepend"></i> ADD</a>
+            <h4 class="card-title">{{ __( 'message.research_grants' )}}</h4>
+            <a class="btn btn-primary btn-menu btn-icon-text btn-sm mb-3" href="{{ route('funds.create') }}"><i class="mdi mdi-plus btn-icon-prepend"></i> {{ __( 'message.add' )}}</a>
             <div class="table-responsive">
                 <table id="example1" class="table table-striped">
                     <thead>
                         <tr>
-                            <th>No.</th>
-                            <th>Fund name</th>
-                            <th>Fund Type</th>
-                            <th>Fund Level</th>
-                            <!-- <th>Create by</th> -->
-                            <th>Action</th>
+                            <th>{{ __('message.no') }}</th>
+                            <th>{{ __('message.fund_name') }}</th>
+                            <th>{{ __('message.fund_type') }}</th>
+                            <th>{{ __('message.fund_level') }}</th>
+                            <th>{{ __('message.action') }}</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($funds as $i=>$fund)
+                        @foreach ($funds as $i => $fund)
                         <tr>
-
                             <td>{{ $i+1 }}</td>
-                            <td>{{ Str::limit($fund->fund_name,80) }}</td>
-                            <td>{{ $fund->fund_type }}</td>
+                            <td>{{ Str::limit($fund->fund_name, 80) }}</td>
+                            <td>
+                                @if($fund->fund_type == 'ทุนภายใน')
+                                {{ __('message.internal_capital') }}
+                                @elseif($fund->fund_type == 'ทุนภายนอก')
+                                {{ __('message.external_capital') }}
+                                @else
+                                {{ __('message.not_specified') }}
+                                @endif
+                            </td>
                             <td>{{ $fund->fund_level }}</td>
-                            <!-- <td>{{ $fund->user->fname_en }} {{ $fund->user->lname_en }}</td> -->
-
                             <td>
                                 @csrf
                                 <form action="{{ route('funds.destroy',$fund->id) }}" method="POST">
@@ -58,11 +62,9 @@
                                         <input name="_method" type="hidden" value="DELETE">
                                         <button class="btn btn-outline-danger btn-sm show_confirm" type="submit" data-toggle="tooltip" title="Delete"><i class="mdi mdi-delete"></i></button>
                                     </li>
-
-
                                     @endcan
                                 </form>
-                            </td>
+                            </td> <!-- ปุ่ม Action เช่น Edit / Delete -->
                         </tr>
                         @endforeach
                     </tbody>

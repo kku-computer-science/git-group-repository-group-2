@@ -225,29 +225,153 @@ UNLOCK TABLES;
 -- Table structure for table `expertises`
 --
 
-DROP TABLE IF EXISTS `expertises`;
+DROP TABLE IF EXISTS expertises;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `expertises` (
-  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-  `expert_name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `user_id` bigint(20) unsigned DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `expertises_user_id_foreign` (`user_id`),
-  CONSTRAINT `expertises_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE
+CREATE TABLE expertises (
+  id bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  expert_name_en varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  expert_name_th varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  expert_name_zh varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  user_id bigint(20) unsigned DEFAULT NULL,
+  created_at timestamp NULL DEFAULT NULL,
+  updated_at timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (id),
+  KEY expertises_user_id_foreign (user_id),
+  CONSTRAINT expertises_user_id_foreign FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=225 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `expertises`
---
-
-LOCK TABLES `expertises` WRITE;
-/*!40000 ALTER TABLE `expertises` DISABLE KEYS */;
-INSERT INTO `expertises` VALUES (2,'Big Data Analytics',7,'2022-02-26 04:52:59','2022-02-26 04:52:59'),(3,'Computer Vision',7,'2022-02-26 04:53:07','2022-02-26 04:53:07'),(4,'Cellular Automata',7,'2022-02-26 04:53:15','2022-02-26 04:53:15'),(100,'Natural Language and Speech Processing',16,NULL,NULL),(101,'Machine Learning and Intelligent Systems',16,NULL,NULL),(102,'Database and Information Integration Systems',16,NULL,NULL),(103,'Data science and Artificial Intelligence',16,NULL,NULL),(104,'Computational Intelligence',8,NULL,NULL),(105,'Machine Learning and Intelligent Systems',8,NULL,NULL),(106,'Nature-Inspired Optimization Algorithm',8,NULL,NULL),(107,'Data science and Artificial Intelligence',8,NULL,NULL),(108,'Artificial Neural Network',8,NULL,NULL),(109,'Machine Learning and Intelligent Systems',6,NULL,NULL),(110,'Soft computing',6,NULL,NULL),(111,'Object-Oriented Programming Languages',6,NULL,NULL),(112,'Software Engineering',6,NULL,NULL),(113,'Computational Intelligence',9,NULL,NULL),(114,'Machine Learning and Intelligent Systems',9,NULL,NULL),(115,'Nature-Inspired Optimization Algorithm',9,NULL,NULL),(116,'Data science and Artificial Intelligence',9,NULL,NULL),(117,'Ubiquitous Learning, Blended Learning',22,NULL,NULL),(118,'Bioinformatics',22,NULL,NULL),(119,'User Experience Design',22,NULL,NULL),(120,'Mobile Computing',21,NULL,NULL),(121,'Cloud computing',21,NULL,NULL),(122,'Internet of Things and Smart Technology',21,NULL,NULL),(123,'Wireless Sensor Networks',21,NULL,NULL),(124,'Wireless and Cellular Networks',21,NULL,NULL),(125,'Computer and Network Security',21,NULL,NULL),(126,'Network, Protocol, Optimization, and Intelligent Systems',21,NULL,NULL),(127,'Routing Protocols and Internetworking',13,NULL,NULL),(128,'Mobile Ad Hoc Networks',13,NULL,NULL),(129,'Internet of Things and Smart Technologies',13,NULL,NULL),(130,'Evolutionary Algorithms',13,NULL,NULL),(131,'Software Engineering',10,NULL,NULL),(132,'Software Process ',10,NULL,NULL),(133,'Code Smells and Software Quality',10,NULL,NULL),(134,'Secure Software Engineering',10,NULL,NULL),(135,'Computer Network Security',10,NULL,NULL),(136,'Mobile Agent and Multi-Agent Systems',10,NULL,NULL),(137,'Information Extraction and Integration',25,NULL,NULL),(138,'Internet and Web Information Systems',25,NULL,NULL),(139,'Object Oriented Programming',25,NULL,NULL),(140,'Temporal Causality Analysis',29,NULL,NULL),(141,'Information Theory',29,NULL,NULL),(142,'Social Network Analysis',29,NULL,NULL),(143,'Machine Learning',29,NULL,NULL),(144,'Artificial Intelligence',29,NULL,NULL),(145,'Complex Adaptive System',29,NULL,NULL),(146,'Computer Vision',33,NULL,NULL),(147,'Deep Learning',33,NULL,NULL),(148,'Machine learning',33,NULL,NULL),(149,'Artificial Intelligence',33,NULL,NULL),(150,'Data science',33,NULL,NULL),(151,'Big Data Analytics',33,NULL,NULL),(152,'Semantic Web and Ontology Engineering',2,NULL,NULL),(153,'Ontology-based Data Integration',2,NULL,NULL),(154,'Semantic Sentiment Analysis',2,NULL,NULL),(155,'Mobile Computing',3,NULL,NULL),(156,'Internet of Things',3,NULL,NULL),(157,'Wireless Sensor Networks and Ad Hoc Networks',3,NULL,NULL),(158,'Computer Networks and Internet',3,NULL,NULL),(159,'Wireless and Cellular Networks',3,NULL,NULL),(160,'Parallel/Distributed Systems and Cloud Computing',3,NULL,NULL),(161,'Computer, System, Management, Modelling, and Security',3,NULL,NULL),(162,'Intelligent Systems',3,NULL,NULL),(163,'Smart X: Smart Farm, Home, Health-care, Car, Building, Device, etc.',3,NULL,NULL),(164,'Semantic Web',4,NULL,NULL),(165,'Information Integration',4,NULL,NULL),(166,'Logistics and Supply Chain',4,NULL,NULL),(167,'Data Mining',18,NULL,NULL),(168,'Machine Learning',18,NULL,NULL),(169,'Ensemble Learning Model',18,NULL,NULL),(170,'Applied Software Testing in Optimization Algorithms',18,NULL,NULL),(171,'Metaheuristic algorithms',18,NULL,NULL),(172,'Business Intelligence and Analytics ',14,NULL,NULL),(173,'Enterprise Systems, ERP systems',14,NULL,NULL),(174,'IT Strategy, IT Strategic Planning, IT Management',14,NULL,NULL),(175,'Enterprise Process Modeling',14,NULL,NULL),(176,'Data mining',14,NULL,NULL),(177,'Image Processing',17,NULL,NULL),(178,'Search Protocol',17,NULL,NULL),(179,'Ontology ',27,NULL,NULL),(180,'Database',27,NULL,NULL),(181,'Wireless Mobile Communications (OFDM Systems)  ',20,NULL,NULL),(182,'Wireless Sensor Networks',20,NULL,NULL),(183,'Digital Signal Processing (Image, Speech, Sound, Ultrasound)',20,NULL,NULL),(184,'3D Stereoscopic',20,NULL,NULL),(185,'Bioinformatics',20,NULL,NULL),(186,'Embedded and Intelligent Systems (iHOME, iFARM)',20,NULL,NULL),(187,'Intrusion Detection and Prevention Systems',20,NULL,NULL),(188,'Speech Analysis and Synthesis',20,NULL,NULL),(189,'Robotics',20,NULL,NULL),(190,'Cloud Computing',24,NULL,NULL),(191,'Wireless Network',24,NULL,NULL),(192,'Network Simulation',24,NULL,NULL),(193,'System Engineer',24,NULL,NULL),(194,'Text Mining',26,NULL,NULL),(195,'Opinion Mining',26,NULL,NULL),(196,'Learning Engineering',26,NULL,NULL),(197,'Formal Method',32,NULL,NULL),(198,'AI for Formal Verification',32,NULL,NULL),(199,'Software Engineering',32,NULL,NULL),(200,'Database Programming',32,NULL,NULL),(201,'Hydrologic modeling with GIS',15,NULL,NULL),(202,'Internet GIS , Health GIS',15,NULL,NULL),(203,'Remote Sensing and GIS in Geology',31,NULL,NULL),(204,'Hydrology',31,NULL,NULL),(205,'Landuse/Landcover and Natural Hazard',31,NULL,NULL),(206,'Urban Remote Sensing',5,NULL,NULL),(207,'Application in Remote Sensing',11,NULL,NULL),(208,'Remote Sensing for Vegatation study',11,NULL,NULL),(209,'Remote Sensing',23,NULL,NULL),(210,'Spatial analysis',23,NULL,NULL),(211,'Remote Sensing',30,NULL,NULL),(212,'Spatial database',30,NULL,NULL),(213,'Web Mapping',30,NULL,NULL),(214,'UAV',30,NULL,NULL),(215,'Satellite Image classification',30,NULL,NULL),(216,'Human Computer Interaction',34,NULL,NULL),(217,'Artificial Intelligence in Healthcare',34,NULL,NULL),(218,'Data Mining and Machine Learning for Health Informatics',34,NULL,NULL),(219,'Persuasive Technology ',34,NULL,NULL),(220,'Social Technologies',34,NULL,NULL),(221,'E-Commerce',34,NULL,NULL),(224,'fdfdf',7,'2022-05-18 14:10:19','2022-05-18 14:10:19');
-/*!40000 ALTER TABLE `expertises` ENABLE KEYS */;
+--LOCK TABLES expertises WRITE;
+/*!40000 ALTER TABLE expertises DISABLE KEYS */;
+INSERT INTO expertises (id, expert_name_en, expert_name_th, expert_name_zh, user_id, created_at, updated_at) VALUES 
+(2, 'Big Data Analytics', 'การวิเคราะห์ข้อมูลขนาดใหญ่', '大数据分析', 7, '2022-02-26 04:52:59', '2022-02-26 04:52:59'),
+(3, 'Computer Vision', 'การมองเห็นด้วยคอมพิวเตอร์', '计算机视觉', 7, '2022-02-26 04:53:07', '2022-02-26 04:53:07'),
+(4, 'Cellular Automata', 'เซลลูลาร์ออโตมาตา', '元胞自动机', 7, '2022-02-26 04:53:15', '2022-02-26 04:53:15'),
+(100, 'Natural Language and Speech Processing', 'การประมวลผลภาษาธรรมชาติและเสียงพูด', '自然语言与语音处理', 16, NULL, NULL),
+(101, 'Machine Learning and Intelligent Systems', 'การเรียนรู้ของเครื่องและระบบอัจฉริยะ', '机器学习与智能系统', 16, NULL, NULL),
+(102, 'Database and Information Integration Systems', 'ระบบฐานข้อมูลและการบูรณาการข้อมูล', '数据库与信息集成系统', 16, NULL, NULL),
+(103, 'Data science and Artificial Intelligence', 'วิทยาศาสตร์ข้อมูลและปัญญาประดิษฐ์', '数据科学与人工智能', 16, NULL, NULL),
+(104, 'Computational Intelligence', 'สติปัญญาเชิงคำนวณ', '计算智能', 8, NULL, NULL),
+(105, 'Machine Learning and Intelligent Systems', 'การเรียนรู้ของเครื่องและระบบอัจฉริยะ', '机器学习与智能系统', 8, NULL, NULL),
+(106, 'Nature-Inspired Optimization Algorithm', 'อัลกอริทึมเพิ่มประสิทธิภาพที่ได้แรงบันดาลใจจากธรรมชาติ', '自然启发式优化算法', 8, NULL, NULL),
+(107, 'Data science and Artificial Intelligence', 'วิทยาศาสตร์ข้อมูลและปัญญาประดิษฐ์', '数据科学与人工智能', 8, NULL, NULL),
+(108, 'Artificial Neural Network', 'เครือข่ายประสาทเทียม', '人工神经网络', 8, NULL, NULL),
+(109, 'Machine Learning and Intelligent Systems', 'การเรียนรู้ของเครื่องและระบบอัจฉริยะ', '机器学习与智能系统', 6, NULL, NULL),
+(110, 'Soft computing', 'การคำนวณแบบนุ่ม', '软计算', 6, NULL, NULL),
+(111, 'Object-Oriented Programming Languages', 'ภาษาโปรแกรมเชิงวัตถุ', '面向对象编程语言', 6, NULL, NULL),
+(112, 'Software Engineering', 'วิศวกรรมซอฟต์แวร์', '软件工程', 6, NULL, NULL),
+(113, 'Computational Intelligence', 'สติปัญญาเชิงคำนวณ', '计算智能', 9, NULL, NULL),
+(114, 'Machine Learning and Intelligent Systems', 'การเรียนรู้ของเครื่องและระบบอัจฉริยะ', '机器学习与智能系统', 9, NULL, NULL),
+(115, 'Nature-Inspired Optimization Algorithm', 'อัลกอริทึมเพิ่มประสิทธิภาพที่ได้แรงบันดาลใจจากธรรมชาติ', '自然启发式优化算法', 9, NULL, NULL),
+(116, 'Data science and Artificial Intelligence', 'วิทยาศาสตร์ข้อมูลและปัญญาประดิษฐ์', '数据科学与人工智能', 9, NULL, NULL),
+(117, 'Ubiquitous Learning, Blended Learning', 'การเรียนรู้ที่เข้าถึงได้ทุกที่, การเรียนรู้แบบผสมผสาน', '普适学习，混合学习', 22, NULL, NULL),
+(118, 'Bioinformatics', 'ชีวสารสนเทศ', '生物信息学', 22, NULL, NULL),
+(119, 'User Experience Design', 'การออกแบบประสบการณ์ผู้ใช้', '用户体验设计', 22, NULL, NULL),
+(120, 'Mobile Computing', 'การคำนวณแบบเคลื่อนที่', '移动计算', 21, NULL, NULL),
+(121, 'Cloud computing', 'การประมวลผลบนคลาวด์', '云计算', 21, NULL, NULL),
+(122, 'Internet of Things and Smart Technology', 'อินเทอร์เน็ตของสิ่งของและเทคโนโลยีอัจฉริยะ', '物联网与智能技术', 21, NULL, NULL),
+(123, 'Wireless Sensor Networks', 'เครือข่ายเซ็นเซอร์ไร้สาย', '无线传感器网络', 21, NULL, NULL),
+(124, 'Wireless and Cellular Networks', 'เครือข่ายไร้สายและเครือข่ายเซลลูลาร์', '无线和蜂窝网络', 21, NULL, NULL),
+(125, 'Computer and Network Security', 'ความปลอดภัยในคอมพิวเตอร์และเครือข่าย', '计算机与网络安全', 21, NULL, NULL),
+(126, 'Network, Protocol, Optimization, and Intelligent Systems', 'เครือข่าย, โปรโตคอล, การเพิ่มประสิทธิภาพ และระบบอัจฉริยะ', '网络、协议、优化与智能系统', 21, NULL, NULL),
+(127, 'Routing Protocols and Internetworking', 'โปรโตคอลการกำหนดเส้นทางและการเชื่อมต่อเครือข่าย', '路由协议与网络互联', 13, NULL, NULL),
+(128, 'Mobile Ad Hoc Networks', 'เครือข่ายอแดฮ็อคแบบเคลื่อนที่', '移动自组网', 13, NULL, NULL),
+(129, 'Internet of Things and Smart Technologies', 'อินเทอร์เน็ตของสิ่งของและเทคโนโลยีอัจฉริยะ', '物联网与智能技术', 13, NULL, NULL),
+(130, 'Evolutionary Algorithms', 'อัลกอริทึมวิวัฒนาการ', '进化算法', 13, NULL, NULL),
+(131, 'Software Engineering', 'วิศวกรรมซอฟต์แวร์', '软件工程', 10, NULL, NULL),
+(132, 'Software Process', 'กระบวนการพัฒนาซอฟต์แวร์', '软件过程', 10, NULL, NULL),
+(133, 'Code Smells and Software Quality', 'กลิ่นของโค้ดและคุณภาพซอฟต์แวร์', '代码异味与软件质量', 10, NULL, NULL),
+(134, 'Secure Software Engineering', 'วิศวกรรมซอฟต์แวร์ที่ปลอดภัย', '安全的软件工程', 10, NULL, NULL),
+(135, 'Computer Network Security', 'ความปลอดภัยของเครือข่ายคอมพิวเตอร์', '计算机网络安全', 10, NULL, NULL),
+(136, 'Mobile Agent and Multi-Agent Systems', 'ระบบตัวแทนเคลื่อนที่และระบบตัวแทนหลายตัว', '移动代理与多代理系统', 10, NULL, NULL),
+(137, 'Information Extraction and Integration', 'การสกัดและบูรณาการข้อมูล', '信息提取与集成', 25, NULL, NULL),
+(138, 'Internet and Web Information Systems', 'ระบบข้อมูลของอินเทอร์เน็ตและเว็บ', '互联网与网页信息系统', 25, NULL, NULL),
+(139, 'Object Oriented Programming', 'การเขียนโปรแกรมเชิงวัตถุ', '面向对象编程', 25, NULL, NULL),
+(140, 'Temporal Causality Analysis', 'การวิเคราะห์เหตุและผลตามเวลา', '时序因果分析', 29, NULL, NULL),
+(141, 'Information Theory', 'ทฤษฎีข้อมูล', '信息论', 29, NULL, NULL),
+(142, 'Social Network Analysis', 'การวิเคราะห์เครือข่ายสังคม', '社交网络分析', 29, NULL, NULL),
+(143, 'Machine Learning', 'การเรียนรู้ของเครื่อง', '机器学习', 29, NULL, NULL),
+(144, 'Artificial Intelligence', 'ปัญญาประดิษฐ์', '人工智能', 29, NULL, NULL),
+(145, 'Complex Adaptive System', 'ระบบที่ปรับตัวซับซ้อน', '复杂自适应系统', 29, NULL, NULL),
+(146, 'Computer Vision', 'การมองเห็นด้วยคอมพิวเตอร์', '计算机视觉', 33, NULL, NULL),
+(147, 'Deep Learning', 'การเรียนรู้เชิงลึก', '深度学习', 33, NULL, NULL),
+(148, 'Machine learning', 'การเรียนรู้ของเครื่อง', '机器学习', 33, NULL, NULL),
+(149, 'Artificial Intelligence', 'ปัญญาประดิษฐ์', '人工智能', 33, NULL, NULL),
+(150, 'Data science', 'วิทยาศาสตร์ข้อมูล', '数据科学', 33, NULL, NULL),
+(151, 'Big Data Analytics', 'การวิเคราะห์ข้อมูลขนาดใหญ่', '大数据分析', 33, NULL, NULL),
+(152, 'Semantic Web and Ontology Engineering', 'เว็บเซมานติกและวิศวกรรมออนโทโลยี', '语义网与本体工程', 2, NULL, NULL),
+(153, 'Ontology-based Data Integration', 'การบูรณาการข้อมูลบนพื้นฐานออนโทโลยี', '基于本体的数据集成', 2, NULL, NULL),
+(154, 'Semantic Sentiment Analysis', 'การวิเคราะห์อารมณ์ด้วยความหมาย', '语义情感分析', 2, NULL, NULL),
+(155, 'Mobile Computing', 'การคำนวณแบบเคลื่อนที่', '移动计算', 3, NULL, NULL),
+(156, 'Internet of Things', 'อินเทอร์เน็ตของสิ่งของ', '物联网', 3, NULL, NULL),
+(157, 'Wireless Sensor Networks and Ad Hoc Networks', 'เครือข่ายเซ็นเซอร์ไร้สายและเครือข่ายอแดฮ็อค', '无线传感器网络与自组网', 3, NULL, NULL),
+(158, 'Computer Networks and Internet', 'เครือข่ายคอมพิวเตอร์และอินเทอร์เน็ต', '计算机网络与互联网', 3, NULL, NULL),
+(159, 'Wireless and Cellular Networks', 'เครือข่ายไร้สายและเครือข่ายเซลลูลาร์', '无线和蜂窝网络', 3, NULL, NULL),
+(160, 'Parallel/Distributed Systems and Cloud Computing', 'ระบบคอมพิวเตอร์แบบขนาน/กระจายและการประมวลผลบนคลาวด์', '并行/分布式系统与云计算', 3, NULL, NULL),
+(161, 'Computer, System, Management, Modelling, and Security', 'คอมพิวเตอร์, ระบบ, การบริหารจัดการ, การจำลอง และความปลอดภัย', '计算机、系统、管理、建模与安全', 3, NULL, NULL),
+(162, 'Intelligent Systems', 'ระบบอัจฉริยะ', '智能系统', 3, NULL, NULL),
+(163, 'Smart X: Smart Farm, Home, Health-care, Car, Building, Device, etc.', 'สมาร์ท X: ฟาร์มอัจฉริยะ, บ้านอัจฉริยะ, การดูแลสุขภาพ, รถยนต์, อาคาร, อุปกรณ์ ฯลฯ', '智能X：智能农场、智能家居、智能医疗、智能汽车、智能建筑、智能设备等', 3, NULL, NULL),
+(164, 'Semantic Web', 'เว็บเซมานติก', '语义网', 4, NULL, NULL),
+(165, 'Information Integration', 'การบูรณาการข้อมูล', '信息集成', 4, NULL, NULL),
+(166, 'Logistics and Supply Chain', 'โลจิสติกส์และห่วงโซ่อุปทาน', '物流与供应链', 4, NULL, NULL),
+(167, 'Data Mining', 'การทำเหมืองข้อมูล', '数据挖掘', 18, NULL, NULL),
+(168, 'Machine Learning', 'การเรียนรู้ของเครื่อง', '机器学习', 18, NULL, NULL),
+(169, 'Ensemble Learning Model', 'โมเดลการเรียนรู้แบบรวมกลุ่ม', '集成学习模型', 18, NULL, NULL),
+(170, 'Applied Software Testing in Optimization Algorithms', 'การทดสอบซอฟต์แวร์ประยุกต์ในอัลกอริทึมเพิ่มประสิทธิภาพ', '优化算法中的应用软件测试', 18, NULL, NULL),
+(171, 'Metaheuristic algorithms', 'อัลกอริทึมเมตาเฮอริสติก', '元启发式算法', 18, NULL, NULL),
+(172, 'Business Intelligence and Analytics', 'ปัญญาธุรกิจและการวิเคราะห์', '商业智能与分析', 14, NULL, NULL),
+(173, 'Enterprise Systems, ERP systems', 'ระบบองค์กร, ระบบ ERP', '企业系统，ERP系统', 14, NULL, NULL),
+(174, 'IT Strategy, IT Strategic Planning, IT Management', 'กลยุทธ์ไอที, การวางแผนกลยุทธ์ไอที, การบริหารจัดการไอที', 'IT战略，IT战略规划，IT管理', 14, NULL, NULL),
+(175, 'Enterprise Process Modeling', 'การจำลองกระบวนการองค์กร', '企业流程建模', 14, NULL, NULL),
+(176, 'Data mining', 'การทำเหมืองข้อมูล', '数据挖掘', 14, NULL, NULL),
+(177, 'Image Processing', 'การประมวลผลภาพ', '图像处理', 17, NULL, NULL),
+(178, 'Search Protocol', 'โปรโตคอลการค้นหา', '搜索协议', 17, NULL, NULL),
+(179, 'Ontology', 'ออนโทโลยี', '本体论', 27, NULL, NULL),
+(180, 'Database', 'ฐานข้อมูล', '数据库', 27, NULL, NULL),
+(181, 'Wireless Mobile Communications (OFDM Systems)', 'การสื่อสารเคลื่อนที่ไร้สาย (ระบบ OFDM)', '无线移动通信（OFDM系统）', 20, NULL, NULL),
+(182, 'Wireless Sensor Networks', 'เครือข่ายเซ็นเซอร์ไร้สาย', '无线传感器网络', 20, NULL, NULL),
+(183, 'Digital Signal Processing (Image, Speech, Sound, Ultrasound)', 'การประมวลผลสัญญาณดิจิทัล (ภาพ, เสียงพูด, เสียง, อัลตราซาวด์)', '数字信号处理（图像、语音、声音、超声波）', 20, NULL, NULL),
+(184, '3D Stereoscopic', 'ภาพสามมิติแบบสเตอริโอ', '3D立体', 20, NULL, NULL),
+(185, 'Bioinformatics', 'ชีวสารสนเทศ', '生物信息学', 20, NULL, NULL),
+(186, 'Embedded and Intelligent Systems (iHOME, iFARM)', 'ระบบฝังตัวและอัจฉริยะ (iHOME, iFARM)', '嵌入式与智能系统（iHOME, iFARM）', 20, NULL, NULL),
+(187, 'Intrusion Detection and Prevention Systems', 'ระบบตรวจจับและป้องกันการบุกรุก', '入侵检测与防御系统', 20, NULL, NULL),
+(188, 'Speech Analysis and Synthesis', 'การวิเคราะห์และสังเคราะห์เสียงพูด', '语音分析与合成', 20, NULL, NULL),
+(189, 'Robotics', 'หุ่นยนต์', '机器人技术', 20, NULL, NULL),
+(190, 'Cloud Computing', 'การประมวลผลบนคลาวด์', '云计算', 24, NULL, NULL),
+(191, 'Wireless Network', 'เครือข่ายไร้สาย', '无线网络', 24, NULL, NULL),
+(192, 'Network Simulation', 'การจำลองเครือข่าย', '网络仿真', 24, NULL, NULL),
+(193, 'System Engineer', 'วิศวกรระบบ', '系统工程师', 24, NULL, NULL),
+(194, 'Text Mining', 'การทำเหมืองข้อความ', '文本挖掘', 26, NULL, NULL),
+(195, 'Opinion Mining', 'การทำเหมืองความคิดเห็น', '意见挖掘', 26, NULL, NULL),
+(196, 'Learning Engineering', 'วิศวกรรมการเรียนรู้', '学习工程', 26, NULL, NULL),
+(197, 'Formal Method', 'วิธีการเชิงรูปแบบ', '形式方法', 32, NULL, NULL),
+(198, 'AI for Formal Verification', 'ปัญญาประดิษฐ์สำหรับการตรวจสอบอย่างเป็นทางการ', '用于形式验证的人工智能', 32, NULL, NULL),
+(199, 'Software Engineering', 'วิศวกรรมซอฟต์แวร์', '软件工程', 32, NULL, NULL),
+(200, 'Database Programming', 'การเขียนโปรแกรมฐานข้อมูล', '数据库编程', 32, NULL, NULL),
+(201, 'Hydrologic modeling with GIS', 'การจำลองระบบน้ำด้วย GIS', '使用GIS进行水文建模', 15, NULL, NULL),
+(202, 'Internet GIS , Health GIS', 'GIS อินเทอร์เน็ต, GIS ด้านสุขภาพ', '互联网GIS，健康GIS', 15, NULL, NULL),
+(203, 'Remote Sensing and GIS in Geology', 'การสำรวจจากระยะไกลและ GIS ในธรณีวิทยา', '地质中的遥感与GIS', 31, NULL, NULL),
+(204, 'Hydrology', 'อุทกวิทยา', '水文学', 31, NULL, NULL),
+(205, 'Landuse/Landcover and Natural Hazard', 'การใช้ที่ดิน/ปกคลุมดินและภัยธรรมชาติ', '土地利用/覆盖与自然灾害', 31, NULL, NULL),
+(206, 'Urban Remote Sensing', 'การสำรวจจากระยะไกลในเขตเมือง', '城市遥感', 5, NULL, NULL),
+(207, 'Application in Remote Sensing', 'การประยุกต์ใช้ในการสำรวจจากระยะไกล', '遥感应用', 11, NULL, NULL),
+(208, 'Remote Sensing for Vegetation Study', 'การสำรวจจากระยะไกลสำหรับการศึกษาพืช', '植被遥感研究', 11, NULL, NULL),
+(209, 'Remote Sensing', 'การสำรวจจากระยะไกล', '遥感', 23, NULL, NULL),
+(210, 'Spatial analysis', 'การวิเคราะห์เชิงพื้นที่', '空间分析', 23, NULL, NULL),
+(211, 'Remote Sensing', 'การสำรวจจากระยะไกล', '遥感', 30, NULL, NULL),
+(212, 'Spatial database', 'ฐานข้อมูลเชิงพื้นที่', '空间数据库', 30, NULL, NULL),
+(213, 'Web Mapping', 'การทำแผนที่บนเว็บ', '网络制图', 30, NULL, NULL),
+(214, 'UAV', 'โดรน', '无人机', 30, NULL, NULL),
+(215, 'Satellite Image classification', 'การจำแนกภาพดาวเทียม', '卫星图像分类', 30, NULL, NULL),
+(216, 'Human Computer Interaction', 'การปฏิสัมพันธ์ระหว่างมนุษย์กับคอมพิวเตอร์', '人机交互', 34, NULL, NULL),
+(217, 'Artificial Intelligence in Healthcare', 'ปัญญาประดิษฐ์ในด้านการดูแลสุขภาพ', '医疗中的人工智能', 34, NULL, NULL),
+(218, 'Data Mining and Machine Learning for Health Informatics', 'การทำเหมืองข้อมูลและการเรียนรู้ของเครื่องสำหรับสารสนเทศสุขภาพ', '健康信息学中的数据挖掘与机器学习', 34, NULL, NULL),
+(219, 'Persuasive Technology', 'เทคโนโลยีชักจูง', '说服性技术', 34, NULL, NULL),
+(220, 'Social Technologies', 'เทคโนโลยีสังคม', '社会技术', 34, NULL, NULL),
+(221, 'E-Commerce', 'พาณิชย์อิเล็กทรอนิกส์', '电子商务', 34, NULL, NULL),
+(224, 'fdfdf', 'fdfdf', 'fdfdf', 7, '2022-05-18 14:10:19', '2022-05-18 14:10:19');
+/*!40000 ALTER TABLE expertises ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -578,6 +702,7 @@ CREATE TABLE `programs` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `program_name_th` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `program_name_en` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `program_name_zh` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `degree_id` bigint(20) unsigned NOT NULL,
   `department_id` bigint(20) unsigned NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -596,9 +721,18 @@ CREATE TABLE `programs` (
 
 LOCK TABLES `programs` WRITE;
 /*!40000 ALTER TABLE `programs` DISABLE KEYS */;
-INSERT INTO `programs` VALUES (1,'สาขาวิชาวิทยาการคอมพิวเตอร์','Computer Science',1,1,NULL,'2022-04-20 16:06:31'),(2,'สาขาวิชาเทคโนโลยีสารสนเทศ','Infomation Technology',1,1,NULL,NULL),(3,'สาขาวิชาภูมิสารสนเทศศาสตร์ ','Geo-Informatics',1,1,NULL,NULL),(4,'สาขาวิชาวิทยาการคอมพิวเตอร์และเทคโนโลยีสารสนเทศ','Computer Science and Infomation Technology',2,1,NULL,NULL),(5,'สาขาวิชาวิทยาการข้อมูลและปัญญาประดิษฐ์ หลักสูตรนานาชาติ','Data Science and Artificial Intelligence (International Program)',2,1,NULL,NULL),(6,'สาขาวิชาภูมิสารสนเทศศาสตร์ ','Geo-Informatics',2,1,NULL,NULL),(24,'สาขาวิชาวิทยาการคอมพิวเตอร์และเทคโนโลยีสารสนเทศ หลักสูตรนานาชาติ','Computer Science and Infomation Technology (International Program)',3,1,'2022-04-20 16:06:16','2022-04-20 16:06:16'),(25,'สาขาวิชาภูมิสารสนเทศศาสตร์','Geo-Informatics',3,1,'2022-04-20 16:07:18','2022-04-20 16:07:18');
+INSERT INTO `programs` VALUES 
+(1,'สาขาวิชาวิทยาการคอมพิวเตอร์','Computer Science','计算机科学',1,1,NULL,'2022-04-20 16:06:31'),
+(2,'สาขาวิชาเทคโนโลยีสารสนเทศ','Infomation Technology','信息技术',1,1,NULL,NULL),
+(3,'สาขาวิชาภูมิสารสนเทศศาสตร์ ','Geo-Informatics','地理信息学',1,1,NULL,NULL),
+(4,'สาขาวิชาวิทยาการคอมพิวเตอร์และเทคโนโลยีสารสนเทศ','Computer Science and Infomation Technology','计算机科学与信息技术',2,1,NULL,NULL),
+(5,'สาขาวิชาวิทยาการข้อมูลและปัญญาประดิษฐ์ หลักสูตรนานาชาติ','Data Science and Artificial Intelligence (International Program)','数据科学与人工智能（国际课程）',2,1,NULL,NULL),
+(6,'สาขาวิชาภูมิสารสนเทศศาสตร์ ','Geo-Informatics','地理信息学',2,1,NULL,NULL),
+(24,'สาขาวิชาวิทยาการคอมพิวเตอร์และเทคโนโลยีสารสนเทศ หลักสูตรนานาชาติ','Computer Science and Infomation Technology (International Program)','计算机科学与信息技术（国际课程）',3,1,'2022-04-20 16:06:16','2022-04-20 16:06:16'),
+(25,'สาขาวิชาภูมิสารสนเทศศาสตร์','Geo-Informatics','地理信息学',3,1,'2022-04-20 16:07:18','2022-04-20 16:07:18');
 /*!40000 ALTER TABLE `programs` ENABLE KEYS */;
 UNLOCK TABLES;
+
 
 --
 -- Table structure for table `research_groups`
@@ -956,3 +1090,15 @@ UNLOCK TABLES;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2022-05-18 23:35:07
+
+-- add banners table
+CREATE TABLE `banners` (
+  `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `image_path_th` VARCHAR(255) DEFAULT NULL,
+  `image_path_en` VARCHAR(255) DEFAULT NULL,
+  `image_path_zh` VARCHAR(255) DEFAULT NULL,
+  `created_at` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+

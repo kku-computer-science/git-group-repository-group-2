@@ -4,6 +4,7 @@ namespace Maatwebsite\Excel\Factories;
 
 use Maatwebsite\Excel\Concerns\MapsCsvSettings;
 use Maatwebsite\Excel\Concerns\WithCustomCsvSettings;
+use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithLimit;
 use Maatwebsite\Excel\Concerns\WithReadFilter;
 use Maatwebsite\Excel\Concerns\WithStartRow;
@@ -27,7 +28,7 @@ class ReaderFactory
      *
      * @throws Exception
      */
-    public static function make($import, TemporaryFile $file, string $readerType = null): IReader
+    public static function make($import, TemporaryFile $file, ?string $readerType = null): IReader
     {
         $reader = IOFactory::createReader(
             $readerType ?: static::identify($file)
@@ -53,13 +54,24 @@ class ReaderFactory
             $reader->setEscapeCharacter(static::$escapeCharacter);
             $reader->setContiguous(static::$contiguous);
             $reader->setInputEncoding(static::$inputEncoding);
+            if (method_exists($reader, 'setTestAutoDetect')) {
+                $reader->setTestAutoDetect(static::$testAutoDetect);
+            }
         }
 
         if ($import instanceof WithReadFilter) {
             $reader->setReadFilter($import->readFilter());
         } elseif ($import instanceof WithLimit) {
+            $startRow = 1;
+
+            if ($import instanceof WithStartRow) {
+                $startRow = $import->startRow();
+            } elseif ($import instanceof WithHeadingRow) {
+                $startRow = 2;
+            }
+
             $reader->setReadFilter(new LimitFilter(
-                $import instanceof WithStartRow ? $import->startRow() : 1,
+                $startRow,
                 $import->limit()
             ));
         }
@@ -78,7 +90,7 @@ class ReaderFactory
         try {
             return IOFactory::identify($temporaryFile->getLocalPath());
         } catch (Exception $e) {
-            throw new NoTypeDetectedException(null, null, $e);
+            throw new NoTypeDetectedException('', 0, $e);
         }
     }
 }
