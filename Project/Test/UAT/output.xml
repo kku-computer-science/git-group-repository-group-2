@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.2.2 (Python 3.13.2 on darwin)" generated="2025-02-27T03:14:48.037117" rpa="false" schemaversion="5">
+<suite id="s1" name="Banner Upload" source="/Users/nipatchapakdee/SoftwareEN/Project/Setup_project/git-group-repository-group-2/Project/Test/UAT/banner_upload.robot">
+<test id="s1-t1" name="Upload Banner Images and Verify Success Message EN" line="42">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-02-27T03:14:48.164946" level="INFO">Opening browser 'chrome' to base url 'http://127.0.0.1:8002/login'.</msg>
+<arg>${LOGIN_PAGE}</arg>
+<arg>chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-02-27T03:14:48.164776" elapsed="3.304059"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-02-27T03:14:51.478519" level="INFO">Typing text 'admin@gmail.com' into text field 'id=username'.</msg>
+<arg>id=username</arg>
+<arg>${USER_USERNAME}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-02-27T03:14:51.477175" elapsed="0.168543"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-02-27T03:14:51.646129" level="INFO">Typing text '12345678' into text field 'id=password'.</msg>
+<arg>id=password</arg>
+<arg>${USER_PASSWORD}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-02-27T03:14:51.645931" elapsed="0.048851"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-02-27T03:14:51.695197" level="INFO">Clicking button 'xpath=//button[text()='Log In']'.</msg>
+<arg>xpath=//button[text()='Log In']</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-02-27T03:14:51.695025" elapsed="0.344527"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>Dashboard</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" start="2025-02-27T03:14:52.039763" elapsed="0.600259"/>
+</kw>
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2025-02-27T03:14:52.640454" level="INFO">Opening url 'http://127.0.0.1:8002/banners'</msg>
+<arg>${BANNER_UPLOAD_PAGE}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2025-02-27T03:14:52.640265" elapsed="1.051674"/>
+</kw>
+<kw name="Choose File" owner="SeleniumLibrary">
+<msg time="2025-02-27T03:14:53.692405" level="INFO">Sending /Users/nipatchapakdee/SoftwareEN/Project/Setup_project/git-group-repository-group-2/Project/Test/UAT/2_up.png to browser.</msg>
+<arg>name=image_th</arg>
+<arg>${BANNER_IMAGE_TH}</arg>
+<doc>Inputs the ``file_path`` into the file input field ``locator``.</doc>
+<status status="PASS" start="2025-02-27T03:14:53.692149" elapsed="0.025663"/>
+</kw>
+<kw name="Choose File" owner="SeleniumLibrary">
+<msg time="2025-02-27T03:14:53.718203" level="INFO">Sending /Users/nipatchapakdee/SoftwareEN/Project/Setup_project/git-group-repository-group-2/Project/Test/UAT/1_up.png to browser.</msg>
+<arg>name=image_en</arg>
+<arg>${BANNER_IMAGE_EN}</arg>
+<doc>Inputs the ``file_path`` into the file input field ``locator``.</doc>
+<status status="PASS" start="2025-02-27T03:14:53.718000" elapsed="0.015658"/>
+</kw>
+<kw name="Choose File" owner="SeleniumLibrary">
+<msg time="2025-02-27T03:14:53.734153" level="INFO">Sending /Users/nipatchapakdee/SoftwareEN/Project/Setup_project/git-group-repository-group-2/Project/Test/UAT/3_up.png to browser.</msg>
+<arg>name=image_zh</arg>
+<arg>${BANNER_IMAGE_ZH}</arg>
+<doc>Inputs the ``file_path`` into the file input field ``locator``.</doc>
+<status status="PASS" start="2025-02-27T03:14:53.733838" elapsed="0.016533"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-02-27T03:14:53.750934" level="INFO">Clicking button 'xpath=//button[text()='Save']'.</msg>
+<arg>xpath=//button[text()='Save']</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-02-27T03:14:53.750601" elapsed="0.099550"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>อัปโหลดรูปภาพสำเร็จ</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" start="2025-02-27T03:14:53.850335" elapsed="0.349515"/>
+</kw>
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2025-02-27T03:14:54.200268" level="INFO">Opening url 'http://127.0.0.1:8002'</msg>
+<arg>${URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2025-02-27T03:14:54.200098" elapsed="0.793782"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>css=.nav-item.dropdown</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-02-27T03:14:54.994334" elapsed="0.016191"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>xpath=//img[contains(@src, '/storage/banners/')]</arg>
+<arg>timeout=5s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-02-27T03:14:55.010690" elapsed="0.015273"/>
+</kw>
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2025-02-27T03:14:55.026257" level="INFO">Opening url 'http://127.0.0.1:8002/lang/en'</msg>
+<arg>${HOME URL}lang/en</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2025-02-27T03:14:55.026117" elapsed="0.606013"/>
+</kw>
+<kw name="Get Element Attribute" owner="SeleniumLibrary">
+<msg time="2025-02-27T03:14:55.648599" level="INFO">${banner_en} = http://127.0.0.1:8002/storage/banners/UJFlljjXLTogjABJrTIUMTYAXdgYzsiocTHmF9A1.jpg</msg>
+<var>${banner_en}</var>
+<arg>xpath=//img[@alt='Banner Image EN']</arg>
+<arg>src</arg>
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<status status="PASS" start="2025-02-27T03:14:55.632327" elapsed="0.016310"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${banner_en}</arg>
+<arg>/storage/banners/</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-02-27T03:14:55.648849" elapsed="0.000195"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2025-02-27T03:14:55.649182" elapsed="0.108704"/>
+</kw>
+<status status="PASS" start="2025-02-27T03:14:48.164077" elapsed="7.594039"/>
+</test>
+<test id="s1-t2" name="Upload Banner Images and Verify Success Message TH" line="69">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-02-27T03:14:55.759043" level="INFO">Opening browser 'chrome' to base url 'http://127.0.0.1:8002/login'.</msg>
+<arg>${LOGIN_PAGE}</arg>
+<arg>chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-02-27T03:14:55.758858" elapsed="2.294474"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-02-27T03:14:58.055376" level="INFO">Typing text 'admin@gmail.com' into text field 'id=username'.</msg>
+<arg>id=username</arg>
+<arg>${USER_USERNAME}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-02-27T03:14:58.054603" elapsed="0.183373"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-02-27T03:14:58.238414" level="INFO">Typing text '12345678' into text field 'id=password'.</msg>
+<arg>id=password</arg>
+<arg>${USER_PASSWORD}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-02-27T03:14:58.238180" elapsed="0.048966"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-02-27T03:14:58.287877" level="INFO">Clicking button 'xpath=//button[text()='Log In']'.</msg>
+<arg>xpath=//button[text()='Log In']</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-02-27T03:14:58.287691" elapsed="0.076116"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<msg time="2025-02-27T03:15:03.755860" level="WARN">Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'RemoteDisconnected('Remote end closed connection without response')': /session/744ae370ea98e3f6d32f719649b423c3/screenshot</msg>
+<msg time="2025-02-27T03:15:03.757193" level="WARN">Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x1031039d0&gt;: Failed to establish a new connection: [Errno 61] Connection refused')': /session/744ae370ea98e3f6d32f719649b423c3/screenshot</msg>
+<msg time="2025-02-27T03:15:03.757840" level="WARN">Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x1030db360&gt;: Failed to establish a new connection: [Errno 61] Connection refused')': /session/744ae370ea98e3f6d32f719649b423c3/screenshot</msg>
+<msg time="2025-02-27T03:15:03.758395" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: HTTPConnectionPool(host='localhost', port=62510): Max retries exceeded with url: /session/744ae370ea98e3f6d32f719649b423c3/screenshot (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x1030db6f0&gt;: Failed to establish a new connection: [Errno 61] Connection refused'))</msg>
+<msg time="2025-02-27T03:15:03.758830" level="FAIL">Text 'Dashboard' did not appear in 5 seconds.</msg>
+<arg>Dashboard</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="FAIL" start="2025-02-27T03:14:58.364795" elapsed="5.398333">Text 'Dashboard' did not appear in 5 seconds.</status>
+</kw>
+<kw name="Go To" owner="SeleniumLibrary">
+<arg>${BANNER_UPLOAD_PAGE}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="NOT RUN" start="2025-02-27T03:15:03.763799" elapsed="0.000052"/>
+</kw>
+<kw name="Choose File" owner="SeleniumLibrary">
+<arg>name=image_th</arg>
+<arg>${BANNER_IMAGE_TH}</arg>
+<doc>Inputs the ``file_path`` into the file input field ``locator``.</doc>
+<status status="NOT RUN" start="2025-02-27T03:15:03.764081" elapsed="0.000071"/>
+</kw>
+<kw name="Choose File" owner="SeleniumLibrary">
+<arg>name=image_en</arg>
+<arg>${BANNER_IMAGE_EN}</arg>
+<doc>Inputs the ``file_path`` into the file input field ``locator``.</doc>
+<status status="NOT RUN" start="2025-02-27T03:15:03.764263" elapsed="0.000023"/>
+</kw>
+<kw name="Choose File" owner="SeleniumLibrary">
+<arg>name=image_zh</arg>
+<arg>${BANNER_IMAGE_ZH}</arg>
+<doc>Inputs the ``file_path`` into the file input field ``locator``.</doc>
+<status status="NOT RUN" start="2025-02-27T03:15:03.764365" elapsed="0.000018"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<arg>xpath=//button[text()='Save']</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="NOT RUN" start="2025-02-27T03:15:03.764457" elapsed="0.000015"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>อัปโหลดรูปภาพสำเร็จ</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="NOT RUN" start="2025-02-27T03:15:03.764541" elapsed="0.000014"/>
+</kw>
+<kw name="Go To" owner="SeleniumLibrary">
+<arg>${URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="NOT RUN" start="2025-02-27T03:15:03.764627" elapsed="0.000013"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>css=.nav-item.dropdown</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="NOT RUN" start="2025-02-27T03:15:03.764698" elapsed="0.000014"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>xpath=//img[contains(@src, '/storage/banners/')]</arg>
+<arg>timeout=5s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="NOT RUN" start="2025-02-27T03:15:03.764861" elapsed="0.000029"/>
+</kw>
+<kw name="Switch Language To">
+<arg>th</arg>
+<arg>ไทย</arg>
+<status status="NOT RUN" start="2025-02-27T03:15:03.765363" elapsed="0.000033"/>
+</kw>
+<kw name="Get Element Attribute" owner="SeleniumLibrary">
+<var>${banner_th}</var>
+<arg>xpath=//img[@alt='Banner Image TH']</arg>
+<arg>src</arg>
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<status status="NOT RUN" start="2025-02-27T03:15:03.765503" elapsed="0.000050"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${banner_th}</arg>
+<arg>/storage/banners/</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="NOT RUN" start="2025-02-27T03:15:03.765642" elapsed="0.000087"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="NOT RUN" start="2025-02-27T03:15:03.766085" elapsed="0.000028"/>
+</kw>
+<status status="FAIL" start="2025-02-27T03:14:55.758513" elapsed="8.007794">Text 'Dashboard' did not appear in 5 seconds.</status>
+</test>
+<test id="s1-t3" name="Upload Banner Images and Verify Success Message CN" line="97">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-02-27T03:15:03.767403" level="INFO">Opening browser 'chrome' to base url 'http://127.0.0.1:8002/login'.</msg>
+<arg>${LOGIN_PAGE}</arg>
+<arg>chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-02-27T03:15:03.767040" elapsed="2.606212"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-02-27T03:15:06.378479" level="INFO">Typing text 'admin@gmail.com' into text field 'id=username'.</msg>
+<arg>id=username</arg>
+<arg>${USER_USERNAME}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-02-27T03:15:06.377180" elapsed="0.182042"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-02-27T03:15:06.559873" level="INFO">Typing text '12345678' into text field 'id=password'.</msg>
+<arg>id=password</arg>
+<arg>${USER_PASSWORD}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-02-27T03:15:06.559551" elapsed="0.054937"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-02-27T03:15:06.614899" level="INFO">Clicking button 'xpath=//button[text()='Log In']'.</msg>
+<arg>xpath=//button[text()='Log In']</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-02-27T03:15:06.614720" elapsed="0.137578"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<msg time="2025-02-27T03:15:12.272174" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-7.png"&gt;&lt;img src="selenium-screenshot-7.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg time="2025-02-27T03:15:12.272439" level="FAIL">Text 'Dashboard' did not appear in 5 seconds.</msg>
+<arg>Dashboard</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="FAIL" start="2025-02-27T03:15:06.753018" elapsed="5.520561">Text 'Dashboard' did not appear in 5 seconds.</status>
+</kw>
+<kw name="Go To" owner="SeleniumLibrary">
+<arg>${BANNER_UPLOAD_PAGE}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="NOT RUN" start="2025-02-27T03:15:12.273893" elapsed="0.000043"/>
+</kw>
+<kw name="Choose File" owner="SeleniumLibrary">
+<arg>name=image_th</arg>
+<arg>${BANNER_IMAGE_TH}</arg>
+<doc>Inputs the ``file_path`` into the file input field ``locator``.</doc>
+<status status="NOT RUN" start="2025-02-27T03:15:12.274091" elapsed="0.000037"/>
+</kw>
+<kw name="Choose File" owner="SeleniumLibrary">
+<arg>name=image_en</arg>
+<arg>${BANNER_IMAGE_EN}</arg>
+<doc>Inputs the ``file_path`` into the file input field ``locator``.</doc>
+<status status="NOT RUN" start="2025-02-27T03:15:12.274283" elapsed="0.000031"/>
+</kw>
+<kw name="Choose File" owner="SeleniumLibrary">
+<arg>name=image_zh</arg>
+<arg>${BANNER_IMAGE_ZH}</arg>
+<doc>Inputs the ``file_path`` into the file input field ``locator``.</doc>
+<status status="NOT RUN" start="2025-02-27T03:15:12.274461" elapsed="0.000031"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<arg>xpath=//button[text()='Save']</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="NOT RUN" start="2025-02-27T03:15:12.274852" elapsed="0.000024"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>อัปโหลดรูปภาพสำเร็จ</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="NOT RUN" start="2025-02-27T03:15:12.274996" elapsed="0.000025"/>
+</kw>
+<kw name="Go To" owner="SeleniumLibrary">
+<arg>${URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="NOT RUN" start="2025-02-27T03:15:12.275137" elapsed="0.000026"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>css=.nav-item.dropdown</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="NOT RUN" start="2025-02-27T03:15:12.275262" elapsed="0.000020"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>xpath=//img[contains(@src, '/storage/banners/')]</arg>
+<arg>timeout=5s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="NOT RUN" start="2025-02-27T03:15:12.275402" elapsed="0.000024"/>
+</kw>
+<kw name="Switch Language To">
+<arg>zh</arg>
+<arg>中文</arg>
+<status status="NOT RUN" start="2025-02-27T03:15:12.275741" elapsed="0.000028"/>
+</kw>
+<kw name="Get Element Attribute" owner="SeleniumLibrary">
+<var>${banner_zh}</var>
+<arg>xpath=//img[@alt='Banner Image ZH']</arg>
+<arg>src</arg>
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<status status="NOT RUN" start="2025-02-27T03:15:12.275876" elapsed="0.000020"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${banner_zh}</arg>
+<arg>/storage/banners/</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="NOT RUN" start="2025-02-27T03:15:12.275994" elapsed="0.000018"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="NOT RUN" start="2025-02-27T03:15:12.276104" elapsed="0.000018"/>
+</kw>
+<status status="FAIL" start="2025-02-27T03:15:03.766608" elapsed="8.509682">Text 'Dashboard' did not appear in 5 seconds.</status>
+</test>
+<status status="FAIL" start="2025-02-27T03:14:48.038348" elapsed="24.238468"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="2" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Banner Upload" id="s1" pass="1" fail="2" skip="0">Banner Upload</stat>
+</suite>
+</statistics>
+<errors>
+<msg time="2025-02-27T03:15:03.755860" level="WARN">Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'RemoteDisconnected('Remote end closed connection without response')': /session/744ae370ea98e3f6d32f719649b423c3/screenshot</msg>
+<msg time="2025-02-27T03:15:03.757193" level="WARN">Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x1031039d0&gt;: Failed to establish a new connection: [Errno 61] Connection refused')': /session/744ae370ea98e3f6d32f719649b423c3/screenshot</msg>
+<msg time="2025-02-27T03:15:03.757840" level="WARN">Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x1030db360&gt;: Failed to establish a new connection: [Errno 61] Connection refused')': /session/744ae370ea98e3f6d32f719649b423c3/screenshot</msg>
+<msg time="2025-02-27T03:15:03.758395" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: HTTPConnectionPool(host='localhost', port=62510): Max retries exceeded with url: /session/744ae370ea98e3f6d32f719649b423c3/screenshot (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x1030db6f0&gt;: Failed to establish a new connection: [Errno 61] Connection refused'))</msg>
+</errors>
+</robot>
