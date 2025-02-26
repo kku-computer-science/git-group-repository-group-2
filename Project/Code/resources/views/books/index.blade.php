@@ -14,18 +14,18 @@
     @endif
     <div class="card" style="padding: 16px;">
         <div class="card-body">
-            <h4 class="card-title">{{ __('message.book') }}</h4>
-            <a class="btn btn-primary btn-menu btn-icon-text btn-sm mb-3" href="{{ route('books.create') }}"><i class="mdi mdi-plus btn-icon-prepend"></i> {{ __('message.add') }} </a>
+            <h4 class="card-title">{{ __('message.book')}}</h4>
+            <a class="btn btn-primary btn-menu btn-icon-text btn-sm mb-3" href="{{ route('books.create') }}"><i class="mdi mdi-plus btn-icon-prepend"></i>{{ __('message.add')}}</a>
             <!-- <div class="table-responsive"> -->
                 <table id="example1" class="table table-striped">
                     <thead>
                         <tr>
-                            <th>{{ __('message.no') }}</th>
-                            <th>{{ __('message.name1') }}</th>
-                            <th>{{ __('message.year1') }}</th>
-                            <th>{{ __('message.publication') }}</th>
-                            <th>{{ __('message.Page') }}</th>
-                            <th width="280px">{{ __('message.action') }}</th>
+                            <th>{{ __('message.no')}}</th>
+                            <th>{{ __('message.book_name')}}</th>
+                            <th>{{ __('message.year')}}</th>
+                            <th>{{ __('message.published_source')}}</th>
+                            <th>{{ __('message.page')}}</th>
+                            <th width="280px">{{ __('message.action')}}</th>
                         </tr>
                         <thead>
                         <tbody>

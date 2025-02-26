@@ -48,12 +48,12 @@
     <div class="col-md-10 grid-margin stretch-card">
         <div class="card" style="padding: 16px;">
             <div class="card-body">
-            <h4 class="card-title">{{ __('message.add_paper') }}</h4>
-            <p class="card-description">{{ __('message.research_details') }}</p>
-            <form class="forms-sample" action="{{ route('papers.store') }}" method="POST">
+                <h4 class="card-title">{{ __('message.add_paper')}}</h4>
+                <p class="card-description">{{ __('message.fill_paper')}}</p>
+                <form class="forms-sample" action="{{ route('papers.store') }}" method="POST">
                     @csrf
                     <div class="form-group row">
-                        <label for="exampleInputpaper_name" class="col-sm-3 col-form-label"><b>{{ __('message.publish_source') }}</b></label>
+                        <label for="exampleInputpaper_name" class="col-sm-3 col-form-label"><b>{{ __('message.paper_source')}}</b></label>
                         <div class="col-sm-9">
                             <select class="selectpicker" multiple data-live-search="true" name="cat[]">
                                 @foreach( $source as $s)
@@ -65,12 +65,12 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="exampleInputpaper_name" class="col-sm-3 col-form-label"><b>{{ __('message.research_title') }}</b></label>
+                        <label for="exampleInputpaper_name" class="col-sm-3 col-form-label"><b>{{ __('message.paper_name')}}</b></label>
                         <div class="col-sm-9">
                             <input type="text" name="paper_name" class="form-control" placeholder="{{ __('message.research_title') }}">
                         </div>
                     </div>
-                    
+
                     <!-- <div class="form-group row">
                         <label for="exampleInputpaper_type" class="col-sm-3 col-form-label"><b>ประเภทของเอกสาร</b></label>
                         <div class="col-sm-9">
@@ -79,7 +79,7 @@
                     </div> -->
 
                     <div class="form-group row">
-                        <label for="exampleInputabstract" class="col-sm-3 col-form-label"><b>{{ __('message.abstract') }}</b></label>
+                        <label for="exampleInputabstract" class="col-sm-3 col-form-label"><b>{{ __('message.abstract')}}</b></label>
                         <div class="col-sm-9">
                             <textarea type="text" name="abstract" class="form-control form-control-lg" style="height:150px" placeholder="{{ __('message.abstract') }}"></textarea>
                             <!-- <input type=" text" name="abstract" class="form-control" placeholder="abstract"> -->
@@ -87,140 +87,130 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="exampleInputkeyword" class="col-sm-3 col-form-label"><b>{{ __('message.keyword') }}</b></label>
+                        <label for="exampleInputkeyword" class="col-sm-3 col-form-label"><b>{{ __('message.keyword')}}</b></label>
                         <!-- <div class="col-sm-9">
                             <p>แต่ละคําต้องคั่นด้วยเครื่องหมายเซมิโคลอน (;) แล้วเว้นวรรคหนึ่งครั้ง</p>
                         </div> -->
                         <div class="col-sm-9">
-                            <input type="text" name="keyword" class="form-control" placeholder="{{ __('message.keyword') }}">
-                            <p class="text-danger">{{ __('message.keyword_instruction') }}</p>
+                            <input type="text" name="keyword" class="form-control" placeholder="keyword">
+                            <p class="text-danger">{{ __('message.space')}}</p>
                         </div>
 
                     </div>
                     <div class="form-group row">
-                        <label for="exampleInputpaper_type" class="col-sm-3 col-form-label"><b>{{ __('message.document_type') }}
-                                (Type)</b></label>
+                        <label for="exampleInputpaper_type" class="col-sm-3 col-form-label"><b>{{ __('message.document_type')}}
+                            </b></label>
                         <div class="col-sm-9">
                             <select id='paper_type' class="custom-select my-select" style='width: 200px;' name="paper_type">
-                                <option value="" disabled selected>  {{ __('message.select_type') }} </option>
-                                <option value="Journal">{{ __('message.journal') }}</option>
-                                <option value="Conference Proceeding">{{ __('message.conference_proceeding') }}</option>
-                                <option value="Book Series">{{ __('message.book_series') }}</option>
-                                <option value="Book">{{ __('message.book') }}</option>
+                                <option value="" disabled selected> {{ __('message.specify_type')}}</option>
+                                <option value="Journal">{{ __('message.journal')}}</option>
+                                <option value="Conference Proceeding">{{ __('message.conference')}}</option>
+                                <option value="Book Series">{{ __('message.books')}}</option>
+                                <option value="Book">{{ __('message.add_book')}}</option>
                             </select>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="exampleInputpaper_subtype" class="col-sm-3 col-form-label"><b>{{ __('message.document_subtype') }}
-                                (Subtype)</b></label>
+                        <label for="exampleInputpaper_subtype" class="col-sm-3 col-form-label"><b>{{ __('message.document_subtype')}}</b></label>
                         <div class="col-sm-9">
                             <select id='paper_subtype' class="custom-select my-select" style='width: 200px;' name="paper_subtype">
-                                <option value="" disabled selected> {{ __('message.select_subtype') }} </option>
-                                <option value="Article">{{ __('message.article') }}</option>
-                                <option value="Conference Paper">{{ __('message.conference_paper') }}</option>
-                                <option value="Editorial">{{ __('message.editorial') }}</option>
-                                <option value="Book Chapter">{{ __('message.book_chapter') }}</option>
-                                <option value="Erratum">{{ __('message.erratum') }}</option>
-                                <option value="Review">{{ __('message.review') }}</option>
+                                <option value="" disabled selected>{{ __('message.specify_subtype')}}</option>
+                                <option value="Article">{{ __('message.article')}}</option>
+                                <option value="Conference Paper">{{ __('message.con_paper')}}</option>
+                                <option value="Editorial">{{ __('message.editorail')}}</option>
+                                <option value="Book Chapter">{{ __('message.book_chapter')}}</option>
+                                <option value="Erratum">{{ __('message.erratum')}}</option>
+                                <option value="Review">{{ __('message.review')}}</option>
                             </select>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="exampleInputpublicatione" class="col-sm-3 col-form-label"><b>{{ __('message.publication') }}
-                                </b></label>
+                        <label for="exampleInputpublicatione" class="col-sm-3 col-form-label"><b>{{ __('message.publication')}}
+                            </b></label>
                         <div class="col-sm-9">
                             <select id='publication' class="custom-select my-select" style='width: 200px;' name="publication">
-                                <option value="" disabled selected> {{ __('message.select_publication') }} </option>
-                                <option value="International Journal">International Journal</option>
-                                <option value="International Book">International Book</option>
-                                <option value="International Conference">International Conference</option>
-                                <option value="National Conference">National Conference</option>
-                                <option value="National Journal"> National Journal</option>
-                                <option value="National Book"> National Book</option>
-                                <option value="National Magazine">National Magazine</option>
-                                <option value="Book Chapter"> Book Chapter</option>
+                                <option value="" disabled selected> {{ __('message.specify_type')}} </option>
+                                <option value="International Journal">{{ __('message.inter_jour')}}</option>
+                                <option value="International Book">{{ __('message.inter_book')}}</option>
+                                <option value="International Conference">{{ __('message.inter_con')}}</option>
+                                <option value="National Conference">{{ __('message.nation_con')}}</option>
+                                <option value="National Journal"> {{ __('message.nation_jour')}}</option>
+                                <option value="National Book"> {{ __('message.book')}}</option>
+                                <option value="National Magazine">{{ __('message.magazine')}}</option>
+                                <option value="Book Chapter">{{ __('message.book_chapter')}}</option>
                             </select>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="exampleInputpaper_sourcetitle" class="col-sm-3 col-form-label"><b>{{ __('message.journal_name') }}</b></label>
+                        <label for="exampleInputpaper_sourcetitle" class="col-sm-3 col-form-label"><b>{{ __('message.journal_name')}}</b></label>
                         <div class="col-sm-9">
                             <input type="text" name="paper_sourcetitle" class="form-control" placeholder="sourcetitle">
                         </div>
                     </div>
-            
+
                     <div class="form-group row">
-                        <label for="exampleInputpaper_yearpub" class="col-sm-3 col-form-label"><b>{{ __('message.published_year') }}</b></label>
+                        <label for="exampleInputpaper_yearpub" class="col-sm-3 col-form-label"><b>{{ __('message.year')}}</b></label>
                         <div class="col-sm-4">
                             <input type="text" name="paper_yearpub" class="form-control" placeholder="{{ __('message.published_year') }}">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="exampleInputpaper_volume" class="col-sm-3 col-form-label"><b>{{ __('message.paper_volume') }}</b></label>
+                        <label for="exampleInputpaper_volume" class="col-sm-3 col-form-label"><b>{{ __('message.voulumn')}}</b></label>
                         <div class="col-sm-4">
                             <input type="text" name="paper_volume" class="form-control" placeholder="Volume">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="exampleInputpaper_issue" class="col-sm-3 col-form-label"><b>{{ __('message.paper_issue') }}</b></label>
+                        <label for="exampleInputpaper_issue" class="col-sm-3 col-form-label"><b>{{ __('message.issue_number')}}</b></label>
                         <div class="col-sm-4">
                             <input type="text" name="paper_issue" class="form-control" placeholder="Issue">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="exampleInputpaper_citation" class="col-sm-3 col-form-label"><b>{{ __('message.paper_citation') }}
-                                </b></label>
+                        <label for="exampleInputpaper_citation" class="col-sm-3 col-form-label"><b>{{ __('message.citation')}}</b></label>
                         <div class="col-sm-4">
                             <input type="text" name="paper_citation" class="form-control" placeholder="Number of Citations">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="exampleInputpaper_page" class="col-sm-3 col-form-label"><b>{{ __('message.paper_page') }}</b></label>
+                        <label for="exampleInputpaper_page" class="col-sm-3 col-form-label"><b>{{ __('message.page')}}</b></label>
                         <div class="col-sm-4">
                             <input type="text" name="paper_page" class="form-control" placeholder="01-99">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="exampleInputpaper_doi" class="col-sm-3 col-form-label"><b>Doi</b></label>
+                        <label for="exampleInputpaper_doi" class="col-sm-3 col-form-label"><b>{{ __('message.doi')}}</b></label>
                         <div class="col-sm-9">
                             <input type="text" name="paper_doi" class="form-control" placeholder="doi">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="exampleInputpaper_funder" class="col-sm-3 col-form-label"><b>{{ __('message.funding') }}</b></label>
+                        <label for="exampleInputpaper_funder" class="col-sm-3 col-form-label"><b>{{ __('message.grants')}}</b></label>
                         <div class="col-sm-9">
                             <input type="int" name="paper_funder" class="form-control" placeholder="Funder">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="exampleInputpaper_url" class="col-sm-3 col-form-label"><b>URL</b></label>
+                        <label for="exampleInputpaper_url" class="col-sm-3 col-form-label"><b>{{ __('message.url')}}</b></label>
                         <div class="col-sm-9">
                             <input type="text" name="paper_url" class="form-control" placeholder="url">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="exampleInputpaper_doi" class="col-sm-3 "><b>{{ __('message.author_name_in') }}</b></label>
+                        <label for="exampleInputpaper_doi" class="col-sm-3 "><b>{{ __('message.authorIn_name')}}</b></label>
                         <div class="col-sm-9">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dynamicAddRemove">
                                     <tr>
                                         <td><select id='selUser0' style='width: 200px;' name="moreFields[0][userid]">
-                                                <option value=''>Select User</option>
-                                                @foreach($users as $user)
-                                                <option value="{{ $user->id }}">
-                                                    @if(app()->getLocale() == 'th')
-                                                        {{ $user->fname_th }} {{ $user->lname_th }}
-                                                    @else
-                                                        {{ $user->fname_en }} {{ $user->lname_en }}
-                                                    @endif
-                                                </option>
-                                                @endforeach
-                                                                                        </select>
+                                                <option value=''>{{ __('message.selectUser')}}</option>@foreach($users as $user)<option value="{{ $user->id }}">{{ $user->fname_th }} {{ $user->lname_th }}
+                                                </option>@endforeach
+                                            </select>
                                         </td>
                                         <td><select id='pos' class="custom-select my-select" style='width: 200px;' name="pos[]">
-                                                <option value="1">First Author</option>
-                                                <option value="2">Co-Author</option>
-                                                <option value="3">Corresponding Author</option>
+                                                <option value="1">{{ __('message.first_author')}}</option>
+                                                <option value="2">{{ __('message.co-author')}}</option>
+                                                <option value="3">{{ __('message.corresponding_author')}}</option>
                                             </select>
                                         </td>
                                         <td><button type="button" name="add" id="add-btn2" class="btn btn-success btn-sm"><i class="fas fa-plus"></i></button>
@@ -232,7 +222,8 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="exampleInputpaper_doi" class="col-sm-3 col-form-label"><b>{{ __('message.author_name_out') }}</b></label>
+                        <label for="exampleInputpaper_doi" class="col-sm-3 col-form-label"><b>{{ __('message.authorEx_name')}}
+                               </b></label>
                         <div class="col-sm-9">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dynamic_field">
@@ -240,21 +231,21 @@
                                         <td><input type="text" name="fname[]" placeholder="{{ __('message.first_name') }}" class="form-control name_list" /></td>
                                         <td><input type="text" name="lname[]" placeholder="{{ __('message.last_name') }}" class="form-control name_list" /></td>
                                         <td><select id='pos2' class="custom-select my-select" style='width: 200px;' name="pos2[]">
-                                                <option value="1">First Author</option>
-                                                <option value="2">Co-Author</option>
-                                                <option value="3">Corresponding Author</option>
+                                                <option value="1">{{ __('message.first_author')}}</option>
+                                                <option value="2">{{ __('message.co_author')}}</option>
+                                                <option value="3">{{ __('message.corresponding_author')}}</option>
                                             </select>
                                         </td>
                                         <td><button type="button" name="add" id="add" class="btn btn-success btn-sm"><i class="fas fa-plus"></i></button>
-                                        
+
                                     </tr>
                                 </table>
                                 <!-- <input type="button" name="submit" id="submit" class="btn btn-info" value="Submit" /> -->
                             </div>
                         </div>
                     </div>
-                    <button type="submit" name="submit" id="submit" class="btn btn-primary me-2">{{ __('message.submit') }}</button>
-                    <a class="btn btn-light" href="{{ route('papers.index')}}">{{ __('message.cancel') }}</a>
+                    <button type="submit" name="submit" id="submit" class="btn btn-primary me-2">{{ __('message.submit')}}</button>
+                    <a class="btn btn-light" href="{{ route('papers.index')}}">{{ __('message.cancel')}}</a>
                 </form>
             </div>
         </div>

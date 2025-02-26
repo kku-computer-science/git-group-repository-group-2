@@ -8,7 +8,7 @@
             </div>
         @endif
         <div class="card">
-            <div class="card-header">Permission
+            <div class="card-header">{{ __('message.permission')}}
                 @can('role-create')
                     <span class="float-right">
                         <a class="btn btn-primary" href="{{ route('permissions.index') }}">Back</a>
@@ -17,7 +17,7 @@
             </div>
             <div class="card-body">
                 <div class="lead">
-                    <strong>Name:</strong>
+                    <strong>{{ __('message.name')}}</strong>
                     {{ $permission->name }}
                 </div>
             </div>

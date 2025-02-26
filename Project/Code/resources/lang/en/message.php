@@ -149,6 +149,121 @@ return [
     'image' => 'Image',
     'head_research_group' => 'Head of Research Group',
     'member_research' => 'Research Member',
+
+    //Detial Research Group
+    'group_detail' => 'Detail Research Group',
+    'info_group_detail' => 'Information Detail Research Group',
+    'group_research_TH' => 'Research Group Name (TH)',
+    'group_research_EN' => 'Research Group Name (EN)',
+
+    //Edit Research Group
+    'edit_group' => 'Edit Research Group',
+    'fill_info' => 'Fill in the information to edit the research group details',
+
+    //User page
+    'users' => 'Users',
+    'new user' => 'New User',
+    'import' => 'Import New User',
+    'name' => 'Name',
+    'department' => 'Department',
+    'email' => 'Email',
+    'role' => 'Roles',
+
+    //Add new user
+    'add_user' => 'Add new user',
+    'fill_user' => 'Fill in the information to edit the user details',
+    'f_name_TH' => 'Firstname (TH)',
+    'l_name_TH' => 'Lastname (TH)',
+    'f_name_EN' => 'Firstname (EN)',
+    'l_name_EN' => 'Lastname (EM)',
+    'full_name_TH' => 'Name (TH)',
+    'full_name_EN' => 'Name (EN)',
+    'password' => 'Password',
+    'conf_password' => 'Confirm password',
+    'program' => 'Program',
+    'select_category' => 'Select Category',
+    'select_sub' => 'Select Subcategory',
+
+    //View user
+    'info_user' => 'User Information',
+    'info_detail' => 'User Detail Information',
+    'academic_rank' => 'Academic Ranks',
+    'history' => 'Education History',
+
+    //Edit User
+    'edit_user' => 'Edit User',
+    'fill_info_edit' => 'Fill in the information to edit the user details',
+    'import_file' => 'Import Excel, CSV file',
+
+    //Create Role
+    'create_role' => 'Create role',
+    'name' => 'Name',
+
+    //View role
+    'detail' => 'Detail',
+    'edit_role' => 'Edit Role',
+
+    //Permission Page
+    'permission' => 'Permissions',
+    'new_permission' => 'New Permission',
+    'create_permission' => 'Create Permission',
+    'edit_permission' => 'Edit Permission',
+
+    //Department Page
+    'department' => 'Departments',
+    'new_department' => 'New Department',
+    'create_department' => 'Create Department',
+    'department_TH' => 'Department (TH)',
+    'department_EN' => 'Department (EN)',
+
+    //Mange Program
+    'course' => 'Course',
+    'id' => 'Id',
+    'degree' => 'Degree',
+    'education' => 'Education Lavel',
+    'name_th' => 'Name (TH)',
+    'name_en' => 'Name (EN)',
+
+    //Expertise Page
+    'expertise' => 'Professor expertise',
+    'teacher_name' => 'Teacher Name',
+
+    //Image management
+    'img' => 'Image Management',
+    'img_th' => 'Thai image',
+    'img_en' => 'English image',
+    'img_zh' => 'China image',
+    'save' => 'Save',
+    'images' => 'Image',
+
+    //Search
+    'search' => 'Search',
+
+    //Paper
+    'published_research' => 'Published Research',
+    'call_paper' => 'Call Paper',
+    'paper_name' => 'Paper Name',
+    'paper_type' => 'Paper Type',
+    'year_submit' => 'Year',
+
+    //Add paper
+    'add_paper' => 'Add a publication date',
+    'fill_paper' => 'Fill in the research details',
+    'paper_source' => 'Research publication sources',
+    'abstract' => 'Abstract',
+    'keyword' => 'Keyword',
+    'space' => '***Each word must be separated by a semicolon (;) followed by one space',
+    'document_type' => 'Document Type',
+    'specify_type' => 'Please specify type',
+    'journal' => 'Journal',
+    'conference' => 'Conference Proceeding',
+    'books' => 'Book Series',
+    'book' => 'Book',
+    'document_subtype' => 'Document Subtype',
+    'specify_subtype' => 'Please specify type',
+    'article' => 'Article',
+    'con_paper' => 'Conference Paper',
+    'editorail' => 'Editorail',
     //Researcher page
     'researchers_research' => 'Researchers',
     'search_research' => 'Search',
@@ -355,6 +470,85 @@ return [
     'erratum' => 'Erratum',
     'review' => 'Review',
     'publication' => 'Publication',
+    'inter_jour' => 'International Journal',
+    'inter_book' => 'International Book',
+    'inter_con' => 'International Conference',
+    'nation_con' => 'National Conference',
+    'nation_jour' => 'National Journal',
+    'nation_book' => 'National Bool',
+    'nation_magazine' => 'National Magazine',
+    'book_chapter' => 'Book Chapter',
+    'journal_name' => 'Journal Name',
+    'year' => 'Year',
+    'volumn' => 'Volumn',
+    'issue_number' => 'Issue number',
+    'citation' => 'Citation',
+    'page' => 'Page',
+    'doi' => 'Doi',
+    'grants' => 'Grants',
+    'url' => 'URL',
+    'authorIn_name' => 'Author Name (Inside Branch Person)',
+    'authorEx_name' => 'Author Name (Outside Branch Person)',
+    'selectUser' => 'Select User', 
+    'first_author' => 'First Author',
+    'co-author' => 'Co-Author',
+    'corresponding_author' => 'Corresponding Author',
+
+    //Detail Journal
+    'detail_jour' => 'Journal work details',
+    'jour' => 'Journal Detail',
+    'author' => 'Author',
+    'journal_type' => 'Journal Type',
+    'sourceTitle' => 'Source Title',
+
+    //Book Page
+    'book' => 'Book',
+    'book_name' => 'Book Name',
+    'year' => 'Year',
+    'published_source' => 'Published Source',
+    'add_book' => 'Add Book',
+    'fill_book' => 'Fill Information Detail Book',
+    'book_detail' => 'Book Detail',
+    'fill_detail_book' => 'Information Detail Book',
+
+    //Patents Page
+    'other_academic' => 'Other academic works (patents, utility models, copyrights)',
+    'academic_name' => 'Academic Name',
+    'academic_type' => 'Academic Type',
+    'date_re' => 'Date of registration',
+    're_number' => 'Registration number',
+    'patent_author' => 'Patent Author',
+    'place' => 'Place of publication',
+
+    //Add academic
+    'add_academic' => 'Add academic works in other fields',
+    'fill_detail' => 'Fill in details of other academic works (patents, utility models, copyrights)',
+    'name_ac' => 'Name (patent, copyright)',
+    'type' => 'Type',
+    'select_type' => 'Please select type',
+    'invent' => 'Patent (invention)',
+    'product' => 'Patent (product design)',
+    'patent' => 'Patent',
+    'copyright' => 'Copyright',
+    'literary' => 'Copyright (literary)',
+    'musical' => 'Copyright (musical works)',
+    'flim' => 'Copyright (film)',
+    'art' => 'Copyright (Art)',
+    'boardcast' => 'Copyright (Broadcast)',
+    'materials' => 'Copyright (audiovisual materials)',
+    'any_other_work' => 'Copyright (any other work in the literature/science/art department)',
+    'sound' => 'Copyright (sound recordings)',
+    'trade' => 'Trade secrets',
+    'trade_mark' => 'Trademark',
+    'copy_date' => 'Copyright date',
+    'professor' => 'Professor in the field',
+    'external_person' => 'External person',
+    'ex_fname' => 'Firstname',
+    'ex_lname' => 'Lastname',
+
+    //Academic Detail
+    'detail_ac' => 'Details of other academic works (patents, utility models, copyrights)',
+    'info_ac' => 'Detailed information on other academic works (patents, utility models, copyrights)',
     'select_publication' => 'Please specify the type',
     'paper_volume' => 'Journal Volume (Volume)',
     'paper_issue' => 'Issue Number (Issue)',
@@ -425,3 +619,4 @@ return [
     
 
 ];
+

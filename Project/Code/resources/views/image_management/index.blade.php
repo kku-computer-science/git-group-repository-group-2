@@ -14,34 +14,34 @@
 
     <div class="card" style="padding: 16px;">
         <div class="card-body">
-            <h4 class="card-title text-center">จัดการรูปภาพ</h4>
+            <h4 class="card-title text-center">{{ __('message.img')}}</h4>
     
             <form action="{{ route('banners.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
-                    <label for="image_th">รูปภาษาไทย</label>
+                    <label for="image_th">{{ __('message.img_th')}}</label>
                     <input type="file" class="form-control" name="image_th" id="image_th">
                 </div>
                 
                 <div class="form-group">
-                    <label for="image_en">รูปภาษาอังกฤษ</label>
+                    <label for="image_en">{{ __('message.img_en')}}</label>
                     <input type="file" class="form-control" name="image_en" id="image_en">
                 </div>
                 
                 <div class="form-group">
-                    <label for="image_zh">รูปภาษาจีน</label>
+                    <label for="image_zh">{{ __('message.zh')}}</label>
                     <input type="file" class="form-control" name="image_zh" id="image_zh">
                 </div>
                 
-                <button type="submit" class="btn btn-primary">บันทึก</button>
+                <button type="submit" class="btn btn-primary">{{ __('message.save')}}</button>
             </form>
     
             <table id="imageTable" class="table table-striped">
                 <thead>
                     <tr>
-                        <th>ID</th>
-                        <th>รูปภาพ</th>
-                        <th>Action</th>
+                        <th>{{ __('message.id')}}</th>
+                        <th>{{ __('message.images')}}</th>
+                        <th>{{ __('message.action')}}</th>
                     </tr>
                 </thead>
                 <tbody>

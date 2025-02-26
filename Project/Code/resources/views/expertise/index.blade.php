@@ -33,17 +33,17 @@
     @endif
     <div class="card" style="padding: 16px;">
         <div class="card-body">
-            <h4 class="card-title" style="text-align: center;">ความเชี่ยวชาญของอาจารย์</h4>
+            <h4 class="card-title" style="text-align: center;">{{ __('message.expertise')}}</h4>
             <table id="example1" class="table table-striped">
                 <thead>
                     <tr>
-                        <th>ID</th>
+                        <th>{{ __('message.id')}}</th>
                         @if(Auth::user()->hasRole('admin'))
-                        <th>Teacher Name</th>
+                        <th>{{ __('message.teacher_name')}}</th>
                         @endif
-                        <th>Name</th>
+                        <th>{{ __('message.name')}}</th>
 
-                        <th>Action</th>
+                        <th>{{ __('message.action')}}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -96,14 +96,14 @@
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
-                                <strong>Name:</strong>
+                                <strong>{{ __('message.name')}} : </strong>
                                 <input type="text" name="expert_name" id="expert_name" class="form-control" placeholder="Expert_name" onchange="validate()">
                             </div>
                         </div>
 
                         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                            <button type="submit" id="btn-save" name="btnsave" class="btn btn-primary " disabled>Submit</button>
-                            <a href="{{ route('experts.index') }}" class="btn btn-danger">Cancel</a>
+                            <button type="submit" id="btn-save" name="btnsave" class="btn btn-primary " disabled>{{ __('message.submit')}}</button>
+                            <a href="{{ route('experts.index') }}" class="btn btn-danger">{{ __('message.cancel')}}</a>
                         </div>
                     </div>
                 </form>
