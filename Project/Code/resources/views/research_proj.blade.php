@@ -105,9 +105,17 @@
 
                     <td style="vertical-align: top;text-align: left;">
                         <div style="padding-bottom: 10px;">
-                            <span>@foreach($re->user as $user)
-                                {{$user->position_th }} {{$user->fname_th}} {{$user->lname_th}}<br>
-                                @endforeach</span>
+                            <span>
+                                @foreach($re->user as $user)
+                                    @if(app()->getLocale() === 'th')
+                                        {{ $user->position_th }} {{ $user->doctoral_degree === 'Ph.D.' ? '' : '' }} {{ $user->fname_th }} {{ $user->lname_th }}<br>
+                                    @elseif(app()->getLocale() === 'zh')
+                                        {{ $user->position_en }} {{ $user->doctoral_degree === 'Ph.D.' ? 'Ph.D.' : '' }} {{ $user->fname_en }} {{ $user->lname_en }}<br>
+                                    @else
+                                        {{ $user->position_en }} {{ $user->doctoral_degree === 'Ph.D.' ? 'Ph.D.' : '' }} {{ $user->fname_en }} {{ $user->lname_en }}<br>
+                                    @endif
+                                @endforeach
+                            </span>
                         </div>
                     </td>
                     @if($re->status == 1)
@@ -130,7 +138,7 @@
                 @endforeach
             </tbody>
         </table>
-scriptdiv>
+    </div>
 
 </div>
 <script type="text/javascript" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
