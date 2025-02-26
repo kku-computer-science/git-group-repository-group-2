@@ -14,21 +14,21 @@
     @endif
     <div class="card" style="padding: 16px;">
         <div class="card-body">
-        <h4 class="card-title">{{ __('message.research_grant') }}</h4>
-        <a class="btn btn-primary btn-menu btn-icon-text btn-sm mb-3" href="{{ route('funds.create') }}">
-            <i class="mdi mdi-plus btn-icon-prepend"></i> {{ __('message.add') }}</a>
+            <h4 class="card-title">{{ __('message.research_grant') }}</h4>
+            <a class="btn btn-primary btn-menu btn-icon-text btn-sm mb-3" href="{{ route('funds.create') }}">
+                <i class="mdi mdi-plus btn-icon-prepend"></i> {{ __('message.add') }}</a>
             <div class="table-responsive">
                 <table id="example1" class="table table-striped">
                     <thead>
                         <tr>
-                        <th>{{ __('message.no') }}</th>
-                        <th>{{ __('message.fund_name') }}</th>
-                        <th>{{ __('message.fund_type') }}</th>
-                        <th>{{ __('message.fund_level') }}</th>
+                            <th>{{ __('message.no') }}</th>
+                            <th>{{ __('message.fund_name') }}</th>
+                            <th>{{ __('message.fund_type') }}</th>
+                            <th>{{ __('message.fund_level') }}</th>
 
                             <!-- <th>Create by</th> -->
-                        <th>{{ __('message.action') }}</th>
-                    </tr>
+                            <th>{{ __('message.action') }}</th>
+                        </tr>
                     </thead>
                     <tbody>
                         @foreach ($funds as $i=>$fund)
@@ -36,8 +36,26 @@
 
                             <td>{{ $i+1 }}</td>
                             <td>{{ Str::limit($fund->fund_name,80) }}</td>
-                            <td>{{ $fund->fund_type }}</td>
-                            <td>{{ $fund->fund_level }}</td>
+                            <td>
+                                @if($fund->fund_type == 'ทุนภายนอก')
+                                {{ __('message.external_fund') }}
+                                @elseif($fund->fund_type == 'ทุนภายใน')
+                                {{ __('message.internal_fund') }}
+                                @else
+                                {{ $fund->fund_type }}
+                                @endif
+                            </td>
+                            <td>
+                                @if($fund->fund_level == 'สูง')
+                                {{ __('message.high') }}
+                                @elseif($fund->fund_level == 'กลาง')
+                                {{ __('messagef.medium') }}
+                                @elseif($fund->fund_level == 'ต่ำ')
+                                {{ __('message.low') }}
+                                @else
+                                {{ $fund->fund_level }}
+                                @endif
+                            </td>
                             <!-- <td>{{ $fund->user->fname_en }} {{ $fund->user->lname_en }}</td> -->
 
                             <td>
@@ -57,10 +75,10 @@
                                     @method('DELETE')
 
                                     <li class="list-inline-item">
-                             <button class="btn btn-outline-danger btn-sm show_confirm" type="submit" data-toggle="tooltip" title="Delete" data-language="{{ app()->getLocale() }}">
-                            <i class="mdi mdi-delete"></i>
-                        </button>
-                    </li>
+                                        <button class="btn btn-outline-danger btn-sm show_confirm" type="submit" data-toggle="tooltip" title="Delete" data-language="{{ app()->getLocale() }}">
+                                            <i class="mdi mdi-delete"></i>
+                                        </button>
+                                    </li>
 
 
 
@@ -90,11 +108,11 @@
 <script type="text/javascript">
     $('.show_confirm').click(function(event) {
         var form = $(this).closest("form");
-        var language = $(this).data("language"); 
+        var language = $(this).data("language");
         event.preventDefault();
 
         var title, text, successMessage, buttonText;
-        
+
         if (language === 'th') {
             title = 'คุณแน่ใจหรือไม่?';
             text = 'หากคุณลบข้อมูลนี้ มันจะหายไปตลอดกาล.';
@@ -113,23 +131,23 @@
         }
 
         swal({
-            title: title,
-            text: text,
-            icon: "warning",
-            buttons: buttonText, 
-            dangerMode: true,
-        })
-        .then((willDelete) => {
-            if (willDelete) {
-                swal(successMessage, {
-                    icon: "success",
-                    buttons: buttonText[1]
-                }).then(function() {
-                    location.reload();
-                    form.submit();
-                });
-            }
-        });
+                title: title,
+                text: text,
+                icon: "warning",
+                buttons: buttonText,
+                dangerMode: true,
+            })
+            .then((willDelete) => {
+                if (willDelete) {
+                    swal(successMessage, {
+                        icon: "success",
+                        buttons: buttonText[1]
+                    }).then(function() {
+                        location.reload();
+                        form.submit();
+                    });
+                }
+            });
     });
 </script>
 

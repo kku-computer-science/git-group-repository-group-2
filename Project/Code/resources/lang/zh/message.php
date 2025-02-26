@@ -1,7 +1,6 @@
 <?php
 return [
     'Home' => '首页',
-    'Home' => '首页',
     'Researchers' => '研究人员',
     'ResearchProj' => '研究项目',
     'ResearchGroup' => '研究小组',
@@ -30,7 +29,6 @@ return [
     'language_zh' => '中文',
     'option' => '选项',
     'manage_fund' => '管理资金',
-    'manage_fund' => '资金管理',
     'research_project' => '研究项目',
     'research_group' => '研究小组',
     'manage_publications' => '管理出版物',
@@ -54,10 +52,7 @@ return [
     'password' => '密码',
     'expertise' => '专长',
     'education' => '教育背景',
-    'profile_settings' => '个人设置',
-    'name_title' => '姓名称谓',
     'education' => '教育',
-    'profile_settings' => '个人资料设置',
     'name_title' => '姓名标题',
     'profile_settings' => '个人设置',
     'name_title' => '称谓',
@@ -83,8 +78,8 @@ return [
     'fill_research' => '填写研究资金详情',
     'research_type' => '研究资助类型',
     'specify_type' => '请选择资助类型',
-    'internal_capital' => '内部资金',
-    'external_capital' => '外部资金',
+    'internal_fund' => '内部资金',
+    'external_fund' => '外部资金',
     'level' => '资金级别',
     'specify_level' => '请选择资金级别',
     'not_specified' => '未指定',
@@ -627,4 +622,5 @@ return [
     'Type' => '类型',
     'RegistrationDate' => '注册日期',
 
+    'user_full_name' => ':fname :lname',
 ];

@@ -76,8 +76,8 @@ return [
     'fill_research' => 'Fill in the research funddetails',
     'research_type' => 'Types of research grants',
     'specify_type' => 'Please specify the type of scholarship',
-    'internal_capital' => 'Internal Capital',
-    'external_capital' => 'External capital',
+    'internal_fund' => 'Internal Fund',
+    'external_fund' => 'External Fund',
     'level' => 'Capital Level',
     'specify_level' => 'Please specify the capital level',
     'not_specified' => 'Not specified',
@@ -162,7 +162,7 @@ return [
 
     //User page
     'users' => 'Users',
-    'new user' => 'New User',
+    'new_user' => 'New User',
     'import' => 'Import New User',
     'name' => 'Name',
     'department' => 'Department',
@@ -616,6 +616,7 @@ return [
     'PaperName' => 'Paper Name',
     'Type' => 'Type',
     'RegistrationDate' => 'Registration Date',
+    'user_full_name' => ':fname :lname',
     
 
 ];
