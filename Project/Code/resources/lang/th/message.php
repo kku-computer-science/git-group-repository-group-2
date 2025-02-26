@@ -14,6 +14,8 @@ return [
     'reporttotal' => 'รายงานจำนวนบทความทั้งหมด (5 ปี : สะสม)',
     'numberChart' => 'จำนวน',
     'yearChart' => 'ปี',
+    'before_home' => 'ก่อนหน้า',
+    'Summary_home' => 'สรุป',
 
     //Navbar
     'login' => 'เข้าสู่ระบบ',

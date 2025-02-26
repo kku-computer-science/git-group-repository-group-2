@@ -14,6 +14,8 @@ return [
     'reporttotal' => '报告总文章数（5年累计）',
     'numberChart' => '数量',
     'yearChart' => '年份',
+    'before_home' => '前',
+    'Summary_home' => '概要',
 
     //Navbar
     'login' => '登录',

@@ -108,7 +108,7 @@
                             <span>
                                 @foreach($re->user as $user)
                                     @if(app()->getLocale() === 'th')
-                                        {{ $user->position_th }} {{ $user->doctoral_degree === 'Ph.D.' ? 'ดร.' : '' }} {{ $user->fname_th }} {{ $user->lname_th }}<br>
+                                        {{ $user->position_th }} {{ $user->doctoral_degree === 'Ph.D.' ? '' : '' }} {{ $user->fname_th }} {{ $user->lname_th }}<br>
                                     @elseif(app()->getLocale() === 'zh')
                                         {{ $user->position_en }} {{ $user->doctoral_degree === 'Ph.D.' ? 'Ph.D.' : '' }} {{ $user->fname_en }} {{ $user->lname_en }}<br>
                                     @else
