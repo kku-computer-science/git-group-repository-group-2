@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Banner;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Log;
 
 class BannerController extends Controller
 {
@@ -17,25 +18,29 @@ class BannerController extends Controller
 
     public function store(Request $request)
     {
-        // การตรวจสอบว่าไฟล์เป็นรูปภาพและขนาดไม่เกินที่กำหนด
-        $request->validate([
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        ]);
-
-        // ตรวจสอบว่าไฟล์มีอยู่ใน request หรือไม่
-        if ($request->hasFile('image')) {
-            // อัปโหลดไฟล์ไปยัง storage แล้วเก็บเส้นทางไว้ในตัวแปร $imagePath
-            $imagePath = $request->file('image')->store('banners', 'public');
-        } else {
-            return redirect()->route('banners.index')->with('error', 'กรุณาเลือกไฟล์รูปภาพ');
+        // ตรวจสอบว่าไฟล์ถูกส่งมาหรือไม่
+        if (!$request->hasFile('image_zh')) {
+            return redirect()->back()->withErrors(['image_zh' => 'ไฟล์รูปภาพภาษาจีนหายไป']);
         }
-
-        // สร้างแบนเนอร์ใหม่แล้วบันทึกเส้นทางรูปภาพลงในฐานข้อมูล
-        Banner::create([
-            'image_path' => $imagePath,
+        // ตรวจสอบการอัพโหลดไฟล์ภาพทั้ง 3 ภาษา
+        $request->validate([
+            'image_th' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image_en' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image_zh' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048' // เพิ่มการตรวจสอบสำหรับภาษาจีน
         ]);
 
-        // ส่งผู้ใช้กลับไปที่หน้าหลักและแสดงข้อความสำเร็จ
+        // อัพโหลดไฟล์ภาพและบันทึก path ของไฟล์
+        $imagePathTh = $request->file('image_th')->store('banners', 'public');
+        $imagePathEn = $request->file('image_en')->store('banners', 'public');
+        $imagePathZh = $request->file('image_zh')->store('banners', 'public'); // ภาษาจีน
+
+        // สร้างแบนเนอร์ใหม่ในฐานข้อมูล
+        Banner::create([
+            'image_path_th' => $imagePathTh,
+            'image_path_en' => $imagePathEn,
+            'image_path_zh' => $imagePathZh, // เพิ่มการบันทึก path ของภาพภาษาจีน
+        ]);
+
         return redirect()->route('banners.index')->with('success', 'อัปโหลดรูปภาพสำเร็จ');
     }
 
@@ -43,15 +48,15 @@ class BannerController extends Controller
     {
         // ค้นหาข้อมูลแบนเนอร์ที่ต้องการลบ
         $banner = Banner::findOrFail($id);
-        
+
         // ลบไฟล์ภาพจาก storage
-        Storage::delete('public/' . $banner->image_path);
-        
+        Storage::delete('public/' . $banner->image_path_th);
+        Storage::delete('public/' . $banner->image_path_en);
+        Storage::delete('public/' . $banner->image_path_zh); // ลบไฟล์ภาพภาษาจีน
+
         // ลบข้อมูลจากฐานข้อมูล
         $banner->delete();
-        
+
         return redirect()->route('banners.index')->with('success', 'ลบรูปภาพสำเร็จ');
     }
-
-   
 }
