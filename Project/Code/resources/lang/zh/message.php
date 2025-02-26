@@ -402,6 +402,10 @@ return [
     'id_number' => '编号',
     'collaborator' => '共同作者',
     'Page' => '页数',
-    
+    'Publishedresearch' => '已发布研究',
+    'PaperName' => '论文名称',
+    'Type' => '类型',
+    'RegistrationDate' => '注册日期',
+
 
 ];

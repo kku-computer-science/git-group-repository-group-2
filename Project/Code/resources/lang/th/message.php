@@ -301,6 +301,11 @@ return [
     'id_number' => 'เลขที่',
     'collaborator' => 'ผู้จัดทำ (ร่วม)',
     'Page' => 'หน้า',
+    'Publishedresearch' => 'ผลงานวิจัยที่ตีพิมพ์',
+    'PaperName' => 'ชื่อเรื่อง',
+    'Type' => 'ประเภท',
+    'RegistrationDate' => 'วันที่จดทะเบียน',
+
 
 
 ];

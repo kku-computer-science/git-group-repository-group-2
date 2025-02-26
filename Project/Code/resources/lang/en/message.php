@@ -417,5 +417,11 @@ return [
     'id_number' => 'ID Number',
     'collaborator' => 'Collaborator',
     'Page' => 'Page',
-   
+    'Publishedresearch' => 'Published Research',
+    'book' => 'Book',
+    'PaperName' => 'Paper Name',
+    'Type' => 'Type',
+    'RegistrationDate' => 'Registration Date',
+    
+
 ];

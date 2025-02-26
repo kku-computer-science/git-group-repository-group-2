@@ -70,15 +70,18 @@
                 <div class="form-group row">
                     <p class="col-sm-3"><b>{{ __('message.head_group') }}</b></p>
                     <div class="col-sm-8">
-                        <select id='head0' name="head">
-                            @foreach($users as $user)
-                            <option value="{{ $user->id }}">
+                    <select id='head0' name="head">
+                        @foreach($users as $user)
+                        <option value="{{ $user->id }}">
+                            @if(app()->getLocale() == 'th')
+                                {{ $user->fname_th }} {{ $user->lname_th }}
+                            @else
+                                {{ $user->fname_en }} {{ $user->lname_en }}
+                            @endif
+                        </option>
+                        @endforeach
+                    </select>
 
-                          {{ $user->fname_th }} {{ $user->lname_th }}
-                          
-                            </option>
-                            @endforeach
-                        </select>
                     </div>
                 </div>
                 <div class="form-group row">
