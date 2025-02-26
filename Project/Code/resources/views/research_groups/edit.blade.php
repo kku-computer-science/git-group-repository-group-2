@@ -3,7 +3,7 @@
 <div class="container">
     @if ($errors->any())
     <div class="alert alert-danger">
-        <strong>Whoops!</strong> There were some problems with your input.<br><br>
+    <strong>{{ __('message.whoops') }}</strong> {{ __('message.problem_with_input') }}<br><br>
         <ul>
             @foreach ($errors->all() as $error)
             <li>{{ $error }}</li>
@@ -22,14 +22,14 @@
                     <p class="col-sm-3 "><b>{{ __('message.group_research_TH')}}</b></p>
                     <div class="col-sm-8">
                         <input name="group_name_th" value="{{ $researchGroup->group_name_th }}" class="form-control"
-                            placeholder="ชื่อกลุ่มวิจัย (ภาษาไทย)">
+                            placeholder="{{ __('message.group_name_th') }}">
                     </div>
                 </div>
                 <div class="form-group row">
                     <p class="col-sm-3 "><b>{{ __('message.group_research_EN')}}</b></p>
                     <div class="col-sm-8">
                         <input name="group_name_en" value="{{ $researchGroup->group_name_en }}" class="form-control"
-                            placeholder="ชื่อกลุ่มวิจัย (English)">
+                            placeholder="{{ __('message.group_name_en') }}">
                     </div>
                 </div>
                 <div class="form-group row">
@@ -74,7 +74,9 @@
                             @if($u->pivot->role == 1)
                             @foreach($users as $user)
                             <option value="{{ $user->id }}" @if($u->id == $user->id) selected @endif>
+                                
                                 {{ $user->fname_th }} {{ $user->lname_th }}
+
                             </option>
                             @endforeach
                             @endif

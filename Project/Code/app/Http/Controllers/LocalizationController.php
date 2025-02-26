@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Support\Facades\App;
 use App\Models\ResearchGroup;
 use App\Models\ResearchProject;

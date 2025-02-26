@@ -18,7 +18,7 @@
 
     @if ($errors->any())
     <div class="alert alert-danger">
-        <strong>Whoops!</strong> There were some problems with your input.<br><br>
+    <strong>{{ __('message.whoops') }}</strong> {{ __('message.problem_with_input') }}<br><br>
         <ul>
             @foreach ($errors->all() as $error)
             <li>{{ $error }}</li>
@@ -31,8 +31,13 @@
     <div class="col-md-8 grid-margin stretch-card">
         <div class="card" style="padding: 16px;">
             <div class="card-body">
+<<<<<<< HEAD
                 <h4 class="card-title">{{ __('message.add_book')}}</h4>
                 <p class="card-description">{{ __('message.fill_book')}}</p>
+=======
+                <h4 class="card-title">{{ __('message.book_add') }}</h4>
+                <p class="card-description">{{ __('message.book_description') }}</p>
+>>>>>>> origin/main
                 <form class="forms-sample" action="{{ route('books.store') }}" method="POST">
                     @csrf
                     
@@ -40,27 +45,27 @@
                     <div class="form-group row">
                         <label for="exampleInputac_name" class="col-sm-3 col-form-label">{{ __('message.book_name')}}</label>
                         <div class="col-sm-9">
-                            <input type="text" name="ac_name" class="form-control" placeholder="name">
+                            <input type="text" name="ac_name" class="form-control" placeholder="{{ __('message.book_name') }}">
                         </div>
                     </div>
                     
                     <div class="form-group row">
                         <label for="exampleInputac_sourcetitle" class="col-sm-3 col-form-label">{{ __('message.place')}}</label>
                         <div class="col-sm-9">
-                            <input type="text" name="ac_sourcetitle" class="form-control" placeholder="สถานที่ตีพิมพ์">
+                            <input type="text" name="ac_sourcetitle" class="form-control" placeholder="{{ __('message.publication_place') }}">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="exampleInputac_year" class="col-sm-3 col-form-label">{{ __('message.year')}}</label>
                         <div class="col-sm-9">
-                            <input type="date" name="ac_year" class="form-control" placeholder="ปี (พ.ศ.)">
+                            <input type="date" name="ac_year" class="form-control" placeholder="{{ __('message.year2') }}">
                         </div>
                     </div>
                     
                     <div class="form-group row">
                         <label for="exampleInputac_page" class="col-sm-3 col-form-label">{{ __('message.page')}}</label>
                         <div class="col-sm-9">
-                            <input type="text" name="ac_page" class="form-control" placeholder="จำนวนหน้า (Page)">
+                            <input type="text" name="ac_page" class="form-control" placeholder="{{ __('message.page_count') }}">
                         </div>
                     </div>
                     

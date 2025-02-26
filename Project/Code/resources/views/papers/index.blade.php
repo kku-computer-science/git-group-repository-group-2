@@ -100,17 +100,41 @@
         var form = $(this).closest("form");
         var name = $(this).data("name");
         event.preventDefault();
+
+        var language = 'th'; 
+
+        var title, text, successMessage, buttonText;
+        if (language === 'th') {
+            title = 'คุณแน่ใจหรือไม่?';
+            text = 'หากคุณลบข้อมูลนี้ มันจะหายไปตลอดกาล.';
+            successMessage = 'ลบสำเร็จ';
+            buttonText = ['ยกเลิก', 'ลบ'];
+        } else if (language === 'cn') {
+            title = '你确定吗？';
+            text = '如果删除此内容，将永远消失。';
+            successMessage = '删除成功';
+            buttonText = ['取消', '删除'];
+        } else {
+            title = 'Are you sure?';
+            text = 'If you delete this, it will be gone forever.';
+            successMessage = 'Delete Successfully';
+            buttonText = ['Cancel', 'Delete'];
+            
+        }
+
         swal({
-                title: `Are you sure?`,
-                text: "If you delete this, it will be gone forever.",
+                title: title,
+                text: text,
                 icon: "warning",
-                buttons: true,
+                buttons: buttonText, 
                 dangerMode: true,
             })
             .then((willDelete) => {
                 if (willDelete) {
-                    swal("Delete Successfully", {
+                    swal(successMessage, {
                         icon: "success",
+                        buttons: buttonText[1]
+
                     }).then(function() {
                         location.reload();
                         form.submit();

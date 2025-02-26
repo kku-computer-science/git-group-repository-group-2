@@ -9,7 +9,7 @@
 <div class="container">
     @if ($message = Session::get('success'))
     <div class="alert alert-success">
-        <p>{{ $message }}</p>
+        <p>{{ __('message.success_message') }}</p>
     </div>
     @endif
     <div class="card" style="padding: 16px;">

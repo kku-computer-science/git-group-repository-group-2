@@ -35,7 +35,7 @@
 
     @if ($errors->any())
     <div class="alert alert-danger">
-        <strong>Whoops!</strong> There were some problems with your input.<br><br>
+    <strong>{{ __('message.whoops') }}</strong> {{ __('message.problem_with_input') }}<br><br>
         <ul>
             @foreach ($errors->all() as $error)
             <li>{{ $error }}</li>
@@ -67,7 +67,7 @@
                     <div class="form-group row">
                         <label for="exampleInputpaper_name" class="col-sm-3 col-form-label"><b>{{ __('message.paper_name')}}</b></label>
                         <div class="col-sm-9">
-                            <input type="text" name="paper_name" class="form-control" placeholder="ชื่อเรื่อง">
+                            <input type="text" name="paper_name" class="form-control" placeholder="{{ __('message.research_title') }}">
                         </div>
                     </div>
 
@@ -81,7 +81,7 @@
                     <div class="form-group row">
                         <label for="exampleInputabstract" class="col-sm-3 col-form-label"><b>{{ __('message.abstract')}}</b></label>
                         <div class="col-sm-9">
-                            <textarea type="text" name="abstract" class="form-control form-control-lg" style="height:150px" placeholder="abstract"></textarea>
+                            <textarea type="text" name="abstract" class="form-control form-control-lg" style="height:150px" placeholder="{{ __('message.abstract') }}"></textarea>
                             <!-- <input type=" text" name="abstract" class="form-control" placeholder="abstract"> -->
                         </div>
                     </div>
@@ -151,7 +151,7 @@
                     <div class="form-group row">
                         <label for="exampleInputpaper_yearpub" class="col-sm-3 col-form-label"><b>{{ __('message.year')}}</b></label>
                         <div class="col-sm-4">
-                            <input type="text" name="paper_yearpub" class="form-control" placeholder="ปีที่ตีพิมพ์">
+                            <input type="text" name="paper_yearpub" class="form-control" placeholder="{{ __('message.published_year') }}">
                         </div>
                     </div>
                     <div class="form-group row">
@@ -169,7 +169,7 @@
                     <div class="form-group row">
                         <label for="exampleInputpaper_citation" class="col-sm-3 col-form-label"><b>{{ __('message.citation')}}</b></label>
                         <div class="col-sm-4">
-                            <input type="text" name="paper_citation" class="form-control" placeholder="จำนวนการอ้างอิง">
+                            <input type="text" name="paper_citation" class="form-control" placeholder="Number of Citations">
                         </div>
                     </div>
                     <div class="form-group row">
@@ -228,8 +228,8 @@
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dynamic_field">
                                     <tr>
-                                        <td><input type="text" name="fname[]" placeholder="ชื่อ (First name)" class="form-control name_list" /></td>
-                                        <td><input type="text" name="lname[]" placeholder="นามสกุล (Last name)" class="form-control name_list" /></td>
+                                        <td><input type="text" name="fname[]" placeholder="{{ __('message.first_name') }}" class="form-control name_list" /></td>
+                                        <td><input type="text" name="lname[]" placeholder="{{ __('message.last_name') }}" class="form-control name_list" /></td>
                                         <td><select id='pos2' class="custom-select my-select" style='width: 200px;' name="pos2[]">
                                                 <option value="1">{{ __('message.first_author')}}</option>
                                                 <option value="2">{{ __('message.co_author')}}</option>

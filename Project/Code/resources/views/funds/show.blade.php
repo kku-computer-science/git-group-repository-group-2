@@ -35,7 +35,7 @@
                 <p class="card-text col-sm-9">{{ $fund->user->fname_th }} {{ $fund->user->lname_th}}</p>
             </div>
             <div class="pull-right mt-5">
-                <a class="btn btn-primary btn-sm" href="{{ route('funds.index') }}"> Back</a>
+                <a class="btn btn-primary btn-sm" href="{{ route('funds.index') }}"> {{ __('message.back')}}</a>
             </div>
         </div>
 

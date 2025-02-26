@@ -112,13 +112,15 @@
                 title: "Are you sure?",
                 text: "If you delete this, it will be gone forever.",
                 icon: "warning",
-                buttons: true,
+                buttons: buttonText, 
                 dangerMode: true,
             })
             .then((willDelete) => {
                 if (willDelete) {
                     swal("Deleted Successfully", {
                         icon: "success",
+                        buttons: buttonText[1]
+
                     }).then(function() {
                         form.submit();
                     });

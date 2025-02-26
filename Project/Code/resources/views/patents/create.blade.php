@@ -6,8 +6,8 @@
 
     @if ($errors->any())
     <div class="alert alert-danger">
-        <strong>Whoops!</strong> There were some problems with your input.<br><br>
-        <ul>
+    <strong>{{ __('message.whoops') }}</strong> {{ __('message.problem_with_input') }}<br><br>
+    <ul>
             @foreach ($errors->all() as $error)
             <li>{{ $error }}</li>
             @endforeach
@@ -25,7 +25,7 @@
                     <div class="form-group row">
                         <label for="exampleInputac_name" class="col-sm-3">{{ __('message.name_ac')}}</label>
                         <div class="col-sm-9">
-                            <input type="text" name="ac_name" class="form-control" placeholder="name">
+                            <input type="text" name="ac_name" class="form-control" placeholder="{{ __('message.name') }}">
                         </div>
                     </div>
                     <div class="form-group row">
@@ -69,7 +69,7 @@
                     <div class="form-group row">
                         <label for="exampleInputac_refnumber" class="col-sm-3 ">{{ __('message.re_number')}}</label>
                         <div class="col-sm-4">
-                            <input type="text" name="ac_refnumber" class="form-control" placeholder="เลขทะเบียน">
+                            <input type="text" name="ac_refnumber" class="form-control" placeholder="{{ __('message.registration_number') }}">
                         </div>
                     </div>
 
@@ -122,8 +122,8 @@
                                         <th><a href="javascript:void(0);" style="font-size:18px;" id="addMore2" title="Add More Person"><i class="mdi mdi-plus"></i></span></a></th>
                                     <tr>
                                         <!--  -->
-                                        <td><input type="text" name="fname[]" class="form-control" placeholder="ชื่อ" ></td>
-                                        <td><input type="text" name="lname[]" class="form-control" placeholder="นามสกุล" ></td>
+                                        <td><input type="text" name="fname[]" class="form-control" placeholder="{{ __('message.first_name') }}" ></td>
+                                        <td><input type="text" name="lname[]" class="form-control" placeholder="{{ __('message.last_name') }}" ></td>
                                         <!-- <td><input type="text" name="emailid[]" class="form-control"></td> -->
                                         <td><a href='javascript:void(0);' class='remove'><span><i class="mdi mdi-minus"></span></a></td>
                                     </tr>

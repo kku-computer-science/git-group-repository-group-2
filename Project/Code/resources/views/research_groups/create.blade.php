@@ -4,7 +4,7 @@
 <div class="container">
     @if ($errors->any())
     <div class="alert alert-danger">
-        <strong>Whoops!</strong> There were some problems with your input.<br><br>
+    <strong>{{ __('message.whoops') }}</strong> {{ __('message.problem_with_input') }}<br><br>
         <ul>
             @foreach ($errors->all() as $error)
             <li>{{ $error }}</li>
@@ -14,22 +14,23 @@
     @endif
     <div class="card" style="padding: 16px;">
         <div class="card-body">
-            <h4 class="card-title">{{ __('message.create_research_group')}}</h4>
-            <p class="card-description">{{ __('message.create_detail')}}</p>
+        <h4 class="card-title">{{ __('message.create_research_group') }}</h4>
+        <p class="card-description">{{ __('message.edit_research_group') }}</p>
+
             <form action="{{ route('researchGroups.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group row">
                     <p class="col-sm-3 "><b>{{ __('message.create_group_TH')}}</b></p>
                     <div class="col-sm-8">
                         <input name="group_name_th" value="{{ old('group_name_th') }}" class="form-control"
-                            placeholder="ชื่อกลุ่มวิจัย (ภาษาไทย)">
+                            placeholder="{{ __('message.group_name_th') }}">
                     </div>
                 </div>
                 <div class="form-group row">
                     <p class="col-sm-3 "><b>{{ __('message.create_group_EN')}}</b></p>
                     <div class="col-sm-8">
                         <input name="group_name_en" value="{{ old('group_name_en') }}" class="form-control"
-                            placeholder="ชื่อกลุ่มวิจัย (English)">
+                            placeholder="{{ __('message.group_name_en') }}">
                     </div>
                 </div>
                 <div class="form-group row">
@@ -69,13 +70,18 @@
                 <div class="form-group row">
                     <p class="col-sm-3"><b>{{ __('message.head_research_group')}}</b></p>
                     <div class="col-sm-8">
-                        <select id='head0' name="head">
-                            @foreach($users as $user)
-                            <option value="{{ $user->id }}">
+                    <select id='head0' name="head">
+                        @foreach($users as $user)
+                        <option value="{{ $user->id }}">
+                            @if(app()->getLocale() == 'th')
                                 {{ $user->fname_th }} {{ $user->lname_th }}
-                            </option>
-                            @endforeach
-                        </select>
+                            @else
+                                {{ $user->fname_en }} {{ $user->lname_en }}
+                            @endif
+                        </option>
+                        @endforeach
+                    </select>
+
                     </div>
                 </div>
                 <div class="form-group row">
