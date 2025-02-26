@@ -2,25 +2,7 @@
 <link rel="stylesheet" href="https://cdn.datatables.net/fixedheader/3.2.3/css/fixedHeader.bootstrap4.min.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/1.12.0/css/dataTables.bootstrap4.min.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/fixedheader/3.2.3/css/fixedHeader.bootstrap4.min.css">
-<style type="text/css">
-    .dropdown-toggle {
-        height: 40px;
-        width: 400px !important;
-    }
 
-    body label:not(.input-group-text) {
-        margin-top: 10px;
-    }
-
-    body .my-select {
-        background-color: #EFEFEF;
-        color: #212529;
-        border: 0 none;
-        border-radius: 10px;
-        padding: 6px 20px;
-        width: 100%;
-    }
-</style>
 @section('content')
 <div class="container">
     @if ($message = Session::get('success'))
@@ -30,16 +12,16 @@
     @endif
     <div class="card" style="padding: 16px;">
         <div class="card-body">
-            <h4 class="card-title" style="text-align: center;">หลักสูตร</h4>
-            <a class="btn btn-primary btn-menu btn-icon-text btn-sm mb-3" href="javascript:void(0)" id="new-program" data-toggle="modal"><i class="mdi mdi-plus btn-icon-prepend"></i> ADD </a>
+            <h4 class="card-title" style="text-align: center;">{{ __('message.education')}}</h4>
+            <a class="btn btn-primary btn-menu btn-icon-text btn-sm mb-3" href="javascript:void(0)" id="new-program" data-toggle="modal"><i class="mdi mdi-plus btn-icon-prepend"></i>{{ __('message.add')}}</a>
             <table id="example1" class="table table-striped">
                 <thead>
                     <tr>
-                        <th>id</th>
-                        <th>Name (ไทย)</th>
+                        <th>{{ __('message.id')}}</th>
+                        <th>{{ __('message.name_th')}}</th>
                         <!-- <th>Name (Eng)</th> -->
-                        <th>Degree</th>
-                        <th>Action</th>
+                        <th>{{ __('message.degree')}}</th>
+                        <th>{{ __('message.action')}}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -90,7 +72,7 @@
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
-                                <strong>ระดับการศึกษา:</strong>
+                                <strong>{{ __('message.education')}}:</strong>
                                 <div class="col-sm-8">
                                     <select id="degree" class="custom-select my-select" name="degree">
                                         @foreach($degree as $d)
@@ -100,7 +82,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <strong>สาขาวิชา:</strong>
+                                <strong>{{ __('message.department')}}:</strong>
                                 <div class="col-sm-8">
                                     <select id="department" class="custom-select my-select" name="department">
                                         @foreach($department as $d)
@@ -110,11 +92,11 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <strong>Name TH:</strong>
+                                <strong>{{ __('message.name_th')}}:</strong>
                                 <input type="text" name="program_name_th" id="program_name_th" class="form-control" placeholder="program name th" onchange="validate()">
                             </div>
                             <div class="form-group">
-                                <strong>Name EH:</strong>
+                                <strong>{{ __('message.name_en')}}:</strong>
                                 <input type="text" name="program_name_en" id="program_name_en" class="form-control" placeholder="program_name_en" onchange="validate()">
                             </div>
                             <!-- <div class="form-group">
@@ -125,8 +107,8 @@
                         </div>
 
                         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                            <button type="submit" id="btn-save" name="btnsave" class="btn btn-primary" disabled>Submit</button>
-                            <a href="{{ route('programs.index') }}" class="btn btn-danger">Cancel</a>
+                            <button type="submit" id="btn-save" name="btnsave" class="btn btn-primary" disabled>{{ __('message.submit')}}</button>
+                            <a href="{{ route('programs.index') }}" class="btn btn-danger">{{ __('message.cancel')}}</a>
                             <!-- <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button> -->
                         </div>
                     </div>

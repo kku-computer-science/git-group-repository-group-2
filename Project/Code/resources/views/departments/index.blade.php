@@ -16,10 +16,10 @@
         </div>
         @endif
         <div class="card">
-            <div class="card-header">Departments
+            <div class="card-header">{{ __('message.department')}}
                 @can('departments-create')
 
-                <a class="btn btn-primary" href="{{ route('departments.create') }}">New department</a>
+                <a class="btn btn-primary" href="{{ route('departments.create') }}">{{ __('message.new_department')}}</a>
 
                 @endcan
             </div>
@@ -28,8 +28,8 @@
                     <thead class="thead-dark">
                         <tr>
                             <th>#</th>
-                            <th>Name</th>
-                            <th width="280px">Action</th>
+                            <th>{{ __('message.name')}}</th>
+                            <th width="280px">{{ __('message.action')}}</th>
                         </tr>
                     </thead>
                     <tbody>

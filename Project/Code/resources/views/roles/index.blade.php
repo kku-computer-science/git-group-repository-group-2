@@ -9,17 +9,17 @@
         @endif
         <div class="card" style="padding: 16px;">
             <div class="card-body">
-                <h4 class="card-title">Roles</h4>
+                <h4 class="card-title">{{ __('message.role')}}</h4>
                 @can('role-create')
-                <a class="btn btn-primary btn-menu btn-icon-text btn-sm mb-3" href="{{ route('roles.create') }}"><i class="mdi mdi-plus btn-icon-prepend"></i>Add</a>
+                <a class="btn btn-primary btn-menu btn-icon-text btn-sm mb-3" href="{{ route('roles.create') }}"><i class="mdi mdi-plus btn-icon-prepend"></i>{{ __('message.add')}}</a>
                 @endcan
 
                 <table class="table table-striped">
                     <thead class="thead-dark">
                         <tr>
                             <th>#</th>
-                            <th>Name</th>
-                            <th width="280px">Action</th>
+                            <th>{{ __('message.name')}}</th>
+                            <th width="280px">{{ __('message.action')}}</th>
                         </tr>
                     </thead>
                     <tbody>

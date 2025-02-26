@@ -578,6 +578,7 @@ CREATE TABLE `programs` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `program_name_th` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `program_name_en` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `program_name_zh` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `degree_id` bigint(20) unsigned NOT NULL,
   `department_id` bigint(20) unsigned NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -596,9 +597,18 @@ CREATE TABLE `programs` (
 
 LOCK TABLES `programs` WRITE;
 /*!40000 ALTER TABLE `programs` DISABLE KEYS */;
-INSERT INTO `programs` VALUES (1,'สาขาวิชาวิทยาการคอมพิวเตอร์','Computer Science',1,1,NULL,'2022-04-20 16:06:31'),(2,'สาขาวิชาเทคโนโลยีสารสนเทศ','Infomation Technology',1,1,NULL,NULL),(3,'สาขาวิชาภูมิสารสนเทศศาสตร์ ','Geo-Informatics',1,1,NULL,NULL),(4,'สาขาวิชาวิทยาการคอมพิวเตอร์และเทคโนโลยีสารสนเทศ','Computer Science and Infomation Technology',2,1,NULL,NULL),(5,'สาขาวิชาวิทยาการข้อมูลและปัญญาประดิษฐ์ หลักสูตรนานาชาติ','Data Science and Artificial Intelligence (International Program)',2,1,NULL,NULL),(6,'สาขาวิชาภูมิสารสนเทศศาสตร์ ','Geo-Informatics',2,1,NULL,NULL),(24,'สาขาวิชาวิทยาการคอมพิวเตอร์และเทคโนโลยีสารสนเทศ หลักสูตรนานาชาติ','Computer Science and Infomation Technology (International Program)',3,1,'2022-04-20 16:06:16','2022-04-20 16:06:16'),(25,'สาขาวิชาภูมิสารสนเทศศาสตร์','Geo-Informatics',3,1,'2022-04-20 16:07:18','2022-04-20 16:07:18');
+INSERT INTO `programs` VALUES 
+(1,'สาขาวิชาวิทยาการคอมพิวเตอร์','Computer Science','计算机科学',1,1,NULL,'2022-04-20 16:06:31'),
+(2,'สาขาวิชาเทคโนโลยีสารสนเทศ','Infomation Technology','信息技术',1,1,NULL,NULL),
+(3,'สาขาวิชาภูมิสารสนเทศศาสตร์ ','Geo-Informatics','地理信息学',1,1,NULL,NULL),
+(4,'สาขาวิชาวิทยาการคอมพิวเตอร์และเทคโนโลยีสารสนเทศ','Computer Science and Infomation Technology','计算机科学与信息技术',2,1,NULL,NULL),
+(5,'สาขาวิชาวิทยาการข้อมูลและปัญญาประดิษฐ์ หลักสูตรนานาชาติ','Data Science and Artificial Intelligence (International Program)','数据科学与人工智能（国际课程）',2,1,NULL,NULL),
+(6,'สาขาวิชาภูมิสารสนเทศศาสตร์ ','Geo-Informatics','地理信息学',2,1,NULL,NULL),
+(24,'สาขาวิชาวิทยาการคอมพิวเตอร์และเทคโนโลยีสารสนเทศ หลักสูตรนานาชาติ','Computer Science and Infomation Technology (International Program)','计算机科学与信息技术（国际课程）',3,1,'2022-04-20 16:06:16','2022-04-20 16:06:16'),
+(25,'สาขาวิชาภูมิสารสนเทศศาสตร์','Geo-Informatics','地理信息学',3,1,'2022-04-20 16:07:18','2022-04-20 16:07:18');
 /*!40000 ALTER TABLE `programs` ENABLE KEYS */;
 UNLOCK TABLES;
+
 
 --
 -- Table structure for table `research_groups`
@@ -956,3 +966,5 @@ UNLOCK TABLES;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2022-05-18 23:35:07
+
+
