@@ -256,7 +256,7 @@
             xAxes: [{
                 scaleLabel: {
                     display: true,
-                    labelString: '{{ trans('message.yearChart') }}'
+                    labelString: '{{ trans('message.yearChart') }}',
                 }
             }]
         },
