@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.2.2 (Python 3.13.2 on darwin)" generated="2025-02-26T16:00:32.500787" rpa="false" schemaversion="5">
+<suite id="s1" name="Banner Upload" source="/Users/nipatchapakdee/SoftwareEN/Project/Setup_project/git-group-repository-group-2/Project/Code/robot_tests/banner_upload.robot">
+<test id="s1-t1" name="Upload Banner Images and Verify Success Message" line="15">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-02-26T16:00:32.630022" level="INFO">Opening browser 'chrome' to base url 'http://127.0.0.1:8002/login'.</msg>
+<arg>${LOGIN_PAGE}</arg>
+<arg>chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-02-26T16:00:32.629834" elapsed="4.321887"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-02-26T16:00:36.967923" level="INFO">Typing text 'admin@gmail.com' into text field 'id=username'.</msg>
+<arg>id=username</arg>
+<arg>${USER_USERNAME}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-02-26T16:00:36.965794" elapsed="0.305202"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-02-26T16:00:37.271534" level="INFO">Typing text '12345678' into text field 'id=password'.</msg>
+<arg>id=password</arg>
+<arg>${USER_PASSWORD}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-02-26T16:00:37.271265" elapsed="0.064145"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-02-26T16:00:37.336482" level="INFO">Clicking button 'xpath=//button[text()='Log In']'.</msg>
+<arg>xpath=//button[text()='Log In']</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-02-26T16:00:37.336164" elapsed="0.459593"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>Dashboard</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" start="2025-02-26T16:00:37.795983" elapsed="0.571497"/>
+</kw>
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2025-02-26T16:00:38.367814" level="INFO">Opening url 'http://127.0.0.1:8002/banners'</msg>
+<arg>${BANNER_UPLOAD_PAGE}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2025-02-26T16:00:38.367669" elapsed="0.550578"/>
+</kw>
+<kw name="Choose File" owner="SeleniumLibrary">
+<msg time="2025-02-26T16:00:38.918696" level="INFO">Sending /Users/nipatchapakdee/SoftwareEN/Project/Setup_project/git-group-repository-group-2/Project/Code/robot_tests/2_up.png to browser.</msg>
+<arg>name=image_th</arg>
+<arg>${BANNER_IMAGE_TH}</arg>
+<doc>Inputs the ``file_path`` into the file input field ``locator``.</doc>
+<status status="PASS" start="2025-02-26T16:00:38.918446" elapsed="0.028214"/>
+</kw>
+<kw name="Choose File" owner="SeleniumLibrary">
+<msg time="2025-02-26T16:00:38.947063" level="INFO">Sending /Users/nipatchapakdee/SoftwareEN/Project/Setup_project/git-group-repository-group-2/Project/Code/robot_tests/1_up.png to browser.</msg>
+<arg>name=image_en</arg>
+<arg>${BANNER_IMAGE_EN}</arg>
+<doc>Inputs the ``file_path`` into the file input field ``locator``.</doc>
+<status status="PASS" start="2025-02-26T16:00:38.946851" elapsed="0.016912"/>
+</kw>
+<kw name="Choose File" owner="SeleniumLibrary">
+<msg time="2025-02-26T16:00:38.964100" level="INFO">Sending /Users/nipatchapakdee/SoftwareEN/Project/Setup_project/git-group-repository-group-2/Project/Code/robot_tests/3_up.png to browser.</msg>
+<arg>name=image_zh</arg>
+<arg>${BANNER_IMAGE_ZH}</arg>
+<doc>Inputs the ``file_path`` into the file input field ``locator``.</doc>
+<status status="PASS" start="2025-02-26T16:00:38.963929" elapsed="0.017120"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-02-26T16:00:38.981439" level="INFO">Clicking button 'xpath=//button[text()='บันทึก']'.</msg>
+<arg>xpath=//button[text()='บันทึก']</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-02-26T16:00:38.981258" elapsed="0.100213"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>อัปโหลดรูปภาพสำเร็จ</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" start="2025-02-26T16:00:39.081918" elapsed="0.325871"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2025-02-26T16:00:39.408042" elapsed="0.133480"/>
+</kw>
+<status status="PASS" start="2025-02-26T16:00:32.629120" elapsed="6.913625"/>
+</test>
+<status status="PASS" start="2025-02-26T16:00:32.502188" elapsed="7.041658"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Banner Upload" id="s1" pass="1" fail="0" skip="0">Banner Upload</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
