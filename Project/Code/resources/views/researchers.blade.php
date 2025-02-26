@@ -1,10 +1,15 @@
 @extends('layouts.layout')
 @section('content')
 <div class="container card-2">
-    <p class="title"> Researchers </p>
+    <p class="title">{{ trans('message.researchers_research') }}</p>
     @foreach($request as $res)
     <span>
-        <ion-icon name="caret-forward-outline" size="small"></ion-icon> {{$res->program_name_en}}
+        <ion-icon name="caret-forward-outline" size="small"></ion-icon>
+        @if(app()->getLocale() == 'en')
+         {{$res->program_name_en}}
+        @else
+         {{$res->program_name_th}}
+        @endif
     </span>
     <div class="d-flex">
         <div class="ml-auto">

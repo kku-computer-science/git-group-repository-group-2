@@ -10,6 +10,10 @@ return [
     'publications' => 'Publications (In the Last 5 Years)',
     'education' => 'Education',
     'publications2' => 'Publications',
+    'reference' => 'Reference',
+    'reporttotal' => 'Report total number of articles ( 5 years : cumulative)',
+    'numberChart' => 'Number',
+    'yearChart' => 'Year',
 
     //Admin page
     'research_system' => 'Research Information Management System',
@@ -53,4 +57,8 @@ return [
     'old_password' => 'Old Password',
     'new_password' => 'New Password',
     'confirm_newpassword' => 'Confirm NewPassword',
+
+    //Research Project page
+    'researchers_research' => 'Researchers',
+    ''
 ];
