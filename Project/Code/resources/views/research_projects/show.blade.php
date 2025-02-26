@@ -40,31 +40,55 @@
                 @endif
             </div>
             <div class="row">
-                <p class="card-text col-sm-3"><b>{{ __('message.project_manager')}}</b></p>
+                <p class="card-text col-sm-3"><b>{{ __('message.project_manager') }}</b></p>
                 @foreach($researchProject->user as $user)
-                @if ( $user->pivot->role == 1)
-                <p class="card-text col-sm-9">{{$user->position_th}}{{ $user->fname_th}} {{ $user->fname_th}}</p>
+                @if ($user->pivot->role == 1)
+                <p class="card-text col-sm-9">
+                    @if(app()->getLocale() == 'th')
+                    {{ $user->position_th }} {{ $user->fname_th }} {{ $user->lname_th }}
+                    @elseif(app()->getLocale() == 'en')
+                    {{ $user->position_en }} {{ $user->fname_en }} {{ $user->lname_en }}
+                    @else
+                    {{ $user->position_th }} {{ $user->fname_th }} {{ $user->lname_th }} <!-- ค่าเริ่มต้น -->
+                    @endif
+                </p>
                 @endif
                 @endforeach
             </div>
+
             <div class="row">
-                <p class="card-text col-sm-3"><b>{{ __('message.member')}}</b></p>
+                <p class="card-text col-sm-3"><b>{{ __('message.member') }}</b></p>
                 @foreach($researchProject->user as $user)
-                @if ( $user->pivot->role == 2)
-                <p class="card-text col-sm-9">{{$user->position_th}}{{ $user->fname_th}} {{ $user->fname_th}}
-				@if (!$loop->last),@endif
+                @if ($user->pivot->role == 2)
+                <p class="card-text col-sm-9">
+                    @if(app()->getLocale() == 'th')
+                    {{ $user->position_th }} {{ $user->fname_th }} {{ $user->lname_th }}
+                    @elseif(app()->getLocale() == 'en')
+                    {{ $user->position_en }} {{ $user->fname_en }} {{ $user->lname_en }}
+                    @else
+                    {{ $user->position_th }} {{ $user->fname_th }} {{ $user->lname_th }} <!-- ค่าเริ่มต้น -->
+                    @endif
+                    @if (!$loop->last),@endif
+                </p>
                 @endif
-                
                 @endforeach
 
                 @foreach($researchProject->outsider as $user)
-                @if ( $user->pivot->role == 2)
-                ,{{$user->title_name}}{{ $user->fname}} {{ $user->fname}}</p>
-				@if (!$loop->last),@endif
+                @if ($user->pivot->role == 2)
+                <p class="card-text col-sm-9">
+                    @if(app()->getLocale() == 'th')
+                    {{ $user->title_name_th }} {{ $user->fname_th }} {{ $user->lname_th }}
+                    @elseif(app()->getLocale() == 'en')
+                    {{ $user->title_name_en }} {{ $user->fname_en }} {{ $user->lname_en }}
+                    @else
+                    {{ $user->title_name_th }} {{ $user->fname_th }} {{ $user->lname_th }} <!-- ค่าเริ่มต้น -->
+                    @endif
+                    @if (!$loop->last),@endif
+                </p>
                 @endif
-                
                 @endforeach
             </div>
+
             <div class="pull-right mt-5">
                 <a class="btn btn-primary" href="{{ route('researchProjects.index') }}">{{ __('message.back')}}</a>
             </div>

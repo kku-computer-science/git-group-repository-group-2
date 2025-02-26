@@ -36,8 +36,8 @@
                         <div class="col-sm-4">
                             <select name="fund_type" class="custom-select my-select" id="fund_type" onchange='toggleDropdown(this);' required>
                                 <option value="" disabled selected >{{ __( 'message.specify_type'  ) }}</option>
-                                <option value="ทุนภายใน">{{ __( 'message.internal_capital' )}}</option>
-                                <option value="ทุนภายนอก">{{ __( 'message.external_capital' )}}</option>
+                                <option value="ทุนภายใน">{{ __( 'message.internal_fund' )}}</option>
+                                <option value="ทุนภายนอก">{{ __( 'message.external_fund' )}}</option>
                             </select>
                         </div>
                     </div>

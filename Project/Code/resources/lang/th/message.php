@@ -73,8 +73,8 @@ return [
     'fill_research' => 'กรอกข้อมูลเงินทุนวิจัย',
     'research_type' => 'ประเภทของเงินทุนวิจัย',
     'specify_type' => 'กรุณาระบุประเภทของทุน',
-    'internal_capital' => 'ทุนภายใน',
-    'external_capital' => 'ทุนภายนอก',
+    'internal_fund' => 'ทุนภายใน',
+    'external_fund' => 'ทุนภายนอก',
     'level' => 'ระดับทุน',
     'specify_level' => 'กรุณาระบุระดับทุน',
     'not_specified' => 'ไม่ระบุ',
@@ -159,7 +159,7 @@ return [
 
     //User page
     'users' => 'ผู้ใช้งาน',
-    'new user' => 'ผู้ใช้ใหม่',
+    'new_user' => 'ผู้ใช้ใหม่',
     'import' => 'นำเข้าผู้ใช้ใหม่',
     'name' => 'ชื่อ',
     'department' => 'ภาควิชา',
@@ -524,6 +524,6 @@ return [
     'Type' => 'ประเภท',
     'RegistrationDate' => 'วันที่จดทะเบียน',
 
-
+    'user_full_name' => ':fname :lname',
 
 ];
