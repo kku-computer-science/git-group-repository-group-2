@@ -124,16 +124,16 @@
                             <label>{{ __('message.academic_ranks') }}</label>
                             <select name="academic_ranks_th" id="subcategory" class="custom-select my-select">
                                     <optgroup id="Professor" label="Professor">
-                                        <option value="ศาสตราจารย์" {{ Auth::user()->academic_ranks_th == 'ศาสตราจารย์' ? 'selected' : '' }}>ศาสตราจารย์</option>
+                                        <option value="ศาสตราจารย์" {{ Auth::user()->academic_ranks_th == 'ศาสตราจารย์' ? 'selected' : '' }}>{{ __('message.professor') }}</option>
                                     </optgroup>
                                     <optgroup id="Associate Professor" label="Associate Professor">
-                                        <option value="รองศาสตราจารย์" {{ Auth::user()->academic_ranks_th == 'รองศาสตราจารย์' ? 'selected' : '' }}>รองศาสตราจารย์</option>
+                                        <option value="รองศาสตราจารย์" {{ Auth::user()->academic_ranks_th == 'รองศาสตราจารย์' ? 'selected' : '' }}>{{ __('message.associate_professor') }}</option>
                                     </optgroup>
                                     <optgroup id="Assistant Professor" label="Assistant Professor">
-                                        <option value="ผู้ช่วยศาสตราจารย์" {{ Auth::user()->academic_ranks_th == 'ผู้ช่วยศาสตราจารย์' ? 'selected' : '' }}>ผู้ช่วยศาสตราจารย์</option>
+                                        <option value="ผู้ช่วยศาสตราจารย์" {{ Auth::user()->academic_ranks_th == 'ผู้ช่วยศาสตราจารย์' ? 'selected' : '' }}>{{ __('message.assistant_professor') }}</option>
                                     </optgroup>
                                     <optgroup id="Lecturer" label="Lecturer">
-                                        <option value="อาจารย์" {{ Auth::user()->academic_ranks_th == 'อาจารย์' ? 'selected' : '' }}>อาจารย์</option>
+                                        <option value="อาจารย์" {{ Auth::user()->academic_ranks_th == 'อาจารย์' ? 'selected' : '' }}>{{ __('message.lecturer') }}</option>
                                     </optgroup>
                                 </select>
                             </div>
@@ -258,9 +258,9 @@
                             <div class="form-group">
                             <label>{{ __('message.graduation_year') }}</label>
                             @if (empty(Auth::user()->education[1]->year))
-                                <input type="text" class="form-control" id="inputlYear" placeholder="ปี พ.ศ. ที่จบ" value="" name="m_year">
+                                <input type="text" class="form-control" id="inputlYear" placeholder="{{ __('message.graduation_year') }}" value="" name="m_year">
                                 @else
-                                <input type="text" class="form-control" id="inputlYear" placeholder="ปี พ.ศ. ที่จบ" value="{{Auth::user()->education[1]->year }}" name="m_year">
+                                <input type="text" class="form-control" id="inputlYear" placeholder="{{ __('message.graduation_year') }}" value="{{Auth::user()->education[1]->year }}" name="m_year">
                                 @endif
                                 <span class="text-danger error-text name_error"></span>
                             </div>
@@ -272,9 +272,9 @@
                             <div class="form-group">
                             <label>{{ __('message.university_name') }}</label>
                                 @if (empty(Auth::user()->education[2]->uname))
-                                <input type="text" class="form-control" id="inputlDUName" placeholder="ชื่อมหาวิทยาลัย" value="" name="d_uname">
+                                <input type="text" class="form-control" id="inputlDUName" placeholder="{{ __('message.university_name') }}" value="" name="d_uname">
                                 @else
-                                <input type="text" class="form-control" id="inputlDUName" placeholder="ชื่อมหาวิทยาลัย" value="{{Auth::user()->education[2]->uname}}" name="d_uname">
+                                <input type="text" class="form-control" id="inputlDUName" placeholder="{{ __('message.university_name') }}" value="{{Auth::user()->education[2]->uname}}" name="d_uname">
                                 @endif
                                 <span class="text-danger error-text name_error"></span>
                             </div>
@@ -283,9 +283,9 @@
                             <div class="form-group">
                             <label>{{ __('message.degree_name') }}</label>
                                 @if (empty(Auth::user()->education[2]->qua_name))
-                                <input type="text" class="form-control" id="inputlDQuName" placeholder="ชื่อวุฒิปริญญา" value="" name="d_qua_name">
+                                <input type="text" class="form-control" id="inputlDQuName" placeholder="{{ __('message.degree_name') }}" value="" name="d_qua_name">
                                 @else
-                                <input type="text" class="form-control" id="inputlDQuName" placeholder="ชื่อวุฒิปริญญา" value="{{Auth::user()->education[2]->qua_name }}" name="d_qua_name">
+                                <input type="text" class="form-control" id="inputlDQuName" placeholder="{{ __('message.degree_name') }}" value="{{Auth::user()->education[2]->qua_name }}" name="d_qua_name">
                                 @endif
                                 <span class="text-danger error-text name_error"></span>
                             </div>
@@ -294,9 +294,9 @@
                             <div class="form-group">
                             <label>{{ __('message.graduation_year') }}</label>
                             @if (empty(Auth::user()->education[2]->year))
-                                <input type="text" class="form-control" id="inputlYear" placeholder="ปี พ.ศ. ที่จบ" value="" name="d_year">
+                                <input type="text" class="form-control" id="inputlYear" placeholder="{{ __('message.graduation_year') }}" value="" name="d_year">
                                 @else
-                                <input type="text" class="form-control" id="inputlYear" placeholder="ปี พ.ศ. ที่จบ" value="{{Auth::user()->education[2]->year }}" name="d_year">
+                                <input type="text" class="form-control" id="inputlYear" placeholder="{{ __('message.graduation_year') }}" value="{{Auth::user()->education[2]->year }}" name="d_year">
                                 @endif
                                 <span class="text-danger error-text name_error"></span>
                             </div>

@@ -9,7 +9,7 @@
 <div class="container">
     @if ($message = Session::get('success'))
     <div class="alert alert-success">
-        <p>{{ $message }}</p>
+        <p>{{ __('message.success_message') }}</p>
     </div>
     @endif
     <div class="card" style="padding: 16px;">
@@ -57,9 +57,11 @@
                                     @method('DELETE')
 
                                     <li class="list-inline-item">
-                                        <input name="_method" type="hidden" value="DELETE">
-                                        <button class="btn btn-outline-danger btn-sm show_confirm" type="submit" data-toggle="tooltip" title="Delete"><i class="mdi mdi-delete"></i></button>
-                                    </li>
+                             <button class="btn btn-outline-danger btn-sm show_confirm" type="submit" data-toggle="tooltip" title="Delete" data-language="{{ app()->getLocale() }}">
+                            <i class="mdi mdi-delete"></i>
+                        </button>
+                    </li>
+
 
 
                                     @endcan
@@ -88,25 +90,48 @@
 <script type="text/javascript">
     $('.show_confirm').click(function(event) {
         var form = $(this).closest("form");
-        var name = $(this).data("name");
+        var language = $(this).data("language"); 
         event.preventDefault();
+
+        var title, text, successMessage, buttonText;
+        
+        if (language === 'th') {
+            title = 'คุณแน่ใจหรือไม่?';
+            text = 'หากคุณลบข้อมูลนี้ มันจะหายไปตลอดกาล.';
+            successMessage = 'ลบสำเร็จ';
+            buttonText = ['ยกเลิก', 'ลบ'];
+        } else if (language === 'cn') {
+            title = '你确定吗？';
+            text = '如果删除此内容，将永远消失。';
+            successMessage = '删除成功';
+            buttonText = ['取消', '删除'];
+        } else {
+            title = 'Are you sure?';
+            text = 'If you delete this, it will be gone forever.';
+            successMessage = 'Delete Successfully';
+            buttonText = ['Cancel', 'Delete'];
+        }
+
         swal({
-                title: `Are you sure?`,
-                text: "If you delete this, it will be gone forever.",
-                icon: "warning",
-                buttons: true,
-                dangerMode: true,
-            })
-            .then((willDelete) => {
-                if (willDelete) {
-                    swal("Delete Successfully", {
-                        icon: "success",
-                    }).then(function() {
-                        location.reload();
-                        form.submit();
-                    });
-                }
-            });
+            title: title,
+            text: text,
+            icon: "warning",
+            buttons: buttonText, 
+            dangerMode: true,
+        })
+        .then((willDelete) => {
+            if (willDelete) {
+                swal(successMessage, {
+                    icon: "success",
+                    buttons: buttonText[1]
+                }).then(function() {
+                    location.reload();
+                    form.submit();
+                });
+            }
+        });
     });
 </script>
+
+
 @endsection

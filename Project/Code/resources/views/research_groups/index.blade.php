@@ -7,23 +7,23 @@
 <div class="container">
     @if ($message = Session::get('success'))
     <div class="alert alert-success">
-        <p>{{ $message }}</p>
+        <p>{{ __('message.success_message') }}</p>
     </div>
     @endif
     <div class="card" style="padding: 16px;">
         <div class="card-body">
-            <h4 class="card-title">กลุ่มวิจัย</h4>
+            <h4 class="card-title">{{ __('message.ResearchGroup') }}</h4>
             <a class="btn btn-primary btn-menu btn-icon-text btn-sm mb-3" href="{{ route('researchGroups.create') }}"><i
-                    class="mdi mdi-plus btn-icon-prepend"></i> ADD</a>
+                    class="mdi mdi-plus btn-icon-prepend"></i>{{ __('message.add') }}</a>
             <!-- <div class="table-responsive"> -->
                 <table id ="example1" class="table table-striped">
                     <thead>
                         <tr>
-                            <th>No.</th>
-                            <th>Group name (ไทย)</th>
-                            <th>Head</th>
-                            <th>Member</th>
-                            <th width="280px">Action</th>
+                            <th>{{ __(key: 'message.No.') }}</th>
+                            <th>{{ __('message.group_name') }}</th>
+                            <th>{{ __('message.head') }}</th>
+                            <th>{{ __('message.member') }}</th>
+                            <th width="280px">{{ __('message.action') }}</th>
                         </tr>
                     </thead>
                     

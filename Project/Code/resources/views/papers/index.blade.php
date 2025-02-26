@@ -12,23 +12,23 @@
     @endif
     <div class="card" style="padding: 16px;">
         <div class="card-body">
-            <h4 class="card-title">Published research</h4>
-            <a class="btn btn-primary btn-menu btn-icon-text btn-sm mb-3" href="{{ route('papers.create') }}"><i class="mdi mdi-plus btn-icon-prepend"></i> ADD </a>
+            <h4 class="card-title">{{ __('message.Publishedresearch') }}</h4>
+            <a class="btn btn-primary btn-menu btn-icon-text btn-sm mb-3" href="{{ route('papers.create') }}"><i class="mdi mdi-plus btn-icon-prepend"></i> {{ __('message.add') }} </a>
             @if(Auth::user()->hasRole('teacher'))
             <!-- <a class="btn btn-primary btn-menu btn-icon-text btn-sm mb-3" href="{{ route('callscopus',Auth::user()->id) }}"><i class="mdi mdi-refresh btn-icon-prepend"></i> Call Paper</a> -->
-            <a class="btn btn-primary btn-icon-text btn-sm mb-3" href="{{ route('callscopus',Crypt::encrypt(Auth::user()->id)) }}"><i class="mdi mdi-refresh btn-icon-prepend icon-sm"></i> Call Paper</a>
+            <a class="btn btn-primary btn-icon-text btn-sm mb-3" href="{{ route('callscopus',Crypt::encrypt(Auth::user()->id)) }}"><i class="mdi mdi-refresh btn-icon-prepend icon-sm"></i> {{ __('message.call_paper') }}</a>
             @endif
             <!-- <div class="table-responsive"> -->
                 <table id="example1" class="table table-striped">
                     <thead>
                         <tr>
-                            <th>No.</th>
-                            <th>ชื่อเรื่อง</th>
-                            <th>ประเภท</th>
-                            <th>ปีที่ตีพิมพ์</th>
+                            <th>{{ __('message.No.') }}</th>
+                            <th>{{ __('message.PaperName') }}</th>
+                            <th>{{ __('message.fund_type') }}</th>
+                            <th>{{ __('message.published_year') }}</th>
                             <!-- <th>ผู้เขียน</th>   -->
                             <!-- <th>Source Title</th> -->
-                            <th width="280px">Action</th>
+                            <th width="280px">{{ __('message.action') }}</th>
                         </tr>
                         <thead>
                         <tbody>
@@ -100,17 +100,41 @@
         var form = $(this).closest("form");
         var name = $(this).data("name");
         event.preventDefault();
+
+        var language = 'th'; 
+
+        var title, text, successMessage, buttonText;
+        if (language === 'th') {
+            title = 'คุณแน่ใจหรือไม่?';
+            text = 'หากคุณลบข้อมูลนี้ มันจะหายไปตลอดกาล.';
+            successMessage = 'ลบสำเร็จ';
+            buttonText = ['ยกเลิก', 'ลบ'];
+        } else if (language === 'cn') {
+            title = '你确定吗？';
+            text = '如果删除此内容，将永远消失。';
+            successMessage = '删除成功';
+            buttonText = ['取消', '删除'];
+        } else {
+            title = 'Are you sure?';
+            text = 'If you delete this, it will be gone forever.';
+            successMessage = 'Delete Successfully';
+            buttonText = ['Cancel', 'Delete'];
+            
+        }
+
         swal({
-                title: `Are you sure?`,
-                text: "If you delete this, it will be gone forever.",
+                title: title,
+                text: text,
                 icon: "warning",
-                buttons: true,
+                buttons: buttonText, 
                 dangerMode: true,
             })
             .then((willDelete) => {
                 if (willDelete) {
-                    swal("Delete Successfully", {
+                    swal(successMessage, {
                         icon: "success",
+                        buttons: buttonText[1]
+
                     }).then(function() {
                         location.reload();
                         form.submit();
