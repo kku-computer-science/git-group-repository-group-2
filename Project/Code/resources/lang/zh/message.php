@@ -127,4 +127,14 @@ return [
     'total_article_5year_report' => '过去5年文章总数统计',
     'total_article_cumulative_report' => '累计文章总数统计',
     'sorce_report' => '来源',
+
+    //Login page
+    'accountlogin_login' => '账户登录',
+    'username_login' => '用户名',
+    'password_login' => '密码',
+    'rememberme_login' => '记住我',
+    'login_login' => '登录',
+    'forgot_password_login' => '*** 如果忘记密码，请联系管理员',
+    'recommend1_login' => '用户名请使用 KKU-Mail 登录',
+    'recommend2_login' => '首次登录的学生请使用学号登录',
 ];

@@ -127,4 +127,14 @@ return [
     'total_article_5year_report' => 'Total number of articles statistics for 5 years',
     'total_article_cumulative_report' => 'Total number of articles statistics cumulative',
     'sorce_report' => 'Source',
+
+    //Login page
+    'accountlogin_login' => 'Account Login',
+    'username_login' => 'Username',
+    'password_login' => 'Password',
+    'rememberme_login' => 'Remember Me',
+    'login_login' => 'Login',
+    'forgot_password_login' => '*** If you forget your password, please contact the administrator',
+    'recommend1_login' => 'For the username, use KKU-Mail to log in',
+    'recommend2_login' => 'For students logging in for the first time, use your student ID to log in',
 ];

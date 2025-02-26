@@ -127,4 +127,15 @@ return [
     'total_article_5year_report' => 'สถิติจำนวนบทความทั้งหมดใน 5 ปี',
     'total_article_cumulative_report' => 'สถิติจำนวนบทความสะสม',
     'sorce_report' => 'แหล่งที่มา',
+
+    //Login page
+    'accountlogin_login' => 'เข้าสู่ระบบบัญชี',
+    'username_login' => 'ชื่อผู้ใช้',
+    'password_login' => 'รหัสผ่าน',
+    'rememberme_login' => 'จดจำฉัน',
+    'login_login' => 'เข้าสู่ระบบ',
+    'forgot_password_login' => ' *** หากลืมรหัสผ่าน ให้ติดต่อผู้ดูแลระบบ',
+    'recommend1_login' => 'สำหรับ Username ใช้ KKU-Mail ในการเข้าสู่ระบบ',
+    'recommend2_login' => 'สำหรับนักศึกษาที่เข้าระบบเป็นครั้งแรกให้เข้าสู่ระด้วยรหัสนักศึกษา',
+
 ];
