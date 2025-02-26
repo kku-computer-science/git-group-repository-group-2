@@ -14,8 +14,8 @@
     @endif
     <div class="card" style="padding: 16px;">
         <div class="card-body">
-            <h4 class="card-title">สร้างกลุ่มวิจัย</h4>
-            <p class="card-description">กรอกข้อมูลแก้ไขรายละเอียดกลุ่มวิจัย</p>
+            <h4 class="card-title">{{ __('message.create_research_group')}}</h4>
+            <p class="card-description">{{ __('message.create_detail')}}</p>
             <form action="{{ route('researchGroups.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group row">

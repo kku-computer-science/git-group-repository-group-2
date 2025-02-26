@@ -81,8 +81,11 @@
             </div>
             <div class="navbar-menu-wrapper d-flex align-items-top justify-content-between">
                 <li class="nav-item font-weight-semibold d-none d-lg-block ms-0">
-                    <h2 class="welcome-text">{{ __('message.research_system') }}</h1>
-                    <!-- แสดงค่าภาษาใน session -->
+                    @if(Session::has('translatedTexts'))
+                    <h2>{{ Session::get('translatedTexts')[0] }}</h2> <!-- Example of how you display a specific translation -->
+                    @else
+                    <h2>{{ 'Default Text' }}</h2> <!-- Fallback text if translations are not available -->
+                    @endif
                 </li>
 
                 <nav class="navbar navbar-expand-lg">
@@ -106,6 +109,7 @@
                                     <li><a class="dropdown-item" href="{{ route('language.switch', 'zh') }}"><i class="flag-icon flag-icon-{{ config('languages.zh.flag-icon') }}"></i> {{ config('languages.zh.display') }}</a></li>
                                 </ul>
                             </li>
+
 
                             <!-- Date Picker -->
                             <li class="nav-item">

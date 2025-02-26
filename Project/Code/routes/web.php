@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+use Illuminate\Support\Facades\Session;
+
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
@@ -141,12 +143,7 @@ Route::group(['middleware' => ['auth', 'PreventBackHistory']], function () {
     Route::get('tests/{id}', [TestController::class, 'getCategory'])->name('tests'); //call program
     Route::get('image_management', [ImageManagementController::class, 'index'])->name('image_management.index');
     Route::resource('banners', BannerController::class);
-    Route::get('language/switch/{lang}', function ($lang) {
-        if (array_key_exists($lang, config('languages'))) {
-            session(['applocale' => $lang]);
-        }
-        return redirect()->back();
-    })->name('language.switch');
+    Route::get('language/{lang}', [LocalizationController::class, 'switchLang'])->name('language.switch');
     
 });
 
