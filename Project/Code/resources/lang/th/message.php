@@ -14,6 +14,8 @@ return [
     'reporttotal' => 'จำนวนรายงานของบทความทั้งหมด (5 ปี : สะสม)',
     'numberChart' => 'จำนวน',
     'yearChart' => 'ปี',
+    'before_home' => 'ก่อนหน้า',
+    'Summary_home' => 'สรุป',
 
     //Admin page
     'research_system' => 'ระบบการจัดการข้อมูลวิจัย',

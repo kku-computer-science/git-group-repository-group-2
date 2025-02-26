@@ -14,6 +14,8 @@ return [
     'reporttotal' => 'Report total number of articles ( 5 years : cumulative)',
     'numberChart' => 'Number',
     'yearChart' => 'Year',
+    'before_home' => 'Before',
+    'Summary_home' => 'Summary',
 
     //Navbar
     'login' => 'Login',

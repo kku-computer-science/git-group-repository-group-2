@@ -17,6 +17,8 @@ return [
     'reporttotal' => '报告中涉及的文章总数（5年：累计）',
     'numberChart' => '数量',
     'yearChart' => '年份',
+    'before_home' => '前',
+    'Summary_home' => '概要',
 
     //Admin page
     'research_system' => '研究信息管理系统',
