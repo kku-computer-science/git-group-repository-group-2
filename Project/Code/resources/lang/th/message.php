@@ -65,7 +65,6 @@ return [
     'Publishedresearch' => 'ผลงานวิจัยที่ตีพิมพ์',
     'Logout' => 'ออกจากระบบ',
     'Summary' => 'งานวิจัยทั้งหมด',
-    'Search' => 'ค้นหา :',
     'Show' => 'แสดง',
     'Entries' => 'รายการ',
     'Info' => 'แสดง _START_ ถึง _END_ จากทั้งหมด _TOTAL_ รายการ',
@@ -82,4 +81,21 @@ return [
     'ArticleReport' => 'สถิติจำนวนบทความที่ได้รับการอ้างอิง',
     // Admin Page
     'Research Information Management System' => 'ระบบการจัดการข้อมูลงานวิจัย',
+
+    // User Page EN
+    'welcome' => 'ยินดีต้อนรับเข้าสู่ระบบจัดการข้อมูลวิจัยของสาขาวิชาวิทยาการคอมพิวเตอร์',
+    'greeting' => 'สวัสดี :position :fname :lname',
+    'dashboard'=> 'หน้าหลัก',
+    'Account'=> 'บัญชี',
+    'Change_picture'=> 'เปลี่ยนรูปภาพ',
+    'Profile_Settings'=> 'การตั้งค่าบัญชีผู้ใช้',
+    'Name_title'=> 'คำนำหน้า',
+    'firstnameen'=> 'ชื่อ (ภาษาอังกฤษ)',
+    'lastnameen'=> 'นามสกุล (ภาษาอังกฤษ)',
+    'firstnameth'=> 'ชื่อ (ภาษาไทย)',
+    'lastnameth'=> 'นามสกุล (ภาษาไทย)',
+    'headerpatents'=> 'ผลงานวิชาการอื่นๆ (สิทธิบัตร, อนุสิทธิบัตร,ลิขสิทธิ์)',
+    'add'=> 'เพิ่ม',
+    'author' => 'ผู้จัดทำ',
+    'name' => 'ชื่อเรื่อง',
 ];

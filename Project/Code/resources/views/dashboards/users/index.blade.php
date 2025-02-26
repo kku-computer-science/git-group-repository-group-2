@@ -1,23 +1,10 @@
-<<<<<<< HEAD
 @extends('dashboards.users.layouts.user-dash-layout')
 @section('title','Dashboard')
 
 @section('content')
 
-<h3 style="padding-top: 10px;">ยินดีต้อนรับเข้าสู่ระบบจัดการข้อมูลวิจัยของวิทยาการคอมพิวเตอร์</h3>
+<h3 style="padding-top: 10px;">{{ trans('message.welcome') }}</h3>
 <br>
 <h4>สวัสดี {{Auth::user()->position_th}} {{Auth::user()->fname_th}} {{Auth::user()->lname_th}}</h2>
 
 @endsection
-=======
-@extends('dashboards.users.layouts.user-dash-layout')
-@section('title','Dashboard')
-
-@section('content')
-
-<h3 style="padding-top: 10px;">ยินดีต้อนรับเข้าสู่ระบบจัดการข้อมูลวิจัยของสาขาวิชาวิทยาการคอมพิวเตอร์</h3>
-<br>
-<h4>สวัสดี {{Auth::user()->position_th}} {{Auth::user()->fname_th}} {{Auth::user()->lname_th}}</h2>
-
-@endsection
->>>>>>> c1a2cdf63af96119ce5aad2bdbeaed9987827f05
