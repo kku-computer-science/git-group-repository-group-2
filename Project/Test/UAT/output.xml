@@ -1,2389 +1,319 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.1.1 (Python 3.10.6 on win32)" generated="2025-02-27T01:25:28.191151" rpa="false" schemaversion="5">
-<suite id="s1" name="UAT Switch Login" source="C:\xampp\htdocs\git-group-repository-group-2\Project\Test\UAT\UAT_Switch_Login.robot">
-<test id="s1-t1" name="Open Login Page" line="71">
+<robot generator="Robot 7.1.1 (Python 3.13.1 on win32)" generated="2025-02-27T06:35:58.376267" rpa="false" schemaversion="5">
+<suite id="s1" name="UAT Switch Dashboard" source="C:\CS3_2\SoftwareEn\git-group-repository-group-2\Project\Test\UAT\UAT_Switch_Dashboard.robot">
+<test id="s1-t1" name="Dashboard Page Switch Language To CN 006" line="483">
 <kw name="Open Browser To Login Page">
 <kw name="Evaluate" owner="BuiltIn">
-<msg time="2025-02-27T01:25:28.383575" level="INFO">${chrome_options} = &lt;selenium.webdriver.chrome.options.Options object at 0x000002B3C88BFB80&gt;</msg>
+<msg time="2025-02-27T06:35:58.748493" level="INFO">${chrome_options} = &lt;selenium.webdriver.chrome.options.Options object at 0x000001B26EC25400&gt;</msg>
 <var>${chrome_options}</var>
 <arg>sys.modules['selenium.webdriver'].ChromeOptions()</arg>
 <arg>sys</arg>
 <doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2025-02-27T01:25:28.383575" elapsed="0.000000"/>
+<status status="PASS" start="2025-02-27T06:35:58.748151" elapsed="0.000381"/>
 </kw>
 <kw name="Set Variable" owner="BuiltIn">
-<msg time="2025-02-27T01:25:28.383575" level="INFO">${chrome_options.binary_location} = C:\xampp\htdocs\git-group-repository-group-2\Project\Test\UAT\ChromeForTesting\chrome.exe</msg>
+<msg time="2025-02-27T06:35:58.748861" level="INFO">${chrome_options.binary_location} = C:\CS3_2\SoftwareEn\git-group-repository-group-2\Project\Test\UAT\ChromeForTesting\chrome.exe</msg>
 <var>${chrome_options.binary_location}</var>
 <arg>${CHROME_BROWSER_PATH}</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2025-02-27T01:25:28.383575" elapsed="0.000000"/>
+<status status="PASS" start="2025-02-27T06:35:58.748674" elapsed="0.000215"/>
 </kw>
 <kw name="Evaluate" owner="BuiltIn">
-<msg time="2025-02-27T01:25:28.384575" level="INFO">${service} = &lt;selenium.webdriver.chrome.service.Service object at 0x000002B3C88BFDC0&gt;</msg>
+<msg time="2025-02-27T06:35:58.749544" level="INFO">${service} = &lt;selenium.webdriver.chrome.service.Service object at 0x000001B26EC25160&gt;</msg>
 <var>${service}</var>
 <arg>sys.modules["selenium.webdriver.chrome.service"].Service(executable_path=r"${CHROME_DRIVER_PATH}")</arg>
 <doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2025-02-27T01:25:28.383575" elapsed="0.001000"/>
+<status status="PASS" start="2025-02-27T06:35:58.748988" elapsed="0.000586"/>
 </kw>
 <kw name="Create Webdriver" owner="SeleniumLibrary">
-<msg time="2025-02-27T01:25:28.384575" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<msg time="2025-02-27T06:35:58.749916" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
 <arg>Chrome</arg>
 <arg>options=${chrome_options}</arg>
 <arg>service=${service}</arg>
 <doc>Creates an instance of Selenium WebDriver.</doc>
-<status status="PASS" start="2025-02-27T01:25:28.384575" elapsed="1.141173"/>
+<status status="PASS" start="2025-02-27T06:35:58.749714" elapsed="1.228434"/>
 </kw>
 <kw name="Go To" owner="SeleniumLibrary">
-<msg time="2025-02-27T01:25:29.526752" level="INFO">Opening url 'http://localhost:8000/login'</msg>
+<msg time="2025-02-27T06:35:59.978494" level="INFO">Opening url 'http://localhost:8000/login'</msg>
 <arg>${LOGIN URL}</arg>
 <doc>Navigates the current browser window to the provided ``url``.</doc>
-<status status="PASS" start="2025-02-27T01:25:29.525748" elapsed="0.893024"/>
+<status status="PASS" start="2025-02-27T06:35:59.978331" elapsed="0.942334"/>
 </kw>
 <kw name="Login Page Should Be Open">
 <kw name="Location Should Be" owner="SeleniumLibrary">
-<msg time="2025-02-27T01:25:30.425795" level="INFO">Current location is 'http://localhost:8000/login'.</msg>
+<msg time="2025-02-27T06:36:00.934168" level="INFO">Current location is 'http://localhost:8000/login'.</msg>
 <arg>${LOGIN URL}</arg>
 <doc>Verifies that the current URL is exactly ``url``.</doc>
-<status status="PASS" start="2025-02-27T01:25:30.419817" elapsed="0.005978"/>
+<status status="PASS" start="2025-02-27T06:36:00.921611" elapsed="0.012736"/>
 </kw>
-<status status="PASS" start="2025-02-27T01:25:30.419276" elapsed="0.007042"/>
+<status status="PASS" start="2025-02-27T06:36:00.921046" elapsed="0.013473"/>
 </kw>
 <kw name="Maximize Browser Window" owner="SeleniumLibrary">
 <doc>Maximizes current browser window.</doc>
-<status status="PASS" start="2025-02-27T01:25:30.426318" elapsed="0.043428"/>
+<status status="PASS" start="2025-02-27T06:36:00.934737" elapsed="0.056641"/>
 </kw>
-<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
-<arg>id=loginLangDropdown</arg>
-<arg>10s</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2025-02-27T01:25:30.469746" elapsed="0.035638"/>
+<status status="PASS" start="2025-02-27T06:35:58.747427" elapsed="2.244180"/>
 </kw>
-<status status="PASS" start="2025-02-27T01:25:28.382574" elapsed="2.122810"/>
+<kw name="Login Page Should Be Open">
+<kw name="Location Should Be" owner="SeleniumLibrary">
+<msg time="2025-02-27T06:36:00.998007" level="INFO">Current location is 'http://localhost:8000/login'.</msg>
+<arg>${LOGIN URL}</arg>
+<doc>Verifies that the current URL is exactly ``url``.</doc>
+<status status="PASS" start="2025-02-27T06:36:00.992502" elapsed="0.005625"/>
+</kw>
+<status status="PASS" start="2025-02-27T06:36:00.992095" elapsed="0.006179"/>
+</kw>
+<kw name="Admin Login">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-02-27T06:36:00.999926" level="INFO">Typing text 'admin@gmail.com' into text field 'id=username'.</msg>
+<arg>id=username</arg>
+<arg>${ADMIN_USERNAME}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-02-27T06:36:00.999306" elapsed="0.103626"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-02-27T06:36:01.103415" level="INFO">Typing text '12345678' into text field 'id=password'.</msg>
+<arg>id=password</arg>
+<arg>${ADMIN_PASSWORD}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-02-27T06:36:01.103152" elapsed="0.072863"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-02-27T06:36:01.176382" level="INFO">Clicking button 'xpath=//button[@type='submit']'.</msg>
+<arg>xpath=//button[@type='submit']</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-02-27T06:36:01.176199" elapsed="0.073097"/>
 </kw>
 <kw name="Sleep" owner="BuiltIn">
-<msg time="2025-02-27T01:25:35.508612" level="INFO">Slept 5 seconds.</msg>
-<arg>5s</arg>
+<msg time="2025-02-27T06:36:03.249917" level="INFO">Slept 2 seconds.</msg>
+<arg>2s</arg>
 <doc>Pauses the test executed for the given time.</doc>
-<status status="PASS" start="2025-02-27T01:25:30.505384" elapsed="5.003228"/>
+<status status="PASS" start="2025-02-27T06:36:01.249464" elapsed="2.000555"/>
 </kw>
-<kw name="Close Browser" owner="SeleniumLibrary">
-<doc>Closes the current browser.</doc>
-<status status="PASS" start="2025-02-27T01:25:35.508612" elapsed="2.166037"/>
-</kw>
-<tag>UAT001-OpenLoginPage</tag>
-<status status="PASS" start="2025-02-27T01:25:28.382574" elapsed="9.293074"/>
-</test>
-<test id="s1-t2" name="Open Login Page And Check EN" line="77">
-<kw name="Open Browser To Login Page">
-<kw name="Evaluate" owner="BuiltIn">
-<msg time="2025-02-27T01:25:37.677655" level="INFO">${chrome_options} = &lt;selenium.webdriver.chrome.options.Options object at 0x000002B3C890E7D0&gt;</msg>
-<var>${chrome_options}</var>
-<arg>sys.modules['selenium.webdriver'].ChromeOptions()</arg>
-<arg>sys</arg>
-<doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2025-02-27T01:25:37.677655" elapsed="0.000000"/>
-</kw>
-<kw name="Set Variable" owner="BuiltIn">
-<msg time="2025-02-27T01:25:37.678654" level="INFO">${chrome_options.binary_location} = C:\xampp\htdocs\git-group-repository-group-2\Project\Test\UAT\ChromeForTesting\chrome.exe</msg>
-<var>${chrome_options.binary_location}</var>
-<arg>${CHROME_BROWSER_PATH}</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2025-02-27T01:25:37.677655" elapsed="0.000999"/>
-</kw>
-<kw name="Evaluate" owner="BuiltIn">
-<msg time="2025-02-27T01:25:37.678654" level="INFO">${service} = &lt;selenium.webdriver.chrome.service.Service object at 0x000002B3C890EA70&gt;</msg>
-<var>${service}</var>
-<arg>sys.modules["selenium.webdriver.chrome.service"].Service(executable_path=r"${CHROME_DRIVER_PATH}")</arg>
-<doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2025-02-27T01:25:37.678654" elapsed="0.000000"/>
-</kw>
-<kw name="Create Webdriver" owner="SeleniumLibrary">
-<msg time="2025-02-27T01:25:37.678654" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
-<arg>Chrome</arg>
-<arg>options=${chrome_options}</arg>
-<arg>service=${service}</arg>
-<doc>Creates an instance of Selenium WebDriver.</doc>
-<status status="PASS" start="2025-02-27T01:25:37.678654" elapsed="1.152455"/>
-</kw>
-<kw name="Go To" owner="SeleniumLibrary">
-<msg time="2025-02-27T01:25:38.831109" level="INFO">Opening url 'http://localhost:8000/login'</msg>
-<arg>${LOGIN URL}</arg>
-<doc>Navigates the current browser window to the provided ``url``.</doc>
-<status status="PASS" start="2025-02-27T01:25:38.831109" elapsed="0.890348"/>
-</kw>
-<kw name="Login Page Should Be Open">
 <kw name="Location Should Be" owner="SeleniumLibrary">
-<msg time="2025-02-27T01:25:39.728445" level="INFO">Current location is 'http://localhost:8000/login'.</msg>
-<arg>${LOGIN URL}</arg>
+<msg time="2025-02-27T06:36:04.485240" level="INFO">Current location is 'http://localhost:8000/dashboard'.</msg>
+<arg>${ADMIN URL}</arg>
 <doc>Verifies that the current URL is exactly ``url``.</doc>
-<status status="PASS" start="2025-02-27T01:25:39.721457" elapsed="0.006988"/>
+<status status="PASS" start="2025-02-27T06:36:03.250187" elapsed="1.235245"/>
 </kw>
-<status status="PASS" start="2025-02-27T01:25:39.721457" elapsed="0.006988"/>
-</kw>
-<kw name="Maximize Browser Window" owner="SeleniumLibrary">
-<doc>Maximizes current browser window.</doc>
-<status status="PASS" start="2025-02-27T01:25:39.728445" elapsed="0.042467"/>
-</kw>
-<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
-<arg>id=loginLangDropdown</arg>
-<arg>10s</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2025-02-27T01:25:39.770912" elapsed="0.023054"/>
-</kw>
-<status status="PASS" start="2025-02-27T01:25:37.677655" elapsed="2.116311"/>
+<status status="PASS" start="2025-02-27T06:36:00.998881" elapsed="3.486667"/>
 </kw>
 <kw name="Sleep" owner="BuiltIn">
-<msg time="2025-02-27T01:25:44.808889" level="INFO">Slept 5 seconds.</msg>
-<arg>5s</arg>
+<msg time="2025-02-27T06:36:06.486466" level="INFO">Slept 2 seconds.</msg>
+<arg>2s</arg>
 <doc>Pauses the test executed for the given time.</doc>
-<status status="PASS" start="2025-02-27T01:25:39.793966" elapsed="5.014923"/>
-</kw>
-<kw name="Get Source" owner="SeleniumLibrary">
-<msg time="2025-02-27T01:25:44.815897" level="INFO">${html_source} = &lt;html lang="en"&gt;&lt;head&gt;
-	&lt;title&gt;Login&lt;/title&gt;
-	&lt;meta charset="UTF-8"&gt;
-	&lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
-	&lt;link href="img/Newlogo.png" rel="shortcut icon" type="image...</msg>
-<var>${html_source}</var>
-<doc>Returns the entire HTML source of the current page or frame.</doc>
-<status status="PASS" start="2025-02-27T01:25:44.808889" elapsed="0.007008"/>
-</kw>
-<kw name="Log" owner="BuiltIn">
-<msg time="2025-02-27T01:25:44.815897" level="INFO">HTML Source: &lt;html lang="en"&gt;&lt;head&gt;
-	&lt;title&gt;Login&lt;/title&gt;
-	&lt;meta charset="UTF-8"&gt;
-	&lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
-	&lt;link href="img/Newlogo.png" rel="shortcut icon" type="image/x-icon"&gt;
-	&lt;!--===============================================================================================--&gt;
-	&lt;link rel="icon" type="image/png" href="images/icons/favicon.ico"&gt;
-	&lt;!--===============================================================================================--&gt;
-	&lt;link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css"&gt;
-	&lt;!--===============================================================================================--&gt;
-	&lt;link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css"&gt;
-	&lt;!--===============================================================================================--&gt;
-	&lt;link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css"&gt;
-	&lt;!--===============================================================================================--&gt;
-
-	&lt;!--===============================================================================================--&gt;
-	&lt;link rel="stylesheet" type="text/css" href="css/util.css"&gt;
-	&lt;link rel="stylesheet" type="text/css" href="css/main.css"&gt;
-	&lt;!--===============================================================================================--&gt;
-	&lt;style&gt;
-		html {
-			width: 100%;
-			height: 100%;
-		}
-
-		body {
-			background: linear-gradient(45deg, rgba(66, 183, 245, 0.8) 0%, rgba(66, 245, 189, 0.4) 100%);
-			color: rgba(0, 0, 0, 0.6);
-			font-family: "Roboto", sans-serif;
-			font-size: 14px;
-			line-height: 1.6em;
-			-webkit-font-smoothing: antialiased;
-			-moz-osx-font-smoothing: grayscale;
-		}
-
-		.overlay,
-		.form-panel.one:before {
-			position: absolute;
-			top: 0;
-			left: 0;
-			display: none;
-			background: rgba(0, 0, 0, 0.8);
-			width: 100%;
-			height: 100%;
-		}
-
-		.form {
-			z-index: 15;
-			position: relative;
-			background: #ffffff;
-			width: 600px;
-			border-radius: 4px;
-			box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
-			box-sizing: border-box;
-			margin: 100px auto 10px;
-			overflow: hidden;
-		}
-
-		.form-toggle {
-			z-index: 10;
-			position: absolute;
-			top: 60px;
-			right: 60px;
-			background: #ffffff;
-			width: 60px;
-			height: 60px;
-			border-radius: 100%;
-			transform-origin: center;
-			transform: translate(0, -25%) scale(0);
-			opacity: 0;
-			cursor: pointer;
-			transition: all 0.3s ease;
-		}
-
-		.form-toggle:before,
-		.form-toggle:after {
-			content: "";
-			display: block;
-			position: absolute;
-			top: 50%;
-			left: 50%;
-			width: 30px;
-			height: 4px;
-			background: #4285f4;
-			transform: translate(-50%, -50%);
-		}
-
-		.form-toggle:before {
-			transform: translate(-50%, -50%) rotate(45deg);
-		}
-
-		.form-toggle:after {
-			transform: translate(-50%, -50%) rotate(-45deg);
-		}
-
-		.form-toggle.visible {
-			transform: translate(0, -25%) scale(1);
-			opacity: 1;
-		}
-
-		.form-group {
-			display: flex;
-			flex-wrap: wrap;
-			justify-content: space-between;
-			margin: 0 0 20px;
-		}
-
-		.form-group:last-child {
-			margin: 0;
-		}
-
-		.form-group label {
-			display: block;
-			margin: 0 0 10px;
-			color: rgba(0, 0, 0, 0.6);
-			font-size: 12px;
-			font-weight: 500;
-			line-height: 1;
-			text-transform: uppercase;
-			letter-spacing: 0.2em;
-		}
-
-		.two .form-group label {
-			color: #ffffff;
-		}
-
-		.form-group input {
-			outline: none;
-			display: block;
-			background: rgba(0, 0, 0, 0.1);
-			width: 100%;
-			border: 0;
-			border-radius: 4px;
-			box-sizing: border-box;
-			padding: 12px 20px;
-			color: rgba(0, 0, 0, 0.6);
-			font-family: inherit;
-			font-size: inherit;
-			font-weight: 500;
-			line-height: inherit;
-			transition: 0.3s ease;
-		}
-
-		.form-group input:focus {
-			color: rgba(0, 0, 0, 0.8);
-		}
-
-		.two .form-group input {
-			color: #ffffff;
-		}
-
-		.two .form-group input:focus {
-			color: #ffffff;
-		}
-
-		.form-group button {
-			outline: none;
-			background: #4285f4;
-			width: 100%;
-			border: 0;
-			border-radius: 4px;
-			padding: 12px 20px;
-			color: #ffffff;
-			font-family: inherit;
-			font-size: inherit;
-			font-weight: 500;
-			line-height: inherit;
-			text-transform: uppercase;
-			cursor: pointer;
-		}
-
-		.two .form-group button {
-			background: #ffffff;
-			color: #4285f4;
-		}
-
-		.form-group .form-remember {
-			font-size: 12px;
-			font-weight: 400;
-			letter-spacing: 0;
-			text-transform: none;
-		}
-
-		.form-group .form-remember input[type=checkbox] {
-			display: inline-block;
-			width: auto;
-			margin: 0 10px 0 0;
-		}
-
-		.form-group .form-recovery {
-			color: #4285f4;
-			font-size: 12px;
-			text-decoration: none;
-		}
-
-		.form-panel {
-			padding: 60px calc(5% + 60px) 60px 60px;
-			box-sizing: border-box;
-		}
-
-		.form-panel.one:before {
-			content: "";
-			display: block;
-			opacity: 0;
-			visibility: hidden;
-			transition: 0.3s ease;
-		}
-
-		.form-panel.one.hidden:before {
-			display: block;
-			opacity: 1;
-			visibility: visible;
-		}
-
-		.form-panel.two {
-			z-index: 5;
-			position: absolute;
-			top: 0;
-			left: 95%;
-			background: #4285f4;
-			width: 100%;
-			min-height: 100%;
-			padding: 60px calc(10% + 60px) 60px 60px;
-			transition: 0.3s ease;
-			cursor: pointer;
-		}
-
-		.form-panel.two:before,
-			.form-panel.two:after {
-			content: "";
-			display: block;
-			position: absolute;
-			top: 60px;
-			left: 1.5%;
-			background: rgba(255, 255, 255, 0.2);
-			height: 30px;
-			width: 2px;
-			transition: 0.3s ease;
-		}
-
-		.form-panel.two:after {
-			left: 3%;
-		}
-
-		.form-panel.two:hover {
-			left: 93%;
-			box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-		}
-
-		.form-panel.two:hover:before,
-			.form-panel.two:hover:after {
-			opacity: 0;
-		}
-
-		.form-panel.two.active {
-			left: 10%;
-			box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-			cursor: default;
-		}
-
-		.form-panel.two.active:before,
-			.form-panel.two.active:after {
-			opacity: 0;
-		}
-
-		.form-header {
-			margin: 0 0 40px;
-		}
-
-		.form-header h1 {
-			padding: 4px 0;
-			color: #4285f4;
-			font-size: 24px;
-			font-weight: 700;
-			text-transform: uppercase;
-		}
-
-		.two .form-header h1 {
-			position: relative;
-			z-index: 40;
-			color: #ffffff;
-		}
-
-		.pen-footer {
-			display: flex;
-			flex-direction: row;
-			justify-content: space-between;
-			width: 600px;
-			margin: 20px auto 100px;
-		}
-
-		.pen-footer a {
-			color: #ffffff;
-			font-size: 12px;
-			text-decoration: none;
-			text-shadow: 1px 2px 0 rgba(0, 0, 0, 0.1);
-		}
-
-		.pen-footer a .material-icons {
-			width: 12px;
-			margin: 0 5px;
-			vertical-align: middle;
-			font-size: 12px;
-		}
-
-		.cp-fab {
-			background: #ffffff !important;
-			color: #4285f4 !important;
-		}
-
-		ul li {
-			color: red;
-			list-style: square;
-			padding: 0;
-			margin-left: 0px;
-			font-size: 12px;
-		}
-
-		.floating-lang {
-			position: fixed;
-			top: 20px;
-			right: 20px;
-			z-index: 9999;
-		}
-
-		.floating-lang .btn {
-			border-radius: 50px;
-			box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-			transition: all 0.3s ease;
-		}
-
-		.floating-lang .btn:hover {
-			transform: scale(1.05);
-		}
-	&lt;/style&gt;
-&lt;/head&gt;
-
-&lt;body&gt;
-	&lt;div class="floating-lang"&gt;
-		&lt;div class="btn-group"&gt;
-			&lt;button type="button" class="btn btn-primary dropdown-toggle" id="loginLangDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"&gt;
-				&lt;span class="flag-icon flag-icon-us"&gt;&lt;/span&gt;
-				English
-			&lt;/button&gt;
-			&lt;div class="dropdown-menu dropdown-menu-end" aria-labelledby="loginLangDropdown"&gt;
-																				&lt;a class="dropdown-item" href="http://localhost:8000/lang/th"&gt;
-					&lt;span class="flag-icon flag-icon-th"&gt;&lt;/span&gt;
-					ไทย
-				&lt;/a&gt;
-																&lt;a class="dropdown-item" href="http://localhost:8000/lang/zh"&gt;
-					&lt;span class="flag-icon flag-icon-cn"&gt;&lt;/span&gt;
-					中文
-				&lt;/a&gt;
-											&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-
-	&lt;!-- &lt;div class="limiter"&gt;
-		&lt;div class="container-login100"&gt;
-			&lt;div class="wrap-login100 p-l-50 p-r-50 p-t-77 p-b-100"&gt;
-				&lt;form method="POST" class="login100-form validate-form" autocomplete="off" action="http://localhost:8000/login"&gt;
-					&lt;input type="hidden" name="_token" value="tT8qwDzmZj2gxxTo9o52lkJwQ0YrQAE9lQJSQoVA"&gt;					&lt;span class="login100-form-title p-b-55"&gt;
-						Login
-					&lt;/span&gt;
-										&lt;div class="wrap-input100 validate-input m-b-16" data-validate="Valid email is required: ex@abc.xyz"&gt;
-
-						&lt;input id="email" class="input100" type="text" name="email" placeholder="Email"&gt;
-						&lt;span class="focus-input100"&gt;&lt;/span&gt;
-						&lt;span class="symbol-input100"&gt;
-							&lt;span class="lnr lnr-envelope"&gt;&lt;/span&gt;
-						&lt;/span&gt;
-
-					&lt;/div&gt;
-
-					&lt;div class="wrap-input100 validate-input m-b-16" data-validate="Password is required"&gt;
-						&lt;input id="password" class="input100" type="password" name="password" placeholder="Password"&gt;
-						&lt;span class="focus-input100"&gt;&lt;/span&gt;
-						&lt;span class="symbol-input100"&gt;
-							&lt;span class="lnr lnr-lock"&gt;&lt;/span&gt;
-						&lt;/span&gt;
-
-					&lt;/div&gt;
-
-					&lt;div class="contact100-form-checkbox m-l-4"&gt;
-						&lt;input  class="input-checkbox100" id="ckb1" type="checkbox" name="remember"&gt;
-						&lt;label class="label-checkbox100" for="ckb1"&gt;
-							Remember me
-						&lt;/label&gt;
-					&lt;/div&gt;
-
-					&lt;div class="container-login100-form-btn p-t-30"&gt;
-						&lt;button class="login100-form-btn"&gt;
-							Login
-						&lt;/button&gt;
-					&lt;/div&gt;
-
-
-				&lt;/form&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt; --&gt;
-
-	&lt;div class="form"&gt;
-		&lt;div class="form-toggle"&gt;&lt;/div&gt;
-		&lt;div class="form-panel one"&gt;
-			&lt;div class="form-header"&gt;
-				&lt;h1&gt;Account Login&lt;/h1&gt;
-			&lt;/div&gt;
-			&lt;div class="form-content"&gt;
-				&lt;form method="POST" class="validate-form" autocomplete="off" action="http://localhost:8000/login"&gt;
-					&lt;input type="hidden" name="_token" value="tT8qwDzmZj2gxxTo9o52lkJwQ0YrQAE9lQJSQoVA"&gt;										&lt;!-- &lt;div class="form-group validate-input" data-validate="Valid email is required: ex@abc.xyz"&gt; --&gt;
-					&lt;div class="form-group validate-input"&gt;
-						&lt;label for="email"&gt;Username&lt;/label&gt;
-						&lt;input id="username" type="username" class="form-control " name="username" value="" required="" autofocus=""&gt;
-											&lt;/div&gt;
-					&lt;div class="form-group validate-input" data-validate="Password is required"&gt;
-						&lt;label for="password"&gt;Password&lt;/label&gt;
-						&lt;input id="password" class="input" type="password" name="password" required="required"&gt;
-					&lt;/div&gt;
-					&lt;div class="form-group"&gt;
-						&lt;label class="form-remember"&gt;
-							&lt;input id="ckb1" name="remember" type="checkbox"&gt;Remember Me
-						&lt;/label&gt;
-					&lt;/div&gt;
-					&lt;div class="form-group"&gt;
-						&lt;button type="submit"&gt;Login&lt;/button&gt;
-					&lt;/div&gt;
-					&lt;div class="form-remember pb-3"&gt;
-							&lt;p style="color: red; text-align: right;"&gt;*** If you forget your password, please contact the administrator&lt;/p&gt;
-					&lt;/div&gt;
-					&lt;ul&gt;
-						&lt;li&gt;For the username, use KKU-Mail to log in&lt;/li&gt;
-						&lt;li&gt;For students logging in for the first time, use your student ID to log in&lt;/li&gt;
-					&lt;/ul&gt;
-				&lt;/form&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-
-
-	&lt;/div&gt;
-	&lt;script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"&gt;&lt;/script&gt;
-	&lt;script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"&gt;&lt;/script&gt;
-	&lt;script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"&gt;&lt;/script&gt;
-	&lt;script&gt;
-		(function($) {
-			"use strict";
-
-
-			/*==================================================================
-			[ Validate ]*/
-			var input = $('.validate-input .input');
-
-			$('.validate-form').on('submit', function() {
-
-				var check = true;
-
-				for (var i = 0; i &lt; input.length; i++) {
-					if (validate(input[i]) == false) {
-						showValidate(input[i]);
-						check = false;
-					}
-				}
-
-				return check;
-			});
-
-
-			$('.validate-form .input').each(function() {
-				$(this).focus(function() {
-					hideValidate(this);
-				});
-			});
-
-			function validate(input) {
-
-				if ($(input).attr('type') == 'email' || $(input).attr('name') == 'email') {
-					if ($(input).val().trim().match(/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{1,5}|[0-9]{1,3})(\]?)$/) == null) {
-						return false;
-					}
-				} else {
-					if ($(input).val().trim() == '') {
-						return false;
-					}
-				}
-			}
-
-			function showValidate(input) {
-				var thisAlert = $(input).parent();
-
-				$(thisAlert).addClass('alert-validate');
-			}
-
-			function hideValidate(input) {
-				var thisAlert = $(input).parent();
-
-				$(thisAlert).removeClass('alert-validate');
-			}
-
-
-
-		})(jQuery);
-	&lt;/script&gt;
-
-
-&lt;/body&gt;&lt;/html&gt;</msg>
-<arg>HTML Source: ${html_source}</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-02-27T01:25:44.815897" elapsed="0.001010"/>
-</kw>
-<for flavor="IN">
-<iter>
-<kw name="Log" owner="BuiltIn">
-<msg time="2025-02-27T01:25:44.816907" level="INFO">Checking for word: Account Login</msg>
-<arg>Checking for word: ${word}</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-02-27T01:25:44.816907" elapsed="0.000000"/>
-</kw>
-<kw name="Should Contain" owner="BuiltIn">
-<arg>${html_source}</arg>
-<arg>${word}</arg>
-<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
-<status status="PASS" start="2025-02-27T01:25:44.816907" elapsed="0.000000"/>
-</kw>
-<var name="${word}">Account Login</var>
-<status status="PASS" start="2025-02-27T01:25:44.816907" elapsed="0.000000"/>
-</iter>
-<iter>
-<kw name="Log" owner="BuiltIn">
-<msg time="2025-02-27T01:25:44.817904" level="INFO">Checking for word: Username</msg>
-<arg>Checking for word: ${word}</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-02-27T01:25:44.817904" elapsed="0.000000"/>
-</kw>
-<kw name="Should Contain" owner="BuiltIn">
-<arg>${html_source}</arg>
-<arg>${word}</arg>
-<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
-<status status="PASS" start="2025-02-27T01:25:44.817904" elapsed="0.000000"/>
-</kw>
-<var name="${word}">Username</var>
-<status status="PASS" start="2025-02-27T01:25:44.817904" elapsed="0.000000"/>
-</iter>
-<iter>
-<kw name="Log" owner="BuiltIn">
-<msg time="2025-02-27T01:25:44.817904" level="INFO">Checking for word: Password</msg>
-<arg>Checking for word: ${word}</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-02-27T01:25:44.817904" elapsed="0.000000"/>
-</kw>
-<kw name="Should Contain" owner="BuiltIn">
-<arg>${html_source}</arg>
-<arg>${word}</arg>
-<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
-<status status="PASS" start="2025-02-27T01:25:44.817904" elapsed="0.000000"/>
-</kw>
-<var name="${word}">Password</var>
-<status status="PASS" start="2025-02-27T01:25:44.817904" elapsed="0.000000"/>
-</iter>
-<iter>
-<kw name="Log" owner="BuiltIn">
-<msg time="2025-02-27T01:25:44.818904" level="INFO">Checking for word: Remember Me</msg>
-<arg>Checking for word: ${word}</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-02-27T01:25:44.818904" elapsed="0.000000"/>
-</kw>
-<kw name="Should Contain" owner="BuiltIn">
-<arg>${html_source}</arg>
-<arg>${word}</arg>
-<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
-<status status="PASS" start="2025-02-27T01:25:44.818904" elapsed="0.000000"/>
-</kw>
-<var name="${word}">Remember Me</var>
-<status status="PASS" start="2025-02-27T01:25:44.818904" elapsed="0.000000"/>
-</iter>
-<iter>
-<kw name="Log" owner="BuiltIn">
-<msg time="2025-02-27T01:25:44.818904" level="INFO">Checking for word: Login</msg>
-<arg>Checking for word: ${word}</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-02-27T01:25:44.818904" elapsed="0.000000"/>
-</kw>
-<kw name="Should Contain" owner="BuiltIn">
-<arg>${html_source}</arg>
-<arg>${word}</arg>
-<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
-<status status="PASS" start="2025-02-27T01:25:44.818904" elapsed="0.000000"/>
-</kw>
-<var name="${word}">Login</var>
-<status status="PASS" start="2025-02-27T01:25:44.818904" elapsed="0.000000"/>
-</iter>
-<iter>
-<kw name="Log" owner="BuiltIn">
-<msg time="2025-02-27T01:25:44.819905" level="INFO">Checking for word: *** If you forget your password, please contact the administrator</msg>
-<arg>Checking for word: ${word}</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-02-27T01:25:44.818904" elapsed="0.001001"/>
-</kw>
-<kw name="Should Contain" owner="BuiltIn">
-<arg>${html_source}</arg>
-<arg>${word}</arg>
-<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
-<status status="PASS" start="2025-02-27T01:25:44.819905" elapsed="0.000000"/>
-</kw>
-<var name="${word}">*** If you forget your password, please contact the administrator</var>
-<status status="PASS" start="2025-02-27T01:25:44.818904" elapsed="0.001001"/>
-</iter>
-<iter>
-<kw name="Log" owner="BuiltIn">
-<msg time="2025-02-27T01:25:44.819905" level="INFO">Checking for word: For the username, use KKU-Mail to log in</msg>
-<arg>Checking for word: ${word}</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-02-27T01:25:44.819905" elapsed="0.000000"/>
-</kw>
-<kw name="Should Contain" owner="BuiltIn">
-<arg>${html_source}</arg>
-<arg>${word}</arg>
-<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
-<status status="PASS" start="2025-02-27T01:25:44.819905" elapsed="0.000000"/>
-</kw>
-<var name="${word}">For the username, use KKU-Mail to log in</var>
-<status status="PASS" start="2025-02-27T01:25:44.819905" elapsed="0.000000"/>
-</iter>
-<iter>
-<kw name="Log" owner="BuiltIn">
-<msg time="2025-02-27T01:25:44.819905" level="INFO">Checking for word: For students logging in for the first time, use your student ID to log in</msg>
-<arg>Checking for word: ${word}</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-02-27T01:25:44.819905" elapsed="0.000000"/>
-</kw>
-<kw name="Should Contain" owner="BuiltIn">
-<arg>${html_source}</arg>
-<arg>${word}</arg>
-<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
-<status status="PASS" start="2025-02-27T01:25:44.820904" elapsed="0.000000"/>
-</kw>
-<var name="${word}">For students logging in for the first time, use your student ID to log in</var>
-<status status="PASS" start="2025-02-27T01:25:44.819905" elapsed="0.000999"/>
-</iter>
-<var>${word}</var>
-<value>@{EXPECTED_WORDS_LOGIN_EN}</value>
-<status status="PASS" start="2025-02-27T01:25:44.816907" elapsed="0.003997"/>
-</for>
-<kw name="Close Browser" owner="SeleniumLibrary">
-<doc>Closes the current browser.</doc>
-<status status="PASS" start="2025-02-27T01:25:44.820904" elapsed="2.167193"/>
-</kw>
-<tag>UAT002-OpenLoginPageAndCheckEN</tag>
-<status status="PASS" start="2025-02-27T01:25:37.676649" elapsed="9.311448"/>
-</test>
-<test id="s1-t3" name="Open Login Page And Check TH" line="89">
-<kw name="Open Browser To Login Page">
-<kw name="Evaluate" owner="BuiltIn">
-<msg time="2025-02-27T01:25:46.991028" level="INFO">${chrome_options} = &lt;selenium.webdriver.chrome.options.Options object at 0x000002B3C890D3C0&gt;</msg>
-<var>${chrome_options}</var>
-<arg>sys.modules['selenium.webdriver'].ChromeOptions()</arg>
-<arg>sys</arg>
-<doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2025-02-27T01:25:46.991028" elapsed="0.000000"/>
-</kw>
-<kw name="Set Variable" owner="BuiltIn">
-<msg time="2025-02-27T01:25:46.992485" level="INFO">${chrome_options.binary_location} = C:\xampp\htdocs\git-group-repository-group-2\Project\Test\UAT\ChromeForTesting\chrome.exe</msg>
-<var>${chrome_options.binary_location}</var>
-<arg>${CHROME_BROWSER_PATH}</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2025-02-27T01:25:46.991028" elapsed="0.001457"/>
-</kw>
-<kw name="Evaluate" owner="BuiltIn">
-<msg time="2025-02-27T01:25:46.992485" level="INFO">${service} = &lt;selenium.webdriver.chrome.service.Service object at 0x000002B3C890E620&gt;</msg>
-<var>${service}</var>
-<arg>sys.modules["selenium.webdriver.chrome.service"].Service(executable_path=r"${CHROME_DRIVER_PATH}")</arg>
-<doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2025-02-27T01:25:46.992485" elapsed="0.000000"/>
-</kw>
-<kw name="Create Webdriver" owner="SeleniumLibrary">
-<msg time="2025-02-27T01:25:46.993492" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
-<arg>Chrome</arg>
-<arg>options=${chrome_options}</arg>
-<arg>service=${service}</arg>
-<doc>Creates an instance of Selenium WebDriver.</doc>
-<status status="PASS" start="2025-02-27T01:25:46.992485" elapsed="1.125627"/>
-</kw>
-<kw name="Go To" owner="SeleniumLibrary">
-<msg time="2025-02-27T01:25:48.118112" level="INFO">Opening url 'http://localhost:8000/login'</msg>
-<arg>${LOGIN URL}</arg>
-<doc>Navigates the current browser window to the provided ``url``.</doc>
-<status status="PASS" start="2025-02-27T01:25:48.118112" elapsed="0.819645"/>
-</kw>
-<kw name="Login Page Should Be Open">
-<kw name="Location Should Be" owner="SeleniumLibrary">
-<msg time="2025-02-27T01:25:48.943756" level="INFO">Current location is 'http://localhost:8000/login'.</msg>
-<arg>${LOGIN URL}</arg>
-<doc>Verifies that the current URL is exactly ``url``.</doc>
-<status status="PASS" start="2025-02-27T01:25:48.938758" elapsed="0.005999"/>
-</kw>
-<status status="PASS" start="2025-02-27T01:25:48.938758" elapsed="0.005999"/>
-</kw>
-<kw name="Maximize Browser Window" owner="SeleniumLibrary">
-<doc>Maximizes current browser window.</doc>
-<status status="PASS" start="2025-02-27T01:25:48.944757" elapsed="0.053587"/>
-</kw>
-<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
-<arg>id=loginLangDropdown</arg>
-<arg>10s</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2025-02-27T01:25:48.998344" elapsed="0.031517"/>
-</kw>
-<status status="PASS" start="2025-02-27T01:25:46.991028" elapsed="2.039832"/>
+<status status="PASS" start="2025-02-27T06:36:04.485840" elapsed="2.000732"/>
 </kw>
 <kw name="Switch Language To">
 <kw name="Click Element" owner="SeleniumLibrary">
-<msg time="2025-02-27T01:25:49.031860" level="INFO">Clicking element 'id=loginLangDropdown'.</msg>
-<arg>id=loginLangDropdown</arg>
+<msg time="2025-02-27T06:36:06.488366" level="INFO">Clicking element 'id=navbarDropdown'.</msg>
+<arg>id=navbarDropdown</arg>
 <doc>Click the element identified by ``locator``.</doc>
-<status status="PASS" start="2025-02-27T01:25:49.031860" elapsed="0.088843"/>
+<status status="PASS" start="2025-02-27T06:36:06.488199" elapsed="0.067554"/>
 </kw>
 <kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
-<arg>css:div.dropdown-menu[aria-labelledby="loginLangDropdown"]</arg>
+<arg>css:ul.dropdown-menu[aria-labelledby="navbarDropdown"]</arg>
 <arg>10s</arg>
 <doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2025-02-27T01:25:49.120703" elapsed="0.020009"/>
+<status status="PASS" start="2025-02-27T06:36:06.555938" elapsed="0.025847"/>
 </kw>
 <kw name="Get Text" owner="SeleniumLibrary">
-<msg time="2025-02-27T01:25:49.165704" level="INFO">${option_text} = ไทย</msg>
+<msg time="2025-02-27T06:36:06.603826" level="INFO">${option_text} = 中文</msg>
 <var>${option_text}</var>
-<arg>xpath=//a[contains(@href, "/lang/${lang_code}")]</arg>
+<arg>xpath=//a[contains(@href, "/language/${lang_code}")]</arg>
 <doc>Returns the text value of the element identified by ``locator``.</doc>
-<status status="PASS" start="2025-02-27T01:25:49.140712" elapsed="0.024992"/>
+<status status="PASS" start="2025-02-27T06:36:06.581958" elapsed="0.021919"/>
 </kw>
 <kw name="Log" owner="BuiltIn">
-<msg time="2025-02-27T01:25:49.166706" level="INFO">Option language is: ไทย</msg>
+<msg time="2025-02-27T06:36:06.604444" level="INFO">Option language is: 中文</msg>
 <arg>Option language is: ${option_text}</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-02-27T01:25:49.166706" elapsed="0.000000"/>
+<status status="PASS" start="2025-02-27T06:36:06.604137" elapsed="0.000442"/>
 </kw>
 <kw name="Click Element" owner="SeleniumLibrary">
-<msg time="2025-02-27T01:25:49.166706" level="INFO">Clicking element 'xpath=//a[contains(@href, "/lang/th")]'.</msg>
-<arg>xpath=//a[contains(@href, "/lang/${lang_code}")]</arg>
+<msg time="2025-02-27T06:36:06.604993" level="INFO">Clicking element 'xpath=//a[contains(@href, "/language/zh")]'.</msg>
+<arg>xpath=//a[contains(@href, "/language/${lang_code}")]</arg>
 <doc>Click the element identified by ``locator``.</doc>
-<status status="PASS" start="2025-02-27T01:25:49.166706" elapsed="1.040039"/>
+<status status="PASS" start="2025-02-27T06:36:06.604751" elapsed="3.021305"/>
 </kw>
 <kw name="Sleep" owner="BuiltIn">
-<msg time="2025-02-27T01:25:55.217644" level="INFO">Slept 5 seconds.</msg>
+<msg time="2025-02-27T06:36:14.627310" level="INFO">Slept 5 seconds.</msg>
 <arg>5s</arg>
 <doc>Pauses the test executed for the given time.</doc>
-<status status="PASS" start="2025-02-27T01:25:50.206745" elapsed="5.010899"/>
+<status status="PASS" start="2025-02-27T06:36:09.626287" elapsed="5.001158"/>
 </kw>
 <kw name="Get Text" owner="SeleniumLibrary">
-<msg time="2025-02-27T01:25:55.239136" level="INFO">${new_lang} = ไทย</msg>
+<msg time="2025-02-27T06:36:14.658362" level="INFO">${new_lang} = 中文</msg>
 <var>${new_lang}</var>
-<arg>id=loginLangDropdown</arg>
+<arg>id=navbarDropdown</arg>
 <doc>Returns the text value of the element identified by ``locator``.</doc>
-<status status="PASS" start="2025-02-27T01:25:55.217644" elapsed="0.021492"/>
+<status status="PASS" start="2025-02-27T06:36:14.627649" elapsed="0.030757"/>
 </kw>
 <kw name="Log" owner="BuiltIn">
-<msg time="2025-02-27T01:25:55.239136" level="INFO">New language is: ไทย</msg>
+<msg time="2025-02-27T06:36:14.658984" level="INFO">New language is: 中文</msg>
 <arg>New language is: ${new_lang}</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-02-27T01:25:55.239136" elapsed="0.000000"/>
+<status status="PASS" start="2025-02-27T06:36:14.658723" elapsed="0.000431"/>
 </kw>
 <kw name="Should Contain" owner="BuiltIn">
 <arg>${new_lang}</arg>
 <arg>${expected_language}</arg>
 <doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
-<status status="PASS" start="2025-02-27T01:25:55.240145" elapsed="0.000000"/>
-</kw>
-<arg>th</arg>
-<arg>ไทย</arg>
-<status status="PASS" start="2025-02-27T01:25:49.030860" elapsed="6.209285"/>
-</kw>
-<kw name="Sleep" owner="BuiltIn">
-<msg time="2025-02-27T01:26:00.241890" level="INFO">Slept 5 seconds.</msg>
-<arg>5s</arg>
-<doc>Pauses the test executed for the given time.</doc>
-<status status="PASS" start="2025-02-27T01:25:55.240145" elapsed="5.001745"/>
-</kw>
-<kw name="Get Source" owner="SeleniumLibrary">
-<msg time="2025-02-27T01:26:00.248001" level="INFO">${html_source} = &lt;html lang="en"&gt;&lt;head&gt;
-	&lt;title&gt;Login&lt;/title&gt;
-	&lt;meta charset="UTF-8"&gt;
-	&lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
-	&lt;link href="img/Newlogo.png" rel="shortcut icon" type="image...</msg>
-<var>${html_source}</var>
-<doc>Returns the entire HTML source of the current page or frame.</doc>
-<status status="PASS" start="2025-02-27T01:26:00.241890" elapsed="0.006111"/>
-</kw>
-<kw name="Log" owner="BuiltIn">
-<msg time="2025-02-27T01:26:00.249006" level="INFO">HTML Source: &lt;html lang="en"&gt;&lt;head&gt;
-	&lt;title&gt;Login&lt;/title&gt;
-	&lt;meta charset="UTF-8"&gt;
-	&lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
-	&lt;link href="img/Newlogo.png" rel="shortcut icon" type="image/x-icon"&gt;
-	&lt;!--===============================================================================================--&gt;
-	&lt;link rel="icon" type="image/png" href="images/icons/favicon.ico"&gt;
-	&lt;!--===============================================================================================--&gt;
-	&lt;link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css"&gt;
-	&lt;!--===============================================================================================--&gt;
-	&lt;link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css"&gt;
-	&lt;!--===============================================================================================--&gt;
-	&lt;link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css"&gt;
-	&lt;!--===============================================================================================--&gt;
-
-	&lt;!--===============================================================================================--&gt;
-	&lt;link rel="stylesheet" type="text/css" href="css/util.css"&gt;
-	&lt;link rel="stylesheet" type="text/css" href="css/main.css"&gt;
-	&lt;!--===============================================================================================--&gt;
-	&lt;style&gt;
-		html {
-			width: 100%;
-			height: 100%;
-		}
-
-		body {
-			background: linear-gradient(45deg, rgba(66, 183, 245, 0.8) 0%, rgba(66, 245, 189, 0.4) 100%);
-			color: rgba(0, 0, 0, 0.6);
-			font-family: "Roboto", sans-serif;
-			font-size: 14px;
-			line-height: 1.6em;
-			-webkit-font-smoothing: antialiased;
-			-moz-osx-font-smoothing: grayscale;
-		}
-
-		.overlay,
-		.form-panel.one:before {
-			position: absolute;
-			top: 0;
-			left: 0;
-			display: none;
-			background: rgba(0, 0, 0, 0.8);
-			width: 100%;
-			height: 100%;
-		}
-
-		.form {
-			z-index: 15;
-			position: relative;
-			background: #ffffff;
-			width: 600px;
-			border-radius: 4px;
-			box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
-			box-sizing: border-box;
-			margin: 100px auto 10px;
-			overflow: hidden;
-		}
-
-		.form-toggle {
-			z-index: 10;
-			position: absolute;
-			top: 60px;
-			right: 60px;
-			background: #ffffff;
-			width: 60px;
-			height: 60px;
-			border-radius: 100%;
-			transform-origin: center;
-			transform: translate(0, -25%) scale(0);
-			opacity: 0;
-			cursor: pointer;
-			transition: all 0.3s ease;
-		}
-
-		.form-toggle:before,
-		.form-toggle:after {
-			content: "";
-			display: block;
-			position: absolute;
-			top: 50%;
-			left: 50%;
-			width: 30px;
-			height: 4px;
-			background: #4285f4;
-			transform: translate(-50%, -50%);
-		}
-
-		.form-toggle:before {
-			transform: translate(-50%, -50%) rotate(45deg);
-		}
-
-		.form-toggle:after {
-			transform: translate(-50%, -50%) rotate(-45deg);
-		}
-
-		.form-toggle.visible {
-			transform: translate(0, -25%) scale(1);
-			opacity: 1;
-		}
-
-		.form-group {
-			display: flex;
-			flex-wrap: wrap;
-			justify-content: space-between;
-			margin: 0 0 20px;
-		}
-
-		.form-group:last-child {
-			margin: 0;
-		}
-
-		.form-group label {
-			display: block;
-			margin: 0 0 10px;
-			color: rgba(0, 0, 0, 0.6);
-			font-size: 12px;
-			font-weight: 500;
-			line-height: 1;
-			text-transform: uppercase;
-			letter-spacing: 0.2em;
-		}
-
-		.two .form-group label {
-			color: #ffffff;
-		}
-
-		.form-group input {
-			outline: none;
-			display: block;
-			background: rgba(0, 0, 0, 0.1);
-			width: 100%;
-			border: 0;
-			border-radius: 4px;
-			box-sizing: border-box;
-			padding: 12px 20px;
-			color: rgba(0, 0, 0, 0.6);
-			font-family: inherit;
-			font-size: inherit;
-			font-weight: 500;
-			line-height: inherit;
-			transition: 0.3s ease;
-		}
-
-		.form-group input:focus {
-			color: rgba(0, 0, 0, 0.8);
-		}
-
-		.two .form-group input {
-			color: #ffffff;
-		}
-
-		.two .form-group input:focus {
-			color: #ffffff;
-		}
-
-		.form-group button {
-			outline: none;
-			background: #4285f4;
-			width: 100%;
-			border: 0;
-			border-radius: 4px;
-			padding: 12px 20px;
-			color: #ffffff;
-			font-family: inherit;
-			font-size: inherit;
-			font-weight: 500;
-			line-height: inherit;
-			text-transform: uppercase;
-			cursor: pointer;
-		}
-
-		.two .form-group button {
-			background: #ffffff;
-			color: #4285f4;
-		}
-
-		.form-group .form-remember {
-			font-size: 12px;
-			font-weight: 400;
-			letter-spacing: 0;
-			text-transform: none;
-		}
-
-		.form-group .form-remember input[type=checkbox] {
-			display: inline-block;
-			width: auto;
-			margin: 0 10px 0 0;
-		}
-
-		.form-group .form-recovery {
-			color: #4285f4;
-			font-size: 12px;
-			text-decoration: none;
-		}
-
-		.form-panel {
-			padding: 60px calc(5% + 60px) 60px 60px;
-			box-sizing: border-box;
-		}
-
-		.form-panel.one:before {
-			content: "";
-			display: block;
-			opacity: 0;
-			visibility: hidden;
-			transition: 0.3s ease;
-		}
-
-		.form-panel.one.hidden:before {
-			display: block;
-			opacity: 1;
-			visibility: visible;
-		}
-
-		.form-panel.two {
-			z-index: 5;
-			position: absolute;
-			top: 0;
-			left: 95%;
-			background: #4285f4;
-			width: 100%;
-			min-height: 100%;
-			padding: 60px calc(10% + 60px) 60px 60px;
-			transition: 0.3s ease;
-			cursor: pointer;
-		}
-
-		.form-panel.two:before,
-			.form-panel.two:after {
-			content: "";
-			display: block;
-			position: absolute;
-			top: 60px;
-			left: 1.5%;
-			background: rgba(255, 255, 255, 0.2);
-			height: 30px;
-			width: 2px;
-			transition: 0.3s ease;
-		}
-
-		.form-panel.two:after {
-			left: 3%;
-		}
-
-		.form-panel.two:hover {
-			left: 93%;
-			box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-		}
-
-		.form-panel.two:hover:before,
-			.form-panel.two:hover:after {
-			opacity: 0;
-		}
-
-		.form-panel.two.active {
-			left: 10%;
-			box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-			cursor: default;
-		}
-
-		.form-panel.two.active:before,
-			.form-panel.two.active:after {
-			opacity: 0;
-		}
-
-		.form-header {
-			margin: 0 0 40px;
-		}
-
-		.form-header h1 {
-			padding: 4px 0;
-			color: #4285f4;
-			font-size: 24px;
-			font-weight: 700;
-			text-transform: uppercase;
-		}
-
-		.two .form-header h1 {
-			position: relative;
-			z-index: 40;
-			color: #ffffff;
-		}
-
-		.pen-footer {
-			display: flex;
-			flex-direction: row;
-			justify-content: space-between;
-			width: 600px;
-			margin: 20px auto 100px;
-		}
-
-		.pen-footer a {
-			color: #ffffff;
-			font-size: 12px;
-			text-decoration: none;
-			text-shadow: 1px 2px 0 rgba(0, 0, 0, 0.1);
-		}
-
-		.pen-footer a .material-icons {
-			width: 12px;
-			margin: 0 5px;
-			vertical-align: middle;
-			font-size: 12px;
-		}
-
-		.cp-fab {
-			background: #ffffff !important;
-			color: #4285f4 !important;
-		}
-
-		ul li {
-			color: red;
-			list-style: square;
-			padding: 0;
-			margin-left: 0px;
-			font-size: 12px;
-		}
-
-		.floating-lang {
-			position: fixed;
-			top: 20px;
-			right: 20px;
-			z-index: 9999;
-		}
-
-		.floating-lang .btn {
-			border-radius: 50px;
-			box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-			transition: all 0.3s ease;
-		}
-
-		.floating-lang .btn:hover {
-			transform: scale(1.05);
-		}
-	&lt;/style&gt;
-&lt;/head&gt;
-
-&lt;body&gt;
-	&lt;div class="floating-lang"&gt;
-		&lt;div class="btn-group"&gt;
-			&lt;button type="button" class="btn btn-primary dropdown-toggle" id="loginLangDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"&gt;
-				&lt;span class="flag-icon flag-icon-th"&gt;&lt;/span&gt;
-				ไทย
-			&lt;/button&gt;
-			&lt;div class="dropdown-menu dropdown-menu-end" aria-labelledby="loginLangDropdown"&gt;
-												&lt;a class="dropdown-item" href="http://localhost:8000/lang/en"&gt;
-					&lt;span class="flag-icon flag-icon-us"&gt;&lt;/span&gt;
-					English
-				&lt;/a&gt;
-																								&lt;a class="dropdown-item" href="http://localhost:8000/lang/zh"&gt;
-					&lt;span class="flag-icon flag-icon-cn"&gt;&lt;/span&gt;
-					中文
-				&lt;/a&gt;
-											&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-
-	&lt;!-- &lt;div class="limiter"&gt;
-		&lt;div class="container-login100"&gt;
-			&lt;div class="wrap-login100 p-l-50 p-r-50 p-t-77 p-b-100"&gt;
-				&lt;form method="POST" class="login100-form validate-form" autocomplete="off" action="http://localhost:8000/login"&gt;
-					&lt;input type="hidden" name="_token" value="h8GzCe4Vq80HLUTeg9t6f8jEuwDTwg6XQqyrKTwl"&gt;					&lt;span class="login100-form-title p-b-55"&gt;
-						Login
-					&lt;/span&gt;
-										&lt;div class="wrap-input100 validate-input m-b-16" data-validate="Valid email is required: ex@abc.xyz"&gt;
-
-						&lt;input id="email" class="input100" type="text" name="email" placeholder="Email"&gt;
-						&lt;span class="focus-input100"&gt;&lt;/span&gt;
-						&lt;span class="symbol-input100"&gt;
-							&lt;span class="lnr lnr-envelope"&gt;&lt;/span&gt;
-						&lt;/span&gt;
-
-					&lt;/div&gt;
-
-					&lt;div class="wrap-input100 validate-input m-b-16" data-validate="Password is required"&gt;
-						&lt;input id="password" class="input100" type="password" name="password" placeholder="Password"&gt;
-						&lt;span class="focus-input100"&gt;&lt;/span&gt;
-						&lt;span class="symbol-input100"&gt;
-							&lt;span class="lnr lnr-lock"&gt;&lt;/span&gt;
-						&lt;/span&gt;
-
-					&lt;/div&gt;
-
-					&lt;div class="contact100-form-checkbox m-l-4"&gt;
-						&lt;input  class="input-checkbox100" id="ckb1" type="checkbox" name="remember"&gt;
-						&lt;label class="label-checkbox100" for="ckb1"&gt;
-							Remember me
-						&lt;/label&gt;
-					&lt;/div&gt;
-
-					&lt;div class="container-login100-form-btn p-t-30"&gt;
-						&lt;button class="login100-form-btn"&gt;
-							Login
-						&lt;/button&gt;
-					&lt;/div&gt;
-
-
-				&lt;/form&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt; --&gt;
-
-	&lt;div class="form"&gt;
-		&lt;div class="form-toggle"&gt;&lt;/div&gt;
-		&lt;div class="form-panel one"&gt;
-			&lt;div class="form-header"&gt;
-				&lt;h1&gt;เข้าสู่ระบบบัญชี&lt;/h1&gt;
-			&lt;/div&gt;
-			&lt;div class="form-content"&gt;
-				&lt;form method="POST" class="validate-form" autocomplete="off" action="http://localhost:8000/login"&gt;
-					&lt;input type="hidden" name="_token" value="h8GzCe4Vq80HLUTeg9t6f8jEuwDTwg6XQqyrKTwl"&gt;										&lt;!-- &lt;div class="form-group validate-input" data-validate="Valid email is required: ex@abc.xyz"&gt; --&gt;
-					&lt;div class="form-group validate-input"&gt;
-						&lt;label for="email"&gt;ชื่อผู้ใช้&lt;/label&gt;
-						&lt;input id="username" type="username" class="form-control " name="username" value="" required="" autofocus=""&gt;
-											&lt;/div&gt;
-					&lt;div class="form-group validate-input" data-validate="Password is required"&gt;
-						&lt;label for="password"&gt;รหัสผ่าน&lt;/label&gt;
-						&lt;input id="password" class="input" type="password" name="password" required="required"&gt;
-					&lt;/div&gt;
-					&lt;div class="form-group"&gt;
-						&lt;label class="form-remember"&gt;
-							&lt;input id="ckb1" name="remember" type="checkbox"&gt;จดจำฉัน
-						&lt;/label&gt;
-					&lt;/div&gt;
-					&lt;div class="form-group"&gt;
-						&lt;button type="submit"&gt;เข้าสู่ระบบ&lt;/button&gt;
-					&lt;/div&gt;
-					&lt;div class="form-remember pb-3"&gt;
-							&lt;p style="color: red; text-align: right;"&gt; *** หากลืมรหัสผ่าน ให้ติดต่อผู้ดูแลระบบ&lt;/p&gt;
-					&lt;/div&gt;
-					&lt;ul&gt;
-						&lt;li&gt;สำหรับ Username ใช้ KKU-Mail ในการเข้าสู่ระบบ&lt;/li&gt;
-						&lt;li&gt;สำหรับนักศึกษาที่เข้าระบบเป็นครั้งแรกให้เข้าสู่ระด้วยรหัสนักศึกษา&lt;/li&gt;
-					&lt;/ul&gt;
-				&lt;/form&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-
-
-	&lt;/div&gt;
-	&lt;script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"&gt;&lt;/script&gt;
-	&lt;script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"&gt;&lt;/script&gt;
-	&lt;script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"&gt;&lt;/script&gt;
-	&lt;script&gt;
-		(function($) {
-			"use strict";
-
-
-			/*==================================================================
-			[ Validate ]*/
-			var input = $('.validate-input .input');
-
-			$('.validate-form').on('submit', function() {
-
-				var check = true;
-
-				for (var i = 0; i &lt; input.length; i++) {
-					if (validate(input[i]) == false) {
-						showValidate(input[i]);
-						check = false;
-					}
-				}
-
-				return check;
-			});
-
-
-			$('.validate-form .input').each(function() {
-				$(this).focus(function() {
-					hideValidate(this);
-				});
-			});
-
-			function validate(input) {
-
-				if ($(input).attr('type') == 'email' || $(input).attr('name') == 'email') {
-					if ($(input).val().trim().match(/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{1,5}|[0-9]{1,3})(\]?)$/) == null) {
-						return false;
-					}
-				} else {
-					if ($(input).val().trim() == '') {
-						return false;
-					}
-				}
-			}
-
-			function showValidate(input) {
-				var thisAlert = $(input).parent();
-
-				$(thisAlert).addClass('alert-validate');
-			}
-
-			function hideValidate(input) {
-				var thisAlert = $(input).parent();
-
-				$(thisAlert).removeClass('alert-validate');
-			}
-
-
-
-		})(jQuery);
-	&lt;/script&gt;
-
-
-&lt;/body&gt;&lt;/html&gt;</msg>
-<arg>HTML Source: ${html_source}</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-02-27T01:26:00.249006" elapsed="0.000000"/>
-</kw>
-<for flavor="IN">
-<iter>
-<kw name="Log" owner="BuiltIn">
-<msg time="2025-02-27T01:26:00.249999" level="INFO">Checking for word: เข้าสู่ระบบบัญชี</msg>
-<arg>Checking for word: ${word}</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-02-27T01:26:00.249999" elapsed="0.000000"/>
-</kw>
-<kw name="Should Contain" owner="BuiltIn">
-<arg>${html_source}</arg>
-<arg>${word}</arg>
-<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
-<status status="PASS" start="2025-02-27T01:26:00.249999" elapsed="0.000000"/>
-</kw>
-<var name="${word}">เข้าสู่ระบบบัญชี</var>
-<status status="PASS" start="2025-02-27T01:26:00.249006" elapsed="0.000993"/>
-</iter>
-<iter>
-<kw name="Log" owner="BuiltIn">
-<msg time="2025-02-27T01:26:00.249999" level="INFO">Checking for word: ชื่อผู้ใช้</msg>
-<arg>Checking for word: ${word}</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-02-27T01:26:00.249999" elapsed="0.000000"/>
-</kw>
-<kw name="Should Contain" owner="BuiltIn">
-<arg>${html_source}</arg>
-<arg>${word}</arg>
-<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
-<status status="PASS" start="2025-02-27T01:26:00.249999" elapsed="0.000000"/>
-</kw>
-<var name="${word}">ชื่อผู้ใช้</var>
-<status status="PASS" start="2025-02-27T01:26:00.249999" elapsed="0.001001"/>
-</iter>
-<iter>
-<kw name="Log" owner="BuiltIn">
-<msg time="2025-02-27T01:26:00.251000" level="INFO">Checking for word: รหัสผ่าน</msg>
-<arg>Checking for word: ${word}</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-02-27T01:26:00.251000" elapsed="0.000000"/>
-</kw>
-<kw name="Should Contain" owner="BuiltIn">
-<arg>${html_source}</arg>
-<arg>${word}</arg>
-<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
-<status status="PASS" start="2025-02-27T01:26:00.251000" elapsed="0.000000"/>
-</kw>
-<var name="${word}">รหัสผ่าน</var>
-<status status="PASS" start="2025-02-27T01:26:00.251000" elapsed="0.000000"/>
-</iter>
-<iter>
-<kw name="Log" owner="BuiltIn">
-<msg time="2025-02-27T01:26:00.251000" level="INFO">Checking for word: จดจำฉัน</msg>
-<arg>Checking for word: ${word}</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-02-27T01:26:00.251000" elapsed="0.000000"/>
-</kw>
-<kw name="Should Contain" owner="BuiltIn">
-<arg>${html_source}</arg>
-<arg>${word}</arg>
-<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
-<status status="PASS" start="2025-02-27T01:26:00.251000" elapsed="0.000000"/>
-</kw>
-<var name="${word}">จดจำฉัน</var>
-<status status="PASS" start="2025-02-27T01:26:00.251000" elapsed="0.000000"/>
-</iter>
-<iter>
-<kw name="Log" owner="BuiltIn">
-<msg time="2025-02-27T01:26:00.251999" level="INFO">Checking for word: เข้าสู่ระบบ</msg>
-<arg>Checking for word: ${word}</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-02-27T01:26:00.251999" elapsed="0.000000"/>
-</kw>
-<kw name="Should Contain" owner="BuiltIn">
-<arg>${html_source}</arg>
-<arg>${word}</arg>
-<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
-<status status="PASS" start="2025-02-27T01:26:00.251999" elapsed="0.000000"/>
-</kw>
-<var name="${word}">เข้าสู่ระบบ</var>
-<status status="PASS" start="2025-02-27T01:26:00.251000" elapsed="0.000999"/>
-</iter>
-<iter>
-<kw name="Log" owner="BuiltIn">
-<msg time="2025-02-27T01:26:00.251999" level="INFO">Checking for word: *** หากลืมรหัสผ่าน ให้ติดต่อผู้ดูแลระบบ</msg>
-<arg>Checking for word: ${word}</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-02-27T01:26:00.251999" elapsed="0.000000"/>
-</kw>
-<kw name="Should Contain" owner="BuiltIn">
-<arg>${html_source}</arg>
-<arg>${word}</arg>
-<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
-<status status="PASS" start="2025-02-27T01:26:00.251999" elapsed="0.000000"/>
-</kw>
-<var name="${word}">*** หากลืมรหัสผ่าน ให้ติดต่อผู้ดูแลระบบ</var>
-<status status="PASS" start="2025-02-27T01:26:00.251999" elapsed="0.000000"/>
-</iter>
-<iter>
-<kw name="Log" owner="BuiltIn">
-<msg time="2025-02-27T01:26:00.253000" level="INFO">Checking for word: สำหรับ Username ใช้ KKU-Mail ในการเข้าสู่ระบบ</msg>
-<arg>Checking for word: ${word}</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-02-27T01:26:00.253000" elapsed="0.000000"/>
-</kw>
-<kw name="Should Contain" owner="BuiltIn">
-<arg>${html_source}</arg>
-<arg>${word}</arg>
-<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
-<status status="PASS" start="2025-02-27T01:26:00.253000" elapsed="0.000000"/>
-</kw>
-<var name="${word}">สำหรับ Username ใช้ KKU-Mail ในการเข้าสู่ระบบ</var>
-<status status="PASS" start="2025-02-27T01:26:00.251999" elapsed="0.001001"/>
-</iter>
-<iter>
-<kw name="Log" owner="BuiltIn">
-<msg time="2025-02-27T01:26:00.253000" level="INFO">Checking for word: สำหรับนักศึกษาที่เข้าระบบเป็นครั้งแรกให้เข้าสู่ระด้วยรหัสนักศึกษา</msg>
-<arg>Checking for word: ${word}</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-02-27T01:26:00.253000" elapsed="0.000000"/>
-</kw>
-<kw name="Should Contain" owner="BuiltIn">
-<arg>${html_source}</arg>
-<arg>${word}</arg>
-<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
-<status status="PASS" start="2025-02-27T01:26:00.253000" elapsed="0.000000"/>
-</kw>
-<var name="${word}">สำหรับนักศึกษาที่เข้าระบบเป็นครั้งแรกให้เข้าสู่ระด้วยรหัสนักศึกษา</var>
-<status status="PASS" start="2025-02-27T01:26:00.253000" elapsed="0.001010"/>
-</iter>
-<var>${word}</var>
-<value>@{EXPECTED_WORDS_LOGIN_TH}</value>
-<status status="PASS" start="2025-02-27T01:26:00.249006" elapsed="0.005004"/>
-</for>
-<kw name="Close Browser" owner="SeleniumLibrary">
-<doc>Closes the current browser.</doc>
-<status status="PASS" start="2025-02-27T01:26:00.254010" elapsed="2.193099"/>
-</kw>
-<tag>UAT003-OpenLoginPageAndCheckTH</tag>
-<status status="PASS" start="2025-02-27T01:25:46.990059" elapsed="15.458061"/>
-</test>
-<test id="s1-t4" name="Open Login Page And Check CN" line="102">
-<kw name="Open Browser To Login Page">
-<kw name="Evaluate" owner="BuiltIn">
-<msg time="2025-02-27T01:26:02.450133" level="INFO">${chrome_options} = &lt;selenium.webdriver.chrome.options.Options object at 0x000002B3C896A740&gt;</msg>
-<var>${chrome_options}</var>
-<arg>sys.modules['selenium.webdriver'].ChromeOptions()</arg>
-<arg>sys</arg>
-<doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2025-02-27T01:26:02.450133" elapsed="0.000000"/>
-</kw>
-<kw name="Set Variable" owner="BuiltIn">
-<msg time="2025-02-27T01:26:02.450133" level="INFO">${chrome_options.binary_location} = C:\xampp\htdocs\git-group-repository-group-2\Project\Test\UAT\ChromeForTesting\chrome.exe</msg>
-<var>${chrome_options.binary_location}</var>
-<arg>${CHROME_BROWSER_PATH}</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2025-02-27T01:26:02.450133" elapsed="0.000000"/>
-</kw>
-<kw name="Evaluate" owner="BuiltIn">
-<msg time="2025-02-27T01:26:02.452121" level="INFO">${service} = &lt;selenium.webdriver.chrome.service.Service object at 0x000002B3C896AA10&gt;</msg>
-<var>${service}</var>
-<arg>sys.modules["selenium.webdriver.chrome.service"].Service(executable_path=r"${CHROME_DRIVER_PATH}")</arg>
-<doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2025-02-27T01:26:02.451123" elapsed="0.000998"/>
-</kw>
-<kw name="Create Webdriver" owner="SeleniumLibrary">
-<msg time="2025-02-27T01:26:02.453120" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
-<arg>Chrome</arg>
-<arg>options=${chrome_options}</arg>
-<arg>service=${service}</arg>
-<doc>Creates an instance of Selenium WebDriver.</doc>
-<status status="PASS" start="2025-02-27T01:26:02.452121" elapsed="1.136933"/>
-</kw>
-<kw name="Go To" owner="SeleniumLibrary">
-<msg time="2025-02-27T01:26:03.589054" level="INFO">Opening url 'http://localhost:8000/login'</msg>
-<arg>${LOGIN URL}</arg>
-<doc>Navigates the current browser window to the provided ``url``.</doc>
-<status status="PASS" start="2025-02-27T01:26:03.589054" elapsed="0.871969"/>
-</kw>
-<kw name="Login Page Should Be Open">
-<kw name="Location Should Be" owner="SeleniumLibrary">
-<msg time="2025-02-27T01:26:04.468023" level="INFO">Current location is 'http://localhost:8000/login'.</msg>
-<arg>${LOGIN URL}</arg>
-<doc>Verifies that the current URL is exactly ``url``.</doc>
-<status status="PASS" start="2025-02-27T01:26:04.462022" elapsed="0.006001"/>
-</kw>
-<status status="PASS" start="2025-02-27T01:26:04.461023" elapsed="0.007000"/>
-</kw>
-<kw name="Maximize Browser Window" owner="SeleniumLibrary">
-<doc>Maximizes current browser window.</doc>
-<status status="PASS" start="2025-02-27T01:26:04.469024" elapsed="0.045746"/>
-</kw>
-<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
-<arg>id=loginLangDropdown</arg>
-<arg>10s</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2025-02-27T01:26:04.514770" elapsed="0.027004"/>
-</kw>
-<status status="PASS" start="2025-02-27T01:26:02.449114" elapsed="2.092660"/>
-</kw>
-<kw name="Switch Language To">
-<kw name="Click Element" owner="SeleniumLibrary">
-<msg time="2025-02-27T01:26:04.542775" level="INFO">Clicking element 'id=loginLangDropdown'.</msg>
-<arg>id=loginLangDropdown</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<status status="PASS" start="2025-02-27T01:26:04.542775" elapsed="0.082507"/>
-</kw>
-<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
-<arg>css:div.dropdown-menu[aria-labelledby="loginLangDropdown"]</arg>
-<arg>10s</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2025-02-27T01:26:04.625282" elapsed="0.018125"/>
-</kw>
-<kw name="Get Text" owner="SeleniumLibrary">
-<msg time="2025-02-27T01:26:04.666196" level="INFO">${option_text} = 中文</msg>
-<var>${option_text}</var>
-<arg>xpath=//a[contains(@href, "/lang/${lang_code}")]</arg>
-<doc>Returns the text value of the element identified by ``locator``.</doc>
-<status status="PASS" start="2025-02-27T01:26:04.643407" elapsed="0.022789"/>
-</kw>
-<kw name="Log" owner="BuiltIn">
-<msg time="2025-02-27T01:26:04.667180" level="INFO">Option language is: 中文</msg>
-<arg>Option language is: ${option_text}</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-02-27T01:26:04.667180" elapsed="0.000000"/>
-</kw>
-<kw name="Click Element" owner="SeleniumLibrary">
-<msg time="2025-02-27T01:26:04.668180" level="INFO">Clicking element 'xpath=//a[contains(@href, "/lang/zh")]'.</msg>
-<arg>xpath=//a[contains(@href, "/lang/${lang_code}")]</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<status status="PASS" start="2025-02-27T01:26:04.667180" elapsed="1.217772"/>
-</kw>
-<kw name="Sleep" owner="BuiltIn">
-<msg time="2025-02-27T01:26:10.887040" level="INFO">Slept 5 seconds.</msg>
-<arg>5s</arg>
-<doc>Pauses the test executed for the given time.</doc>
-<status status="PASS" start="2025-02-27T01:26:05.885964" elapsed="5.001076"/>
-</kw>
-<kw name="Get Text" owner="SeleniumLibrary">
-<msg time="2025-02-27T01:26:10.901303" level="INFO">${new_lang} = 中文</msg>
-<var>${new_lang}</var>
-<arg>id=loginLangDropdown</arg>
-<doc>Returns the text value of the element identified by ``locator``.</doc>
-<status status="PASS" start="2025-02-27T01:26:10.887040" elapsed="0.014263"/>
-</kw>
-<kw name="Log" owner="BuiltIn">
-<msg time="2025-02-27T01:26:10.901303" level="INFO">New language is: 中文</msg>
-<arg>New language is: ${new_lang}</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-02-27T01:26:10.901303" elapsed="0.000000"/>
-</kw>
-<kw name="Should Contain" owner="BuiltIn">
-<arg>${new_lang}</arg>
-<arg>${expected_language}</arg>
-<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
-<status status="PASS" start="2025-02-27T01:26:10.901303" elapsed="0.000000"/>
+<status status="PASS" start="2025-02-27T06:36:14.659290" elapsed="0.000158"/>
 </kw>
 <arg>zh</arg>
 <arg>中文</arg>
-<status status="PASS" start="2025-02-27T01:26:04.541774" elapsed="6.359529"/>
+<status status="PASS" start="2025-02-27T06:36:06.487841" elapsed="8.171670"/>
 </kw>
-<kw name="Sleep" owner="BuiltIn">
-<msg time="2025-02-27T01:26:15.906874" level="INFO">Slept 5 seconds.</msg>
-<arg>5s</arg>
-<doc>Pauses the test executed for the given time.</doc>
-<status status="PASS" start="2025-02-27T01:26:10.902298" elapsed="5.004576"/>
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2025-02-27T06:36:14.662302" level="INFO">Opening url 'http://localhost:8000/papers'</msg>
+<arg>${PUBLISHEDRESEARCH URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2025-02-27T06:36:14.662066" elapsed="3.506606"/>
+</kw>
+<kw name="Location Should Be" owner="SeleniumLibrary">
+<msg time="2025-02-27T06:36:18.176676" level="INFO">Current location is 'http://localhost:8000/papers'.</msg>
+<arg>${PUBLISHEDRESEARCH URL}</arg>
+<doc>Verifies that the current URL is exactly ``url``.</doc>
+<status status="PASS" start="2025-02-27T06:36:18.169444" elapsed="0.007309"/>
 </kw>
 <kw name="Get Source" owner="SeleniumLibrary">
-<msg time="2025-02-27T01:26:15.912875" level="INFO">${html_source} = &lt;html lang="en"&gt;&lt;head&gt;
-	&lt;title&gt;Login&lt;/title&gt;
-	&lt;meta charset="UTF-8"&gt;
-	&lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
-	&lt;link href="img/Newlogo.png" rel="shortcut icon" type="image...</msg>
+<msg time="2025-02-27T06:36:18.192420" level="INFO">${html_source} = &lt;html lang="en" style="height: auto;"&gt;&lt;head&gt;&lt;style type="text/css"&gt;.swal-icon--error{border-color:#f27474;-webkit-animation:animateErrorIcon .5s;animation:animateErrorIcon .5s}.swal-icon--error__x-mar...</msg>
 <var>${html_source}</var>
 <doc>Returns the entire HTML source of the current page or frame.</doc>
-<status status="PASS" start="2025-02-27T01:26:15.907868" elapsed="0.005007"/>
-</kw>
-<kw name="Log" owner="BuiltIn">
-<msg time="2025-02-27T01:26:15.913875" level="INFO">HTML Source: &lt;html lang="en"&gt;&lt;head&gt;
-	&lt;title&gt;Login&lt;/title&gt;
-	&lt;meta charset="UTF-8"&gt;
-	&lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
-	&lt;link href="img/Newlogo.png" rel="shortcut icon" type="image/x-icon"&gt;
-	&lt;!--===============================================================================================--&gt;
-	&lt;link rel="icon" type="image/png" href="images/icons/favicon.ico"&gt;
-	&lt;!--===============================================================================================--&gt;
-	&lt;link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css"&gt;
-	&lt;!--===============================================================================================--&gt;
-	&lt;link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css"&gt;
-	&lt;!--===============================================================================================--&gt;
-	&lt;link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css"&gt;
-	&lt;!--===============================================================================================--&gt;
-
-	&lt;!--===============================================================================================--&gt;
-	&lt;link rel="stylesheet" type="text/css" href="css/util.css"&gt;
-	&lt;link rel="stylesheet" type="text/css" href="css/main.css"&gt;
-	&lt;!--===============================================================================================--&gt;
-	&lt;style&gt;
-		html {
-			width: 100%;
-			height: 100%;
-		}
-
-		body {
-			background: linear-gradient(45deg, rgba(66, 183, 245, 0.8) 0%, rgba(66, 245, 189, 0.4) 100%);
-			color: rgba(0, 0, 0, 0.6);
-			font-family: "Roboto", sans-serif;
-			font-size: 14px;
-			line-height: 1.6em;
-			-webkit-font-smoothing: antialiased;
-			-moz-osx-font-smoothing: grayscale;
-		}
-
-		.overlay,
-		.form-panel.one:before {
-			position: absolute;
-			top: 0;
-			left: 0;
-			display: none;
-			background: rgba(0, 0, 0, 0.8);
-			width: 100%;
-			height: 100%;
-		}
-
-		.form {
-			z-index: 15;
-			position: relative;
-			background: #ffffff;
-			width: 600px;
-			border-radius: 4px;
-			box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
-			box-sizing: border-box;
-			margin: 100px auto 10px;
-			overflow: hidden;
-		}
-
-		.form-toggle {
-			z-index: 10;
-			position: absolute;
-			top: 60px;
-			right: 60px;
-			background: #ffffff;
-			width: 60px;
-			height: 60px;
-			border-radius: 100%;
-			transform-origin: center;
-			transform: translate(0, -25%) scale(0);
-			opacity: 0;
-			cursor: pointer;
-			transition: all 0.3s ease;
-		}
-
-		.form-toggle:before,
-		.form-toggle:after {
-			content: "";
-			display: block;
-			position: absolute;
-			top: 50%;
-			left: 50%;
-			width: 30px;
-			height: 4px;
-			background: #4285f4;
-			transform: translate(-50%, -50%);
-		}
-
-		.form-toggle:before {
-			transform: translate(-50%, -50%) rotate(45deg);
-		}
-
-		.form-toggle:after {
-			transform: translate(-50%, -50%) rotate(-45deg);
-		}
-
-		.form-toggle.visible {
-			transform: translate(0, -25%) scale(1);
-			opacity: 1;
-		}
-
-		.form-group {
-			display: flex;
-			flex-wrap: wrap;
-			justify-content: space-between;
-			margin: 0 0 20px;
-		}
-
-		.form-group:last-child {
-			margin: 0;
-		}
-
-		.form-group label {
-			display: block;
-			margin: 0 0 10px;
-			color: rgba(0, 0, 0, 0.6);
-			font-size: 12px;
-			font-weight: 500;
-			line-height: 1;
-			text-transform: uppercase;
-			letter-spacing: 0.2em;
-		}
-
-		.two .form-group label {
-			color: #ffffff;
-		}
-
-		.form-group input {
-			outline: none;
-			display: block;
-			background: rgba(0, 0, 0, 0.1);
-			width: 100%;
-			border: 0;
-			border-radius: 4px;
-			box-sizing: border-box;
-			padding: 12px 20px;
-			color: rgba(0, 0, 0, 0.6);
-			font-family: inherit;
-			font-size: inherit;
-			font-weight: 500;
-			line-height: inherit;
-			transition: 0.3s ease;
-		}
-
-		.form-group input:focus {
-			color: rgba(0, 0, 0, 0.8);
-		}
-
-		.two .form-group input {
-			color: #ffffff;
-		}
-
-		.two .form-group input:focus {
-			color: #ffffff;
-		}
-
-		.form-group button {
-			outline: none;
-			background: #4285f4;
-			width: 100%;
-			border: 0;
-			border-radius: 4px;
-			padding: 12px 20px;
-			color: #ffffff;
-			font-family: inherit;
-			font-size: inherit;
-			font-weight: 500;
-			line-height: inherit;
-			text-transform: uppercase;
-			cursor: pointer;
-		}
-
-		.two .form-group button {
-			background: #ffffff;
-			color: #4285f4;
-		}
-
-		.form-group .form-remember {
-			font-size: 12px;
-			font-weight: 400;
-			letter-spacing: 0;
-			text-transform: none;
-		}
-
-		.form-group .form-remember input[type=checkbox] {
-			display: inline-block;
-			width: auto;
-			margin: 0 10px 0 0;
-		}
-
-		.form-group .form-recovery {
-			color: #4285f4;
-			font-size: 12px;
-			text-decoration: none;
-		}
-
-		.form-panel {
-			padding: 60px calc(5% + 60px) 60px 60px;
-			box-sizing: border-box;
-		}
-
-		.form-panel.one:before {
-			content: "";
-			display: block;
-			opacity: 0;
-			visibility: hidden;
-			transition: 0.3s ease;
-		}
-
-		.form-panel.one.hidden:before {
-			display: block;
-			opacity: 1;
-			visibility: visible;
-		}
-
-		.form-panel.two {
-			z-index: 5;
-			position: absolute;
-			top: 0;
-			left: 95%;
-			background: #4285f4;
-			width: 100%;
-			min-height: 100%;
-			padding: 60px calc(10% + 60px) 60px 60px;
-			transition: 0.3s ease;
-			cursor: pointer;
-		}
-
-		.form-panel.two:before,
-			.form-panel.two:after {
-			content: "";
-			display: block;
-			position: absolute;
-			top: 60px;
-			left: 1.5%;
-			background: rgba(255, 255, 255, 0.2);
-			height: 30px;
-			width: 2px;
-			transition: 0.3s ease;
-		}
-
-		.form-panel.two:after {
-			left: 3%;
-		}
-
-		.form-panel.two:hover {
-			left: 93%;
-			box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-		}
-
-		.form-panel.two:hover:before,
-			.form-panel.two:hover:after {
-			opacity: 0;
-		}
-
-		.form-panel.two.active {
-			left: 10%;
-			box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-			cursor: default;
-		}
-
-		.form-panel.two.active:before,
-			.form-panel.two.active:after {
-			opacity: 0;
-		}
-
-		.form-header {
-			margin: 0 0 40px;
-		}
-
-		.form-header h1 {
-			padding: 4px 0;
-			color: #4285f4;
-			font-size: 24px;
-			font-weight: 700;
-			text-transform: uppercase;
-		}
-
-		.two .form-header h1 {
-			position: relative;
-			z-index: 40;
-			color: #ffffff;
-		}
-
-		.pen-footer {
-			display: flex;
-			flex-direction: row;
-			justify-content: space-between;
-			width: 600px;
-			margin: 20px auto 100px;
-		}
-
-		.pen-footer a {
-			color: #ffffff;
-			font-size: 12px;
-			text-decoration: none;
-			text-shadow: 1px 2px 0 rgba(0, 0, 0, 0.1);
-		}
-
-		.pen-footer a .material-icons {
-			width: 12px;
-			margin: 0 5px;
-			vertical-align: middle;
-			font-size: 12px;
-		}
-
-		.cp-fab {
-			background: #ffffff !important;
-			color: #4285f4 !important;
-		}
-
-		ul li {
-			color: red;
-			list-style: square;
-			padding: 0;
-			margin-left: 0px;
-			font-size: 12px;
-		}
-
-		.floating-lang {
-			position: fixed;
-			top: 20px;
-			right: 20px;
-			z-index: 9999;
-		}
-
-		.floating-lang .btn {
-			border-radius: 50px;
-			box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-			transition: all 0.3s ease;
-		}
-
-		.floating-lang .btn:hover {
-			transform: scale(1.05);
-		}
-	&lt;/style&gt;
-&lt;/head&gt;
-
-&lt;body&gt;
-	&lt;div class="floating-lang"&gt;
-		&lt;div class="btn-group"&gt;
-			&lt;button type="button" class="btn btn-primary dropdown-toggle" id="loginLangDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"&gt;
-				&lt;span class="flag-icon flag-icon-cn"&gt;&lt;/span&gt;
-				中文
-			&lt;/button&gt;
-			&lt;div class="dropdown-menu dropdown-menu-end" aria-labelledby="loginLangDropdown"&gt;
-												&lt;a class="dropdown-item" href="http://localhost:8000/lang/en"&gt;
-					&lt;span class="flag-icon flag-icon-us"&gt;&lt;/span&gt;
-					English
-				&lt;/a&gt;
-																&lt;a class="dropdown-item" href="http://localhost:8000/lang/th"&gt;
-					&lt;span class="flag-icon flag-icon-th"&gt;&lt;/span&gt;
-					ไทย
-				&lt;/a&gt;
-																			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-
-	&lt;!-- &lt;div class="limiter"&gt;
-		&lt;div class="container-login100"&gt;
-			&lt;div class="wrap-login100 p-l-50 p-r-50 p-t-77 p-b-100"&gt;
-				&lt;form method="POST" class="login100-form validate-form" autocomplete="off" action="http://localhost:8000/login"&gt;
-					&lt;input type="hidden" name="_token" value="l8NDa4pipWgOMJTfFal8TffaezCAeoWW9RbQNYzD"&gt;					&lt;span class="login100-form-title p-b-55"&gt;
-						Login
-					&lt;/span&gt;
-										&lt;div class="wrap-input100 validate-input m-b-16" data-validate="Valid email is required: ex@abc.xyz"&gt;
-
-						&lt;input id="email" class="input100" type="text" name="email" placeholder="Email"&gt;
-						&lt;span class="focus-input100"&gt;&lt;/span&gt;
-						&lt;span class="symbol-input100"&gt;
-							&lt;span class="lnr lnr-envelope"&gt;&lt;/span&gt;
-						&lt;/span&gt;
-
-					&lt;/div&gt;
-
-					&lt;div class="wrap-input100 validate-input m-b-16" data-validate="Password is required"&gt;
-						&lt;input id="password" class="input100" type="password" name="password" placeholder="Password"&gt;
-						&lt;span class="focus-input100"&gt;&lt;/span&gt;
-						&lt;span class="symbol-input100"&gt;
-							&lt;span class="lnr lnr-lock"&gt;&lt;/span&gt;
-						&lt;/span&gt;
-
-					&lt;/div&gt;
-
-					&lt;div class="contact100-form-checkbox m-l-4"&gt;
-						&lt;input  class="input-checkbox100" id="ckb1" type="checkbox" name="remember"&gt;
-						&lt;label class="label-checkbox100" for="ckb1"&gt;
-							Remember me
-						&lt;/label&gt;
-					&lt;/div&gt;
-
-					&lt;div class="container-login100-form-btn p-t-30"&gt;
-						&lt;button class="login100-form-btn"&gt;
-							Login
-						&lt;/button&gt;
-					&lt;/div&gt;
-
-
-				&lt;/form&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt; --&gt;
-
-	&lt;div class="form"&gt;
-		&lt;div class="form-toggle"&gt;&lt;/div&gt;
-		&lt;div class="form-panel one"&gt;
-			&lt;div class="form-header"&gt;
-				&lt;h1&gt;账户登录&lt;/h1&gt;
-			&lt;/div&gt;
-			&lt;div class="form-content"&gt;
-				&lt;form method="POST" class="validate-form" autocomplete="off" action="http://localhost:8000/login"&gt;
-					&lt;input type="hidden" name="_token" value="l8NDa4pipWgOMJTfFal8TffaezCAeoWW9RbQNYzD"&gt;										&lt;!-- &lt;div class="form-group validate-input" data-validate="Valid email is required: ex@abc.xyz"&gt; --&gt;
-					&lt;div class="form-group validate-input"&gt;
-						&lt;label for="email"&gt;用户名&lt;/label&gt;
-						&lt;input id="username" type="username" class="form-control " name="username" value="" required="" autofocus=""&gt;
-											&lt;/div&gt;
-					&lt;div class="form-group validate-input" data-validate="Password is required"&gt;
-						&lt;label for="password"&gt;密码&lt;/label&gt;
-						&lt;input id="password" class="input" type="password" name="password" required="required"&gt;
-					&lt;/div&gt;
-					&lt;div class="form-group"&gt;
-						&lt;label class="form-remember"&gt;
-							&lt;input id="ckb1" name="remember" type="checkbox"&gt;记住我
-						&lt;/label&gt;
-					&lt;/div&gt;
-					&lt;div class="form-group"&gt;
-						&lt;button type="submit"&gt;登录&lt;/button&gt;
-					&lt;/div&gt;
-					&lt;div class="form-remember pb-3"&gt;
-							&lt;p style="color: red; text-align: right;"&gt;*** 如果忘记密码，请联系管理员&lt;/p&gt;
-					&lt;/div&gt;
-					&lt;ul&gt;
-						&lt;li&gt;用户名请使用 KKU-Mail 登录&lt;/li&gt;
-						&lt;li&gt;首次登录的学生请使用学号登录&lt;/li&gt;
-					&lt;/ul&gt;
-				&lt;/form&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-
-
-	&lt;/div&gt;
-	&lt;script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"&gt;&lt;/script&gt;
-	&lt;script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"&gt;&lt;/script&gt;
-	&lt;script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"&gt;&lt;/script&gt;
-	&lt;script&gt;
-		(function($) {
-			"use strict";
-
-
-			/*==================================================================
-			[ Validate ]*/
-			var input = $('.validate-input .input');
-
-			$('.validate-form').on('submit', function() {
-
-				var check = true;
-
-				for (var i = 0; i &lt; input.length; i++) {
-					if (validate(input[i]) == false) {
-						showValidate(input[i]);
-						check = false;
-					}
-				}
-
-				return check;
-			});
-
-
-			$('.validate-form .input').each(function() {
-				$(this).focus(function() {
-					hideValidate(this);
-				});
-			});
-
-			function validate(input) {
-
-				if ($(input).attr('type') == 'email' || $(input).attr('name') == 'email') {
-					if ($(input).val().trim().match(/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{1,5}|[0-9]{1,3})(\]?)$/) == null) {
-						return false;
-					}
-				} else {
-					if ($(input).val().trim() == '') {
-						return false;
-					}
-				}
-			}
-
-			function showValidate(input) {
-				var thisAlert = $(input).parent();
-
-				$(thisAlert).addClass('alert-validate');
-			}
-
-			function hideValidate(input) {
-				var thisAlert = $(input).parent();
-
-				$(thisAlert).removeClass('alert-validate');
-			}
-
-
-
-		})(jQuery);
-	&lt;/script&gt;
-
-
-&lt;/body&gt;&lt;/html&gt;</msg>
-<arg>HTML Source: ${html_source}</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-02-27T01:26:15.913875" elapsed="0.000000"/>
+<status status="PASS" start="2025-02-27T06:36:18.177184" elapsed="0.015283"/>
 </kw>
 <for flavor="IN">
 <iter>
 <kw name="Log" owner="BuiltIn">
-<msg time="2025-02-27T01:26:15.914875" level="INFO">Checking for word: 账户登录</msg>
+<msg time="2025-02-27T06:36:18.193270" level="INFO">Checking for word: 已发布的研究</msg>
 <arg>Checking for word: ${word}</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-02-27T01:26:15.914875" elapsed="0.000000"/>
+<status status="PASS" start="2025-02-27T06:36:18.193139" elapsed="0.000174"/>
 </kw>
 <kw name="Should Contain" owner="BuiltIn">
 <arg>${html_source}</arg>
 <arg>${word}</arg>
 <doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
-<status status="PASS" start="2025-02-27T01:26:15.914875" elapsed="0.000000"/>
+<status status="PASS" start="2025-02-27T06:36:18.193755" elapsed="0.000232"/>
 </kw>
-<var name="${word}">账户登录</var>
-<status status="PASS" start="2025-02-27T01:26:15.914875" elapsed="0.000000"/>
+<var name="${word}">已发布的研究</var>
+<status status="PASS" start="2025-02-27T06:36:18.193030" elapsed="0.001009"/>
 </iter>
 <iter>
 <kw name="Log" owner="BuiltIn">
-<msg time="2025-02-27T01:26:15.914875" level="INFO">Checking for word: 用户名</msg>
+<msg time="2025-02-27T06:36:18.194343" level="INFO">Checking for word: 序号</msg>
 <arg>Checking for word: ${word}</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-02-27T01:26:15.914875" elapsed="0.001000"/>
+<status status="PASS" start="2025-02-27T06:36:18.194233" elapsed="0.000147"/>
 </kw>
 <kw name="Should Contain" owner="BuiltIn">
 <arg>${html_source}</arg>
 <arg>${word}</arg>
 <doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
-<status status="PASS" start="2025-02-27T01:26:15.915875" elapsed="0.000000"/>
+<status status="PASS" start="2025-02-27T06:36:18.194456" elapsed="0.000150"/>
 </kw>
-<var name="${word}">用户名</var>
-<status status="PASS" start="2025-02-27T01:26:15.914875" elapsed="0.001000"/>
+<var name="${word}">序号</var>
+<status status="PASS" start="2025-02-27T06:36:18.194157" elapsed="0.000487"/>
 </iter>
 <iter>
 <kw name="Log" owner="BuiltIn">
-<msg time="2025-02-27T01:26:15.915875" level="INFO">Checking for word: 密码</msg>
+<msg time="2025-02-27T06:36:18.194911" level="INFO">Checking for word: 论文名称</msg>
 <arg>Checking for word: ${word}</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-02-27T01:26:15.915875" elapsed="0.000000"/>
+<status status="PASS" start="2025-02-27T06:36:18.194813" elapsed="0.000138"/>
 </kw>
 <kw name="Should Contain" owner="BuiltIn">
 <arg>${html_source}</arg>
 <arg>${word}</arg>
 <doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
-<status status="PASS" start="2025-02-27T01:26:15.915875" elapsed="0.000000"/>
+<status status="PASS" start="2025-02-27T06:36:18.195025" elapsed="0.000130"/>
 </kw>
-<var name="${word}">密码</var>
-<status status="PASS" start="2025-02-27T01:26:15.915875" elapsed="0.000000"/>
+<var name="${word}">论文名称</var>
+<status status="PASS" start="2025-02-27T06:36:18.194734" elapsed="0.000464"/>
 </iter>
 <iter>
 <kw name="Log" owner="BuiltIn">
-<msg time="2025-02-27T01:26:15.915875" level="INFO">Checking for word: 记住我</msg>
+<msg time="2025-02-27T06:36:18.195451" level="INFO">Checking for word: 论文类型</msg>
 <arg>Checking for word: ${word}</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-02-27T01:26:15.915875" elapsed="0.000000"/>
+<status status="PASS" start="2025-02-27T06:36:18.195350" elapsed="0.001180"/>
 </kw>
 <kw name="Should Contain" owner="BuiltIn">
 <arg>${html_source}</arg>
 <arg>${word}</arg>
 <doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
-<status status="PASS" start="2025-02-27T01:26:15.916879" elapsed="0.000000"/>
+<status status="PASS" start="2025-02-27T06:36:18.196732" elapsed="0.000260"/>
 </kw>
-<var name="${word}">记住我</var>
-<status status="PASS" start="2025-02-27T01:26:15.915875" elapsed="0.001004"/>
+<var name="${word}">论文类型</var>
+<status status="PASS" start="2025-02-27T06:36:18.195285" elapsed="0.001774"/>
 </iter>
 <iter>
 <kw name="Log" owner="BuiltIn">
-<msg time="2025-02-27T01:26:15.916879" level="INFO">Checking for word: 登录</msg>
+<msg time="2025-02-27T06:36:18.197421" level="INFO">Checking for word: 年份</msg>
 <arg>Checking for word: ${word}</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-02-27T01:26:15.916879" elapsed="0.000000"/>
+<status status="PASS" start="2025-02-27T06:36:18.197287" elapsed="0.000186"/>
 </kw>
 <kw name="Should Contain" owner="BuiltIn">
 <arg>${html_source}</arg>
 <arg>${word}</arg>
 <doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
-<status status="PASS" start="2025-02-27T01:26:15.916879" elapsed="0.000000"/>
+<status status="PASS" start="2025-02-27T06:36:18.197578" elapsed="0.000175"/>
 </kw>
-<var name="${word}">登录</var>
-<status status="PASS" start="2025-02-27T01:26:15.916879" elapsed="0.000000"/>
+<var name="${word}">年份</var>
+<status status="PASS" start="2025-02-27T06:36:18.197195" elapsed="0.000610"/>
 </iter>
 <iter>
 <kw name="Log" owner="BuiltIn">
-<msg time="2025-02-27T01:26:15.916879" level="INFO">Checking for word: *** 如果忘记密码，请联系管理员</msg>
+<msg time="2025-02-27T06:36:18.198131" level="INFO">Checking for word: 操作</msg>
 <arg>Checking for word: ${word}</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-02-27T01:26:15.916879" elapsed="0.000000"/>
+<status status="PASS" start="2025-02-27T06:36:18.198004" elapsed="0.000178"/>
 </kw>
 <kw name="Should Contain" owner="BuiltIn">
 <arg>${html_source}</arg>
 <arg>${word}</arg>
 <doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
-<status status="PASS" start="2025-02-27T01:26:15.916879" elapsed="0.000996"/>
+<status status="PASS" start="2025-02-27T06:36:18.198287" elapsed="0.000189"/>
 </kw>
-<var name="${word}">*** 如果忘记密码，请联系管理员</var>
-<status status="PASS" start="2025-02-27T01:26:15.916879" elapsed="0.000996"/>
+<var name="${word}">操作</var>
+<status status="PASS" start="2025-02-27T06:36:18.197914" elapsed="0.000614"/>
 </iter>
 <iter>
 <kw name="Log" owner="BuiltIn">
-<msg time="2025-02-27T01:26:15.917875" level="INFO">Checking for word: 用户名请使用 KKU-Mail 登录</msg>
+<msg time="2025-02-27T06:36:18.198824" level="INFO">Checking for word: </msg>
 <arg>Checking for word: ${word}</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-02-27T01:26:15.917875" elapsed="0.000000"/>
+<status status="PASS" start="2025-02-27T06:36:18.198712" elapsed="0.000163"/>
 </kw>
 <kw name="Should Contain" owner="BuiltIn">
 <arg>${html_source}</arg>
 <arg>${word}</arg>
 <doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
-<status status="PASS" start="2025-02-27T01:26:15.917875" elapsed="0.000000"/>
+<status status="PASS" start="2025-02-27T06:36:18.198988" elapsed="0.000153"/>
 </kw>
-<var name="${word}">用户名请使用 KKU-Mail 登录</var>
-<status status="PASS" start="2025-02-27T01:26:15.917875" elapsed="0.000000"/>
-</iter>
-<iter>
-<kw name="Log" owner="BuiltIn">
-<msg time="2025-02-27T01:26:15.917875" level="INFO">Checking for word: 首次登录的学生请使用学号登录</msg>
-<arg>Checking for word: ${word}</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-02-27T01:26:15.917875" elapsed="0.000000"/>
-</kw>
-<kw name="Should Contain" owner="BuiltIn">
-<arg>${html_source}</arg>
-<arg>${word}</arg>
-<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
-<status status="PASS" start="2025-02-27T01:26:15.917875" elapsed="0.000000"/>
-</kw>
-<var name="${word}">首次登录的学生请使用学号登录</var>
-<status status="PASS" start="2025-02-27T01:26:15.917875" elapsed="0.000000"/>
+<var name="${word}"/>
+<status status="PASS" start="2025-02-27T06:36:18.198633" elapsed="0.000558"/>
 </iter>
 <var>${word}</var>
-<value>@{EXPECTED_WORDS_LOGIN_CN}</value>
-<status status="PASS" start="2025-02-27T01:26:15.914875" elapsed="0.004000"/>
+<value>@{EXPECTED_WORDS_PUBLISHEDRESEARCH_CN}</value>
+<status status="PASS" start="2025-02-27T06:36:18.192830" elapsed="0.006410"/>
 </for>
-<kw name="Close Browser" owner="SeleniumLibrary">
-<doc>Closes the current browser.</doc>
-<status status="PASS" start="2025-02-27T01:26:15.918875" elapsed="2.190347"/>
-</kw>
-<tag>UAT004-OpenLoginPageAndCheckCN</tag>
-<status status="PASS" start="2025-02-27T01:26:02.449114" elapsed="15.661102"/>
+<tag>UAT003-RESEARCHPROJECT</tag>
+<status status="PASS" start="2025-02-27T06:35:58.746581" elapsed="19.453009"/>
 </test>
-<status status="PASS" start="2025-02-27T01:25:28.192156" elapsed="49.919995"/>
+<status status="PASS" start="2025-02-27T06:35:58.377719" elapsed="19.830183"/>
 </suite>
 <statistics>
 <total>
-<stat pass="4" fail="0" skip="0">All Tests</stat>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
-<stat pass="1" fail="0" skip="0">UAT001-OpenLoginPage</stat>
-<stat pass="1" fail="0" skip="0">UAT002-OpenLoginPageAndCheckEN</stat>
-<stat pass="1" fail="0" skip="0">UAT003-OpenLoginPageAndCheckTH</stat>
-<stat pass="1" fail="0" skip="0">UAT004-OpenLoginPageAndCheckCN</stat>
+<stat pass="1" fail="0" skip="0">UAT003-RESEARCHPROJECT</stat>
 </tag>
 <suite>
-<stat pass="4" fail="0" skip="0" id="s1" name="UAT Switch Login">UAT Switch Login</stat>
+<stat pass="1" fail="0" skip="0" id="s1" name="UAT Switch Dashboard">UAT Switch Dashboard</stat>
 </suite>
 </statistics>
 <errors>
