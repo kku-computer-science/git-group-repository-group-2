@@ -145,6 +145,8 @@ Route::group(['middleware' => ['auth', 'PreventBackHistory']], function () {
     Route::get('image_management', [ImageManagementController::class, 'index'])->name('image_management.index');
     Route::resource('banners', BannerController::class);
     Route::get('language/{lang}', [LocalizationController::class, 'switchLang'])->name('language.switch');
+
+    // Add Hightlight route
     
 });
 
@@ -187,6 +189,13 @@ Route::get('/migration-status', function () {
     // ส่งผลลัพธ์เป็นข้อความในหน้าเว็บ
     return "<pre>{$output}</pre>";
 });
+
+Route::get('/highlight', function () {
+    return view('highlight.index');
+})->name('highlight.index');
+
+
+
 
 // end
 
