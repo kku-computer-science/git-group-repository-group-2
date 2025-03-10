@@ -16,13 +16,14 @@ class CreateHightlightTable extends Migration
         Schema::create('highlight', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('detail');
+            $table->text('detail');
             $table->string('thumbnail');
             $table->date('upload_date');
             $table->string('tags');
             $table->timestamps();
         });
     }
+
 
     /**
      * Reverse the migrations.
@@ -31,6 +32,6 @@ class CreateHightlightTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('hightlight');
+        Schema::dropIfExists('highlight');
     }
 }

@@ -2,6 +2,20 @@
 <link rel="stylesheet" href="https://cdn.datatables.net/fixedheader/3.2.3/css/fixedHeader.bootstrap4.min.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/1.12.0/css/dataTables.bootstrap4.min.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/fixedheader/3.2.3/css/fixedHeader.bootstrap4.min.css">
+<!-- SweetAlert2 -->
+<link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.3.3/dist/sweetalert2.min.css" rel="stylesheet">
+
+<style>
+    .badge-info {
+        background-color: black;
+        color: white;
+    }
+
+    /* Optional: Add a bit of padding to the textarea */
+    #detail {
+        padding: 10px;
+    }
+</style>
 
 @section('content')
 <div class="container mt-4">
@@ -9,33 +23,29 @@
 
     <div class="card">
         <div class="card-body">
-            <form action="{{ route('highlight.index') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('highlight.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 
                 <div class="form-group">
-                    <label for="title">Highlight Title:</label>
+                    <label for="title">Title:</label>
                     <input type="text" class="form-control" id="title" name="title" required>
                 </div>
 
                 <div class="form-group">
                     <label for="detail">Detail:</label>
-                    <textarea class="form-control" id="detail" name="detail" rows="3" required></textarea>
+                    <textarea class="form-control" id="detail" name="detail" rows="3" required oninput="autoResize(this)"></textarea>
                 </div>
 
                 <div class="form-group">
-                    <label for="thumbnail">Upload Image (Thumbnail):</label>
+                    <label for="thumbnail">Upload Image:</label>
                     <input type="file" class="form-control-file" id="thumbnail" name="thumbnail" accept="image/*" required>
                     <img id="preview" class="mt-2" width="150" style="display: none;">
                 </div>
 
                 <div class="form-group">
-                    <label for="upload_date">Upload Date:</label>
-                    <input type="date" class="form-control" id="upload_date" name="upload_date" required>
-                </div>
-
-                <div class="form-group">
                     <label for="tags">Tags:</label>
                     <input type="text" class="form-control" id="tags" name="tags" placeholder="e.g., Sports, News, Technology" required>
+                    <div id="tag-list" class="mt-2"></div>
                 </div>
 
                 <button type="submit" class="btn btn-primary">Upload</button>
@@ -44,6 +54,7 @@
     </div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.3.3/dist/sweetalert2.min.js"></script>
 <script>
     document.getElementById("thumbnail").addEventListener("change", function(event) {
         const reader = new FileReader();
@@ -54,5 +65,62 @@
         };
         reader.readAsDataURL(event.target.files[0]);
     });
+
+    // Display alert messages using SweetAlert2
+    @if(session('success'))
+        Swal.fire({
+            icon: 'success',
+            title: 'Success!',
+            text: "{{ session('success') }}",
+            showConfirmButton: false,
+            timer: 1500
+        });
+    @elseif(session('error'))
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: "{{ session('error') }}",
+            showConfirmButton: true
+        });
+    @endif
+
+    // Handle tag input and display tags below input
+    document.getElementById('tags').addEventListener('keypress', function(event) {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            const tagInput = event.target.value.trim();
+            if (tagInput) {
+                // Create a new tag element
+                const tag = document.createElement('span');
+                tag.classList.add('badge', 'badge-info', 'mr-2', 'mb-2', 'tag-item');
+                tag.textContent = tagInput;
+
+                // Create a delete button (x) inside the tag
+                const deleteButton = document.createElement('span');
+                deleteButton.classList.add('ml-2', 'delete-tag');
+                deleteButton.textContent = '×';
+                deleteButton.style.cursor = 'pointer';
+                deleteButton.onclick = function() {
+                    tag.remove();  // Remove the tag when clicked
+                };
+
+                // Append the delete button to the tag
+                tag.appendChild(deleteButton);
+
+                // Add the tag to the tag list
+                const tagList = document.getElementById('tag-list');
+                tagList.appendChild(tag);
+
+                // Clear the input field
+                event.target.value = '';
+            }
+        }
+    });
+
+    // Function to resize textarea as user types
+    function autoResize(textarea) {
+        textarea.style.height = 'auto';  // Reset the height
+        textarea.style.height = (textarea.scrollHeight) + 'px';  // Set the height to scrollHeight
+    }
 </script>
 @endsection

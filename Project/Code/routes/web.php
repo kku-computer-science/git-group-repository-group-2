@@ -11,6 +11,7 @@ use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileuserController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\HighlightController;
 
 use App\Http\Controllers\TeacherController;
 use Illuminate\Support\Facades\Auth;
@@ -41,6 +42,7 @@ use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\TcicallController;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\ImageManagementController;
+use App\Models\Highlight;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -147,7 +149,7 @@ Route::group(['middleware' => ['auth', 'PreventBackHistory']], function () {
     Route::get('language/{lang}', [LocalizationController::class, 'switchLang'])->name('language.switch');
 
     // Add Hightlight route
-    
+    Route::post('/highlight/store', [HighlightController::class, 'store'])->name('highlight.store');
 });
 
 // add route for deploy
