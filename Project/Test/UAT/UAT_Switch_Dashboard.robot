@@ -35,26 +35,8 @@ ${CHROME_DRIVER_PATH}        ${EXECDIR}${/}ChromeForTesting${/}chromedriver.exe
 ...    Manage Expertise
 ...    Manage Image
 
-@{EXPECTED_WORDS_ADMIN_TH}
+@{EXPECTED_WORDS_DASHBOARD_TH}
 ...    ระบบการจัดการข้อมูลการวิจัย
-...    ภาษาอังกฤษ
-...    ออกจากระบบ
-...    แดชบอร์ด
-...    โปรไฟล์
-...    โปรไฟล์ผู้ใช้
-...    ตัวเลือก
-...    จัดการทุนวิจัย
-...    โครงการวิจัย
-...    กลุ่มวิจัย
-...    จัดการสิ่งพิมพ์
-...    ผู้ดูแลระบบ
-...    ผู้ใช้งาน
-...    บทบาท
-...    สิทธิ์
-...    ภาควิชา
-...    การจัดการโปรแกรม
-...    การจัดการความเชี่ยวชาญ
-...    การจัดการรูปภาพ
 
 @{EXPECTED_WORDS_ADMIN_CN}
 ...    研究信息管理系统
@@ -99,23 +81,58 @@ Admin Login
 
 Switch Language To
     [Arguments]    ${lang_code}    ${expected_language}
-    Click Element    id=navbarDropdownMenuLink
-    Wait Until Element Is Visible    css:div.dropdown-menu[aria-labelledby="navbarDropdownMenuLink"]    10s
-    ${option_text}=    Get Text    xpath=//a[contains(@href, "/lang/${lang_code}")]
+    # Click the language dropdown button
+    Click Element    id=navbarDropdown
+    # Wait for the dropdown menu to appear
+    Wait Until Element Is Visible    css:ul.dropdown-menu[aria-labelledby="navbarDropdown"]    10s
+    # Retrieve and log the text of the option
+    ${option_text}=    Get Text    xpath=//a[contains(@href, "/language/${lang_code}")]
     Log    Option language is: ${option_text}
-    Click Element    xpath=//a[contains(@href, "/lang/${lang_code}")]
+    # Click the language option
+    Click Element    xpath=//a[contains(@href, "/language/${lang_code}")]
     Sleep    5s
-    ${new_lang}=    Get Text    id=navbarDropdownMenuLink
+    # Get the updated text from the dropdown button
+    ${new_lang}=    Get Text    id=navbarDropdown
     Log    New language is: ${new_lang}
     Should Contain    ${new_lang}    ${expected_language}
 
+
+
 *** Test Cases ***
-Open Admin Page
+# Open Admin Page
+#     [Tags]    UAT001-OpenAdminPage
+#     Open Browser To Login Page
+#     Login Page Should Be Open
+#     Admin Login
+#     Sleep    2s
+#     Switch Language To    th    ไทย
+#     Sleep    5s
+#     Close Browser
+
+Dashboard Page Switch Language To TH
     [Tags]    UAT001-OpenAdminPage
     Open Browser To Login Page
     Login Page Should Be Open
     Admin Login
     Sleep    2s
+    Switch Language To    th    ไทย
+    ${html_source}=    Get Source
+    Log    HTML Source: ${html_source}
+    FOR    ${word}    IN    @{EXPECTED_WORDS_DASHBOARD_TH}
+        Log    Checking for word: ${word}
+        Should Contain    ${html_source}    ${word}
+    END
+    Sleep    5s
     Close Browser
+
+# Dashboard Page Switch Language To CN
+#     [Tags]    UAT001-OpenAdminPage
+#     Open Browser To Login Page
+#     Login Page Should Be Open
+#     Admin Login
+#     Sleep    2s
+#     Switch Language To    zh    中文
+#     Sleep    5s
+#     Close Browser
 
 

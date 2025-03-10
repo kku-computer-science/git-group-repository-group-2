@@ -51,16 +51,20 @@
                             // เลือกแสดงภาพตามภาษา
                             if ($lang === 'th') {
                                 $imagePath = $banner->image_path_th;
+                                $altText = 'Banner Image TH';
                             } elseif ($lang === 'en') {
                                 $imagePath = $banner->image_path_en;
+                                $altText = 'Banner Image EN';
                             } elseif ($lang === 'zh') {
                                 $imagePath = $banner->image_path_zh;
+                                $altText = 'Banner Image ZH';
                             } else {
                                 $imagePath = $banner->image_path_th; // ค่าเริ่มต้นเป็นภาษาไทย
+                                $altText = 'Banner Image TH'; // ค่าเริ่มต้นเป็นภาษาไทย
                             }
                             
                         @endphp
-                        <img src="{{ asset('storage/' . $imagePath) }}" class="d-block w-100" alt="Banner Image">
+                        <img src="{{ asset('storage/' . $imagePath) }}" class="d-block w-100" alt="{{ $altText }}">
                     </div>
                 @endforeach
             </div>
