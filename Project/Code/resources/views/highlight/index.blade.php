@@ -25,7 +25,8 @@
         <div class="card-body">
             <form action="{{ route('highlight.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
-                
+
+                <!-- ฟิลด์อื่นๆ ของฟอร์ม -->
                 <div class="form-group">
                     <label for="title">Title:</label>
                     <input type="text" class="form-control" id="title" name="title" required>
@@ -44,9 +45,12 @@
 
                 <div class="form-group">
                     <label for="tags">Tags:</label>
-                    <input type="text" class="form-control" id="tags" name="tags" placeholder="e.g., Sports, News, Technology" required>
+                    <input type="text" class="form-control" id="tags" name="tags" placeholder="e.g., Sports, News, Technology">
                     <div id="tag-list" class="mt-2"></div>
                 </div>
+
+                <!-- hidden input field for storing tags -->
+                <input type="hidden" id="tags-input" name="tags">
 
                 <button type="submit" class="btn btn-primary">Upload</button>
             </form>
@@ -58,7 +62,7 @@
 <script>
     document.getElementById("thumbnail").addEventListener("change", function(event) {
         const reader = new FileReader();
-        reader.onload = function(){
+        reader.onload = function() {
             const output = document.getElementById("preview");
             output.src = reader.result;
             output.style.display = "block";
@@ -68,23 +72,22 @@
 
     // Display alert messages using SweetAlert2
     @if(session('success'))
-        Swal.fire({
-            icon: 'success',
-            title: 'Success!',
-            text: "{{ session('success') }}",
-            showConfirmButton: false,
-            timer: 1500
-        });
+    Swal.fire({
+        icon: 'success',
+        title: 'Success!',
+        text: "{{ session('success') }}",
+        showConfirmButton: false,
+        timer: 1500
+    });
     @elseif(session('error'))
-        Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: "{{ session('error') }}",
-            showConfirmButton: true
-        });
+    Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: "{{ session('error') }}",
+        showConfirmButton: true
+    });
     @endif
 
-    // Handle tag input and display tags below input
     document.getElementById('tags').addEventListener('keypress', function(event) {
         if (event.key === 'Enter') {
             event.preventDefault();
@@ -101,7 +104,8 @@
                 deleteButton.textContent = '×';
                 deleteButton.style.cursor = 'pointer';
                 deleteButton.onclick = function() {
-                    tag.remove();  // Remove the tag when clicked
+                    tag.remove(); // Remove the tag when clicked
+                    updateTagsInput(); // Update the hidden input after removing a tag
                 };
 
                 // Append the delete button to the tag
@@ -113,14 +117,27 @@
 
                 // Clear the input field
                 event.target.value = '';
+
+                // Update hidden input field with current tags
+                updateTagsInput();
             }
         }
     });
 
+    // Function to update hidden input field with current tags
+    function updateTagsInput() {
+        const tags = [];
+        const tagElements = document.querySelectorAll('#tag-list .tag-item');
+        tagElements.forEach(tag => {
+            tags.push(tag.textContent.replace('×', '').trim());
+        });
+        document.getElementById('tags-input').value = tags.join(','); // Store tags as a comma-separated string
+    }
+
     // Function to resize textarea as user types
     function autoResize(textarea) {
-        textarea.style.height = 'auto';  // Reset the height
-        textarea.style.height = (textarea.scrollHeight) + 'px';  // Set the height to scrollHeight
+        textarea.style.height = 'auto'; // Reset the height
+        textarea.style.height = (textarea.scrollHeight) + 'px'; // Set the height to scrollHeight
     }
 </script>
 @endsection

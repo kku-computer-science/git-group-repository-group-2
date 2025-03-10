@@ -1,46 +1,43 @@
 <?php
 // app/Http/Controllers/HighlightController.php
+
 namespace App\Http\Controllers;
 
+use App\Models\Highlight;
+use App\Models\Tag;
 use Illuminate\Http\Request;
-use Intervention\Image\Facades\Image;
-use App\Models\Highlight; // Make sure you import the Highlight model
 
 class HighlightController extends Controller
 {
     public function store(Request $request)
     {
-        // Validate the incoming data
-        $request->validate([
+        // Validate input
+        $validatedData = $request->validate([
             'title' => 'required|string|max:255',
             'detail' => 'required|string',
-            'thumbnail' => 'required|image|mimes:jpeg,png,jpg,gif,svg,avif|max:2048',
-            'upload_date' => 'required|date',
+            'thumbnail' => 'required|image',
             'tags' => 'required|string',
         ]);
 
         // Handle the file upload
-        $thumbnail = $request->file('thumbnail');
-        $extension = $thumbnail->getClientOriginalExtension();
+        $thumbnailPath = $request->file('thumbnail')->store('thumbnails', 'public');
 
-        // If the file is .avif, convert it to .jpg or .png
-        if ($extension == 'avif') {
-            $image = Image::make($thumbnail);
-            $thumbnailPath = $image->encode('jpg')->store('thumbnails', 'public');
-        } else {
-            // If the file is not .avif, store it as is
-            $thumbnailPath = $thumbnail->store('thumbnails', 'public');
-        }
-
-        // Save the data to the database
-        Highlight::create([
-            'title' => $request->input('title'),
-            'detail' => $request->input('detail'),
+        // Create a new Highlight record
+        $highlight = Highlight::create([
+            'title' => $request->title,
+            'detail' => $request->detail,
             'thumbnail' => $thumbnailPath,
-            'upload_date' => $request->input('upload_date'),
-            'tags' => $request->input('tags'),
         ]);
 
+        // Process the tags
+        $tags = explode(',', $request->tags); // Split tags by comma
+        foreach ($tags as $tagName) {
+            // Trim whitespace and check if tag exists, otherwise create it
+            $tag = Tag::firstOrCreate(['name' => trim($tagName)]);
+            $highlight->tags()->attach($tag);
+        }
+
+        // Redirect or return a response
         return redirect()->route('highlight.index')->with('success', 'Highlight uploaded successfully!');
     }
 }
