@@ -242,7 +242,10 @@ CREATE TABLE expertises (
 ) ENGINE=InnoDB AUTO_INCREMENT=225 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
+<<<<<<< HEAD
 -- LOCK TABLES expertises WRITE;
+=======
+>>>>>>> 218833a9d32455975696dd0fb0ad58f481b0c330
 /*!40000 ALTER TABLE expertises DISABLE KEYS */;
 INSERT INTO expertises (id, expert_name_en, expert_name_th, expert_name_zh, user_id, created_at, updated_at) VALUES 
 (2, 'Big Data Analytics', 'การวิเคราะห์ข้อมูลขนาดใหญ่', '大数据分析', 7, '2022-02-26 04:52:59', '2022-02-26 04:52:59'),
@@ -1102,4 +1105,3 @@ CREATE TABLE `banners` (
   `updated_at` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-

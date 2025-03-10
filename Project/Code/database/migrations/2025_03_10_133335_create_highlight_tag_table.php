@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateHightlightTable extends Migration
+class CreateHighlightTagTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,14 @@ class CreateHightlightTable extends Migration
      */
     public function up()
     {
-        Schema::create('highlight', function (Blueprint $table) {
+        Schema::create('highlight_tag', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->text('detail');
-            $table->string('thumbnail');
-            $table->date('upload_date');
-            $table->string('tags');
+            $table->foreignId('highlight_id')->constrained()->onDelete('cascade');
+            $table->foreignId('tag_id')->constrained()->onDelete('cascade');  
             $table->timestamps();
         });
+        
     }
-
 
     /**
      * Reverse the migrations.
@@ -32,6 +29,6 @@ class CreateHightlightTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('highlight');
+        Schema::dropIfExists('highlight_tag');
     }
 }
