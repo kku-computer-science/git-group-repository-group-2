@@ -1,3 +1,4 @@
+
 @extends('layouts.layout')
 <style>
 .count {
@@ -42,8 +43,8 @@
 <div class="container card-cart d-sm-flex  justify-content-center mt-5">
     <div class="card">
         <div class="card-body">
-        <h5 class="card-title" style="padding: 16px;">{{ __('message.total_articles') }}</h5>
-        <div class="row">
+            <h5 class="card-title" style="padding: 16px;">{{trans('message.total_article_5year_report')}}</h4>
+                <div class="row">
                     <div class="col-md-6 p-5">
                         <div style="width:520px;height:250px">
                             <canvas id="barChart1"></canvas>
@@ -70,8 +71,8 @@
 <div class="container card-cart d-sm-flex  justify-content-center mt-5">
     <div class="card">
         <div class="card-body">
-        <h5 class="card-title" style="padding: 16px;">{{ __('message.cited_articles') }}</h5>
-        <div class="row">
+            <h5 class="card-title"  style="padding: 16px;">{{trans('message.total_article_cumulative_report')}}</h4>
+                <div class="row">
                     <div class="col-md-6 p-5">
                         <div style="width:520px;height:250px">
                             <canvas id="barChart2"></canvas>
@@ -107,10 +108,7 @@ var paper_tci_cit = <?php echo $paper_tci_cit; ?>;
 var paper_scopus_cit = <?php echo $paper_scopus_cit; ?>;
 var paper_wos_cit = <?php echo $paper_wos_cit; ?>;
 
-
-year.unshift("{{ trans('message.Source') }}");
-
-
+year.unshift("{{trans('message.sorce_report')}}");
 paper_tci.unshift("tci");
 
 //console.log(paper_scopus_cit);

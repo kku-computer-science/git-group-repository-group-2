@@ -1,3 +1,4 @@
+
 @extends('dashboards.users.layouts.user-dash-layout')
 
 @section('content')
@@ -20,67 +21,72 @@
             <form action="{{ route('researchGroups.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group row">
-                    <p class="col-sm-3 "><b>{{ __('message.group_name_th') }}</b></p>
+                    <p class="col-sm-3 "><b>{{ __('message.create_group_TH')}}</b></p>
                     <div class="col-sm-8">
                         <input name="group_name_th" value="{{ old('group_name_th') }}" class="form-control"
                             placeholder="{{ __('message.group_name_th') }}">
                     </div>
                 </div>
                 <div class="form-group row">
-                    <p class="col-sm-3 "><b>{{ __('message.group_name_en') }}</b></p>
+                    <p class="col-sm-3 "><b>{{ __('message.create_group_EN')}}</b></p>
                     <div class="col-sm-8">
                         <input name="group_name_en" value="{{ old('group_name_en') }}" class="form-control"
                             placeholder="{{ __('message.group_name_en') }}">
                     </div>
                 </div>
                 <div class="form-group row">
-                    <p class="col-sm-3"><b>{{ __('message.group_desc_th') }}</b></p>
+                    <p class="col-sm-3"><b>{{ __('message.description_research_TH')}}</b></p>
                     <div class="col-sm-8">
                         <textarea name="group_desc_th" value="{{ old('group_desc_th') }}" class="form-control"
                             style="height:90px"></textarea>
                     </div>
                 </div>
                 <div class="form-group row">
-                    <p class="col-sm-3"><b>{{ __('message.group_desc_en') }}</b></p>
+                    <p class="col-sm-3"><b>{{ __('message.description_research_EN')}}</b></p>
                     <div class="col-sm-8">
                         <textarea name="group_desc_en" value="{{ old('group_desc_en') }}" class="form-control"
                             style="height:90px"></textarea>
                     </div>
                 </div>
                 <div class="form-group row">
-                    <p class="col-sm-3"><b>{{ __('message.group_detail_th') }}</b></p>
+                    <p class="col-sm-3"><b>{{ __('message.detail_research_group_TH')}}</b></p>
                     <div class="col-sm-8">
                         <textarea name="group_detail_en" value="{{ old('group_detail_th') }}" class="form-control"
                             style="height:90px"></textarea>
                     </div>
                 </div>
                 <div class="form-group row">
-                    <p class="col-sm-3"><b>{{ __('message.group_detail_en') }}</b></p>
+                    <p class="col-sm-3"><b>{{ __('message.detail_research_group_EN')}}</b></p>
                     <div class="col-sm-8">
                         <textarea name="group_detail_en" value="{{ old('group_detail_en') }}" class="form-control"
                             style="height:90px"></textarea>
                     </div>
                 </div>
                 <div class="form-group row">
-                    <p class="col-sm-3"><b>{{ __('message.image') }}</b></p>
+                    <p class="col-sm-3"><b>{{ __('message.image')}}</b></p>
                     <div class="col-sm-8">
                         <input type="file" name="group_image" class="form-control" value="{{ old('group_image') }}">
                     </div>
                 </div>
                 <div class="form-group row">
-                    <p class="col-sm-3"><b>{{ __('message.head_group') }}</b></p>
+                    <p class="col-sm-3"><b>{{ __('message.head_research_group')}}</b></p>
                     <div class="col-sm-8">
-                        <select id='head0' name="head">
-                            @foreach($users as $user)
-                            <option value="{{ $user->id }}">
-                          {{ $user->fname_th }} {{ $user->lname_th }}
-                            </option>
-                            @endforeach
-                        </select>
+                    <select id='head0' name="head">
+                        @foreach($users as $user)
+                        <option value="{{ $user->id }}">
+                            @if(app()->getLocale() == 'th')
+                                {{ $user->fname_th }} {{ $user->lname_th }}
+                            @else
+                                {{ $user->fname_en }} {{ $user->lname_en }}
+                            @endif
+                        </option>
+                        @endforeach
+                    </select>
+
                     </div>
                 </div>
                 <div class="form-group row">
-                    <p class="col-sm-3 pt-4"><b>{{ __('message.members') }}</b></p>
+                    <p class="col-sm-3 pt-4"><b>{{ __('message.member_research')}}</b></p>
                     <div class="col-sm-8">
                         <table class="table" id="dynamicAddRemove">
                             <tr>
@@ -90,8 +96,8 @@
                         </table>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary upload mt-5">{{ __('message.submit') }}</button>
-                <a class="btn btn-light mt-5" href="{{ route('researchGroups.index')}}"> {{ __('message.back') }}</a>
+                <button type="submit" class="btn btn-primary upload mt-5">{{ __('message.submit')}}</button>
+                <a class="btn btn-light mt-5" href="{{ route('researchGroups.index')}}">{{ __('message.back')}}</a>
                 </form>
         </div>
     </div>

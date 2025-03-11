@@ -13,7 +13,7 @@
             </div>
         @endif
         <div class="card">
-            <div class="card-header">Create permission
+            <div class="card-header">{{ __('message.create_permission')}}
                 <span class="float-right">
                     <a class="btn btn-primary" href="{{ route('permissions.index') }}">Permissions</a>
                 </span>
@@ -24,7 +24,7 @@
                         <strong>Name:</strong>
                         {!! Form::text('name', null, array('placeholder' => 'Name','class' => 'form-control')) !!}
                     </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary">{{ __('message.submit')}}</button>
                 {!! Form::close() !!}
             </div>
         </div>

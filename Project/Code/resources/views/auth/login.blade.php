@@ -1,5 +1,7 @@
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<title>Login</title>
 	<meta charset="UTF-8">
@@ -18,8 +20,6 @@
 	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
-	<!--===============================================================================================-->
-	<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.1.0/css/flag-icon.min.css" rel="stylesheet">
 	<!--===============================================================================================-->
 	<style>
 		html {
@@ -230,7 +230,7 @@
 		}
 
 		.form-panel.two:before,
-		.form-panel.two:after {
+			.form-panel.two:after {
 			content: "";
 			display: block;
 			position: absolute;
@@ -252,7 +252,7 @@
 		}
 
 		.form-panel.two:hover:before,
-		.form-panel.two:hover:after {
+			.form-panel.two:hover:after {
 			opacity: 0;
 		}
 
@@ -263,7 +263,7 @@
 		}
 
 		.form-panel.two.active:before,
-		.form-panel.two.active:after {
+			.form-panel.two.active:after {
 			opacity: 0;
 		}
 
@@ -319,10 +319,45 @@
 			margin-left: 0px;
 			font-size: 12px;
 		}
+
+		.floating-lang {
+			position: fixed;
+			top: 20px;
+			right: 20px;
+			z-index: 9999;
+		}
+
+		.floating-lang .btn {
+			border-radius: 50px;
+			box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+			transition: all 0.3s ease;
+		}
+
+		.floating-lang .btn:hover {
+			transform: scale(1.05);
+		}
 	</style>
 </head>
 
 <body>
+	<div class="floating-lang">
+		<div class="btn-group">
+			<button type="button" class="btn btn-primary dropdown-toggle" id="loginLangDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				<span class="flag-icon flag-icon-{{ Config::get('languages')[App::getLocale()]['flag-icon'] }}"></span>
+				{{ Config::get('languages')[App::getLocale()]['display'] }}
+			</button>
+			<div class="dropdown-menu dropdown-menu-end" aria-labelledby="loginLangDropdown">
+				@foreach (Config::get('languages') as $lang => $language)
+				@if ($lang != App::getLocale())
+				<a class="dropdown-item" href="{{ route('langswitch', $lang) }}">
+					<span class="flag-icon flag-icon-{{ $language['flag-icon'] }}"></span>
+					{{ $language['display'] }}
+				</a>
+				@endif
+				@endforeach
+			</div>
+		</div>
+	</div>
 
 	<!-- <div class="limiter">
 		<div class="container-login100">
@@ -376,32 +411,11 @@
 		</div>
 	</div> -->
 
-	<!-- dropdown swith languages -->
-	<div class="language-switcher" style="position: absolute; top: 20px; right: 20px;">
-		<li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">
-                            <span
-                                class="flag-icon flag-icon-{{Config::get('languages')[App::getLocale()]['flag-icon']}}"></span>
-                            {{ Config::get('languages')[App::getLocale()]['display'] }}
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            @foreach (Config::get('languages') as $lang => $language)
-                            @if ($lang != App::getLocale())
-                            <a class="dropdown-item" href="{{ route('langswitch', $lang) }}"><span
-                                    class="flag-icon flag-icon-{{$language['flag-icon']}}"></span>
-                                {{$language['display']}}</a>
-                            @endif
-                            @endforeach
-                        </div>
-                    </li>
-	</div>
-
 	<div class="form">
 		<div class="form-toggle"></div>
 		<div class="form-panel one">
 			<div class="form-header">
-				<h1>{{trans('message.AccountLogin')}}</h1>
+				<h1>{{ trans('message.accountlogin_login') }}</h1>
 			</div>
 			<div class="form-content">
 				<form method="POST" class="validate-form" autocomplete="off" action="{{ route('login') }}">
@@ -414,7 +428,7 @@
 					@endif
 					<!-- <div class="form-group validate-input" data-validate="Valid email is required: ex@abc.xyz"> -->
 					<div class="form-group validate-input">
-						<label for="email">{{trans('message.Username')}}</label>
+						<label for="email">{{ trans('message.username_login') }}</label>
 						<input id="username" type="username" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autofocus>
 						@error('username')
 						<span class="invalid-feedback" role="alert">
@@ -423,23 +437,23 @@
 						@enderror
 					</div>
 					<div class="form-group validate-input" data-validate="Password is required">
-						<label for="password">{{trans('message.Password')}}</label>
+						<label for="password">{{ trans('message.password_login') }}</label>
 						<input id="password" class="input" type="password" name="password" required="required" />
 					</div>
 					<div class="form-group">
 						<label class="form-remember">
-							<input id="ckb1" name="remember" type="checkbox" />{{trans('message.RememberMe')}}
+							<input id="ckb1" name="remember" type="checkbox" />{{ trans('message.rememberme_login') }}
 						</label>
 					</div>
 					<div class="form-group">
-						<button type="submit">{{trans('message.Login')}}</button>
+						<button type="submit">{{ trans('message.login_login') }}</button>
 					</div>
 					<div class="form-remember pb-3">
-							<p style="color: red; text-align: right;">{{trans('message.ForgetPassword')}}</p>
+							<p style="color: red; text-align: right;">{{ trans('message.forgot_password_login') }}</p>
 					</div>
 					<ul>
-						<li>{{trans('message.LoginRecommend1')}}</li>
-						<li>{{trans('message.LoginRecommend2')}}</li>
+						<li>{{ trans('message.recommend1_login') }}</li>
+						<li>{{ trans('message.recommend2_login') }}</li>
 					</ul>
 				</form>
 			</div>

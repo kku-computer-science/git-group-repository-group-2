@@ -9,8 +9,9 @@ return [
         'display' => 'ไทย',
         'flag-icon' => 'th'
     ],
-    'cn' => [ 
+    'zh' => [
         'display' => '中文',
-        'flag-icon' => 'cn'
+        'flag-icon' => 'cn' // เพิ่มภาษาจีนและกำหนดธงชาติ
     ],
+    
 ];

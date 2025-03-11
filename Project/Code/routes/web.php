@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
+use Illuminate\Support\Facades\Session;
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RoleController;
@@ -10,6 +11,7 @@ use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileuserController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\HighlightController;
 
 use App\Http\Controllers\TeacherController;
 use Illuminate\Support\Facades\Auth;
@@ -38,6 +40,9 @@ use App\Http\Controllers\TestController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\TcicallController;
+use App\Http\Controllers\BannerController;
+use App\Http\Controllers\ImageManagementController;
+use App\Models\Highlight;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -49,7 +54,8 @@ use App\Http\Controllers\TcicallController;
 |
 */
 
-
+use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\Storage;
 
 
 /*Route::group(['middleware' => ['auth']], function() {
@@ -138,9 +144,64 @@ Route::group(['middleware' => ['auth', 'PreventBackHistory']], function () {
     Route::get('/ajax-get-subcat', [UserController::class, 'getCategory']);
     Route::get('tests', [TestController::class, 'index']); //call department
     Route::get('tests/{id}', [TestController::class, 'getCategory'])->name('tests'); //call program
+    Route::get('image_management', [ImageManagementController::class, 'index'])->name('image_management.index');
+    Route::resource('banners', BannerController::class);
+    Route::get('language/{lang}', [LocalizationController::class, 'switchLang'])->name('language.switch');
 
+    // Add Hightlight route
+    Route::post('/highlight/store', [HighlightController::class, 'store'])->name('highlight.store');
+    Route::get('/highlight/view', [HighlightController::class, 'view'])->name('highlight.view');
+    Route::resource('highlights', HighlightController::class);
 });
 
+// add route for deploy
+
+Route::get('/clear-cache', function() {
+    Artisan::call('config:clear');
+    Artisan::call('cache:clear');
+    Artisan::call('config:cache');
+    Artisan::call('view:clear');
+    Artisan::call('route:clear');
+    session()->flush();
+    return 'All Cache Cleared';
+});
+
+Route::get('/migrate', function () {
+    try {
+         Artisan::call('migrate --path=/database/migrations/2025_02_24_003843_create_banners_table.php --force');
+        return 'Migration completed successfully!';
+    } catch (\Exception $e) {
+        return 'Migration failed: ' . $e->getMessage();
+    }
+});
+
+Route::get('/migrate-rollback', function () {
+    try {
+        Artisan::call('migrate:rollback --path=/database/migrations/2025_02_24_003843_create_banners_table.php --force');
+        return 'Rollback completed successfully!';
+    } catch (\Exception $e) {
+        return 'Rollback failed: ' . $e->getMessage();
+    }
+});
+
+Route::get('/migration-status', function () {
+    Artisan::call('migrate:status');
+
+    // ดึงผลลัพธ์จาก output ของ artisan
+    $output = Artisan::output();
+
+    // ส่งผลลัพธ์เป็นข้อความในหน้าเว็บ
+    return "<pre>{$output}</pre>";
+});
+
+Route::get('/highlight', function () {
+    return view('highlight.index');
+})->name('highlight.index');
+
+
+
+
+// end
 
 
 // Route::get('/example/pdf', 'ExampleController@pdf_index');

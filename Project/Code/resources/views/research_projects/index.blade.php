@@ -1,3 +1,4 @@
+
 @extends('dashboards.users.layouts.user-dash-layout')
 <link rel="stylesheet" href="https://cdn.datatables.net/fixedheader/3.2.3/css/fixedHeader.bootstrap4.min.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/1.12.0/css/dataTables.bootstrap4.min.css">
@@ -10,99 +11,98 @@
 
     @if ($message = Session::get('success'))
     <div class="alert alert-success">
-        <p>{{ __('message.success_message') }}</p>
+        <p>{{ $message }}</p>
     </div>
     @endif
     <div class="card" style="padding: 16px;">
         <div class="card-body">
-        <h4 class="card-title">{{ __('message.research_project') }}</h4>
-        <a class="btn btn-primary btn-menu btn-icon-text btn-sm mb-3" href="{{ route('researchProjects.create') }}"><i class="mdi mdi-plus btn-icon-prepend"></i>{{ __('message.add') }}</a>
+            <h4 class="card-title">{{ __('message.research_project')}}</h4>
+            <a class="btn btn-primary btn-menu btn-icon-text btn-sm mb-3" href="{{ route('researchProjects.create') }}"><i class="mdi mdi-plus btn-icon-prepend"></i> {{ __('message.add')}}</a>
             <!-- <div class="table-responsive"> -->
-                <table id="example1" class="table table-striped">
+            <table id="example1" class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>{{ __('message.no')}}</th>
+                        <th>{{ __('message.year')}}</th>
+                        <th>{{ __('message.projectname')}}</th>
+                        <th>{{ __('message.head')}}</th>
+                        <th>{{ __('message.member')}}</th>
+                        <th width="auto">{{ __('message.action')}}</th>
+                    </tr>
                     <thead>
+                    <tbody>
+                        @foreach ($researchProjects as $i=>$researchProject)
                         <tr>
-                        <th>{{ __('message.no') }}</th>
-                        <th>{{ __('message.year') }}</th>
-                        <th>{{ __('message.project_name') }}</th>
-                        <th>{{ __('message.head') }}</th>
-                        <th>{{ __('message.member') }}</th>
-                        <th>{{ __('message.action') }}</th>
-                        </tr>
-                        <thead>
-                        <tbody>
-                            @foreach ($researchProjects as $i=>$researchProject)
-                            <tr>
-                                <td>{{ $i+1 }}</td>
-                                <td>{{ $researchProject->project_year }}</td>
-                                {{-- <td>{{ $researchProject->project_name }}</td> --}}
-                                <td>{{ Str::limit($researchProject->project_name,70) }}</td>
-                                <td>
-                                    @foreach($researchProject->user as $user)
-                                    @if ( $user->pivot->role == 1)
-                                    {{ $user->fname_en}}
-                                    @endif
+                            <td>{{ $i+1 }}</td>
+                            <td>{{ $researchProject->project_year }}</td>
+                            {{-- <td>{{ $researchProject->project_name }}</td> --}}
+                            <td>{{ Str::limit($researchProject->project_name,70) }}</td>
+                            <td>
+                                @foreach($researchProject->user as $user)
+                                @if ($user->pivot->role == 1)
+                                {{ App::getLocale() == 'th' ? $user->fname_th : $user->fname_en }}
+                                @endif
+                                @endforeach
+                            </td>
 
-                                    @endforeach
-                                </td>
-                                <td>
-                                    @foreach($researchProject->user as $user)
-                                    @if ( $user->pivot->role == 2)
-                                    {{ $user->fname_en}}
-                                    @endif
-
-                                    @endforeach
-                                </td>
-                                <td>
-                                    <form action="{{ route('researchProjects.destroy',$researchProject->id) }}"method="POST">
+                            <td>
+                                @foreach($researchProject->user as $user)
+                                @if ($user->pivot->role == 2)
+                                {{ App::getLocale() == 'th' ? $user->fname_th : $user->fname_en }}
+                                @endif
+                                @endforeach
+                            </td>
+                            <td>
+                                <form action="{{ route('researchProjects.destroy',$researchProject->id) }}" method="POST">
                                     <li class="list-inline-item">
-                                    <a class="btn btn-outline-primary btn-sm" type="button" data-toggle="tooltip"
+                                        <a class="btn btn-outline-primary btn-sm" type="button" data-toggle="tooltip"
                                             data-placement="top" title="view"
                                             href="{{ route('researchProjects.show',$researchProject->id) }}"><i
                                                 class="mdi mdi-eye"></i></a>
                                     </li>
-                                        <!-- @if(Auth::user()->can('update',$researchProject))
+                                    <!-- @if(Auth::user()->can('update',$researchProject))
                                 <a class="btn btn-primary"
                                     href="{{ route('researchProjects.edit',$researchProject->id) }}">Edit</a>
                                 @endif -->
-                               
-                                        @if(Auth::user()->can('update',$researchProject)) 
-                                        <li class="list-inline-item">
+
+                                    @if(Auth::user()->can('update',$researchProject))
+                                    <li class="list-inline-item">
                                         <a class="btn btn-outline-success btn-sm" type="button" data-toggle="tooltip"
                                             data-placement="top" title="Edit"
                                             href="{{ route('researchProjects.edit',$researchProject->id) }}"><i
                                                 class="mdi mdi-pencil"></i></a>
-                                             </li>
-                                        @endif
-                               
-                                        @if(Auth::user()->can('delete',$researchProject))
-                                        @csrf
-                                        @method('DELETE')
+                                    </li>
+                                    @endif
 
-                                        <li class="list-inline-item">
-                                            <button class="btn btn-outline-danger btn-sm show_confirm" type="submit"
-                                                data-toggle="tooltip" data-placement="top" title="Delete"><i
-                                                    class="mdi mdi-delete"></i></button>
-                                        </li>
-                                        @endif
-                                    </form>
-                                </td>
-                            </tr>
-                            @endforeach
-                    <tbody>
-                        
-                </table>
+                                    @if(Auth::user()->can('delete',$researchProject))
+                                    @csrf
+                                    @method('DELETE')
+
+                                    <li class="list-inline-item">
+                                        <button class="btn btn-outline-danger btn-sm show_confirm" type="submit"
+                                            data-toggle="tooltip" data-placement="top" title="Delete"><i
+                                                class="mdi mdi-delete"></i></button>
+                                    </li>
+                                    @endif
+                                </form>
+                            </td>
+                        </tr>
+                        @endforeach
+                <tbody>
+
+            </table>
             <!-- </div> -->
             <br>
-            
+
         </div>
     </div>
-    
+
 
 </div>
 <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-<script src = "http://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js" defer ></script>
-<script src = "https://cdn.datatables.net/1.12.0/js/dataTables.bootstrap4.min.js" defer ></script>
-<script src = "https://cdn.datatables.net/fixedheader/3.2.3/js/dataTables.fixedHeader.min.js" defer ></script>
+<script src="http://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js" defer></script>
+<script src="https://cdn.datatables.net/1.12.0/js/dataTables.bootstrap4.min.js" defer></script>
+<script src="https://cdn.datatables.net/fixedheader/3.2.3/js/dataTables.fixedHeader.min.js" defer></script>
 <script>
     $(document).ready(function() {
         var table1 = $('#example1').DataTable({
@@ -115,41 +115,17 @@
         var form = $(this).closest("form");
         var name = $(this).data("name");
         event.preventDefault();
-
-        var language = 'th'; 
-
-        var title, text, successMessage, buttonText;
-        if (language === 'th') {
-            title = 'คุณแน่ใจหรือไม่?';
-            text = 'หากคุณลบข้อมูลนี้ มันจะหายไปตลอดกาล.';
-            successMessage = 'ลบสำเร็จ';
-            buttonText = ['ยกเลิก', 'ลบ'];
-        } else if (language === 'cn') {
-            title = '你确定吗？';
-            text = '如果删除此内容，将永远消失。';
-            successMessage = '删除成功';
-            buttonText = ['取消', '删除'];
-        } else {
-            title = 'Are you sure?';
-            text = 'If you delete this, it will be gone forever.';
-            successMessage = 'Delete Successfully';
-            buttonText = ['Cancel', 'Delete'];
-            
-        }
-
         swal({
-                title: title,
-                text: text,
+                title: `Are you sure?`,
+                text: "If you delete this, it will be gone forever.",
                 icon: "warning",
-                buttons: buttonText, 
+                buttons: true,
                 dangerMode: true,
             })
             .then((willDelete) => {
                 if (willDelete) {
-                    swal(successMessage, {
+                    swal("Delete Successfully", {
                         icon: "success",
-                        buttons: buttonText[1]
-
                     }).then(function() {
                         location.reload();
                         form.submit();

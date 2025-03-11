@@ -1,3 +1,4 @@
+
 @extends('dashboards.users.layouts.user-dash-layout')
 <style>
     body label:not(.input-group-text) {
@@ -163,7 +164,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                             <label>{{ __('message.old_password') }}</label>
-                            <input type="password" class="form-control" id="inputpassword" placeholder="Enter current password" name="oldpassword">
+                            <input type="password" class="form-control" id="inputpassword" placeholder="{{ __('message.enter_old_password') }}" name="oldpassword">
                                 <span class="text-danger error-text oldpassword_error"></span>
                             </div>
                         </div>
@@ -172,14 +173,14 @@
                         <div class="col-md-6">
                             <div class="form-group">
                             <label>{{ __('message.new_password') }}</label>
-                            <input type="password" class="form-control" id="newpassword" placeholder="Enter new password" name="newpassword">
+                            <input type="password" class="form-control" id="newpassword" placeholder="{{ __('message.enter_new_password') }}" name="newpassword">
                                 <span class="text-danger error-text newpassword_error"></span>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                             <label>{{ __('message.confirm_new_password') }}</label>
-                            <input type="password" class="form-control" id="cnewpassword" placeholder="ReEnter new password" name="cnewpassword">
+                            <input type="password" class="form-control" id="cnewpassword" placeholder="{{ __('message.confirm_new_password') }}" name="cnewpassword">
                                 <span class="text-danger error-text cnewpassword_error"></span>
                             </div>
                         </div>

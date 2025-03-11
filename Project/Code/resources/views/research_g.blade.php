@@ -1,14 +1,15 @@
+
 @extends('layouts.layout')
 @section('content')
 <div class="container card-3 ">
-    <p>{{trans('message.ResearchGroup')}}</p>
+    <p>{{trans('message.ResearchGroup_researchgroup')}}</p>
     @foreach ($resg as $rg)
     <div class="card mb-4">
         <div class="row g-0">
             <div class="col-md-4">
                 <div class="card-body">
                     <img src="{{asset('img/'.$rg->group_image)}}" alt="...">
-                    <h2 class="card-text-1">{{trans('message.LaboratorySupervisor')}}</h2>
+                    <h2 class="card-text-1">{{trans('message.LaboratorySupervisor_researchgroup')}} </h2>
                     
                     <h2 class="card-text-2">
                         @foreach ($rg->user as $r)

@@ -1,3 +1,4 @@
+
 @extends('dashboards.users.layouts.user-dash-layout')
 <link rel="stylesheet" href="https://cdn.datatables.net/fixedheader/3.2.3/css/fixedHeader.bootstrap4.min.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/1.12.0/css/dataTables.bootstrap4.min.css">
@@ -7,23 +8,23 @@
 <div class="container">
     @if ($message = Session::get('success'))
     <div class="alert alert-success">
-        <p>{{ __('message.success_message') }}</p>
+        <p>{{ $message }}</p>
     </div>
     @endif
     <div class="card" style="padding: 16px;">
         <div class="card-body">
-            <h4 class="card-title">{{ __('message.ResearchGroup') }}</h4>
+            <h4 class="card-title">{{ __('message.research_group')}}</h4>
             <a class="btn btn-primary btn-menu btn-icon-text btn-sm mb-3" href="{{ route('researchGroups.create') }}"><i
-                    class="mdi mdi-plus btn-icon-prepend"></i>{{ __('message.add') }}</a>
+                    class="mdi mdi-plus btn-icon-prepend"></i>{{ __('message.add')}}</a>
             <!-- <div class="table-responsive"> -->
                 <table id ="example1" class="table table-striped">
                     <thead>
                         <tr>
-                            <th>{{ __(key: 'message.No.') }}</th>
-                            <th>{{ __('message.group_name') }}</th>
-                            <th>{{ __('message.head') }}</th>
-                            <th>{{ __('message.member') }}</th>
-                            <th width="280px">{{ __('message.action') }}</th>
+                            <th>{{ __('message.no')}}</th>
+                            <th>{{ __('message.group_name')}}</th>
+                            <th>{{ __('message.head')}}</th>
+                            <th>{{ __('message.member')}}</th>
+                            <th width="280px">{{ __('message.action')}}</th>
                         </tr>
                     </thead>
                     

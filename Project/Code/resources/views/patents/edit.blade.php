@@ -1,3 +1,4 @@
+
 @extends('dashboards.users.layouts.user-dash-layout')
 @section('content')
 <style>
@@ -19,7 +20,7 @@
 
     @if ($errors->any())
     <div class="alert alert-danger">
-    <strong>{{ __('message.whoops') }}</strong> {{ __('message.problem_with_input') }}<br><br>
+        <strong>Whoops!</strong> There were some problems with your input.<br><br>
         <ul>
             @foreach ($errors->all() as $error)
             <li>{{ $error }}</li>

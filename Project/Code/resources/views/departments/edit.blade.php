@@ -21,22 +21,22 @@
             </div>
         @endif
         <div class="card">
-            <div class="card-header">Create department
+            <div class="card-header">{{ __('message.create_department')}}
                 <span class="float-right">
-                    <a class="btn btn-primary" href="{{ route('departments.index') }}">departments</a>
+                    <a class="btn btn-primary" href="{{ route('departments.index') }}">{{ __('message.department')}}</a>
                 </span>
             </div>
             <div class="card-body">
                 {!! Form::model($department, ['route' => ['departments.update', $department->id], 'method'=>'PATCH']) !!}
                     <div class="form-group">
-                        <strong>Department Name TH:</strong>
+                        <strong>{{ __('message.department_TH')}}:</strong>
                         {!! Form::text('department_name_th', null, array('placeholder' => 'Department Name TH','class' => 'form-control')) !!}
                     </div>
                     <div class="form-group">
-                        <strong>Department Name EN:</strong>
+                        <strong>{{ __('message.department_EN')}}:</strong>
                         {!! Form::text('department_name_en', null, array('placeholder' => 'Department Name EN','class' => 'form-control')) !!}
                     </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary">{{ __('message.submit')}}</button>
                 {!! Form::close() !!}
             </div>
         </div>
