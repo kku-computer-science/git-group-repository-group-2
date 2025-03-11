@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Paper;
 use App\Models\Banner;
+use App\Models\Highlight;
+use App\Models\Tag;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Bibtex;
@@ -25,6 +27,10 @@ class HomeController extends Controller
 
         //Create variable banner
         $banners = Banner::all();
+
+        //Create variable highlight and tag
+        $highlights = Highlight::all();
+        $tag = Tag::all();
 
         $from = Carbon::now()->year - 16;
         $to = Carbon::now()->year - 6;
@@ -183,7 +189,7 @@ class HomeController extends Controller
 
         //$key="watchara";
         //return response()->json($bb);
-        return view('home', compact('papers', 'banners'))->with('year', json_encode($year, JSON_NUMERIC_CHECK))
+        return view('home', compact('papers', 'banners', 'highlights'))->with('year', json_encode($year, JSON_NUMERIC_CHECK))
             ->with('paper_tci', json_encode($paper_tci, JSON_NUMERIC_CHECK))
             ->with('paper_scopus', json_encode($paper_scopus, JSON_NUMERIC_CHECK))
             ->with('paper_wos', json_encode($paper_wos, JSON_NUMERIC_CHECK))
@@ -255,4 +261,6 @@ class HomeController extends Controller
 
         return response()->json($key, $bb);
     }
+
+    
 }
