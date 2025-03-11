@@ -152,6 +152,7 @@ Route::group(['middleware' => ['auth', 'PreventBackHistory']], function () {
     Route::post('/highlight/store', [HighlightController::class, 'store'])->name('highlight.store');
     Route::get('/highlight/view', [HighlightController::class, 'view'])->name('highlight.view');
     Route::resource('highlights', HighlightController::class);
+    Route::get('/load-more-highlights', [HighlightController::class, 'loadMore'])->name('loadMoreHighlights');
 });
 
 // add route for deploy
