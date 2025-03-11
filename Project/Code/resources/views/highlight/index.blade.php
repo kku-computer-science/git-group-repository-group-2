@@ -34,7 +34,6 @@
     .view-highlight-btn:hover {
         background-color: #0056b3;
     }
-
 </style>
 
 @section('content')
@@ -165,5 +164,18 @@
         textarea.style.height = 'auto'; // Reset the height
         textarea.style.height = (textarea.scrollHeight) + 'px'; // Set the height to scrollHeight
     }
+
+    document.querySelector("form").addEventListener("submit", function() {
+        updateTagsInput(); // อัปเดตค่าของ #tags-input ก่อนส่งฟอร์ม
+    });
+
+    // Add event listener for blur to update tags when user leaves the input field
+    document.getElementById('tags').addEventListener('blur', function() {
+        if (this.value.trim()) {
+            const event = new KeyboardEvent('keypress', { key: 'Enter' });
+            this.dispatchEvent(event);
+        }
+    });
 </script>
+
 @endsection

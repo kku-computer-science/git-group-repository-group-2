@@ -22,11 +22,15 @@ class HighlightController extends Controller
             'title' => 'required|string|max:255',
             'detail' => 'required|string',
             'thumbnail' => 'required|image',
-            'tags' => 'required|string',
+            'tags' => 'nullable|string',
         ]);
 
         // Handle the file upload
-        $thumbnailPath = $request->file('thumbnail')->store('thumbnails', 'public');
+        $thumbnailPath = $request->file('thumbnail')->storeAs(
+            'thumbnails',
+            time() . '.' . $request->file('thumbnail')->extension(),
+            'public'
+        );        
 
         // Create a new Highlight record
         $highlight = Highlight::create([

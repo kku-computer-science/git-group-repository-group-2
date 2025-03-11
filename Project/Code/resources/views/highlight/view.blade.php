@@ -20,7 +20,8 @@
                 <td>{{ $highlight->detail }}</td>
                 <td>
                     @if (filter_var($highlight->thumbnail, FILTER_VALIDATE_URL))
-                    <img src="{{ $highlight->thumbnail }}" width="100">
+                    {{ dd($highlight->thumbnail) }}
+                    <img src="{{ ($highlight->thumbnail) }}" width="100">
                     @else
                     <img src="{{ asset('storage/' . $highlight->thumbnail) }}" width="100">
                     @endif
