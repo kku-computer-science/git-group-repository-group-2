@@ -145,7 +145,6 @@
                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ $index }}" class="{{ $index == 0 ? 'active' : '' }}" aria-current="{{ $index == 0 ? 'true' : 'false' }}" aria-label="Slide {{ $index + 1 }}"></button>
                 @endforeach
             </div>
-
             <div class="carousel-inner">
                 @foreach ($banners as $index => $banner)
                 <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
@@ -173,7 +172,6 @@
                 </div>
                 @endforeach
             </div>
-
 
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -266,7 +264,6 @@
 <div class="container mixpaper pb-10 mt-3">
     <h3>{{ trans('message.publications') }}</h3>
     @foreach($papers as $n => $pe)
-
     <div class="accordion" id="accordionExample">
         <div class="accordion-item">
             <h2 class="accordion-header" id="headingOne">
@@ -401,7 +398,6 @@
             xAxes: [{
                 scaleLabel: {
                     display: true,
-
                     labelString: '{{ trans('
                     message.yearChart ') }}',
                 }
@@ -410,7 +406,6 @@
 
         title: {
             display: true,
-
             text: '{{ trans('
             message.reporttotal ') }}',
             fontSize: 20
@@ -441,7 +436,6 @@
         document.getElementById("all").innerHTML += `
                 <i class="count-icon fa fa-book fa-2x"></i>
                 <h2 class="timer count-title count-number" data-to="${sum}" data-speed="1500"></h2>
-
                 <p class="count-text ">{{ trans('message.Summary_home') }}</p>`
         document.getElementById("scopus").innerHTML += `
                 <i class="count-icon fa fa-book fa-2x"></i>
