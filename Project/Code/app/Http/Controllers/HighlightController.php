@@ -16,11 +16,13 @@ class HighlightController extends Controller
         return view('highlight.view', compact('highlights'));
     }
 
-    public function view()
+    // HighlightController.php
+    public function view($id)
     {
-        $highlights = Highlight::with('tags')->get(); // ดึง Highlight พร้อม Tags
-        return view('highlight.view', compact('highlights'));
+        $highlight = Highlight::with('tags')->findOrFail($id);
+        return view('highlight.view', compact('highlight'));
     }
+
 
     public function store(Request $request)
     {
@@ -60,51 +62,44 @@ class HighlightController extends Controller
         return view('highlight.show', compact('highlight'));
     }
 
-    // 📌 ฟังก์ชันสำหรับเปิดหน้าแก้ไข Highlight
     public function edit($id)
     {
         $highlight = Highlight::findOrFail($id);
         return view('highlight.edit', compact('highlight'));
     }
 
-    // 📌 ฟังก์ชันสำหรับอัปเดต Highlight
     public function update(Request $request, $id)
     {
         $highlight = Highlight::findOrFail($id);
 
-        // Validate ข้อมูล
+        // Validate input
         $validatedData = $request->validate([
             'title' => 'required|string|max:255',
             'detail' => 'required|string',
-            'thumbnail' => 'image|nullable',
+            'thumbnail' => 'nullable|image',
             'tags' => 'required|string',
         ]);
 
-        // อัปเดตข้อมูล
-        $highlight->title = $request->title;
-        $highlight->detail = $request->detail;
-
-        // อัปโหลดรูปใหม่ (ถ้ามี)
+        // Handle the file upload (only if there's a new file)
         if ($request->hasFile('thumbnail')) {
-            // ลบไฟล์เดิมก่อน
-            Storage::disk('public')->delete($highlight->thumbnail);
-
-            // อัปโหลดรูปใหม่
             $thumbnailPath = $request->file('thumbnail')->store('thumbnails', 'public');
             $highlight->thumbnail = $thumbnailPath;
         }
 
-        // อัปเดต Tags
-        $tags = explode(',', $request->tags);
-        $tagIds = [];
-        foreach ($tags as $tagName) {
-            $tag = Tag::firstOrCreate(['name' => trim($tagName)]);
-            $tagIds[] = $tag->id;
-        }
-        $highlight->tags()->sync($tagIds);
-
+        // Update the highlight details
+        $highlight->title = $request->title;
+        $highlight->detail = $request->detail;
         $highlight->save();
 
+        // Process the tags
+        $tags = explode(',', $request->tags); // Split tags by comma
+        $highlight->tags()->detach(); // Remove existing tags
+        foreach ($tags as $tagName) {
+            $tag = Tag::firstOrCreate(['name' => trim($tagName)]);
+            $highlight->tags()->attach($tag);
+        }
+
+        // Redirect after update
         return redirect()->route('highlights.index')->with('success', 'Highlight updated successfully!');
     }
 

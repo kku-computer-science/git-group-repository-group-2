@@ -42,15 +42,15 @@
                         <td>
                             <form action="{{ route('highlights.destroy', $highlight->id) }}" method="POST">
                                 <a class="btn btn-outline-primary btn-sm" href="{{ route('highlights.show', $highlight->id) }}">
-                                    <i class="mdi mdi-eye"></i> View
+                                    <i class="mdi mdi-eye"></i> 
                                 </a>
                                 <a class="btn btn-outline-success btn-sm" href="{{ route('highlights.edit', $highlight->id) }}">
-                                    <i class="mdi mdi-pencil"></i> Edit
+                                    <i class="mdi mdi-pencil"></i> 
                                 </a>
                                 @csrf
                                 @method('DELETE')
                                 <button class="btn btn-outline-danger btn-sm show_confirm" type="submit">
-                                    <i class="mdi mdi-delete"></i> Delete
+                                    <i class="mdi mdi-delete"></i> 
                                 </button>
                             </form>
                         </td>
