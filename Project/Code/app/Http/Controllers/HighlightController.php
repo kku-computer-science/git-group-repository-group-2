@@ -17,10 +17,10 @@ class HighlightController extends Controller
     }
 
     // HighlightController.php
-    public function view($id)
+    public function view()
     {
-        $highlight = Highlight::with('tags')->findOrFail($id);
-        return view('highlight.view', compact('highlight'));
+        $highlights = Highlight::with('tags')->get(); // ดึง Highlight พร้อม Tags
+        return view('highlight.view', compact('highlights'));
     }
 
 
