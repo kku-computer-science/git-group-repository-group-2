@@ -150,6 +150,7 @@ Route::group(['middleware' => ['auth', 'PreventBackHistory']], function () {
 
     // Add Hightlight route
     Route::post('/highlight/store', [HighlightController::class, 'store'])->name('highlight.store');
+    Route::get('/highlight/view', [HighlightController::class, 'view'])->name('highlight.view');
 });
 
 // add route for deploy

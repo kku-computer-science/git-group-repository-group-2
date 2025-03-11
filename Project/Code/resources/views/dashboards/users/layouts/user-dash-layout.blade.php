@@ -272,11 +272,12 @@
                     @role('staff')
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('highlight.index')}}">
-                            <i class="menu-icon mdi mdi-format-list-bulleted"></i>
+                            <i class="menu-icon mdi mdi-cloud-upload"></i>
                             <span class="menu-title">Upload Hightlight</span>
                         </a>
                     </li>
                     @endrole
+
 
                     @can('expertises-list')
                     <li class="nav-item">

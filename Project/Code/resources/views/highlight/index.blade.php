@@ -15,11 +15,31 @@
     #detail {
         padding: 10px;
     }
+
+    /* Positioning the View Highlight button at the bottom right */
+    .view-highlight-btn {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        z-index: 1000;
+    }
+
+    .view-highlight-btn:hover {
+        background-color: #0056b3;
+    }
 </style>
 
 @section('content')
 <div class="container mt-4">
     <h2 class="mb-4">Upload Highlight</h2>
+    <a href="{{ route('highlight.view') }}" class="btn btn-dark">Manage Highlight</a> <br> <br>
 
     <div class="card">
         <div class="card-body">
@@ -56,7 +76,12 @@
             </form>
         </div>
     </div>
+
+    <!-- ปุ่ม Manage Highlight -->
+
 </div>
+
+
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.3.3/dist/sweetalert2.min.js"></script>
 <script>
@@ -139,5 +164,18 @@
         textarea.style.height = 'auto'; // Reset the height
         textarea.style.height = (textarea.scrollHeight) + 'px'; // Set the height to scrollHeight
     }
+
+    document.querySelector("form").addEventListener("submit", function() {
+        updateTagsInput(); // อัปเดตค่าของ #tags-input ก่อนส่งฟอร์ม
+    });
+
+    // Add event listener for blur to update tags when user leaves the input field
+    document.getElementById('tags').addEventListener('blur', function() {
+        if (this.value.trim()) {
+            const event = new KeyboardEvent('keypress', { key: 'Enter' });
+            this.dispatchEvent(event);
+        }
+    });
 </script>
+
 @endsection

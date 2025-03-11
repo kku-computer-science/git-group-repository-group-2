@@ -16,10 +16,11 @@ class Highlight extends Model
         'title',
         'detail',
         'thumbnail',
-        'tags',
+        'tags'
     ];
 
-    public function tags() {
-        return $this->belongsToMany(Tag::class, 'highlight_tag');
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class, 'highlight_tag', 'highlight_id', 'tag_id');
     }
 }
