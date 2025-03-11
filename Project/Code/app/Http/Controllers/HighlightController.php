@@ -14,6 +14,13 @@ class HighlightController extends Controller
     {
         $highlights = Highlight::with('tags')->get();
         return view('highlight.view', compact('highlights'));
+        return view('home', compact('highlights'));
+    }
+
+    public function homePage()
+    {
+        $highlights = Highlight::with('tags')->get();
+        return view('home', compact('highlights'));
     }
 
     // HighlightController.php
@@ -39,7 +46,7 @@ class HighlightController extends Controller
             'thumbnails',
             time() . '.' . $request->file('thumbnail')->extension(),
             'public'
-        );        
+        );
 
         // Create a new Highlight record
         $highlight = Highlight::create([
@@ -125,4 +132,6 @@ class HighlightController extends Controller
 
         return redirect()->route('highlights.index')->with('success', 'Highlight deleted successfully!');
     }
+
+    
 }
