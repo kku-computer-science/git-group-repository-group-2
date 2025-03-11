@@ -151,11 +151,11 @@ Route::group(['middleware' => ['auth', 'PreventBackHistory']], function () {
     // Add Hightlight route
     Route::post('/highlight/store', [HighlightController::class, 'store'])->name('highlight.store');
     Route::get('/highlight/view', [HighlightController::class, 'view'])->name('highlight.view');
+
     Route::resource('highlights', HighlightController::class);
 });
 
 // add route for deploy
-
 Route::get('/clear-cache', function() {
     Artisan::call('config:clear');
     Artisan::call('cache:clear');
@@ -197,7 +197,6 @@ Route::get('/migration-status', function () {
 Route::get('/highlight', function () {
     return view('highlight.index');
 })->name('highlight.index');
-
 
 
 
