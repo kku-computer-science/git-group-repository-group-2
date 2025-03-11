@@ -29,11 +29,6 @@ class BannerController extends Controller
             'image_zh' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048' // เพิ่มการตรวจสอบสำหรับภาษาจีน
         ]);
 
-        // // อัพโหลดไฟล์ภาพและบันทึก path ของไฟล์
-        // $imagePathTh = $request->file('image_th')->store('banners', 'public');
-        // $imagePathEn = $request->file('image_en')->store('banners', 'public');
-        // $imagePathZh = $request->file('image_zh')->store('banners', 'public'); // ภาษาจีน
-
         $imagePathTh = $request->file('image_th')->move(public_path('storage/banners'), time().'_th.'.$request->file('image_th')->getClientOriginalExtension());
         $imagePathEn = $request->file('image_en')->move(public_path('storage/banners'), time().'_en.'.$request->file('image_en')->getClientOriginalExtension());
         $imagePathZh = $request->file('image_zh')->move(public_path('storage/banners'), time().'_zh.'.$request->file('image_zh')->getClientOriginalExtension());
