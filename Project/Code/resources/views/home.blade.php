@@ -4,8 +4,6 @@
         background-color: #f5f5f5;
         padding: 20px 0;
         border-radius: 5px;
-
-
     }
 
     .count-title {
@@ -22,7 +20,6 @@
         margin-top: 10px;
         margin-bottom: 0;
         text-align: center;
-
     }
 
     .fa-2x {
@@ -31,71 +28,153 @@
         display: table;
         color: #4ad1e5;
     }
+
+    .highlights-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+        font-family: Arial, sans-serif;
+    }
+
+    .section-title {
+    text-align: center;
+    font-size: 3rem; /* ปรับเป็นขนาดที่เหมาะสม */
+    color: #333;
+    margin-bottom: 30px;
+    width: 100%;
+}
+
+
+    .highlight-item {
+        width: 100%;
+        max-width: 350px;
+        border: 1px solid #ddd;
+        padding: 20px;
+        border-radius: 8px;
+        background-color: #f9f9f9;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .highlight-item:hover {
+        transform: translateY(-10px);
+    }
+
+    .highlight-title {
+        font-size: 1.8rem;
+        font-weight: bold;
+        color: #444;
+    }
+
+    .highlight-detail {
+        font-size: 1.2rem;
+        color: #555;
+        margin-top: 10px;
+    }
+
+    .thumbnail-container {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .highlight-thumbnail {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+    }
+
+    .tags-list {
+        list-style-type: none;
+        padding: 0;
+        margin-top: 15px;
+    }
+
+    .tag-item {
+        display: inline-block;
+        background-color: #3498db;
+        color: white;
+        padding: 8px 12px;
+        border-radius: 20px;
+        margin-right: 10px;
+        font-size: 1rem;
+    }
+
+    .no-tags {
+        font-style: italic;
+        color: #999;
+        margin-top: 15px;
+    }
+
+    .thumbnail-container img {
+        width: 100%;
+        max-width: 300px;
+        height: auto;
+    }
+
+    .more-card {
+        display: none;
+    }
+
+    .load-more-btn {
+        display: block;
+        margin: 20px auto;
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #3498db;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .load-more-btn:hover {
+        background-color: #2980b9;
+    }
 </style>
 @section('content')
 <div class="container home">
     <div class="container d-sm-flex justify-content-center mt-5">
         <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+
             <div class="carousel-indicators">
                 @foreach ($banners as $index => $banner)
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ $index }}" class="{{ $index == 0 ? 'active' : '' }}" aria-current="{{ $index == 0 ? 'true' : 'false' }}" aria-label="Slide {{ $index + 1 }}"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ $index }}" class="{{ $index == 0 ? 'active' : '' }}" aria-current="{{ $index == 0 ? 'true' : 'false' }}" aria-label="Slide {{ $index + 1 }}"></button>
                 @endforeach
             </div>
 
             <div class="carousel-inner">
                 @foreach ($banners as $index => $banner)
-                    <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
-                        @php
-                            // ตรวจสอบภาษาปัจจุบัน
-                            $lang = session('applocale', 'th'); // ใช้ session('applocale', 'th') แทน
-                            
-                            // เลือกแสดงภาพตามภาษา
-                            if ($lang === 'th') {
-                                $imagePath = $banner->image_path_th;
-                                $altText = 'Banner Image TH';
-                            } elseif ($lang === 'en') {
-                                $imagePath = $banner->image_path_en;
-                                $altText = 'Banner Image EN';
-                            } elseif ($lang === 'zh') {
-                                $imagePath = $banner->image_path_zh;
-                                $altText = 'Banner Image ZH';
-                            } else {
-                                $imagePath = $banner->image_path_th; // ค่าเริ่มต้นเป็นภาษาไทย
-                                $altText = 'Banner Image TH'; // ค่าเริ่มต้นเป็นภาษาไทย
-                            }
-                            
-                        @endphp
-                        <img src="{{ asset('storage/' . $imagePath) }}" class="d-block w-100" alt="{{ $altText }}">
-                    </div>
+                <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
+                    @php
+                    // ตรวจสอบภาษาปัจจุบัน
+                    $lang = session('applocale', 'th'); // ใช้ session('applocale', 'th') แทน
+
+                    // เลือกแสดงภาพตามภาษา
+                    if ($lang === 'th') {
+                    $imagePath = $banner->image_path_th;
+                    $altText = 'Banner Image TH';
+                    } elseif ($lang === 'en') {
+                    $imagePath = $banner->image_path_en;
+                    $altText = 'Banner Image EN';
+                    } elseif ($lang === 'zh') {
+                    $imagePath = $banner->image_path_zh;
+                    $altText = 'Banner Image ZH';
+                    } else {
+                    $imagePath = $banner->image_path_th; // ค่าเริ่มต้นเป็นภาษาไทย
+                    $altText = 'Banner Image TH'; // ค่าเริ่มต้นเป็นภาษาไทย
+                    }
+
+                    @endphp
+                    <img src="{{ asset('storage/' . $imagePath) }}" class="d-block w-100" alt="{{ $altText }}">
+                </div>
                 @endforeach
             </div>
 
-<!-- <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const languageDropdown = document.querySelector('[data-toggle="dropdown"]');
-        
-        function updateBannerImages(lang) {
-            const banner1 = document.getElementById('banner-1');
-            const banner2 = document.getElementById('banner-2');
 
-            if (lang === 'th') {
-                banner1.querySelector('img').src = '{{ asset('img/banner1.png') }}';
-                banner2.querySelector('img').src = '{{ asset('img/banner2.png') }}';
-            } else {
-                banner1.querySelector('img').src = '{{ asset('img/banner3.png') }}';
-                banner2.querySelector('img').src = '{{ asset('img/banner4.png') }}';
-            }
-        }
-
-        languageDropdown.addEventListener('click', function() {
-            const lang = '{{ app()->getLocale() }}'; 
-            updateBannerImages(lang);  
-        });
-
-        const initialLang = '{{ app()->getLocale() }}';
-        updateBannerImages(initialLang); 
-    });
-</script> -->
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Previous</span>
@@ -104,6 +183,35 @@
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Next</span>
             </button>
+        </div>
+        <div class="highlights-container">
+            <h1 class="section-title">Highlights</h1>
+
+            @foreach($highlights->take(3) as $highlight) <!-- แสดงการ์ด 6 ใบแรก -->
+            <div class="highlight-item">
+                <h2 class="highlight-title">{{ $highlight->title }}</h2>
+                <p class="highlight-detail">{{ $highlight->detail }}</p>
+
+                <div class="thumbnail-container">
+                    <img class="highlight-thumbnail" src="{{ Storage::url($highlight->thumbnail) }}" alt="Thumbnail">
+                </div>
+
+                @if($highlight->tags->count() > 0)
+                <ul class="tags-list">
+                    @foreach($highlight->tags as $tag)
+                    <li class="tag-item">{{ $tag->name }}</li>
+                    @endforeach
+                </ul>
+                @else
+                <p class="no-tags">No tags available for this highlight.</p>
+                @endif
+            </div>
+            @endforeach
+
+            <!-- ปุ่ม "More" ถ้ามีการ์ดเพิ่มเติม -->
+            @if($highlights->count() > 3)
+            <button id="load-more" class="load-more-btn">More</button>
+            @endif
         </div>
     </div>
 </div>
@@ -158,39 +266,40 @@
 <div class="container mixpaper pb-10 mt-3">
     <h3>{{ trans('message.publications') }}</h3>
     @foreach($papers as $n => $pe)
-        <div class="accordion" id="accordionExample">
-            <div class="accordion-item">
-                <h2 class="accordion-header" id="headingOne">
-                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{$n}}" aria-expanded="true" aria-controls="collapseOne">
-                        @if (!$loop->last)
-                            {{$n}}
-                        @else
-                        {{ trans('message.before_home') }} {{$n}}
-                        @endif
-                    </button>
-                </h2>
-                <div id="collapse{{$n}}" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                    <div class="accordion-body">
-                        @foreach($pe as $n => $p)
-                            <div class="row mt-2 mb-3 border-bottom">
-                                <div id="number" class="col-sm-1">
-                                    <h6>[{{$n+1}}]</h6>
-                                </div>
-                                <div id="paper2" class="col-sm-11">
-                                    <p class="hidden">
-                                        <b>{{$p['paper_name']}}</b> (<link>{{$p['author']}}</link>), {{$p['paper_sourcetitle']}}, {{$p['paper_volume']}},
-                                        {{$p['paper_yearpub']}}.
-                                        <a href="{{$p['paper_url']}}" target="_blank">[url]</a> <a href="https://doi.org/{{$p['paper_doi']}}" target="_blank">[doi]</a>
-                                        <button style="padding: 0;" class="btn btn-link open_modal" value="{{$p['id']}}">[{{ trans('message.reference') }}]</button>
-                                    </p>
-                                </div>
-                            </div>
 
-                        @endforeach
+    <div class="accordion" id="accordionExample">
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{$n}}" aria-expanded="true" aria-controls="collapseOne">
+                    @if (!$loop->last)
+                    {{$n}}
+                    @else
+                    {{ trans('message.before_home') }} {{$n}}
+                    @endif
+                </button>
+            </h2>
+            <div id="collapse{{$n}}" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    @foreach($pe as $n => $p)
+                    <div class="row mt-2 mb-3 border-bottom">
+                        <div id="number" class="col-sm-1">
+                            <h6>[{{$n+1}}]</h6>
+                        </div>
+                        <div id="paper2" class="col-sm-11">
+                            <p class="hidden">
+                                <b>{{$p['paper_name']}}</b> (
+                                <link>{{$p['author']}}</link>), {{$p['paper_sourcetitle']}}, {{$p['paper_volume']}},
+                                {{$p['paper_yearpub']}}.
+                                <a href="{{$p['paper_url']}}" target="_blank">[url]</a> <a href="https://doi.org/{{$p['paper_doi']}}" target="_blank">[doi]</a>
+                                <button style="padding: 0;" class="btn btn-link open_modal" value="{{$p['id']}}">[{{ trans('message.reference') }}]</button>
+                            </p>
+                        </div>
                     </div>
+                    @endforeach
                 </div>
             </div>
         </div>
+    </div>
     @endforeach
 </div>
 </div>
@@ -280,8 +389,8 @@
                 },
                 scaleLabel: {
                     display: true,
-
-                    labelString: '{{ trans('message.numberChart') }}',
+                    labelString: '{{ trans('
+                    message.numberChart ') }}',
 
                 },
                 ticks: {
@@ -293,7 +402,8 @@
                 scaleLabel: {
                     display: true,
 
-                    labelString: '{{ trans('message.yearChart') }}',
+                    labelString: '{{ trans('
+                    message.yearChart ') }}',
                 }
             }]
         },
@@ -301,7 +411,8 @@
         title: {
             display: true,
 
-            text: '{{ trans('message.reporttotal') }}',
+            text: '{{ trans('
+            message.reporttotal ') }}',
             fontSize: 20
         }
 
@@ -323,7 +434,7 @@
     let sumsco = paper_scopus;
     let sumwos = paper_wos;
     (function($) {
-        
+
         let sum = paper_wos + paper_tci + paper_scopus;
         //console.log(sum);
         //$("#scopus").append('data-to="100"');
@@ -450,7 +561,7 @@
         $.get('/bib/' + tour_id, function(data) {
             //success data
             console.log(data);
-            $( ".bibtex-biblio" ).remove();
+            $(".bibtex-biblio").remove();
             document.getElementById("name").innerHTML += `${data}`
             // $('#tour_id').val(data.id);
             // $('#name').val(data);
@@ -458,6 +569,19 @@
             // $('#btn-save').val("update");
             $('#myModal').modal('show');
         })
+        $(document).ready(function() {
+            $(".highlight-item").slice(0, 3).show(); // แสดงการ์ด 3 ใบแรก
+            if ($(".highlight-item:hidden").length != 0) {
+                $("#load-more").show(); // แสดงปุ่ม "More" ถ้ามีการ์ดเพิ่มเติม
+            }
+            $("#load-more").on('click', function(e) {
+                e.preventDefault();
+                $(".highlight-item:hidden").slice(0, 3).slideDown(); // แสดงการ์ดที่ซ่อนอยู่ 3 ใบ
+                if ($(".highlight-item:hidden").length == 0) {
+                    $("#load-more").fadeOut('slow'); // ซ่อนปุ่ม "More" เมื่อไม่มีการ์ดให้แสดงแล้ว
+                }
+            });
+        });
     });
 </script>
 @endsection
