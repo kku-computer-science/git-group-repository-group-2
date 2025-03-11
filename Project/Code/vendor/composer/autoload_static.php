@@ -734,6 +734,7 @@ class ComposerStaticInitdf12afa23ac71fe1005569e1ca54098b
         'App\\Models\\ResearchGroup' => __DIR__ . '/../..' . '/app/Models/ResearchGroup.php',
         'App\\Models\\ResearchProject' => __DIR__ . '/../..' . '/app/Models/ResearchProject.php',
         'App\\Models\\Source_data' => __DIR__ . '/../..' . '/app/Models/Source_data.php',
+        'App\\Models\\Tag' => __DIR__ . '/../..' . '/app/Models/Tag.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Models\\Userinfo' => __DIR__ . '/../..' . '/app/Models/Userinfo.php',
         'App\\Policies\\AcademicworkPolicy' => __DIR__ . '/../..' . '/app/Policies/AcademicworkPolicy.php',

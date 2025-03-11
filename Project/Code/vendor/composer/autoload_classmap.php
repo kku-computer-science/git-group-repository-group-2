@@ -98,6 +98,7 @@ return array(
     'App\\Models\\ResearchGroup' => $baseDir . '/app/Models/ResearchGroup.php',
     'App\\Models\\ResearchProject' => $baseDir . '/app/Models/ResearchProject.php',
     'App\\Models\\Source_data' => $baseDir . '/app/Models/Source_data.php',
+    'App\\Models\\Tag' => $baseDir . '/app/Models/Tag.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',
     'App\\Models\\Userinfo' => $baseDir . '/app/Models/Userinfo.php',
     'App\\Policies\\AcademicworkPolicy' => $baseDir . '/app/Policies/AcademicworkPolicy.php',

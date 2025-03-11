@@ -9,6 +9,12 @@ use Illuminate\Http\Request;
 
 class HighlightController extends Controller
 {
+    public function view()
+    {
+        $highlights = Highlight::with('tags')->get(); // ดึง Highlight พร้อม Tags
+        return view('highlight.view', compact('highlights'));
+    }
+
     public function store(Request $request)
     {
         // Validate input
