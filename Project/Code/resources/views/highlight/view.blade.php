@@ -1,6 +1,14 @@
 @extends('dashboards.users.layouts.user-dash-layout')
 
 @section('content')
+<style>
+    td.detail {
+    white-space: pre-line;
+    word-wrap: break-word;
+    max-width: 400px;
+}
+</style>
+
 <div class="container">
     @if ($message = Session::get('success'))
         <div class="alert alert-success">
@@ -26,7 +34,7 @@
                     @foreach($highlights as $highlight)
                     <tr>
                         <td>{{ $highlight->title }}</td>
-                        <td>{{ $highlight->detail }}</td>
+                        <td class="detail">{!! nl2br(e($highlight->detail)) !!}</td>
                         <td>
                             @if (filter_var($highlight->thumbnail, FILTER_VALIDATE_URL))
                                 <img src="{{ $highlight->thumbnail }}" width="100">
