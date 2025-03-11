@@ -1512,7 +1512,7 @@ window.testdata = function () {
     var STATUSES = ['FAIL', 'PASS', 'SKIP', 'NOT RUN'];
     var KEYWORD_TYPES = ['KEYWORD', 'SETUP', 'TEARDOWN', 'FOR', 'ITERATION', 'IF',
                          'ELSE IF', 'ELSE', 'RETURN', 'VAR', 'TRY', 'EXCEPT', 'FINALLY',
-                         'WHILE', 'CONTINUE', 'BREAK', 'ERROR'];
+                         'WHILE', 'GROUP', 'CONTINUE', 'BREAK', 'ERROR'];
     function addElement(elem) {
         if (!elem.id)
             elem.id = uniqueId();
@@ -2083,7 +2083,7 @@ window.output["strings"] = window.output["strings"].concat(["*","*UAT Switch Das
 window.output["stats"] = [[{"elapsed":"00:00:19","fail":0,"label":"All Tests","pass":1,"skip":0}],[{"elapsed":"00:00:19","fail":0,"label":"UAT003-RESEARCHPROJECT","pass":1,"skip":0}],[{"elapsed":"00:00:20","fail":0,"id":"s1","label":"UAT Switch Dashboard","name":"UAT Switch Dashboard","pass":1,"skip":0}]];
 </script>
 <script type="text/javascript">
-window.output["errors"] = [];
+window.output["errors"] = [[15718,3,60,59],[15719,3,61,59],[15720,3,62,59],[15720,3,63,59]];
 </script>
 <script type="text/javascript">
 window.output["baseMillis"] = 1740612958378;
@@ -2204,7 +2204,7 @@ function addExecutionLog(main) {
 
 <script type="text/x-jquery-tmpl" id="tagStatisticsRowTemplate">
   <tr class="row-${$item.index}">
-    <td class="stats-col-name" title="{{html doc}}">
+    <td class="stats-col-name" title="${doc}">
       <div class="stat-name">
         <span>{{html label}}</span>
         {{if info}}(${info}){{/if}}

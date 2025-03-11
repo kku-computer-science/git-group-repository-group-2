@@ -1,5 +1,6 @@
 <<<<<<< HEAD
 .env
+<<<<<<< HEAD
 =======
 /node_modules
 /public/hot
@@ -15,3 +16,8 @@ Homestead.yaml
 npm-debug.log
 yarn-error.log
 >>>>>>> f888ffb358f599a7d0a99285066c25e2cd4cf49d
+=======
+Code/robot_tests/chromedriver-mac-arm64
+Test/UAT/chromedriver-mac-arm64
+env(deploy).txt
+>>>>>>> f44e0e0bcbe7a15b4c14f908d636e5a54d4d2b45

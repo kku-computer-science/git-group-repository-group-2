@@ -1,0 +1,63 @@
+@extends('dashboards.users.layouts.user-dash-layout')
+@section('content')
+
+<div class="container">
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <strong>{{ __('message.whoops') }}</strong> {{ __('message.problem_with_input') }}<br><br>
+        <ul>
+            @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
+
+    <div class="card" style="padding: 16px;">
+        <div class="card-body">
+            <h4 class="card-title">{{ __('message.edit_highlight') }}</h4>
+            <p class="card-description">{{ __('message.fill_info') }}</p>
+            
+            <form action="{{ route('highlights.update', $highlight->id) }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                @method('PUT')
+
+                <div class="form-group row">
+                    <p class="col-sm-3"><b>{{ __('message.title') }}</b></p>
+                    <div class="col-sm-8">
+                        <input name="title" value="{{ old('title', $highlight->title) }}" class="form-control" placeholder="{{ __('message.title') }}">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <p class="col-sm-3"><b>{{ __('message.detail') }}</b></p>
+                    <div class="col-sm-8">
+                        <textarea name="detail" class="form-control" style="height:90px">{{ old('detail', $highlight->detail) }}</textarea>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <p class="col-sm-3"><b>{{ __('message.thumbnail') }}</b></p>
+                    <div class="col-sm-8">
+                        <input type="file" name="thumbnail" class="form-control">
+                        @if($highlight->thumbnail)
+                        <img src="{{ asset('storage/' . $highlight->thumbnail) }}" width="100" class="mt-2" />
+                        @endif
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <p class="col-sm-3"><b>{{ __('message.tags') }}</b></p>
+                    <div class="col-sm-8">
+                        <input name="tags" value="{{ old('tags', implode(',', $highlight->tags->pluck('name')->toArray())) }}" class="form-control" placeholder="{{ __('message.tags') }}">
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary mt-5">{{ __('message.submit') }}</button>
+                <a class="btn btn-light mt-5" href="{{ route('highlights.index') }}">{{ __('message.back') }}</a>
+            </form>
+        </div>
+    </div>
+</div>
+
+@stop
