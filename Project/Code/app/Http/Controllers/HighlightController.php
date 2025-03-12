@@ -73,6 +73,13 @@ class HighlightController extends Controller
         return view('highlight.show', compact('highlight'));
     }
 
+    public function moreDetails($id)
+    {
+        $highlight = Highlight::with('tags')->findOrFail($id);
+        return view('highlight.more', compact('highlight')); // ส่งข้อมูลไปยังหน้า more.blade.php
+    }
+
+
     public function edit($id)
     {
         $highlight = Highlight::findOrFail($id);
@@ -132,6 +139,4 @@ class HighlightController extends Controller
 
         return redirect()->route('highlights.index')->with('success', 'Highlight deleted successfully!');
     }
-
-    
 }
