@@ -57,16 +57,17 @@
                     <textarea class="form-control" id="detail" name="detail" rows="3" required oninput="autoResize(this)"></textarea>
                 </div>
 
-                <!-- Field สำหรับอัปโหลดภาพเดิม (เดิมอยู่) -->
+                <!-- ฟิลด์สำหรับอัปโหลด thumbnail หลัก -->
                 <div class="form-group">
-                    <label for="thumbnail">Upload Image (Head):</label>
+                    <label for="thumbnail">Upload Main Thumbnail:</label>
                     <input type="file" class="form-control-file" id="thumbnail" name="thumbnail" accept="image/*" required>
-                    <img id="preview" class="mt-2" width="150" style="display: none;">
+                    <!-- แสดง preview (ถ้าต้องการ) สามารถเพิ่ม JS เพื่อแสดงตัวอย่างได้ -->
+                    <img id="thumbnail-preview" width="150" class="mt-2" style="display:none;">
                 </div>
 
-                <!-- Field ใหม่สำหรับอัปโหลดภาพเพิ่มเติม -->
+                <!-- ฟิลด์สำหรับอัปโหลดภาพเพิ่มเติม -->
                 <div class="form-group">
-                    <label for="additional_thumbnails">Upload Additional Images (Detail):</label>
+                    <label for="additional_thumbnails">Upload Additional Images:</label>
                     <input type="file" class="form-control-file" id="additional_thumbnails" name="additional_thumbnails[]" accept="image/*" multiple>
                     <div id="additional-preview-container" class="mt-2"></div>
                 </div>

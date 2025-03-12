@@ -152,15 +152,8 @@
         font-size: 1.2rem;
     }
 
-
-    /* ปุ่มอ่านเพิ่มเติม */
-    .read-more-container {
-        text-align: center;
-        margin-top: 10px;
-        padding-bottom: 30px;
-    }
-
-    .read-more-btn {
+    /* Back Button */
+    .back-btn {
         display: inline-block;
         background: linear-gradient(90deg, #007bff, #00aaff);
         color: white;
@@ -173,68 +166,64 @@
         box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
     }
 
-    .read-more-btn:hover {
-        color: white;
-        text-decoration: none;
-        background: linear-gradient(90deg, #0056b3, #0099ff);
-        box-shadow: 0 6px 12px rgba(0, 123, 255, 0.4);
+    .back-btn:hover {
+        background: #0056b3;
+        transform: translateY(-2px);
     }
 </style>
 
 @section('content')
-    @if(isset($highlight))
-        <div class="thumbnail-container">
-            <img class="highlight-thumbnail" src="{{ Storage::url($highlight->thumbnail) }}" alt="Thumbnail">
-        </div>
+@if(isset($highlight))
+<div class="thumbnail-container">
+    <img class="highlight-thumbnail" src="{{ Storage::url($highlight->thumbnail) }}" alt="Thumbnail">
+</div>
 
-        <div class="meta-row">
-            <div class="dates-container">
-                <p><strong><i class="fas fa-calendar-alt"></i> เผยแพร่:</strong>
-                    {{ $highlight->created_at->format('d/m/Y H:i') }}</p>
-            </div>
+<div class="meta-row">
+    <div class="dates-container">
+        <p><strong><i class="fas fa-calendar-alt"></i> เผยแพร่:</strong> {{ $highlight->created_at->format('d/m/Y H:i') }}</p>
+    </div>
 
-            @if($highlight->tags->count() > 0)
-                <div class="tags-container">
-                    <strong class="tags-title">แท็ก:</strong>
-                    <ul class="tags-list">
-                        @foreach($highlight->tags as $tag)
-                            <li class="tag-item">
-                                <i class="fas fa-tag tag-icon"></i>
-                                <!-- เปลี่ยนให้เป็นลิงก์ไปยัง route searchByTag -->
-                                <a href="{{ route('searchByTag', ['tag' => $tag->name]) }}" class="tag-link">
-                                    {{ $tag->name }}
-                                </a>
-                            </li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
-        </div>
+    @if($highlight->tags->count() > 0)
+    <div class="tags-container">
+        <strong class="tags-title">แท็ก:</strong>
+        <ul class="tags-list">
+            @foreach($highlight->tags as $tag)
+            <li class="tag-item">
+                <i class="fas fa-tag tag-icon"></i>
+                <!-- เปลี่ยนให้เป็นลิงก์ไปยัง route searchByTag -->
+                <a href="{{ route('searchByTag', ['tag' => $tag->name]) }}" class="tag-link">
+                    {{ $tag->name }}
+                </a>
+            </li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
+</div>
 
         <div class="highlight-detail-container">
             <div class="text-center">
                 <h1 class="highlight-title">{{ $highlight->title }}</h1>
             </div>
 
-            <div>
-                <p class="highlight-detail">{{ $highlight->detail }}</p>
-            </div>
+    <div>
+        <p class="highlight-detail">{{ $highlight->detail }}</p>
+    </div>
 
+    
+    <div class="author-container d-flex justify-content-end">
+        <h6><i class="fas fa-user-circle" aria-hidden="true"></i> {{ $highlight->user->fname_th }} {{ $highlight->user->lname_th }}</h6>
+    </div>
+    <div class="author-container d-flex justify-content-end">
+        <p><i class="fas fa-clock"></i> <strong>อัปเดตล่าสุด:</strong> {{ $highlight->updated_at->format('d/m/Y H:i') }}</p>
+    </div>
 
-            <div class="author-container d-flex justify-content-end">
-                <h6><i class="fas fa-user-circle" aria-hidden="true"></i> {{ $highlight->user->fname_th }}
-                    {{ $highlight->user->lname_th }}</h6>
-            </div>
-            <div class="author-container d-flex justify-content-end">
-                <p><i class="fas fa-clock"></i> <strong>อัปเดตล่าสุด:</strong> {{ $highlight->updated_at->format('d/m/Y H:i') }}
-                </p>
-            </div>
-
-            <div class="read-more-container">
-                <a href="{{ route('home') }}" class="read-more-btn">กลับไปหน้าแรก</a>
-            </div>
-        </div>
-    @else
-        <p>ไม่มีข้อมูล</p>
-    @endif
+    
+    <div class="text-center">
+        <a href="{{ route('home') }}" class="back-btn">กลับไปหน้าแรก</a>
+    </div>
+</div>
+@else
+<p>ไม่มีข้อมูล</p>
+@endif
 @endsection
