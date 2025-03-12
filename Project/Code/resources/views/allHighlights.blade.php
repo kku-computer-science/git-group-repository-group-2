@@ -17,7 +17,7 @@
 
     /* Card styling */
     .highlight-card {
-        height: 100%; /* ทำให้การ์ดมีความสูงเท่ากัน */
+        height: 100%; 
         display: flex;
         flex-direction: column;
         border: none;
@@ -35,8 +35,8 @@
     /* Image styling */
     .highlight-card .card-img-top {
         width: 100%;
-        height: 200px; /* กำหนดความสูงคงที่สำหรับรูปภาพ */
-        object-fit: cover; /* รักษาสัดส่วนของรูปภาพ */
+        height: 200px; 
+        object-fit: cover; 
         border-top-left-radius: 10px;
         border-top-right-radius: 10px;
     }
@@ -58,7 +58,7 @@
         line-height: 1.2;
         overflow: hidden;
         text-overflow: ellipsis;
-        white-space: nowrap; /* ป้องกันข้อความหัวเรื่องยาวเกิน */
+        white-space: nowrap; 
     }
 
     /* Text styling */
@@ -70,7 +70,7 @@
         overflow: hidden;
         text-overflow: ellipsis;
         display: -webkit-box;
-        -webkit-line-clamp: 3; /* จำกัดข้อความไว้ที่ 3 บรรทัด */
+        -webkit-line-clamp: 3;
         -webkit-box-orient: vertical;
     }
 
@@ -85,7 +85,7 @@
         text-decoration: none;
         text-align: center;
         transition: background-color 0.3s ease, transform 0.3s ease;
-        align-self: flex-end; /* จัดปุ่มไว้ล่างสุดของการ์ด */
+        align-self: flex-end; 
     }
 
     .highlight-card .read-more-btn:hover {
@@ -106,7 +106,7 @@
 
         .highlight-card .card-text {
             font-size: 0.9rem;
-            -webkit-line-clamp: 2; /* ลดลงเหลือ 2 บรรทัดในหน้าจอเล็ก */
+            -webkit-line-clamp: 2; 
         }
     }
 </style>
