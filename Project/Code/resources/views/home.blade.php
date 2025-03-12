@@ -123,6 +123,17 @@
         font-style: italic;
     }
 
+    .tag-link {
+        color: white;
+        text-decoration: none;
+        text-transform: uppercase;
+        display: inline-block;
+    }
+
+    .tag-link:hover {
+        color: #e0e0e0;
+    }
+
     .highlight-title {
         font-size: 18px;
         font-weight: 600;
@@ -272,26 +283,46 @@
                     $firstRow = $sortedHighlights->take(3);
                 @endphp
                 @foreach($firstRow as $highlight)
-                    <div class="p-0 col-sm-12 col-md-4 col-lg-4">
-                        <div class="highlight-card" style="padding: 0;">
-                            <div data-v-2db70b80="" class="row content-highlight mx-0">
-                                <div data-v-2db70b80="" class="p-0 col-12">
-                                    <a href="{{ route('highlight.show', ['id' => $highlight->id]) }}" class="text-black">
-                                        <div class="image-container">
-                                            <img data-v-2db70b80="" src="{{ Storage::url($highlight->thumbnail) }}"
-                                                alt="{{ $highlight->title ?? 'default_no_image' }}"
-                                                sizes="(max-width: 640px) 100vw, (max-width: 768px) 100vw, 100vw"
-                                                srcset="{{ Storage::url($highlight->thumbnail) }} 640w, {{ Storage::url($highlight->thumbnail) }} 768w, {{ Storage::url($highlight->thumbnail) }} 1024w"
-                                                style="height: auto; width: 100%;">
-                                        </div>
-                                        <div class="highlight-details">
-                                            <h3 class="highlight-title">{{ $highlight->title ?? 'ชื่อเรื่องเริ่มต้น' }}</h3>
-                                        </div>
-                                    </a>
+                        <div class="p-0 col-sm-12 col-md-4 col-lg-4">
+                            <div class="highlight-card" style="padding: 0;">
+                                <div data-v-2db70b80="" class="row content-highlight mx-0">
+                                    <div data-v-2db70b80="" class="p-0 col-12">
+                                        <a href="{{ route('highlight.show', ['id' => $highlight->id]) }}" class="text-black">
+                                            <div class="image-container">
+                                                <img data-v-2db70b80="" src="{{ Storage::url($highlight->thumbnail) }}"
+                                                    alt="{{ $highlight->title ?? 'default_no_image' }}"
+                                                    sizes="(max-width: 640px) 100vw, (max-width: 768px) 100vw, 100vw"
+                                                    srcset="{{ Storage::url($highlight->thumbnail) }} 640w, {{ Storage::url($highlight->thumbnail) }} 768w, {{ Storage::url($highlight->thumbnail) }} 1024w"
+                                                    style="height: auto; width: 100%;">
+                                            </div>
+                                            <div class="highlight-details">
+                                                @if($highlight->tags->count() > 0)
+                                                                                <ul class="tags-list">
+                                                                                    @php
+                                                                                        // จำกัดจำนวนแท็กสูงสุด (เช่น 4 แท็ก)
+                                                                                        $maxTags = 4;
+                                                                                        $tagsToShow = $highlight->tags->take($maxTags);
+                                                                                    @endphp
+                                                                                    @foreach($tagsToShow as $tag)
+                                                                                        <li class="tag-item">
+                                                                                            <!-- เปลี่ยนให้เป็นลิงก์ไปยัง route searchByTag -->
+                                                                                            <a href="{{ route('searchByTag', ['tag' => urlencode($tag->name)]) }}"
+                                                                                                class="tag-link">
+                                                                                                {{ $tag->name }}
+                                                                                            </a>
+                                                                                        </li>
+                                                                                    @endforeach
+                                                                                </ul>
+                                                @else
+                                                    <p class="no-tags">No tags available for this highlight.</p>
+                                                @endif
+                                                <h3 class="highlight-title">{{ $highlight->title ?? 'ชื่อเรื่องเริ่มต้น' }}</h3>
+                                            </div>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
                 @endforeach
             </div>
 
@@ -302,26 +333,46 @@
                     $secondRow = $sortedHighlights->slice(3, 3);
                 @endphp
                 @foreach($secondRow as $highlight)
-                    <div class="p-0 col-sm-12 col-md-4 col-lg-4">
-                        <div class="highlight-card" style="padding: 0; margin-top: 0px;">
-                            <div data-v-2db70b80="" class="row content-highlight mx-0">
-                                <div data-v-2db70b80="" class="p-0 col-12">
-                                    <a href="{{ route('highlight.show', ['id' => $highlight->id]) }}" class="text-black">
-                                        <div class="image-container">
-                                            <img data-v-2db70b80="" src="{{ Storage::url($highlight->thumbnail) }}"
-                                                alt="{{ $highlight->title ?? 'default_no_image' }}"
-                                                sizes="(max-width: 640px) 100vw, (max-width: 768px) 100vw, 100vw"
-                                                srcset="{{ Storage::url($highlight->thumbnail) }} 640w, {{ Storage::url($highlight->thumbnail) }} 768w, {{ Storage::url($highlight->thumbnail) }} 1024w"
-                                                style="height: auto; width: 100%;">
-                                        </div>
-                                        <div class="highlight-details">
-                                            <h3 class="highlight-title">{{ $highlight->title ?? 'ชื่อเรื่องเริ่มต้น' }}</h3>
-                                        </div>
-                                    </a>
+                        <div class="p-0 col-sm-12 col-md-4 col-lg-4">
+                            <div class="highlight-card" style="padding: 0; margin-top: 0px;">
+                                <div data-v-2db70b80="" class="row content-highlight mx-0">
+                                    <div data-v-2db70b80="" class="p-0 col-12">
+                                        <a href="{{ route('highlight.show', ['id' => $highlight->id]) }}" class="text-black">
+                                            <div class="image-container">
+                                                <img data-v-2db70b80="" src="{{ Storage::url($highlight->thumbnail) }}"
+                                                    alt="{{ $highlight->title ?? 'default_no_image' }}"
+                                                    sizes="(max-width: 640px) 100vw, (max-width: 768px) 100vw, 100vw"
+                                                    srcset="{{ Storage::url($highlight->thumbnail) }} 640w, {{ Storage::url($highlight->thumbnail) }} 768w, {{ Storage::url($highlight->thumbnail) }} 1024w"
+                                                    style="height: auto; width: 100%;">
+                                            </div>
+                                            <div class="highlight-details">
+                                                @if($highlight->tags->count() > 0)
+                                                                                <ul class="tags-list">
+                                                                                    @php
+                                                                                        // จำกัดจำนวนแท็กสูงสุด (เช่น 4 แท็ก)
+                                                                                        $maxTags = 4;
+                                                                                        $tagsToShow = $highlight->tags->take($maxTags);
+                                                                                    @endphp
+                                                                                    @foreach($tagsToShow as $tag)
+                                                                                        <li class="tag-item">
+                                                                                            <!-- เปลี่ยนให้เป็นลิงก์ไปยัง route searchByTag -->
+                                                                                            <a href="{{ route('searchByTag', ['tag' => urlencode($tag->name)]) }}"
+                                                                                                class="tag-link">
+                                                                                                {{ $tag->name }}
+                                                                                            </a>
+                                                                                        </li>
+                                                                                    @endforeach
+                                                                                </ul>
+                                                @else
+                                                    <p class="no-tags">No tags available for this highlight.</p>
+                                                @endif
+                                                <h3 class="highlight-title">{{ $highlight->title ?? 'ชื่อเรื่องเริ่มต้น' }}</h3>
+                                            </div>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
                 @endforeach
             </div>
             <!-- ปุ่มอ่านเพิ่มเติม -->
@@ -550,21 +601,21 @@
             //console.log(sum);
             //$("#scopus").append('data-to="100"');
             document.getElementById("all").innerHTML += `
-                                                                                                    <i class="count-icon fa fa-book fa-2x"></i>
-                                                                                                    <h2 class="timer count-title count-number" data-to="${sum}" data-speed="1500"></h2>
-                                                                                                    <p class="count-text ">SUMMARY</p>`
+                                                                                                                            <i class="count-icon fa fa-book fa-2x"></i>
+                                                                                                                            <h2 class="timer count-title count-number" data-to="${sum}" data-speed="1500"></h2>
+                                                                                                                            <p class="count-text ">SUMMARY</p>`
             document.getElementById("scopus").innerHTML += `
-                                                                                                    <i class="count-icon fa fa-book fa-2x"></i>
-                                                                                                    <h2 class="timer count-title count-number" data-to="${sumsco}" data-speed="1500"></h2>
-                                                                                                    <p class="count-text ">SCOPUS</p>`
+                                                                                                                            <i class="count-icon fa fa-book fa-2x"></i>
+                                                                                                                            <h2 class="timer count-title count-number" data-to="${sumsco}" data-speed="1500"></h2>
+                                                                                                                            <p class="count-text ">SCOPUS</p>`
             document.getElementById("wos").innerHTML += `
-                                                                                                    <i class="count-icon fa fa-book fa-2x"></i>
-                                                                                                    <h2 class="timer count-title count-number" data-to="${sumwos}" data-speed="1500"></h2>
-                                                                                                    <p class="count-text ">WOS</p>`
+                                                                                                                            <i class="count-icon fa fa-book fa-2x"></i>
+                                                                                                                            <h2 class="timer count-title count-number" data-to="${sumwos}" data-speed="1500"></h2>
+                                                                                                                            <p class="count-text ">WOS</p>`
             document.getElementById("tci").innerHTML += `
-                                                                                                    <i class="count-icon fa fa-book fa-2x"></i>
-                                                                                                    <h2 class="timer count-title count-number" data-to="${sumtci}" data-speed="1500"></h2>
-                                                                                                    <p class="count-text ">TCI</p>`
+                                                                                                                            <i class="count-icon fa fa-book fa-2x"></i>
+                                                                                                                            <h2 class="timer count-title count-number" data-to="${sumtci}" data-speed="1500"></h2>
+                                                                                                                            <p class="count-text ">TCI</p>`
             //document.getElementById("scopus").appendChild('data-to="100"');
             $.fn.countTo = function (options) {
                 options = options || {};
