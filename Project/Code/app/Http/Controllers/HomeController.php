@@ -270,4 +270,6 @@ class HomeController extends Controller
         // ส่งข้อมูลไปที่ showHighlight.blade.php
         return view('showHighlight', compact('highlight'));
     }
+
+    
 }

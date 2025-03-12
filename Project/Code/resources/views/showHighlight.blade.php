@@ -1,34 +1,6 @@
 @extends('layouts.layout')
 
 @section('content')
-<div class="highlight-detail-container">
-    <h1 class="highlight-title">{{ $highlight->title }}</h1>
-
-    <!-- Thumbnail -->
-    <div class="thumbnail-container">
-        <img class="highlight-thumbnail" src="{{ Storage::url($highlight->thumbnail) }}" alt="Thumbnail">
-    </div>
-
-    <!-- Detail Section -->
-    <p class="highlight-detail">{{ $highlight->detail }}</p>
-
-    <!-- Tags Section -->
-    @if($highlight->tags->count() > 0)
-    <div class="tags-container">
-        <h3 class="tags-title">Tags:</h3>
-        <ul class="tags-list">
-            @foreach($highlight->tags as $tag)
-            <li class="tag-item">{{ $tag->name }}</li>
-            @endforeach
-        </ul>
-    </div>
-    @endif
-
-    <!-- Back Button -->
-    <a href="{{ route('home') }}" class="back-btn">Back to Home</a>
-</div>
-@endsection
-@section('styles')
 <style>
     .highlight-detail-container {
         display: block;
@@ -43,7 +15,7 @@
         border-radius: 8px;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         text-align: center;
-        color:black;
+        color: black;
         /* เพิ่มให้แน่ใจว่าเนื้อหาภายในถูกจัดกลาง */
     }
 
@@ -65,15 +37,29 @@
 
     .highlight-thumbnail {
         display: block;
-        /* ใช้ display block เพื่อจัดรูปภาพให้ตรงกลาง */
         max-width: 100%;
-        max-height: 400px;
-        /* จำกัดขนาดความสูง */
+        height: 300px;
+        /* กำหนดความสูงที่ต้องการ */
         object-fit: cover;
-        /* คงอัตราส่วนของภาพ */
+        /* ให้ภาพครอบคลุมพื้นที่ */
         border-radius: 8px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
+
+    @media (max-width: 768px) {
+        .highlight-thumbnail {
+            height: 250px;
+            /* ปรับขนาดตามอุปกรณ์ */
+        }
+    }
+
+    @media (max-width: 480px) {
+        .highlight-thumbnail {
+            height: 200px;
+            /* ปรับขนาดสำหรับหน้าจอมือถือ */
+        }
+    }
+
 
     .highlight-detail {
         font-size: 1.1rem;
@@ -129,5 +115,51 @@
     .back-btn:hover {
         background-color: #0056b3;
     }
+
+    /* สไตล์เพิ่มเติมสำหรับวันที่ */
+    .dates-container {
+        margin-bottom: 30px;
+        font-size: 1rem;
+        color: #777;
+        text-align: left;
+    }
+
+    .dates-container p {
+        margin: 5px 0;
+    }
 </style>
+<div class="highlight-detail-container">
+    <h1 class="highlight-title">{{ $highlight->title }}</h1>
+
+    <!-- Thumbnail -->
+    <div class="thumbnail-container">
+        <img class="highlight-thumbnail" src="{{ Storage::url($highlight->thumbnail) }}" alt="Thumbnail">
+    </div>
+
+    <!-- Detail Section -->
+    <p class="highlight-detail">{{ $highlight->detail }}</p>
+
+    <!-- Tags Section -->
+    @if($highlight->tags->count() > 0)
+    <div class="tags-container">
+        <h3 class="tags-title">Tags:</h3>
+        <ul class="tags-list">
+            @foreach($highlight->tags as $tag)
+            <li class="tag-item">{{ $tag->name }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
+
+    <!-- Dates Section -->
+    <div class="dates-container">
+        <p><strong>Created At:</strong> {{ $highlight->created_at->format('d M Y, H:i') }}</p>
+        <p><strong>Updated At:</strong> {{ $highlight->updated_at->format('d M Y, H:i') }}</p>
+    </div>
+
+    <!-- Back Button -->
+    <a href="{{ route('home') }}" class="back-btn">Back to Home</a>
+</div>
 @endsection
+
+
