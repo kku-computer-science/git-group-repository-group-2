@@ -49,6 +49,8 @@
 
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
     
 
 </head>
@@ -71,9 +73,10 @@
                         class="nav-item dropdown {{ Request::routeIs('researchers') ? 'active' : '' }} {{ request()->is('detail*') ? 'active' : ''}} ">
                         <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
-                            {{ trans('message.Researchers') }}
+                            Department
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+
                             @foreach($dn as $department)
                             <li><a class="dropdown-item" href="{{ route('researchers',['id'=>$department->id])}}">
                                 @if(app()->getLocale() == 'en')
@@ -99,6 +102,7 @@
 
 
                     <li class="nav-item dropdown">
+
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
                            aria-haspopup="true" aria-expanded="false">
                             <span class="flag-icon flag-icon-{{ Config::get('languages')[App::getLocale()]['flag-icon'] }}"></span>
@@ -125,6 +129,7 @@
                 </span>
                 @else
                 <span class="nav-item">
+
                     <a class="btn-solid-sm" href="/login" target="_blank">{{ trans('message.login') }}</a>
                 </span>
                 @endauth

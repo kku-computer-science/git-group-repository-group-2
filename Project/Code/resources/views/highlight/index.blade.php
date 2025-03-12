@@ -57,11 +57,20 @@
                     <textarea class="form-control" id="detail" name="detail" rows="3" required oninput="autoResize(this)"></textarea>
                 </div>
 
+                <!-- Field สำหรับอัปโหลดภาพเดิม (เดิมอยู่) -->
                 <div class="form-group">
-                    <label for="thumbnail">Upload Image:</label>
+                    <label for="thumbnail">Upload Image (Head):</label>
                     <input type="file" class="form-control-file" id="thumbnail" name="thumbnail" accept="image/*" required>
                     <img id="preview" class="mt-2" width="150" style="display: none;">
                 </div>
+
+                <!-- Field ใหม่สำหรับอัปโหลดภาพเพิ่มเติม -->
+                <div class="form-group">
+                    <label for="additional_thumbnails">Upload Additional Images (Detail):</label>
+                    <input type="file" class="form-control-file" id="additional_thumbnails" name="additional_thumbnails[]" accept="image/*" multiple>
+                    <div id="additional-preview-container" class="mt-2"></div>
+                </div>
+
 
                 <div class="form-group">
                     <label for="tags">Tags:</label>
@@ -172,8 +181,29 @@
     // Add event listener for blur to update tags when user leaves the input field
     document.getElementById('tags').addEventListener('blur', function() {
         if (this.value.trim()) {
-            const event = new KeyboardEvent('keypress', { key: 'Enter' });
+            const event = new KeyboardEvent('keypress', {
+                key: 'Enter'
+            });
             this.dispatchEvent(event);
+        }
+    });
+    // Preview สำหรับ field additional_thumbnails
+    document.getElementById("additional_thumbnails").addEventListener("change", function(event) {
+        const previewContainer = document.getElementById("additional-preview-container");
+        previewContainer.innerHTML = ''; // เคลียร์ตัวอย่างเก่า
+        const files = event.target.files;
+        for (let i = 0; i < files.length; i++) {
+            const file = files[i];
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const img = document.createElement("img");
+                img.src = e.target.result;
+                img.width = 150;
+                img.style.marginRight = "10px";
+                img.style.marginBottom = "10px";
+                previewContainer.appendChild(img);
+            };
+            reader.readAsDataURL(file);
         }
     });
 </script>

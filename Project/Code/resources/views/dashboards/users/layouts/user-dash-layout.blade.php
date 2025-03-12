@@ -13,6 +13,7 @@
     <!-- Include Bootstrap Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 
+
     <!-- Custom Styles -->
     <link rel="stylesheet" href="{{ asset('plugins/ijaboCropTool/ijaboCropTool.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/styleadmin.css') }}">
@@ -82,6 +83,7 @@
                     </button>
                 </div>
             </div>
+
             <div class="navbar-menu-wrapper d-flex align-items-top justify-content-between">
                 <li class="nav-item font-weight-semibold d-none d-lg-block ms-0">
                     @if(Session::has('translatedTexts'))
@@ -158,6 +160,7 @@
                         <a class="nav-link {{ (request()->is('dashboard*')) ? 'active' : '' }}"
                             href="{{ route('dashboard')}}">
                             <i class="menu-icon mdi mdi-grid-large"></i>
+
                             <span class="menu-title">{{ __('message.dashboard') }}</span>
                         </a>
                     </li>
@@ -177,11 +180,13 @@
 
                         </a>
                     </li> -->
+
                     <li class="nav-item nav-category">{{ __('message.option') }}</li>
                     @can('funds-list')
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('funds.index')}}">
                             <i class="menu-icon mdi mdi-file-document-box-outline"></i>
+
                             <span class="menu-title">{{ __('message.manage_fund') }}</span>
                         </a>
                     </li>
@@ -190,6 +195,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('researchProjects.index')}}">
                             <i class="menu-icon mdi mdi-book-outline"></i>
+
                             <span class="menu-title">{{ __('message.research_project') }}</span>
 
                             </a>
@@ -199,6 +205,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('researchGroups.index')}}">
                             <i class="menu-icon mdi mdi-view-dashboard-outline"></i>
+
                             <span class="menu-title">{{ __('message.research_group') }}</span>
 
                             </a>
@@ -208,17 +215,20 @@
                     <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="collapse" href="#ManagePublications" aria-expanded="false" aria-controls="ManagePublications">
                             <i class="menu-icon mdi mdi-book-open-page-variant"></i>
+
                             <span class="menu-title">{{ __('message.manage_publications') }}</span>
                             <i class="menu-arrow"></i>
                         </a>
                         <div class="collapse" id="ManagePublications">
                             <ul class="nav flex-column sub-menu">
+
                                 <li class="nav-item"> <a class="nav-link" href="{{ route('papers.index')}}">{{ __('message.public_research') }}</a></li>
                                 <li class="nav-item"> <a class="nav-link" href="/books">{{ __('message.book') }}</a></li>
                                 <li class="nav-item"> <a class="nav-link" href="/patents">{{ __('message.other_research') }}</a></li>
                             </ul>
                         </div>
                     </li>
+                
                     @endcan
                     @can('export')
                     <li class="nav-item">

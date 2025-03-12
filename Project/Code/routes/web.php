@@ -79,6 +79,10 @@ Route::middleware(['middleware' => 'PreventBackHistory'])->group(function () {
 
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/showHighlight/{id}', [HomeController::class, 'showHighlight'])->name('highlight.show');
+Route::get('/search-by-tag/{tag}', [HomeController::class, 'searchByTag'])->name('searchByTag');
+Route::get('/more-highlights', action: [HomeController::class, 'showAllHighlights'])->name('allHighlights');
+
 //Route::get('/researchers',[ResearcherController::class,'index'])->name('researchers');
 Route::get('researchers/{id}', [ResearcherController::class, 'request'])->name('researchers');
 Route::get('researchers/{id}/search', [ResearcherController::class, 'search'])->name('searchresearchers');
@@ -152,7 +156,6 @@ Route::group(['middleware' => ['auth', 'PreventBackHistory']], function () {
     Route::post('/highlight/store', [HighlightController::class, 'store'])->name('highlight.store');
     Route::get('/highlight/view', [HighlightController::class, 'view'])->name('highlight.view');
     Route::resource('highlights', HighlightController::class);
-    Route::get('/load-more-highlights', [HighlightController::class, 'loadMore'])->name('loadMoreHighlights');
 });
 
 // add route for deploy
@@ -225,5 +228,3 @@ Route::get('files/{file}', [FileUpload::class, 'download'])->name('download');*/
 //Route::post('programs', [DropdownController::class, 'getPrograms']);
 //Route::get('tests', [TestController::class, 'index'])->name('tests.index');
 //Route::get('users/create/{id}',[UserController::class, 'getCategory']);
-
-

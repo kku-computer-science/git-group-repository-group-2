@@ -181,7 +181,7 @@ class HomeController extends Controller
         $paper_scopus_numall = $num['paper_scopus'];
         $paper_wos_numall = $num['paper_wos'];
         //return $paper_scopus_numall;
-        
+
 
         //$id = 0
 
@@ -225,7 +225,7 @@ class HomeController extends Controller
             return $query->where('source_data_id', '=', 2);
         })->whereIn('paper_type', ['Conference Proceeding', 'Journal'])->count();
 
-        return compact('paper_scopus','paper_tci','paper_wos');
+        return compact('paper_scopus', 'paper_tci', 'paper_wos');
     }
     public function bibtex($id)
     {
@@ -262,5 +262,42 @@ class HomeController extends Controller
         return response()->json($key, $bb);
     }
 
+
+    public function showHighlight($id)
+    {
+        // ดึงข้อมูล Highlight ตาม ID ที่ส่งมา
+        $highlight = Highlight::with('tags')->findOrFail($id);
+
+        // ส่งข้อมูลไปที่ showHighlight.blade.php
+        return view('showHighlight', compact('highlight'));
+    }
+
+    public function searchByTag($tagName)
+    {
+        // ค้นหา Tag ตามชื่อที่ได้รับ
+        $tag = Tag::where('name', $tagName)->first();
+
+        // ถ้า Tag มีอยู่จริง
+        if ($tag) {
+            // ค้นหาทุก Highlight ที่มี Tag นี้
+            $highlights = $tag->highlights;  // เชื่อมต่อผ่านความสัมพันธ์ many-to-many
+            return view('searchByTag', compact('highlights', 'tag'));
+        }
+
+        // ถ้าไม่พบ Tag ให้คืนค่าไปที่หน้าแสดงผลการค้นหาว่าง
+        return redirect()->route('home')->with('error', 'Tag not found.');
+    }
+    // ฟังก์ชันนี้จะใช้สำหรับการกลับไปยังหน้าค้นหาด้วย Tag
+    public function redirectToTagSearch($tag)
+    {
+        return redirect()->route('home.searchByTag', ['tag' => $tag]);
+    }
+
+        // ฟังก์ชันนี้ show more Highlights 
+        public function showAllHighlights() {
+            $highlights = Highlight::orderBy('created_at', 'desc')->paginate(12); 
+            return view('allHighlights', compact('highlights'));
+        }
+        
     
 }
