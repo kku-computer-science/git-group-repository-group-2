@@ -1,4 +1,3 @@
-
 @extends('layouts.layout')
 <style>
     .count {

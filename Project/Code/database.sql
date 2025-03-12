@@ -242,6 +242,7 @@ CREATE TABLE expertises (
 ) ENGINE=InnoDB AUTO_INCREMENT=225 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
+-- LOCK TABLES expertises WRITE;
 
 /*!40000 ALTER TABLE expertises DISABLE KEYS */;
 INSERT INTO expertises (id, expert_name_en, expert_name_th, expert_name_zh, user_id, created_at, updated_at) VALUES 

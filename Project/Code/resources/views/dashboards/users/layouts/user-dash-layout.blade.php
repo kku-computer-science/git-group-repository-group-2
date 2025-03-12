@@ -19,7 +19,8 @@
     <link rel="stylesheet" href="{{ asset('css/styleadmin.css') }}">
 
     <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
 
     <!-- Vendor Styles -->
     <link rel="stylesheet" href="{{asset('vendors/feather/feather.css')}}">
@@ -32,7 +33,8 @@
     <!-- Plugin Styles -->
     <link rel="stylesheet" href="{{asset('js/select.dataTables.min.css')}}">
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
@@ -75,7 +77,8 @@
         <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex align-items-top flex-row">
             <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start">
                 <div class="me-3">
-                    <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-bs-toggle="minimize">
+                    <button class="navbar-toggler navbar-toggler align-self-center" type="button"
+                        data-bs-toggle="minimize">
                         <span class="icon-menu"></span>
                     </button>
                 </div>
@@ -95,7 +98,8 @@
                         <ul class="navbar-nav ms-auto">
                             <!-- Language Switcher -->
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
                                     <i class="bi bi-globe"></i>
                                     @if (App::getLocale() == 'en')
                                     <i class="flag-icon flag-icon-{{ config('languages.en.flag-icon') }}"></i> {{ config('languages.en.display') }}
@@ -110,6 +114,7 @@
                                     <li><a class="dropdown-item" href="{{ route('language.switch', 'th') }}"><i class="flag-icon flag-icon-{{ config('languages.th.flag-icon') }}"></i> {{ config('languages.th.display') }}</a></li>
                                     <li><a class="dropdown-item" href="{{ route('language.switch', 'zh') }}"><i class="flag-icon flag-icon-{{ config('languages.zh.flag-icon') }}"></i> {{ config('languages.zh.display') }}</a></li>
                                 </ul>
+
                             </li>
 
 
@@ -127,7 +132,8 @@
                             <li class="nav-item">
                                 <form class="search-form" action="#">
                                     <i class="icon-search"></i>
-                                    <input type="search" class="form-control" placeholder="Search Here" title="Search here">
+                                    <input type="search" class="form-control" placeholder={{ trans('message.Search') }}
+                                        title="Search here">
                                 </form>
                             </li>
 
@@ -136,7 +142,8 @@
                                 <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                     {{ __('message.Logout') }} <i class="mdi mdi-logout"></i>
                                 </a>
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">@csrf</form>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">@csrf
+                                </form>
                             </li>
                         </ul>
                     </div>
@@ -191,8 +198,8 @@
 
                             <span class="menu-title">{{ __('message.research_project') }}</span>
 
-                        </a>
-                    </li>
+                            </a>
+                        </li>
                     @endcan
                     @can('groups-list')
                     <li class="nav-item">
@@ -201,8 +208,8 @@
 
                             <span class="menu-title">{{ __('message.research_group') }}</span>
 
-                        </a>
-                    </li>
+                            </a>
+                        </li>
                     @endcan
                     @can('papers-list')
                     <li class="nav-item">
@@ -247,8 +254,8 @@
                             <i class="menu-icon mdi mdi-account-multiple-outline"></i>
                             <span class="menu-title">{{ __('message.users') }}</span>
 
-                        </a>
-                    </li>
+                            </a>
+                        </li>
                     @endcan
                     @can('role-list')
                     <li class="nav-item">
@@ -256,8 +263,8 @@
                             <i class="menu-icon mdi mdi-chart-gantt"></i>
                             <span class="menu-title">{{ __('message.role') }}</span>
 
-                        </a>
-                    </li>
+                            </a>
+                        </li>
                     @endcan
                     @can('permission-list')
                     <li class="nav-item">
@@ -265,8 +272,8 @@
                             <i class="menu-icon mdi mdi-checkbox-marked-circle-outline"></i>
                             <span class="menu-title">{{ __('message.permission') }}</span>
 
-                        </a>
-                    </li>
+                            </a>
+                        </li>
                     @endcan
                     @can('departments-list')
                     <li class="nav-item">
@@ -274,8 +281,8 @@
                             <i class="menu-icon mdi mdi-animation-outline"></i>
                             <span class="menu-title">{{ __('message.departments') }}</span>
 
-                        </a>
-                    </li>
+                            </a>
+                        </li>
                     @endcan
 
                     @can('programs-list')
@@ -284,8 +291,8 @@
                             <i class="menu-icon mdi mdi-format-list-bulleted"></i>
                             <span class="menu-title">{{ __('message.manage_programs') }}</span>
 
-                        </a>
-                    </li>
+                            </a>
+                        </li>
                     @endcan
 
                     @role('staff')
@@ -304,8 +311,8 @@
                             <i class="menu-icon mdi mdi-buffer"></i>
                             <span class="menu-title">{{ __('message.manage_expertise') }}</span>
 
-                        </a>
-                    </li>
+                            </a>
+                        </li>
                     @endcan
                     @can('expertises-list')
                     <li class="nav-item">
@@ -313,8 +320,8 @@
                             <i class="menu-icon mdi mdi-satellite"></i>
                             <span class="menu-title">{{ __('message.manage_image') }}</span>
 
-                        </a>
-                    </li>
+                            </a>
+                        </li>
                     @endcan
                 </ul>
             </nav>
