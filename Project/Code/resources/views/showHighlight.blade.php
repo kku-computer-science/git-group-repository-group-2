@@ -16,7 +16,7 @@
 
     .highlight-thumbnail {
         width: 100%;
-        height: 600px;
+        height: 850px;
         object-fit: cover;
         border-radius: 0;
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
@@ -202,9 +202,10 @@
         width: 100%;
         object-fit: cover;
         border-radius: 5px;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        cursor: pointer;
-        transition: transform 0.2s ease;
+        box-shadow: none;
+        border: none;
+        display: block;
+        background: transparent;
     }
 
     /* Modal Styles for Enlarged Image */
@@ -218,25 +219,20 @@
         height: 100%;
         overflow: hidden;
         background-color: #1a1a1a;
-        /* พื้นหลังสีเทาเข้ม */
         padding: 0;
         align-items: center;
         justify-content: center;
     }
 
-    /* ตรวจสอบว่าไม่มีพื้นหลังสีขาว */
     .modal-image-wrapper {
         position: relative;
         max-width: 95%;
-        /* ให้ภาพมีขนาดเกือบเต็มหน้าจอ */
         max-height: 95vh;
         width: auto;
         height: auto;
-        border: 10px solid #333;
-        /* กรอบสีเทาด้านนอก */
+        border: none;
         box-sizing: border-box;
         background: transparent;
-        /* ตรวจสอบว่าไม่มีพื้นหลังสีขาว */
     }
 
     .modal-content {
@@ -245,9 +241,7 @@
         height: 100%;
         max-width: 100%;
         max-height: 90vh;
-        /* จำกัดความสูงให้ไม่เกินหน้าจอ */
         object-fit: contain;
-        /* รักษาสัดส่วนภาพ */
         border-radius: 0;
         box-shadow: none;
     }
@@ -267,7 +261,6 @@
         color: #bbb;
     }
 
-    /* Navigation Buttons - ปรับให้เข้าใกล้ภาพ */
     .prev-btn,
     .next-btn {
         position: absolute;
