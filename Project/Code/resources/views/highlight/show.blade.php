@@ -18,15 +18,7 @@
                 <p class="card-text col-sm-9">{{ $highlight->detail }}</p>
             </div>
 
-            <!-- แสดง Tags -->
-            <div class="row mt-2">
-                <p class="card-text col-sm-3"><b>Tags : </b></p>
-                <p class="card-text col-sm-9">
-                    @foreach($highlight->tags as $tag)
-                        <span class="badge badge-primary">{{ $tag->name }}</span>
-                    @endforeach
-                </p>
-            </div>
+
 
             <!-- แสดง Main Image -->
             <div class="row mt-2">
@@ -42,7 +34,7 @@
                 <p class="card-text col-sm-3"><b>Additional Images :</b></p>
                 <div class="card-text col-sm-9">
                     @foreach($highlight->images as $image)
-                        <img src="{{ asset('storage/' . $image->image_path) }}" class="img-fluid" width="200px" style="margin:5px;">
+                    <img src="{{ asset('storage/' . $image->image_path) }}" class="img-fluid" width="200px" style="margin:5px;">
                     @endforeach
                 </div>
             </div>
