@@ -82,6 +82,7 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 Route::get('/showHighlight/{id}', [HomeController::class, 'showHighlight'])->name('highlight.show');
 Route::get('/search-by-tag/{tag}', [HomeController::class, 'searchByTag'])->name('searchByTag');
 Route::get('highlights/view', [HighlightController::class, 'view'])->name('highlight.view');
+Route::get('/more-highlights', action: [HomeController::class, 'showAllHighlights'])->name('allHighlights');
 // Route::get('/home', [HomeController::class, 'showFavoriteBanners'])->name('home');
 
 
