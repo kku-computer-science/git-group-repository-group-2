@@ -181,7 +181,7 @@ class HomeController extends Controller
         $paper_scopus_numall = $num['paper_scopus'];
         $paper_wos_numall = $num['paper_wos'];
         //return $paper_scopus_numall;
-        
+
 
         //$id = 0
 
@@ -225,7 +225,7 @@ class HomeController extends Controller
             return $query->where('source_data_id', '=', 2);
         })->whereIn('paper_type', ['Conference Proceeding', 'Journal'])->count();
 
-        return compact('paper_scopus','paper_tci','paper_wos');
+        return compact('paper_scopus', 'paper_tci', 'paper_wos');
     }
     public function bibtex($id)
     {
@@ -260,6 +260,15 @@ class HomeController extends Controller
         $key = "kku";
 
         return response()->json($key, $bb);
+    }
+
+    public function showHighlight($id)
+    {
+        // ดึงข้อมูล Highlight ตาม ID ที่ส่งมา
+        $highlight = Highlight::with('tags')->findOrFail($id);
+
+        // ส่งข้อมูลไปที่ showHighlight.blade.php
+        return view('showHighlight', compact('highlight'));
     }
 
     
