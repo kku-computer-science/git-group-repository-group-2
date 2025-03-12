@@ -88,7 +88,7 @@
     }
 
     .highlight-details {
-        padding: 10px 20px;
+        padding: 20px;
         text-align: left;
         background: #f9f9f9;
     }
@@ -121,17 +121,6 @@
         color: #888;
         margin: 0 0 10px 0;
         font-style: italic;
-    }
-
-    .tag-link {
-        color: white;
-        text-decoration: none;
-        text-transform: uppercase;
-        display: inline-block;
-    }
-
-    .tag-link:hover {
-        color: #e0e0e0;
     }
 
     .highlight-title {
@@ -203,73 +192,73 @@
     }
 </style>
 @section('content')
-    <div class="container home">
-        <div class="container d-sm-flex justify-content-center mt-5">
-            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-indicators">
-                    @foreach ($banners as $index => $banner)
-                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ $index }}"
-                            class="{{ $index == 0 ? 'active' : '' }}" aria-current="{{ $index == 0 ? 'true' : 'false' }}"
-                            aria-label="Slide {{ $index + 1 }}"></button>
-                    @endforeach
-                </div>
-                <div class="carousel-inner">
-                    @foreach ($banners as $index => $banner)
-                                    <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
-                                        @php
-                                            // ตรวจสอบภาษาปัจจุบัน
-                                            $lang = session('applocale', 'th'); // ใช้ session('applocale', 'th') แทน
-
-                                            // เลือกแสดงภาพตามภาษา
-                                            if ($lang === 'th') {
-                                                $imagePath = $banner->image_path_th;
-                                                $altText = 'Banner Image TH';
-                                            } elseif ($lang === 'en') {
-                                                $imagePath = $banner->image_path_en;
-                                                $altText = 'Banner Image EN';
-                                            } elseif ($lang === 'zh') {
-                                                $imagePath = $banner->image_path_zh;
-                                                $altText = 'Banner Image ZH';
-                                            } else {
-                                                $imagePath = $banner->image_path_th; // ค่าเริ่มต้นเป็นภาษาไทย
-                                                $altText = 'Banner Image TH'; // ค่าเริ่มต้นเป็นภาษาไทย
-                                            }
-                                        @endphp
-                                        <img src="{{ asset('storage/' . $imagePath) }}" class="d-block w-100" alt="{{ $altText }}">
-                                    </div>
-                    @endforeach
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-                    data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-                    data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
+<div class="container home">
+    <div class="container d-sm-flex justify-content-center mt-5">
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                @foreach ($banners as $index => $banner)
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ $index }}"
+                    class="{{ $index == 0 ? 'active' : '' }}" aria-current="{{ $index == 0 ? 'true' : 'false' }}"
+                    aria-label="Slide {{ $index + 1 }}"></button>
+                @endforeach
             </div>
+            <div class="carousel-inner">
+                @foreach ($banners as $index => $banner)
+                <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
+                    @php
+                    // ตรวจสอบภาษาปัจจุบัน
+                    $lang = session('applocale', 'th'); // ใช้ session('applocale', 'th') แทน
+
+                    // เลือกแสดงภาพตามภาษา
+                    if ($lang === 'th') {
+                    $imagePath = $banner->image_path_th;
+                    $altText = 'Banner Image TH';
+                    } elseif ($lang === 'en') {
+                    $imagePath = $banner->image_path_en;
+                    $altText = 'Banner Image EN';
+                    } elseif ($lang === 'zh') {
+                    $imagePath = $banner->image_path_zh;
+                    $altText = 'Banner Image ZH';
+                    } else {
+                    $imagePath = $banner->image_path_th; // ค่าเริ่มต้นเป็นภาษาไทย
+                    $altText = 'Banner Image TH'; // ค่าเริ่มต้นเป็นภาษาไทย
+                    }
+                    @endphp
+                    <img src="{{ asset('storage/' . $imagePath) }}" class="d-block w-100" alt="{{ $altText }}">
+                </div>
+                @endforeach
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
         </div>
     </div>
+</div>
 
-    <!-- Highlight -->
-    <div class="col-12"
-        style="background-image: url('https://api.computing.kku.ac.th//storage/images/1661921029-3.png'); background-position: center center; background-size: cover; padding: 15px; margin: 0px;">
-        <div class="container">
-            <div class="row mx-0">
-                <div class="p-0 col-sm-12 col-md-12 col-lg-12">
+<!-- Highlight -->
+<div class="col-12"
+    style="background-image: url('https://api.computing.kku.ac.th//storage/images/1661921029-3.png'); background-position: center center; background-size: cover; padding: 15px; margin: 0px;">
+    <div class="container">
+        <div class="row mx-0">
+            <div class="p-0 col-sm-12 col-md-12 col-lg-12">
+                <div class="w-100 h-100">
                     <div class="w-100 h-100">
-                        <div class="w-100 h-100">
-                            <div>
-                                <h2 style="color:white;font-weight:bold;text-align:center;">Highlights</h2>
-                            </div>
+                        <div>
+                            <h2 style="color:white;font-weight:bold;text-align:center;">Highlights</h2>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
     <!-- รวมทั้งสองแถวใน col-12 เดียว -->
     <div class="col-12" style="padding: 0px; margin-top: 20px;">
@@ -283,46 +272,43 @@
                     $firstRow = $sortedHighlights->take(3);
                 @endphp
                 @foreach($firstRow as $highlight)
-                        <div class="p-0 col-sm-12 col-md-4 col-lg-4">
-                            <div class="highlight-card" style="padding: 0;">
-                                <div data-v-2db70b80="" class="row content-highlight mx-0">
-                                    <div data-v-2db70b80="" class="p-0 col-12">
-                                        <a href="{{ route('highlight.show', ['id' => $highlight->id]) }}" class="text-black">
-                                            <div class="image-container">
-                                                <img data-v-2db70b80="" src="{{ Storage::url($highlight->thumbnail) }}"
-                                                    alt="{{ $highlight->title ?? 'default_no_image' }}"
-                                                    sizes="(max-width: 640px) 100vw, (max-width: 768px) 100vw, 100vw"
-                                                    srcset="{{ Storage::url($highlight->thumbnail) }} 640w, {{ Storage::url($highlight->thumbnail) }} 768w, {{ Storage::url($highlight->thumbnail) }} 1024w"
-                                                    style="height: auto; width: 100%;">
-                                            </div>
-                                            <div class="highlight-details">
-                                                @if($highlight->tags->count() > 0)
+                    <div class="p-0 col-sm-12 col-md-4 col-lg-4">
+                        <div class="highlight-card" style="padding: 0;">
+                            <div data-v-2db70b80="" class="row content-highlight mx-0">
+                                <div data-v-2db70b80="" class="p-0 col-12">
+                                    <a data-v-2db70b80="" href="/content/news/{{ $highlight->slug ?? 'default-slug' }}"
+                                        class="text-black">
+                                        <div class="image-container">
+                                            <img data-v-2db70b80="" src="{{ Storage::url($highlight->thumbnail) }}"
+                                                alt="{{ $highlight->title ?? 'default_no_image' }}"
+                                                sizes="(max-width: 640px) 100vw, (max-width: 768px) 100vw, 100vw"
+                                                srcset="{{ Storage::url($highlight->thumbnail) }} 640w, {{ Storage::url($highlight->thumbnail) }} 768w, {{ Storage::url($highlight->thumbnail) }} 1024w"
+                                                style="height: auto; width: 100%;">
+                                        </div>
+                                        <div class="highlight-details">
+                                        @if($highlight->tags->count() > 0)
                                                                                 <ul class="tags-list">
                                                                                     @php
-                                                                                        // จำกัดจำนวนแท็กสูงสุด (เช่น 4 แท็ก)
+                                                                                        // จำกัดจำนวนแท็กสูงสุด (เช่น 3 แท็ก)
                                                                                         $maxTags = 4;
                                                                                         $tagsToShow = $highlight->tags->take($maxTags);
                                                                                     @endphp
                                                                                     @foreach($tagsToShow as $tag)
-                                                                                        <li class="tag-item">
-                                                                                            <!-- เปลี่ยนให้เป็นลิงก์ไปยัง route searchByTag -->
-                                                                                            <a href="{{ route('searchByTag', ['tag' => urlencode($tag->name)]) }}"
-                                                                                                class="tag-link">
-                                                                                                {{ $tag->name }}
-                                                                                            </a>
-                                                                                        </li>
+                                                                                        <li class="tag-item">{{ $tag->name }}</li>
                                                                                     @endforeach
-                                                                                </ul>
                                                 @else
                                                     <p class="no-tags">No tags available for this highlight.</p>
                                                 @endif
-                                                <h3 class="highlight-title">{{ $highlight->title ?? 'ชื่อเรื่องเริ่มต้น' }}</h3>
-                                            </div>
-                                        </a>
-                                    </div>
+                                                </ul>
+                                            <h3 class="highlight-title">{{ $highlight->title ?? 'ชื่อเรื่องเริ่มต้น' }}</h3>
+                                        </div>
+                                    </a>
                                 </div>
-                            </div>
+                                    <h3 class="highlight-title">{{ $highlight->title ?? 'ชื่อเรื่องเริ่มต้น' }}</h3>
+                                </div>
+                            </a>
                         </div>
+                    </div>
                 @endforeach
             </div>
 
@@ -337,7 +323,8 @@
                             <div class="highlight-card" style="padding: 0; margin-top: 0px;">
                                 <div data-v-2db70b80="" class="row content-highlight mx-0">
                                     <div data-v-2db70b80="" class="p-0 col-12">
-                                        <a href="{{ route('highlight.show', ['id' => $highlight->id]) }}" class="text-black">
+                                        <a data-v-2db70b80="" href="/content/news/{{ $highlight->slug ?? 'default-slug' }}"
+                                            class="text-black">
                                             <div class="image-container">
                                                 <img data-v-2db70b80="" src="{{ Storage::url($highlight->thumbnail) }}"
                                                     alt="{{ $highlight->title ?? 'default_no_image' }}"
@@ -349,23 +336,17 @@
                                                 @if($highlight->tags->count() > 0)
                                                                                 <ul class="tags-list">
                                                                                     @php
-                                                                                        // จำกัดจำนวนแท็กสูงสุด (เช่น 4 แท็ก)
+                                                                                        // จำกัดจำนวนแท็กสูงสุด (เช่น 3 แท็ก)
                                                                                         $maxTags = 4;
                                                                                         $tagsToShow = $highlight->tags->take($maxTags);
                                                                                     @endphp
                                                                                     @foreach($tagsToShow as $tag)
-                                                                                        <li class="tag-item">
-                                                                                            <!-- เปลี่ยนให้เป็นลิงก์ไปยัง route searchByTag -->
-                                                                                            <a href="{{ route('searchByTag', ['tag' => urlencode($tag->name)]) }}"
-                                                                                                class="tag-link">
-                                                                                                {{ $tag->name }}
-                                                                                            </a>
-                                                                                        </li>
+                                                                                        <li class="tag-item">{{ $tag->name }}</li>
                                                                                     @endforeach
-                                                                                </ul>
                                                 @else
                                                     <p class="no-tags">No tags available for this highlight.</p>
                                                 @endif
+                                                </ul>
                                                 <h3 class="highlight-title">{{ $highlight->title ?? 'ชื่อเรื่องเริ่มต้น' }}</h3>
                                             </div>
                                         </a>
@@ -379,6 +360,7 @@
             <div class="read-more-container">
                 <a href="/more-highlights" class="read-more-btn">อ่านเพิ่มเติม</a>
             </div>
+            @endforeach
         </div>
 
         <div class="container card-cart d-sm-flex justify-content-center mt-0">
@@ -389,6 +371,7 @@
                             <canvas id="barChart1"></canvas>
                         </div>
                     </div>
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -470,34 +453,37 @@
             @endforeach
         </div>
     </div>
+    @endforeach
+</div>
+</div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 
-    <script>
-        $(document).ready(function () {
-            $(".moreBox").slice(0, 1).show();
-            if ($(".blogBox:hidden").length != 0) {
-                $("#loadMore").show();
+<script>
+    $(document).ready(function() {
+        $(".moreBox").slice(0, 1).show();
+        if ($(".blogBox:hidden").length != 0) {
+            $("#loadMore").show();
+        }
+        $("#loadMore").on('click', function(e) {
+            e.preventDefault();
+            $(".moreBox:hidden").slice(0, 1).slideDown();
+            if ($(".moreBox:hidden").length == 0) {
+                $("#loadMore").fadeOut('slow');
             }
-            $("#loadMore").on('click', function (e) {
-                e.preventDefault();
-                $(".moreBox:hidden").slice(0, 1).slideDown();
-                if ($(".moreBox:hidden").length == 0) {
-                    $("#loadMore").fadeOut('slow');
-                }
-            });
         });
-    </script>
-    <script>
-        var year = <?php echo $year; ?>;
-        var paper_tci = <?php echo $paper_tci; ?>;
-        var paper_scopus = <?php echo $paper_scopus; ?>;
-        var paper_wos = <?php echo $paper_wos; ?>;
-        var areaChartData = {
+    });
+</script>
+<script>
+    var year = <?php echo $year; ?>;
+    var paper_tci = <?php echo $paper_tci; ?>;
+    var paper_scopus = <?php echo $paper_scopus; ?>;
+    var paper_wos = <?php echo $paper_wos; ?>;
+    var areaChartData = {
 
-            labels: year,
+        labels: year,
 
-            datasets: [{
+        datasets: [{
                 label: 'SCOPUS',
                 backgroundColor: '#3994D6',
                 borderColor: 'rgba(210, 214, 222, 1)',
@@ -530,20 +516,75 @@
                 pointHighlightStroke: '#FCC29A',
                 data: paper_wos
             },
-            ]
+        ]
+    }
+
+
+
+    //-------------
+    //- BAR CHART -
+    //-------------
+    var barChartCanvas = $('#barChart1').get(0).getContext('2d')
+    var barChartData = $.extend(true, {}, areaChartData)
+    var temp0 = areaChartData.datasets[0]
+    var temp1 = areaChartData.datasets[1]
+    barChartData.datasets[0] = temp1
+    barChartData.datasets[1] = temp0
+
+    var barChartOptions = {
+        responsive: true,
+        maintainAspectRatio: false,
+        datasetFill: false,
+        scales: {
+            yAxes: [{
+                formatter: function() {
+                    return Math.abs(this.value);
+                },
+                scaleLabel: {
+                    display: true,
+                    labelString: '{{ trans('
+                    message.numberChart ') }}',
+
+                },
+                ticks: {
+                    reverse: false,
+                    stepSize: 10
+                },
+            }],
+            xAxes: [{
+                scaleLabel: {
+                    display: true,
+                    labelString: '{{ trans('
+                    message.yearChart ') }}',
+                }
+            }]
+        },
+
+        title: {
+            display: true,
+            text: '{{ trans('
+            message.reporttotal ') }}',
+            fontSize: 20
         }
 
 
+    }
 
-        //-------------
-        //- BAR CHART -
-        //-------------
-        var barChartCanvas = $('#barChart1').get(0).getContext('2d')
-        var barChartData = $.extend(true, {}, areaChartData)
-        var temp0 = areaChartData.datasets[0]
-        var temp1 = areaChartData.datasets[1]
-        barChartData.datasets[0] = temp1
-        barChartData.datasets[1] = temp0
+    new Chart(barChartCanvas, {
+        type: 'bar',
+        data: barChartData,
+        options: barChartOptions
+    })
+</script>
+<script>
+    var paper_tci = <?php echo $paper_tci_numall; ?>;
+    var paper_scopus = <?php echo $paper_scopus_numall; ?>;
+    var paper_wos = <?php echo $paper_wos_numall; ?>;
+    //console.log(paper_scopus)
+    let sumtci = paper_tci;
+    let sumsco = paper_scopus;
+    let sumwos = paper_wos;
+    (function($) {
 
         var barChartOptions = {
             responsive: true,
@@ -601,135 +642,135 @@
             //console.log(sum);
             //$("#scopus").append('data-to="100"');
             document.getElementById("all").innerHTML += `
-                                                                                                                            <i class="count-icon fa fa-book fa-2x"></i>
-                                                                                                                            <h2 class="timer count-title count-number" data-to="${sum}" data-speed="1500"></h2>
-                                                                                                                            <p class="count-text ">SUMMARY</p>`
+                                                                                            <i class="count-icon fa fa-book fa-2x"></i>
+                                                                                            <h2 class="timer count-title count-number" data-to="${sum}" data-speed="1500"></h2>
+                                                                                            <p class="count-text ">SUMMARY</p>`
             document.getElementById("scopus").innerHTML += `
-                                                                                                                            <i class="count-icon fa fa-book fa-2x"></i>
-                                                                                                                            <h2 class="timer count-title count-number" data-to="${sumsco}" data-speed="1500"></h2>
-                                                                                                                            <p class="count-text ">SCOPUS</p>`
+                                                                                            <i class="count-icon fa fa-book fa-2x"></i>
+                                                                                            <h2 class="timer count-title count-number" data-to="${sumsco}" data-speed="1500"></h2>
+                                                                                            <p class="count-text ">SCOPUS</p>`
             document.getElementById("wos").innerHTML += `
-                                                                                                                            <i class="count-icon fa fa-book fa-2x"></i>
-                                                                                                                            <h2 class="timer count-title count-number" data-to="${sumwos}" data-speed="1500"></h2>
-                                                                                                                            <p class="count-text ">WOS</p>`
+                                                                                            <i class="count-icon fa fa-book fa-2x"></i>
+                                                                                            <h2 class="timer count-title count-number" data-to="${sumwos}" data-speed="1500"></h2>
+                                                                                            <p class="count-text ">WOS</p>`
             document.getElementById("tci").innerHTML += `
-                                                                                                                            <i class="count-icon fa fa-book fa-2x"></i>
-                                                                                                                            <h2 class="timer count-title count-number" data-to="${sumtci}" data-speed="1500"></h2>
-                                                                                                                            <p class="count-text ">TCI</p>`
+                                                                                            <i class="count-icon fa fa-book fa-2x"></i>
+                                                                                            <h2 class="timer count-title count-number" data-to="${sumtci}" data-speed="1500"></h2>
+                                                                                            <p class="count-text ">TCI</p>`
             //document.getElementById("scopus").appendChild('data-to="100"');
             $.fn.countTo = function (options) {
                 options = options || {};
 
-                return $(this).each(function () {
-                    // set options for current element
-                    var settings = $.extend({}, $.fn.countTo.defaults, {
-                        from: $(this).data('from'),
-                        to: $(this).data('to'),
-                        speed: $(this).data('speed'),
-                        refreshInterval: $(this).data('refresh-interval'),
-                        decimals: $(this).data('decimals')
-                    }, options);
+            return $(this).each(function() {
+                // set options for current element
+                var settings = $.extend({}, $.fn.countTo.defaults, {
+                    from: $(this).data('from'),
+                    to: $(this).data('to'),
+                    speed: $(this).data('speed'),
+                    refreshInterval: $(this).data('refresh-interval'),
+                    decimals: $(this).data('decimals')
+                }, options);
 
-                    // how many times to update the value, and how much to increment the value on each update
-                    var loops = Math.ceil(settings.speed / settings.refreshInterval),
-                        increment = (settings.to - settings.from) / loops;
+                // how many times to update the value, and how much to increment the value on each update
+                var loops = Math.ceil(settings.speed / settings.refreshInterval),
+                    increment = (settings.to - settings.from) / loops;
 
-                    // references & variables that will change with each update
-                    var self = this,
-                        $self = $(this),
-                        loopCount = 0,
-                        value = settings.from,
-                        data = $self.data('countTo') || {};
+                // references & variables that will change with each update
+                var self = this,
+                    $self = $(this),
+                    loopCount = 0,
+                    value = settings.from,
+                    data = $self.data('countTo') || {};
 
-                    $self.data('countTo', data);
+                $self.data('countTo', data);
 
-                    // if an existing interval can be found, clear it first
-                    if (data.interval) {
-                        clearInterval(data.interval);
-                    }
-                    data.interval = setInterval(updateTimer, settings.refreshInterval);
+                // if an existing interval can be found, clear it first
+                if (data.interval) {
+                    clearInterval(data.interval);
+                }
+                data.interval = setInterval(updateTimer, settings.refreshInterval);
 
-                    // initialize the element with the starting value
+                // initialize the element with the starting value
+                render(value);
+
+                function updateTimer() {
+                    value += increment;
+                    loopCount++;
+
                     render(value);
 
-                    function updateTimer() {
-                        value += increment;
-                        loopCount++;
-
-                        render(value);
-
-                        if (typeof (settings.onUpdate) == 'function') {
-                            settings.onUpdate.call(self, value);
-                        }
-
-                        if (loopCount >= loops) {
-                            // remove the interval
-                            $self.removeData('countTo');
-                            clearInterval(data.interval);
-                            value = settings.to;
-
-                            if (typeof (settings.onComplete) == 'function') {
-                                settings.onComplete.call(self, value);
-                            }
-                        }
+                    if (typeof(settings.onUpdate) == 'function') {
+                        settings.onUpdate.call(self, value);
                     }
 
-                    function render(value) {
-                        var formattedValue = settings.formatter.call(self, value, settings);
-                        $self.html(formattedValue);
+                    if (loopCount >= loops) {
+                        // remove the interval
+                        $self.removeData('countTo');
+                        clearInterval(data.interval);
+                        value = settings.to;
+
+                        if (typeof(settings.onComplete) == 'function') {
+                            settings.onComplete.call(self, value);
+                        }
                     }
-                });
-            };
+                }
 
-            $.fn.countTo.defaults = {
-                from: 0, // the number the element should start at
-                to: 0, // the number the element should end at
-                speed: 1000, // how long it should take to count between the target numbers
-                refreshInterval: 100, // how often the element should be updated
-                decimals: 0, // the number of decimal places to show
-                formatter: formatter, // handler for formatting the value before rendering
-                onUpdate: null, // callback method for every time the element is updated
-                onComplete: null // callback method for when the element finishes updating
-            };
-
-            function formatter(value, settings) {
-                return value.toFixed(settings.decimals);
-            }
-        }(jQuery));
-
-        jQuery(function ($) {
-            // custom formatting example
-            $('.count-number').data('countToOptions', {
-                formatter: function (value, options) {
-                    return value.toFixed(options.decimals).replace(/\B(?=(?:\d{3})+(?!\d))/g, ',');
+                function render(value) {
+                    var formattedValue = settings.formatter.call(self, value, settings);
+                    $self.html(formattedValue);
                 }
             });
+        };
 
-            // start all the timers
-            $('.timer').each(count);
+        $.fn.countTo.defaults = {
+            from: 0, // the number the element should start at
+            to: 0, // the number the element should end at
+            speed: 1000, // how long it should take to count between the target numbers
+            refreshInterval: 100, // how often the element should be updated
+            decimals: 0, // the number of decimal places to show
+            formatter: formatter, // handler for formatting the value before rendering
+            onUpdate: null, // callback method for every time the element is updated
+            onComplete: null // callback method for when the element finishes updating
+        };
 
-            function count(options) {
-                var $this = $(this);
-                options = $.extend({}, options || {}, $this.data('countToOptions') || {});
-                $this.countTo(options);
+        function formatter(value, settings) {
+            return value.toFixed(settings.decimals);
+        }
+    }(jQuery));
+
+    jQuery(function($) {
+        // custom formatting example
+        $('.count-number').data('countToOptions', {
+            formatter: function(value, options) {
+                return value.toFixed(options.decimals).replace(/\B(?=(?:\d{3})+(?!\d))/g, ',');
             }
         });
-    </script>
-    <script>
-        $(document).on('click', '.open_modal', function () {
-            //var url = "domain.com/yoururl";
-            var tour_id = $(this).val();
-            $.get('/bib/' + tour_id, function (data) {
-                //success data
-                console.log(data);
-                $(".bibtex-biblio").remove();
-                document.getElementById("name").innerHTML += `${data}`
-                // $('#tour_id').val(data.id);
-                // $('#name').val(data);
-                // $('#details').val(data.details);
-                // $('#btn-save').val("update");
-                $('#myModal').modal('show');
-            })
-        });
-    </script>
+
+        // start all the timers
+        $('.timer').each(count);
+
+        function count(options) {
+            var $this = $(this);
+            options = $.extend({}, options || {}, $this.data('countToOptions') || {});
+            $this.countTo(options);
+        }
+    });
+</script>
+<script>
+    $(document).on('click', '.open_modal', function() {
+        //var url = "domain.com/yoururl";
+        var tour_id = $(this).val();
+        $.get('/bib/' + tour_id, function(data) {
+            //success data
+            console.log(data);
+            $(".bibtex-biblio").remove();
+            document.getElementById("name").innerHTML += `${data}`
+            // $('#tour_id').val(data.id);
+            // $('#name').val(data);
+            // $('#details').val(data.details);
+            // $('#btn-save').val("update");
+            $('#myModal').modal('show');
+        })
+    });
+</script>
 @endsection
