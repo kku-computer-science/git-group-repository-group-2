@@ -73,7 +73,7 @@
                         class="nav-item dropdown {{ Request::routeIs('researchers') ? 'active' : '' }} {{ request()->is('detail*') ? 'active' : ''}} ">
                         <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
-                            {{ trans('message.Department') }}
+                            Department
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 
