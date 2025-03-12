@@ -29,7 +29,7 @@
                 </div>
                 
                 <div class="form-group">
-                    <label for="image_zh">{{ __('message.zh')}}</label>
+                    <label for="image_zh">{{ __('message.img_zh')}}</label>
                     <input type="file" class="form-control" name="image_zh" id="image_zh">
                 </div>
                 

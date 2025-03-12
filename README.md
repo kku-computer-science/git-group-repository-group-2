@@ -3,9 +3,9 @@
 ## Overview
 This project is a continuation of a previous version developed by senior students. It is part of the **Software Engineering** course. Our development team for this iteration consists of:
 
-- **[Assani Indraprasitdhi]** - Beckend
-- **[Nipat Chapakdee]** - Beckend
-- **[Wangphai Jullapech]** - Beckend
+- **[Assani Indraprasitdhi]** - Backend
+- **[Nipat Chapakdee]** - Backend
+- **[Wangphai Jullapech]** - Backend
 - **[Ananda Matarach]** - Frontend
 - **[Parichat Hongsa]** - Frontend
 - **[Siriyakorn Atyangkham]** -Frontend
