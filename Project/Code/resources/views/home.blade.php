@@ -41,12 +41,13 @@
     }
 
     .section-title {
-    text-align: center;
-    font-size: 3rem; /* ปรับเป็นขนาดที่เหมาะสม */
-    color: #333;
-    margin-bottom: 30px;
-    width: 100%;
-}
+        text-align: center;
+        font-size: 3rem;
+        /* ปรับเป็นขนาดที่เหมาะสม */
+        color: #333;
+        margin-bottom: 30px;
+        width: 100%;
+    }
 
 
     .highlight-item {
@@ -185,24 +186,24 @@
         <div class="highlights-container">
             <h1 class="section-title">Highlights</h1>
 
-            @foreach($highlights->take(3) as $highlight) <!-- แสดงการ์ด 6 ใบแรก -->
+            @foreach($highlights as $highlight)
             <div class="highlight-item">
-                <h2 class="highlight-title">{{ $highlight->title }}</h2>
-                <p class="highlight-detail">{{ $highlight->detail }}</p>
+                <a href="{{ route('highlight.show', $highlight->id) }}" class="highlight-link">
+                    <h2 class="highlight-title">{{ $highlight->title }}</h2>
+                    <p class="highlight-detail">{{ $highlight->detail }}</p>
 
-                <div class="thumbnail-container">
-                    <img class="highlight-thumbnail" src="{{ Storage::url($highlight->thumbnail) }}" alt="Thumbnail">
-                </div>
+                    <div class="thumbnail-container">
+                        <img class="highlight-thumbnail" src="{{ Storage::url($highlight->thumbnail) }}" alt="Thumbnail">
+                    </div>
 
-                @if($highlight->tags->count() > 0)
-                <ul class="tags-list">
-                    @foreach($highlight->tags as $tag)
-                    <li class="tag-item">{{ $tag->name }}</li>
-                    @endforeach
-                </ul>
-                @else
-                <p class="no-tags">No tags available for this highlight.</p>
-                @endif
+                    @if($highlight->tags->count() > 0)
+                    <ul class="tags-list">
+                        @foreach($highlight->tags as $tag)
+                        <li class="tag-item">{{ $tag->name }}</li>
+                        @endforeach
+                    </ul>
+                    @endif
+                </a>
             </div>
             @endforeach
 
