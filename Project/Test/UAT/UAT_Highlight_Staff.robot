@@ -228,39 +228,39 @@ As Administrative Staff, I want to edit highlight detail that created
     Logout Dashboard
     [Teardown]    Close All Browsers
 
-# As Administrative Staff, I want to delete highlight that created
-#     [Tags]    UAT004-DeleteHighlight
-#     # [Enter] Login page
-#     Open Browser To Login Page
-#     Staff Login
-#     # [Enter] Highlight page
-#     Click Element    xpath=//a[contains(@href,'highlight')]
+As Administrative Staff, I want to delete highlight that created
+    [Tags]    UAT004-DeleteHighlight
+    # [Enter] Login page
+    Open Browser To Login Page
+    Staff Login
+    # [Enter] Highlight page
+    Click Element    xpath=//a[contains(@href,'highlight')]
     
-#     # [Enter] Manage Highlight
-#     Wait Until Element Is Visible    xpath=//a[contains(text(),'Manage Highlight')]
-#     Click Element    xpath=//a[contains(text(),'Manage Highlight')]
+    # [Enter] Manage Highlight
+    Wait Until Element Is Visible    xpath=//a[contains(text(),'Manage Highlight')]
+    Click Element    xpath=//a[contains(text(),'Manage Highlight')]
 
-#     # [Check] Highlight count
-#     ${highlight_count}=    Get Element Count    xpath=//a[contains(@href,'highlights') and contains(@class,'btn-outline-success')]
-#     Log    Found ${highlight_count} highlights
+    # [Check] Highlight count
+    ${highlight_count}=    Get Element Count    xpath=//a[contains(@href,'highlights') and contains(@class,'btn-outline-success')]
+    Log    Found ${highlight_count} highlights
 
-#     # [Delete] Highlight using button
-#     Wait Until Element Is Visible    xpath=(//button[contains(@class,'btn-outline-danger') or contains(@class,'show_confirm')])[${highlight_count}]
-#     Execute JavaScript    document.querySelector("button.show_confirm").click();
+    # [Delete] Highlight using button
+    Wait Until Element Is Visible    xpath=(//button[contains(@class,'btn-outline-danger') or contains(@class,'show_confirm')])[${highlight_count}]
+    Execute JavaScript    document.querySelector("button.show_confirm").click();
     
-#     # [Confirm] Delete in confirmation dialog
-#     Wait Until Element Is Visible    xpath=//div[contains(@class,'swal-modal')]
-#     Wait Until Element Is Visible    xpath=//button[contains(@class,'swal-button--confirm')]
-#     Click Element    xpath=//button[contains(@class,'swal-button--confirm')]
-#     Sleep    3s  # Wait for deletion to complete
+    # [Confirm] Delete in confirmation dialog
+    Wait Until Element Is Visible    xpath=//div[contains(@class,'swal-modal')]
+    Wait Until Element Is Visible    xpath=//button[contains(@class,'swal-button--confirm')]
+    Click Element    xpath=//button[contains(@class,'swal-button--confirm')]
+    Sleep    3s  # Wait for deletion to complete
 
-#     # [Verify] Delete success message
-#     Wait Until Element Is Visible    xpath=//div[contains(@class,'swal-modal')]
-#     Wait Until Element Is Visible    xpath=//div[contains(text(),'Deleted Successfully')]
-#     Wait Until Element Is Visible    xpath=//button[contains(@class,'swal-button--confirm')]
-#     Click Element    xpath=//button[contains(@class,'swal-button--confirm')]
-#     Sleep    2s
+    # [Verify] Delete success message
+    Wait Until Element Is Visible    xpath=//div[contains(@class,'swal-modal')]
+    Wait Until Element Is Visible    xpath=//div[contains(text(),'Deleted Successfully')]
+    Wait Until Element Is Visible    xpath=//button[contains(@class,'swal-button--confirm')]
+    Click Element    xpath=//button[contains(@class,'swal-button--confirm')]
+    Sleep    2s
 
-#     # [Logout] Dashboard
-#     Logout Dashboard
-#     [Teardown]    Close All Browsers
+    # [Logout] Dashboard
+    Logout Dashboard
+    [Teardown]    Close All Browsers
