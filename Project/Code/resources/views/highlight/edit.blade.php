@@ -1,6 +1,6 @@
 @extends('dashboards.users.layouts.user-dash-layout')
-@section('content')
 
+@section('content')
 <div class="container">
     @if ($errors->any())
     <div class="alert alert-danger">
@@ -17,11 +17,11 @@
         <div class="card-body">
             <h4 class="card-title">Edit Highlight</h4>
 
-
             <form action="{{ route('highlights.update', $highlight->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
 
+                <!-- Title -->
                 <div class="form-group row">
                     <p class="col-sm-3"><b>Title : </b></p>
                     <div class="col-sm-8">
@@ -29,6 +29,7 @@
                     </div>
                 </div>
 
+                <!-- Detail -->
                 <div class="form-group row">
                     <p class="col-sm-3"><b>Detail : </b></p>
                     <div class="col-sm-8">
@@ -36,19 +37,20 @@
                     </div>
                 </div>
 
+                <!-- Thumbnails (Main + Additional) -->
                 <div class="form-group row">
                     <p class="col-sm-3"><b>Thumbnails : </b></p>
                     <div class="col-sm-8">
                         <input type="file" name="thumbnails[]" class="form-control" multiple>
                         @if($highlight->thumbnails)
-                        @foreach(json_decode($highlight->thumbnails) as $thumbnail)
-                        <img src="{{ asset('storage/' . $thumbnail) }}" width="100" class="mt-2" />
-                        @endforeach
+                            @foreach(json_decode($highlight->thumbnails) as $thumbnail)
+                                <img src="{{ asset('storage/' . $thumbnail) }}" width="100" class="mt-2" />
+                            @endforeach
                         @endif
                     </div>
                 </div>
 
-
+                <!-- Tags -->
                 <div class="form-group row">
                     <p class="col-sm-3"><b>Tags : </b></p>
                     <div class="col-sm-8">
@@ -62,5 +64,4 @@
         </div>
     </div>
 </div>
-
 @stop
