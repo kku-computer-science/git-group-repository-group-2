@@ -173,17 +173,84 @@
         background: #0056b3;
         transform: translateY(-2px);
     }
+
+    /* Additional Images Section */
+    .album-header {
+        font-size: 2rem;
+        font-weight: bold;
+        text-align: center;
+        margin: 40px 0 20px;
+        color: #2c3e50;
+    }
+
+    .additional-images-container {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 30px;
+        justify-content: center;
+    }
+
+    .additional-image {
+        max-width: 400px;
+        width: 100%;
+        object-fit: cover;
+        border-radius: 5px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+        transition: transform 0.2s ease;
+    }
+
+    .additional-image:hover {
+        transform: scale(1.02);
+    }
+
+    /* Modal Styles for Enlarged Image */
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 10000;
+        padding-top: 60px;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.9);
+    }
+
+    .modal-content {
+        margin: auto;
+        display: block;
+        max-width: 80%;
+        max-height: 80%;
+    }
+
+    .close-modal {
+        position: absolute;
+        top: 20px;
+        right: 35px;
+        color: #fff;
+        font-size: 40px;
+        font-weight: bold;
+        cursor: pointer;
+    }
 </style>
 
 @section('content')
 @if(isset($highlight))
+<!-- Main Thumbnail -->
 <div class="thumbnail-container">
     <img class="highlight-thumbnail" src="{{ Storage::url($highlight->thumbnail) }}" alt="Thumbnail">
 </div>
 
 <div class="meta-row">
     <div class="dates-container">
-        <p><strong><i class="fas fa-calendar-alt"></i> เผยแพร่:</strong> {{ $highlight->created_at->format('d/m/Y H:i') }}</p>
+        <p>
+            <strong><i class="fas fa-calendar-alt"></i> เผยแพร่:</strong>
+            {{ $highlight->created_at->format('d/m/Y H:i') }}
+        </p>
     </div>
 
     @if($highlight->tags->count() > 0)
@@ -193,7 +260,6 @@
             @foreach($highlight->tags as $tag)
             <li class="tag-item">
                 <i class="fas fa-tag tag-icon"></i>
-                <!-- เปลี่ยนให้เป็นลิงก์ไปยัง route searchByTag -->
                 <a href="{{ route('searchByTag', ['tag' => $tag->name]) }}" class="tag-link">
                     {{ $tag->name }}
                 </a>
@@ -202,7 +268,6 @@
         </ul>
     </div>
     @endif
-
 </div>
 
 <div class="highlight-detail-container">
@@ -214,20 +279,72 @@
         <p class="highlight-detail">{{ $highlight->detail }}</p>
     </div>
 
-
     <div class="author-container d-flex justify-content-end">
-        <h6><i class="fas fa-user-circle" aria-hidden="true"></i> {{ $highlight->user->fname_th }} {{ $highlight->user->lname_th }}</h6>
+        <h6>
+            <i class="fas fa-user-circle" aria-hidden="true"></i>
+            {{ $highlight->user->fname_th }} {{ $highlight->user->lname_th }}
+        </h6>
     </div>
     <div class="author-container d-flex justify-content-end">
-        <p><i class="fas fa-clock"></i> <strong>อัปเดตล่าสุด:</strong> {{ $highlight->updated_at->format('d/m/Y H:i') }}</p>
+        <p>
+            <i class="fas fa-clock"></i>
+            <strong>อัปเดตล่าสุด:</strong>
+            {{ $highlight->updated_at->format('d/m/Y H:i') }}
+        </p>
     </div>
-
 
     <div class="text-center">
         <a href="{{ route('home') }}" class="back-btn">กลับไปหน้าแรก</a>
     </div>
 </div>
+
+<!-- Additional Images Section at the Bottom -->
+@if($highlight->images && $highlight->images->count() > 0)
+<div class="album-header">Image Album</div>
+<div class="additional-images-container">
+    @foreach($highlight->images as $image)
+    <img class="additional-image" src="{{ Storage::url($image->image_path) }}" alt="Additional Image">
+    @endforeach
+</div>
+@endif
+
+<!-- Modal for Enlarged Image -->
+<div id="imageModal" class="modal">
+    <span class="close-modal">&times;</span>
+    <img class="modal-content" id="modalImage">
+</div>
+
 @else
 <p>ไม่มีข้อมูล</p>
 @endif
 @endsection
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Get the modal
+        const modal = document.getElementById("imageModal");
+        const modalImg = document.getElementById("modalImage");
+        const closeModal = document.getElementsByClassName("close-modal")[0];
+
+        // Add click event to each additional image
+        const additionalImages = document.getElementsByClassName("additional-image");
+        Array.from(additionalImages).forEach(image => {
+            image.addEventListener("click", function() {
+                modal.style.display = "block";
+                modalImg.src = this.src;
+            });
+        });
+
+        // Close the modal when the close button is clicked
+        closeModal.addEventListener("click", function() {
+            modal.style.display = "none";
+        });
+
+        // Optionally, close the modal when clicking outside the image
+        modal.addEventListener("click", function(event) {
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        });
+    });
+</script>
