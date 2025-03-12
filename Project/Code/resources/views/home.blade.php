@@ -20,6 +20,7 @@
         margin-top: 10px;
         margin-bottom: 0;
         text-align: center;
+
     }
 
     .fa-2x {
@@ -29,27 +30,29 @@
         color: #4ad1e5;
     }
 
-    .highlights-container {
+    /* highlight */
+    .section-title {
         display: flex;
-        flex-wrap: wrap;
         justify-content: center;
-        gap: 20px;
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 20px;
-        font-family: Arial, sans-serif;
     }
 
-    .section-title {
-    text-align: center;
-    font-size: 3rem; /* ปรับเป็นขนาดที่เหมาะสม */
-    color: #333;
-    margin-bottom: 30px;
-    width: 100%;
-}
+    <<<<<<< HEAD .section-title {
+        text-align: center;
+        font-size: 3rem;
+        /* ปรับเป็นขนาดที่เหมาะสม */
+        color: #333;
+        margin-bottom: 30px;
+        width: 100%;
+    }
 
+    =======.highlights-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: ;
+    }
 
-    .highlight-item {
+    >>>>>>>298e6cbf87fa4e416eaa971558d3682a4148151c .highlight-item {
         width: 100%;
         max-width: 350px;
         border: 1px solid #ddd;
@@ -134,15 +137,139 @@
     .load-more-btn:hover {
         background-color: #2980b9;
     }
+
+    /* การ์ดของไฮไลต์ */
+    .highlight-card {
+        background: #ffffff;
+        border-radius: 15px;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06);
+        overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        margin: 0 15px 30px 15px;
+    }
+
+    .highlight-card:hover {
+
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15), 0 4px 6px rgba(0, 0, 0, 0.08);
+    }
+
+    .image-container {
+        position: relative;
+        width: 100%;
+        height: 250px;
+        overflow: hidden;
+    }
+
+    .image-container img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+    }
+
+    .highlight-details {
+        padding: 20px;
+        text-align: left;
+        background: #f9f9f9;
+    }
+
+    .tags-list {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 10px 0;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .tag-item {
+        display: inline-block;
+        background: linear-gradient(90deg, #007bff, #0056b3);
+        color: white;
+        padding: 6px 12px;
+        font-size: 13px;
+        border-radius: 20px;
+        font-weight: 500;
+        text-transform: uppercase;
+    }
+
+    .no-tags {
+        font-size: 13px;
+        color: #888;
+        margin: 0 0 10px 0;
+        font-style: italic;
+    }
+
+    .highlight-title {
+        font-size: 18px;
+        font-weight: 600;
+        color: #222;
+        margin: 0 0 10px 0;
+        line-height: 1.5;
+        transition: color 0.3s ease;
+    }
+
+    .highlight-title:hover {
+        color: #007bff;
+    }
+
+    .col-md-4 {
+        flex: 0 0 33.333333%;
+        max-width: 33.333333%;
+    }
+
+    .content-highlight {
+        margin: 0;
+        padding: 0;
+    }
+
+    a.text-black {
+        text-decoration: none;
+        color: #333;
+        display: block;
+    }
+
+    a.text-black:hover {
+        text-decoration: none;
+    }
+
+    /* ปุ่มอ่านเพิ่มเติม */
+    .read-more-container {
+        text-align: center;
+        margin-top: 10px;
+        padding-bottom: 30px;
+    }
+
+    .read-more-btn {
+        display: inline-block;
+        background: linear-gradient(90deg, #007bff, #00aaff);
+        color: white;
+        padding: 12px 25px;
+        font-size: 16px;
+        font-weight: 600;
+        border-radius: 25px;
+        text-decoration: none;
+        transition: background 0.3s ease, transform 0.3s ease;
+        box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
+    }
+
+    .read-more-btn:hover {
+        color: white;
+        text-decoration: none;
+        background: linear-gradient(90deg, #0056b3, #0099ff);
+        box-shadow: 0 6px 12px rgba(0, 123, 255, 0.4);
+    }
 </style>
 @section('content')
 <div class="container home">
     <div class="container d-sm-flex justify-content-center mt-5">
         <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-
             <div class="carousel-indicators">
                 @foreach ($banners as $index => $banner)
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ $index }}" class="{{ $index == 0 ? 'active' : '' }}" aria-current="{{ $index == 0 ? 'true' : 'false' }}" aria-label="Slide {{ $index + 1 }}"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ $index }}"
+                    class="{{ $index == 0 ? 'active' : '' }}" aria-current="{{ $index == 0 ? 'true' : 'false' }}"
+                    aria-label="Slide {{ $index + 1 }}"></button>
                 @endforeach
             </div>
             <div class="carousel-inner">
@@ -166,56 +293,129 @@
                     $imagePath = $banner->image_path_th; // ค่าเริ่มต้นเป็นภาษาไทย
                     $altText = 'Banner Image TH'; // ค่าเริ่มต้นเป็นภาษาไทย
                     }
-
                     @endphp
                     <img src="{{ asset('storage/' . $imagePath) }}" class="d-block w-100" alt="{{ $altText }}">
                 </div>
                 @endforeach
             </div>
-
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Previous</span>
             </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                data-bs-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Next</span>
             </button>
         </div>
-        <div class="highlights-container">
-            <h1 class="section-title">Highlights</h1>
+    </div>
+</div>
 
-            @foreach($highlights->take(3) as $highlight) <!-- แสดงการ์ด 6 ใบแรก -->
-            <div class="highlight-item">
-                <h2 class="highlight-title">{{ $highlight->title }}</h2>
-                <p class="highlight-detail">{{ $highlight->detail }}</p>
-
-                <div class="thumbnail-container">
-                    <img class="highlight-thumbnail" src="{{ Storage::url($highlight->thumbnail) }}" alt="Thumbnail">
+<!-- Highlight -->
+<div class="col-12"
+    style="background-image: url('https://api.computing.kku.ac.th//storage/images/1661921029-3.png'); background-position: center center; background-size: cover; padding: 15px; margin: 0px;">
+    <div class="container">
+        <div class="row mx-0">
+            <div class="p-0 col-sm-12 col-md-12 col-lg-12">
+                <div class="w-100 h-100">
+                    <div class="w-100 h-100">
+                        <div>
+                            <h2 style="color:white;font-weight:bold;text-align:center;">Highlights</h2>
+                        </div>
+                    </div>
                 </div>
-
-                @if($highlight->tags->count() > 0)
-                <ul class="tags-list">
-                    @foreach($highlight->tags as $tag)
-                    <li class="tag-item">{{ $tag->name }}</li>
-                    @endforeach
-                </ul>
-                @else
-                <p class="no-tags">No tags available for this highlight.</p>
-                @endif
             </div>
-            @endforeach
-
-            <!-- ปุ่ม "More" ถ้ามีการ์ดเพิ่มเติม -->
-            @if($highlights->count() > 3)
-            <button id="load-more" class="load-more-btn">More</button>
-            @endif
         </div>
     </div>
 </div>
 
+<!-- รวมทั้งสองแถวใน col-12 เดียว -->
+<div class="col-12" style="padding: 0px; margin-top: 20px;">
+    <div class="w-100 h-80">
+        <!-- แถวที่ 1: แสดง 3 รูปแรก -->
+        <div class="row mx-0" style="margin-bottom: 3px;">
+            @foreach($highlights->take(3) as $highlight)
+            <div class="p-0 col-sm-12 col-md-4 col-lg-4">
+                <div class="highlight-card" style="padding: 0;">
+                    <div data-v-2db70b80="" class="row content-highlight mx-0">
+                        <div data-v-2db70b80="" class="p-0 col-12">
+                            <a href="{{ route('highlight.show', ['id' => $highlight->id]) }}" class="text-black">
+                                <div class="image-container">
+                                    <img data-v-2db70b80="" src="{{ Storage::url($highlight->thumbnail) }}"
+                                        alt="{{ $highlight->title ?? 'default_no_image' }}"
+                                        sizes="(max-width: 640px) 100vw, (max-width: 768px) 100vw, 100vw"
+                                        srcset="{{ Storage::url($highlight->thumbnail) }} 640w, {{ Storage::url($highlight->thumbnail) }} 768w, {{ Storage::url($highlight->thumbnail) }} 1024w"
+                                        style="height: auto; width: 100%;">
+                                </div>
+                                <div class="highlight-details">
+                                    @if($highlight->tags->count() > 0)
+                                    <ul class="tags-list">
+                                        @foreach($highlight->tags as $tag)
+                                        <li class="tag-item">{{ $tag->name }}</li>
+                                        @endforeach
+                                    </ul>
+                                    @else
+                                    <p class="no-tags">No tags available for this highlight.</p>
+                                    @endif
+                                    <h3 class="highlight-title">{{ $highlight->title ?? 'ชื่อเรื่องเริ่มต้น' }}</h3>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+        </div>
 
-<div class="container card-cart d-sm-flex justify-content-center mt-5">
+        <!-- แถวที่ 2: แสดง 3 รูปถัดไป (ลำดับ 4-6) -->
+        <div class="row mx-0">
+            @foreach($highlights->slice(3, 3) as $highlight)
+            <div class="p-0 col-sm-12 col-md-4 col-lg-4">
+                <div class="highlight-card" style="0;">
+                    <div data-v-2db70b80="" class="row content-highlight mx-0">
+                        <div data-v-2db70b80="" class="p-0 col-12">
+                            <a href="{{ route('highlight.show', ['id' => $highlight->id]) }}" class="text-black">
+                                <div class="image-container">
+                                    <img data-v-2db70b80="" src="{{ Storage::url($highlight->thumbnail) }}"
+                                        alt="{{ $highlight->title ?? 'default_no_image' }}"
+                                        sizes="(max-width: 640px) 100vw, (max-width: 768px) 100vw, 100vw"
+                                        srcset="{{ Storage::url($highlight->thumbnail) }} 640w, {{ Storage::url($highlight->thumbnail) }} 768w, {{ Storage::url($highlight->thumbnail) }} 1024w"
+                                        style="height: auto; width: 100%;">
+                                </div>
+                                <div class="highlight-details">
+                                    @if($highlight->tags->count() > 0)
+                                    <ul class="tags-list">
+                                        @foreach($highlight->tags as $tag)
+                                        <li class="tag-item">{{ $tag->name }}</li>
+                                        @endforeach
+                                    </ul>
+                                    @else
+                                    <p class="no-tags">No tags available for this highlight.</p>
+                                    @endif
+                                    <h3 class="highlight-title">{{ $highlight->title ?? 'ชื่อเรื่องเริ่มต้น' }}</h3>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+        </div>
+        <!-- ปุ่มอ่านเพิ่มเติม -->
+        <div class="read-more-container">
+            <a href="/more-highlights" class="read-more-btn">อ่านเพิ่มเติม</a>
+        </div>
+    </div>
+</div>
+
+<!-- ปุ่ม "More" ถ้ามีการ์ดเพิ่มเติม -->
+<!-- @if($highlights->count() > 3)
+                                        <button id="load-more" class="load-more-btn">More</button>
+                                    @endif
+                                    </div> -->
+
+<div class="container card-cart d-sm-flex justify-content-center mt-0">
     <div class="col-md-8">
         <div class="card">
             <div class="card-body">
@@ -267,28 +467,32 @@
     <div class="accordion" id="accordionExample">
         <div class="accordion-item">
             <h2 class="accordion-header" id="headingOne">
-                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{$n}}" aria-expanded="true" aria-controls="collapseOne">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapse{{$n}}" aria-expanded="true" aria-controls="collapseOne">
                     @if (!$loop->last)
                     {{$n}}
                     @else
-                    {{ trans('message.before_home') }} {{$n}}
+                    Before {{$n}}
                     @endif
                 </button>
             </h2>
-            <div id="collapse{{$n}}" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+            <div id="collapse{{$n}}" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                data-bs-parent="#accordionExample">
                 <div class="accordion-body">
                     @foreach($pe as $n => $p)
                     <div class="row mt-2 mb-3 border-bottom">
                         <div id="number" class="col-sm-1">
-                            <h6>[{{$n+1}}]</h6>
+                            <h6>[{{$n + 1}}]</h6>
                         </div>
                         <div id="paper2" class="col-sm-11">
                             <p class="hidden">
                                 <b>{{$p['paper_name']}}</b> (
                                 <link>{{$p['author']}}</link>), {{$p['paper_sourcetitle']}}, {{$p['paper_volume']}},
                                 {{$p['paper_yearpub']}}.
-                                <a href="{{$p['paper_url']}}" target="_blank">[url]</a> <a href="https://doi.org/{{$p['paper_doi']}}" target="_blank">[doi]</a>
-                                <button style="padding: 0;" class="btn btn-link open_modal" value="{{$p['id']}}">[{{ trans('message.reference') }}]</button>
+                                <a href="{{$p['paper_url']}}" target="_blank">[url]</a> <a
+                                    href="https://doi.org/{{$p['paper_doi']}}" target="_blank">[doi]</a>
+                                <button style="padding: 0;" class="btn btn-link open_modal"
+                                    value="{{$p['id']}}">[{{ trans('message.reference') }}]</button>
                             </p>
                         </div>
                     </div>
@@ -434,21 +638,21 @@
         //console.log(sum);
         //$("#scopus").append('data-to="100"');
         document.getElementById("all").innerHTML += `
-                <i class="count-icon fa fa-book fa-2x"></i>
-                <h2 class="timer count-title count-number" data-to="${sum}" data-speed="1500"></h2>
-                <p class="count-text ">{{ trans('message.Summary_home') }}</p>`
+                                                                <i class="count-icon fa fa-book fa-2x"></i>
+                                                                <h2 class="timer count-title count-number" data-to="${sum}" data-speed="1500"></h2>
+                                                                <p class="count-text ">SUMMARY</p>`
         document.getElementById("scopus").innerHTML += `
-                <i class="count-icon fa fa-book fa-2x"></i>
-                <h2 class="timer count-title count-number" data-to="${sumsco}" data-speed="1500"></h2>
-                <p class="count-text ">SCOPUS</p>`
+                                                                <i class="count-icon fa fa-book fa-2x"></i>
+                                                                <h2 class="timer count-title count-number" data-to="${sumsco}" data-speed="1500"></h2>
+                                                                <p class="count-text ">SCOPUS</p>`
         document.getElementById("wos").innerHTML += `
-                <i class="count-icon fa fa-book fa-2x"></i>
-                <h2 class="timer count-title count-number" data-to="${sumwos}" data-speed="1500"></h2>
-                <p class="count-text ">WOS</p>`
+                                                                <i class="count-icon fa fa-book fa-2x"></i>
+                                                                <h2 class="timer count-title count-number" data-to="${sumwos}" data-speed="1500"></h2>
+                                                                <p class="count-text ">WOS</p>`
         document.getElementById("tci").innerHTML += `
-                <i class="count-icon fa fa-book fa-2x"></i>
-                <h2 class="timer count-title count-number" data-to="${sumtci}" data-speed="1500"></h2>
-                <p class="count-text ">TCI</p>`
+                                                                <i class="count-icon fa fa-book fa-2x"></i>
+                                                                <h2 class="timer count-title count-number" data-to="${sumtci}" data-speed="1500"></h2>
+                                                                <p class="count-text ">TCI</p>`
         //document.getElementById("scopus").appendChild('data-to="100"');
         $.fn.countTo = function(options) {
             options = options || {};
@@ -563,19 +767,6 @@
             // $('#btn-save').val("update");
             $('#myModal').modal('show');
         })
-        $(document).ready(function() {
-            $(".highlight-item").slice(0, 3).show(); // แสดงการ์ด 3 ใบแรก
-            if ($(".highlight-item:hidden").length != 0) {
-                $("#load-more").show(); // แสดงปุ่ม "More" ถ้ามีการ์ดเพิ่มเติม
-            }
-            $("#load-more").on('click', function(e) {
-                e.preventDefault();
-                $(".highlight-item:hidden").slice(0, 3).slideDown(); // แสดงการ์ดที่ซ่อนอยู่ 3 ใบ
-                if ($(".highlight-item:hidden").length == 0) {
-                    $("#load-more").fadeOut('slow'); // ซ่อนปุ่ม "More" เมื่อไม่มีการ์ดให้แสดงแล้ว
-                }
-            });
-        });
     });
 </script>
 @endsection

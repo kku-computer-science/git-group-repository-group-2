@@ -31,13 +31,9 @@
     <div class="col-md-8 grid-margin stretch-card">
         <div class="card" style="padding: 16px;">
             <div class="card-body">
-<<<<<<< HEAD
-                <h4 class="card-title">{{ __('message.add_book')}}</h4>
-                <p class="card-description">{{ __('message.fill_book')}}</p>
-=======
+
                 <h4 class="card-title">{{ __('message.book_add') }}</h4>
                 <p class="card-description">{{ __('message.book_description') }}</p>
->>>>>>> origin/main
                 <form class="forms-sample" action="{{ route('books.store') }}" method="POST">
                     @csrf
                     
