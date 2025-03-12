@@ -7,6 +7,8 @@ use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use App\Models\Image;
+
 
 class HighlightController extends Controller
 {
@@ -93,35 +95,44 @@ class HighlightController extends Controller
     {
         $highlight = Highlight::findOrFail($id);
 
-        if ($highlight->user_id !== Auth::id()) {
-            return redirect()->route('highlights.index')->with('error', 'Unauthorized action.');
-        }
-
         $validatedData = $request->validate([
             'title' => 'required|string|max:255',
             'detail' => 'required|string',
-            'thumbnail' => 'nullable|image',
-            'tags' => 'required|string',
+            'images.*' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            // ฯลฯ
         ]);
-
-        if ($request->hasFile('thumbnail')) {
-            $thumbnailPath = $request->file('thumbnail')->store('thumbnails', 'public');
-            $highlight->thumbnail = $thumbnailPath;
-        }
 
         $highlight->title = $request->title;
         $highlight->detail = $request->detail;
+        // ฯลฯ
         $highlight->save();
 
-        $tags = explode(',', $request->tags);
-        $highlight->tags()->detach();
-        foreach ($tags as $tagName) {
-            $tag = Tag::firstOrCreate(['name' => trim($tagName)]);
-            $highlight->tags()->attach($tag);
+        // ลบรูปที่ถูกติ๊กให้ลบ
+        if ($request->has('remove_images')) {
+            foreach ($request->remove_images as $imageId) {
+                $image = Image::find($imageId);
+                if ($image) {
+                    // ลบไฟล์ออกจาก storage
+                    Storage::disk('public')->delete($image->image_path);
+                    // ลบ record ในตาราง images
+                    $image->delete();
+                }
+            }
         }
+
+        // อัปโหลดรูปใหม่
+        if ($request->hasFile('images')) {
+            foreach ($request->file('images') as $file) {
+                $path = $file->store('images', 'public');
+                $highlight->images()->create(['image_path' => $path]);
+            }
+        }
+
+        // จัดการ tags หรือฟิลด์อื่น ๆ ตามต้องการ
 
         return redirect()->route('highlights.index')->with('success', 'Highlight updated successfully!');
     }
+
 
     public function destroy($id)
     {

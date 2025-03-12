@@ -18,15 +18,18 @@
                 <p class="card-text col-sm-9">{{ $highlight->detail }}</p>
             </div>
 
-            <!-- แสดง Tags -->
+            <!-- แสดง Additional Images (จำกัดแค่ 2 รูป) -->
+            @if($highlight->images && $highlight->images->count() > 0)
             <div class="row mt-2">
-                <p class="card-text col-sm-3"><b>Tags : </b></p>
-                <p class="card-text col-sm-9">
-                    @foreach($highlight->tags as $tag)
-                        <span class="badge badge-primary">{{ $tag->name }}</span>
+                <p class="card-text col-sm-3"><b>Additional Images :</b></p>
+                <div class="card-text col-sm-9">
+                    @foreach($highlight->images->take(2) as $image)
+                    <img src="{{ asset('storage/' . $image->image_path) }}" class="img-fluid" width="200px" style="margin:5px;">
                     @endforeach
-                </p>
+                </div>
             </div>
+            @endif
+
 
             <!-- แสดง Main Image -->
             <div class="row mt-2">
@@ -42,7 +45,7 @@
                 <p class="card-text col-sm-3"><b>Additional Images :</b></p>
                 <div class="card-text col-sm-9">
                     @foreach($highlight->images as $image)
-                        <img src="{{ asset('storage/' . $image->image_path) }}" class="img-fluid" width="200px" style="margin:5px;">
+                    <img src="{{ asset('storage/' . $image->image_path) }}" class="img-fluid" width="200px" style="margin:5px;">
                     @endforeach
                 </div>
             </div>

@@ -1,6 +1,6 @@
 @extends('dashboards.users.layouts.user-dash-layout')
-
 @section('content')
+
 <div class="container">
     @if ($errors->any())
     <div class="alert alert-danger">
@@ -17,11 +17,11 @@
         <div class="card-body">
             <h4 class="card-title">Edit Highlight</h4>
 
+
             <form action="{{ route('highlights.update', $highlight->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
 
-                <!-- Title -->
                 <div class="form-group row">
                     <p class="col-sm-3"><b>Title : </b></p>
                     <div class="col-sm-8">
@@ -29,7 +29,6 @@
                     </div>
                 </div>
 
-                <!-- Detail -->
                 <div class="form-group row">
                     <p class="col-sm-3"><b>Detail : </b></p>
                     <div class="col-sm-8">
@@ -37,20 +36,40 @@
                     </div>
                 </div>
 
-                <!-- Thumbnails (Main + Additional) -->
                 <div class="form-group row">
                     <p class="col-sm-3"><b>Thumbnails : </b></p>
                     <div class="col-sm-8">
                         <input type="file" name="thumbnails[]" class="form-control" multiple>
                         @if($highlight->thumbnails)
-                            @foreach(json_decode($highlight->thumbnails) as $thumbnail)
-                                <img src="{{ asset('storage/' . $thumbnail) }}" width="100" class="mt-2" />
-                            @endforeach
+                        @foreach(json_decode($highlight->thumbnails) as $thumbnail)
+                        <img src="{{ asset('storage/' . $thumbnail) }}" width="100" class="mt-2" />
+                        @endforeach
                         @endif
                     </div>
                 </div>
 
-                <!-- Tags -->
+                <!-- อัปโหลดรูปใหม่ (หลายไฟล์) -->
+                <div class="form-group">
+                    <label for="images">Additional Images:</label>
+                    <input type="file" class="form-control-file" id="images" name="images[]" multiple>
+                </div>
+
+                <!-- แสดงรูปเก่าจากตาราง images -->
+                <div class="form-group">
+                    <label>Current Images:</label>
+                    <div>
+                        @foreach($highlight->images as $image)
+                            <div style="display:inline-block; margin:5px; text-align:center;">
+                                <img src="{{ asset('storage/' . $image->image_path) }}" width="100"><br>
+                                <label>
+                                    <input type="checkbox" name="remove_images[]" value="{{ $image->id }}">
+                                    <span style="color:red; font-weight:bold; cursor:pointer;">X</span>
+                                </label>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+
                 <div class="form-group row">
                     <p class="col-sm-3"><b>Tags : </b></p>
                     <div class="col-sm-8">
@@ -64,4 +83,5 @@
         </div>
     </div>
 </div>
+
 @stop
