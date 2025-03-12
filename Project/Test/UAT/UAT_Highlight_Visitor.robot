@@ -261,6 +261,47 @@ As Visitor, I want to see highlight details
     Run Keyword If    ${additional_images_exist}    
     ...    Should Be True    ${additional_image_loaded}    Additional image did not load properly
     
+    # [Test] Image enlargement functionality
+    # First check if additional images exist and click on that if available
+    ${click_target}=    Set Variable If    ${additional_images_exist}    
+    ...    document.querySelector('img.additional-image')    
+    ...    document.querySelector('img.highlight-thumbnail')
+    
+    # [Click] Image to enlarge (either additional or main thumbnail)
+    Execute JavaScript    ${click_target}.scrollIntoView({behavior:"smooth", block:"center"})
+    Sleep    1s
+    Execute JavaScript    ${click_target}.click()
+    
+    # [Verify] Modal appears
+    Wait Until Element Is Visible    id=imageModal    timeout=5s
+    Page Should Contain Element    id=modalImage
+    
+    # [Verify] Enlarged image loads properly
+    ${enlarged_image_loaded}=    Execute JavaScript    
+    ...    return document.querySelector('#modalImage').complete && document.querySelector('#modalImage').naturalHeight !== 0
+    Should Be True    ${enlarged_image_loaded}    Enlarged image did not load properly
+    
+    # [Verify] Modal navigation elements exist
+    Page Should Contain Element    xpath=//span[contains(@class,'close-modal')]
+    
+    # [Check] Multi-image navigation if available
+    ${has_multiple_images}=    Run Keyword And Return Status    
+    ...    Page Should Contain Element    xpath=//button[contains(@class,'next-btn') and not(contains(@style,'display: none'))]
+    
+    # [Test] Image navigation if multiple images
+    Run Keyword If    ${has_multiple_images}    
+    ...    Run Keywords
+    ...    Click Element    xpath=//button[contains(@class,'next-btn')]    AND
+    ...    Sleep    1s    AND
+    ...    ${next_image_loaded}=    Execute JavaScript    return document.querySelector('#modalImage').complete && document.querySelector('#modalImage').naturalHeight !== 0    AND
+    ...    Should Be True    ${next_image_loaded}    Next image did not load properly
+    
+    # [Close] The image modal
+    Click Element    xpath=//span[contains(@class,'close-modal')]
+    
+    # [Verify] Modal closed
+    Wait Until Element Is Not Visible    id=imageModal    timeout=5s
+    
     # [Check] Tag links present
     Page Should Contain Element    xpath=//a[contains(@class,'tag-link')]
     
