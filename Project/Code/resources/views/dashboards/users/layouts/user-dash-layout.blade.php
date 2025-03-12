@@ -228,16 +228,7 @@
                             </ul>
                         </div>
                     </li>
-                    <li class="nav-item">
-                        @foreach (Config::get('languages') as $lang => $language)
-                        @if ($lang != App::getLocale())
-                        <a class="nav-link" href="{{ route('langswitch', $lang) }}">
-                        <span
-                        class="flag-icon flag-icon-{{$language['flag-icon']}}"></span>
-                            <span class="menu-title">{{$language['display']}}</span>   
-                        @endif
-                        @endforeach
-                        </a>
+                
                     @endcan
                     @can('export')
                     <li class="nav-item">
