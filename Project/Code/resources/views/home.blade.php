@@ -30,79 +30,6 @@
         color: #4ad1e5;
     }
 
-    /* highlight */
-    .section-title {
-        display: flex;
-        justify-content: center;
-    }
-
-    .highlights-container {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        gap: ;
-    }
-
-    .highlight-item {
-        width: 100%;
-        max-width: 350px;
-        border: 1px solid #ddd;
-        padding: 20px;
-        border-radius: 8px;
-        background-color: #f9f9f9;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        transition: transform 0.3s ease-in-out;
-    }
-
-    .highlight-item:hover {
-        transform: translateY(-10px);
-    }
-
-    .highlight-title {
-        font-size: 1.8rem;
-        font-weight: bold;
-        color: #444;
-    }
-
-    .highlight-detail {
-        font-size: 1.2rem;
-        color: #555;
-        margin-top: 10px;
-    }
-
-    .thumbnail-container {
-        text-align: center;
-        margin-top: 20px;
-    }
-
-    .highlight-thumbnail {
-        max-width: 100%;
-        height: auto;
-        border-radius: 8px;
-    }
-
-    .tags-list {
-        list-style-type: none;
-        padding: 0;
-        margin-top: 15px;
-    }
-
-    .tag-item {
-        display: inline-block;
-        background-color: #3498db;
-        color: white;
-        padding: 8px 12px;
-        border-radius: 20px;
-        margin-right: 10px;
-        font-size: 1rem;
-    }
-
-    .no-tags {
-        font-style: italic;
-        color: #999;
-        margin-top: 15px;
-    }
-
     .thumbnail-container img {
         width: 100%;
         max-width: 300px;
@@ -137,17 +64,18 @@
         overflow: hidden;
         transition: transform 0.3s ease, box-shadow 0.3s ease;
         margin: 0 15px 30px 15px;
+        border: 1px solid transparent;
     }
 
     .highlight-card:hover {
-
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15), 0 4px 6px rgba(0, 0, 0, 0.08);
+        box-shadow: 0 10px 20px rgba(0, 86, 179, 0.15), 0 4px 6px rgba(0, 86, 179, 0.08);
+        border: 1px dashed #007bff;
     }
 
     .image-container {
         position: relative;
         width: 100%;
-        height: 250px;
+        height: 260px;
         overflow: hidden;
     }
 
@@ -170,8 +98,9 @@
         padding: 0;
         margin: 0 0 10px 0;
         display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
+        flex-wrap: nowrap;
+        /* เพื่อให้อยู่ในบรรทัดเดียว */
+        gap: 5px;
     }
 
     .tag-item {
@@ -183,6 +112,8 @@
         border-radius: 20px;
         font-weight: 500;
         text-transform: uppercase;
+        flex-shrink: 0;
+        /* ป้องกันการย่อขนาด */
     }
 
     .no-tags {
@@ -199,10 +130,18 @@
         margin: 0 0 10px 0;
         line-height: 1.5;
         transition: color 0.3s ease;
+        /* ปรับให้แสดง 2 บรรทัด */
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        /* จำกัดจำนวนบรรทัดที่ 2 */
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 100%;
     }
 
     .highlight-title:hover {
-        color: #007bff;
+        color: #0056b3;
     }
 
     .col-md-4 {
@@ -325,8 +264,14 @@
     <div class="col-12" style="padding: 0px; margin-top: 20px;">
         <div class="w-100 h-80">
             <!-- แถวที่ 1: แสดง 3 รูปแรก -->
-            <div class="row mx-0" style="margin-bottom: 3px;">
-                @foreach($highlights->take(3) as $highlight)
+            <div class="row mx-0 highlight-row" style="margin-bottom: 3px;">
+                @php
+                    // เรียงลำดับ $highlights จาก created_at ล่าสุดไปเก่า
+                    $sortedHighlights = $highlights->sortByDesc('created_at');
+                    // ใช้ take(3) เพื่อดึง 3 รายการแรก
+                    $firstRow = $sortedHighlights->take(3);
+                @endphp
+                @foreach($firstRow as $highlight)
                     <div class="p-0 col-sm-12 col-md-4 col-lg-4">
                         <div class="highlight-card" style="padding: 0;">
                             <div data-v-2db70b80="" class="row content-highlight mx-0">
@@ -341,15 +286,20 @@
                                                 style="height: auto; width: 100%;">
                                         </div>
                                         <div class="highlight-details">
-                                            @if($highlight->tags->count() > 0)
-                                                <ul class="tags-list">
-                                                    @foreach($highlight->tags as $tag)
-                                                        <li class="tag-item">{{ $tag->name }}</li>
-                                                    @endforeach
+                                        @if($highlight->tags->count() > 0)
+                                                                                <ul class="tags-list">
+                                                                                    @php
+                                                                                        // จำกัดจำนวนแท็กสูงสุด (เช่น 3 แท็ก)
+                                                                                        $maxTags = 4;
+                                                                                        $tagsToShow = $highlight->tags->take($maxTags);
+                                                                                    @endphp
+                                                                                    @foreach($tagsToShow as $tag)
+                                                                                        <li class="tag-item">{{ $tag->name }}</li>
+                                                                                    @endforeach
+                                                @else
+                                                    <p class="no-tags">No tags available for this highlight.</p>
+                                                @endif
                                                 </ul>
-                                            @else
-                                                <p class="no-tags">No tags available for this highlight.</p>
-                                            @endif
                                             <h3 class="highlight-title">{{ $highlight->title ?? 'ชื่อเรื่องเริ่มต้น' }}</h3>
                                         </div>
                                     </a>
@@ -361,38 +311,47 @@
             </div>
 
             <!-- แถวที่ 2: แสดง 3 รูปถัดไป (ลำดับ 4-6) -->
-            <div class="row mx-0">
-                @foreach($highlights->slice(3, 3) as $highlight)
-                    <div class="p-0 col-sm-12 col-md-4 col-lg-4">
-                        <div class="highlight-card" style="0;">
-                            <div data-v-2db70b80="" class="row content-highlight mx-0">
-                                <div data-v-2db70b80="" class="p-0 col-12">
-                                    <a data-v-2db70b80="" href="/content/news/{{ $highlight->slug ?? 'default-slug' }}"
-                                        class="text-black">
-                                        <div class="image-container">
-                                            <img data-v-2db70b80="" src="{{ Storage::url($highlight->thumbnail) }}"
-                                                alt="{{ $highlight->title ?? 'default_no_image' }}"
-                                                sizes="(max-width: 640px) 100vw, (max-width: 768px) 100vw, 100vw"
-                                                srcset="{{ Storage::url($highlight->thumbnail) }} 640w, {{ Storage::url($highlight->thumbnail) }} 768w, {{ Storage::url($highlight->thumbnail) }} 1024w"
-                                                style="height: auto; width: 100%;">
-                                        </div>
-                                        <div class="highlight-details">
-                                            @if($highlight->tags->count() > 0)
-                                                <ul class="tags-list">
-                                                    @foreach($highlight->tags as $tag)
-                                                        <li class="tag-item">{{ $tag->name }}</li>
-                                                    @endforeach
+            <div class="row mx-0 highlight-row">
+                @php
+                    // ดึง 3 รายการถัดไป (ลำดับ 4-6)
+                    $secondRow = $sortedHighlights->slice(3, 3);
+                @endphp
+                @foreach($secondRow as $highlight)
+                        <div class="p-0 col-sm-12 col-md-4 col-lg-4">
+                            <div class="highlight-card" style="padding: 0; margin-top: 0px;">
+                                <div data-v-2db70b80="" class="row content-highlight mx-0">
+                                    <div data-v-2db70b80="" class="p-0 col-12">
+                                        <a data-v-2db70b80="" href="/content/news/{{ $highlight->slug ?? 'default-slug' }}"
+                                            class="text-black">
+                                            <div class="image-container">
+                                                <img data-v-2db70b80="" src="{{ Storage::url($highlight->thumbnail) }}"
+                                                    alt="{{ $highlight->title ?? 'default_no_image' }}"
+                                                    sizes="(max-width: 640px) 100vw, (max-width: 768px) 100vw, 100vw"
+                                                    srcset="{{ Storage::url($highlight->thumbnail) }} 640w, {{ Storage::url($highlight->thumbnail) }} 768w, {{ Storage::url($highlight->thumbnail) }} 1024w"
+                                                    style="height: auto; width: 100%;">
+                                            </div>
+                                            <div class="highlight-details">
+                                                @if($highlight->tags->count() > 0)
+                                                                                <ul class="tags-list">
+                                                                                    @php
+                                                                                        // จำกัดจำนวนแท็กสูงสุด (เช่น 3 แท็ก)
+                                                                                        $maxTags = 4;
+                                                                                        $tagsToShow = $highlight->tags->take($maxTags);
+                                                                                    @endphp
+                                                                                    @foreach($tagsToShow as $tag)
+                                                                                        <li class="tag-item">{{ $tag->name }}</li>
+                                                                                    @endforeach
+                                                @else
+                                                    <p class="no-tags">No tags available for this highlight.</p>
+                                                @endif
                                                 </ul>
-                                            @else
-                                                <p class="no-tags">No tags available for this highlight.</p>
-                                            @endif
-                                            <h3 class="highlight-title">{{ $highlight->title ?? 'ชื่อเรื่องเริ่มต้น' }}</h3>
-                                        </div>
-                                    </a>
+                                                <h3 class="highlight-title">{{ $highlight->title ?? 'ชื่อเรื่องเริ่มต้น' }}</h3>
+                                            </div>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
                 @endforeach
             </div>
             <!-- ปุ่มอ่านเพิ่มเติม -->
@@ -400,102 +359,95 @@
                 <a href="/more-highlights" class="read-more-btn">อ่านเพิ่มเติม</a>
             </div>
         </div>
-    </div>
 
-    <!-- ปุ่ม "More" ถ้ามีการ์ดเพิ่มเติม -->
-    <!-- @if($highlights->count() > 3)
-                                        <button id="load-more" class="load-more-btn">More</button>
-                                    @endif
-                                    </div> -->
-
-    <div class="container card-cart d-sm-flex justify-content-center mt-0">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-body">
-                    <div class="chart" style="height: 350px;">
-                        <canvas id="barChart1"></canvas>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <br>
-
-    <div class="container mt-3">
-        <div class="row text-center">
-            <div class="col">
-                <div class="count" id='all'></div>
-            </div>
-            <div class="col">
-                <div class="count" id='scopus'></div>
-            </div>
-            <div class="col">
-                <div class="count" id='wos'></div>
-            </div>
-            <div class="col">
-                <div class="count" id='tci'></div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal -->
-    <div class="modal" id="myModal" tabindex="-1">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Reference (APA)</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body" id="name"></div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="container mixpaper pb-10 mt-3">
-        <h3>{{ trans('message.publications') }}</h3>
-        @foreach($papers as $n => $pe)
-            <div class="accordion" id="accordionExample">
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingOne">
-                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapse{{$n}}" aria-expanded="true" aria-controls="collapseOne">
-                            @if (!$loop->last)
-                                {{$n}}
-                            @else
-                                Before {{$n}}
-                            @endif
-                        </button>
-                    </h2>
-                    <div id="collapse{{$n}}" class="accordion-collapse collapse" aria-labelledby="headingOne"
-                        data-bs-parent="#accordionExample">
-                        <div class="accordion-body">
-                            @foreach($pe as $n => $p)
-                                <div class="row mt-2 mb-3 border-bottom">
-                                    <div id="number" class="col-sm-1">
-                                        <h6>[{{$n + 1}}]</h6>
-                                    </div>
-                                    <div id="paper2" class="col-sm-11">
-                                        <p class="hidden">
-                                            <b>{{$p['paper_name']}}</b> (
-                                            <link>{{$p['author']}}</link>), {{$p['paper_sourcetitle']}}, {{$p['paper_volume']}},
-                                            {{$p['paper_yearpub']}}.
-                                            <a href="{{$p['paper_url']}}" target="_blank">[url]</a> <a
-                                                href="https://doi.org/{{$p['paper_doi']}}" target="_blank">[doi]</a>
-                                            <button style="padding: 0;" class="btn btn-link open_modal"
-                                                value="{{$p['id']}}">[{{ trans('message.reference') }}]</button>
-                                        </p>
-                                    </div>
-                                </div>
-                            @endforeach
+        <div class="container card-cart d-sm-flex justify-content-center mt-0">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="chart" style="height: 350px;">
+                            <canvas id="barChart1"></canvas>
                         </div>
                     </div>
                 </div>
             </div>
-        @endforeach
-    </div>
+        </div>
+        <br>
+
+        <div class="container mt-3">
+            <div class="row text-center">
+                <div class="col">
+                    <div class="count" id='all'></div>
+                </div>
+                <div class="col">
+                    <div class="count" id='scopus'></div>
+                </div>
+                <div class="col">
+                    <div class="count" id='wos'></div>
+                </div>
+                <div class="col">
+                    <div class="count" id='tci'></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal" id="myModal" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Reference (APA)</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body" id="name"></div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container mixpaper pb-10 mt-3">
+            <h3>{{ trans('message.publications') }}</h3>
+            @foreach($papers as $n => $pe)
+                <div class="accordion" id="accordionExample">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapse{{$n}}" aria-expanded="true" aria-controls="collapseOne">
+                                @if (!$loop->last)
+                                    {{$n}}
+                                @else
+                                    Before {{$n}}
+                                @endif
+                            </button>
+                        </h2>
+                        <div id="collapse{{$n}}" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                            data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                @foreach($pe as $n => $p)
+                                    <div class="row mt-2 mb-3 border-bottom">
+                                        <div id="number" class="col-sm-1">
+                                            <h6>[{{$n + 1}}]</h6>
+                                        </div>
+                                        <div id="paper2" class="col-sm-11">
+                                            <p class="hidden">
+                                                <b>{{$p['paper_name']}}</b> (
+                                                <link>{{$p['author']}}</link>), {{$p['paper_sourcetitle']}}, {{$p['paper_volume']}},
+                                                {{$p['paper_yearpub']}}.
+                                                <a href="{{$p['paper_url']}}" target="_blank">[url]</a> <a
+                                                    href="https://doi.org/{{$p['paper_doi']}}" target="_blank">[doi]</a>
+                                                <button style="padding: 0;" class="btn btn-link open_modal"
+                                                    value="{{$p['id']}}">[{{ trans('message.reference') }}]</button>
+                                            </p>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
@@ -628,21 +580,21 @@
             //console.log(sum);
             //$("#scopus").append('data-to="100"');
             document.getElementById("all").innerHTML += `
-                                                                <i class="count-icon fa fa-book fa-2x"></i>
-                                                                <h2 class="timer count-title count-number" data-to="${sum}" data-speed="1500"></h2>
-                                                                <p class="count-text ">SUMMARY</p>`
+                                                                                            <i class="count-icon fa fa-book fa-2x"></i>
+                                                                                            <h2 class="timer count-title count-number" data-to="${sum}" data-speed="1500"></h2>
+                                                                                            <p class="count-text ">SUMMARY</p>`
             document.getElementById("scopus").innerHTML += `
-                                                                <i class="count-icon fa fa-book fa-2x"></i>
-                                                                <h2 class="timer count-title count-number" data-to="${sumsco}" data-speed="1500"></h2>
-                                                                <p class="count-text ">SCOPUS</p>`
+                                                                                            <i class="count-icon fa fa-book fa-2x"></i>
+                                                                                            <h2 class="timer count-title count-number" data-to="${sumsco}" data-speed="1500"></h2>
+                                                                                            <p class="count-text ">SCOPUS</p>`
             document.getElementById("wos").innerHTML += `
-                                                                <i class="count-icon fa fa-book fa-2x"></i>
-                                                                <h2 class="timer count-title count-number" data-to="${sumwos}" data-speed="1500"></h2>
-                                                                <p class="count-text ">WOS</p>`
+                                                                                            <i class="count-icon fa fa-book fa-2x"></i>
+                                                                                            <h2 class="timer count-title count-number" data-to="${sumwos}" data-speed="1500"></h2>
+                                                                                            <p class="count-text ">WOS</p>`
             document.getElementById("tci").innerHTML += `
-                                                                <i class="count-icon fa fa-book fa-2x"></i>
-                                                                <h2 class="timer count-title count-number" data-to="${sumtci}" data-speed="1500"></h2>
-                                                                <p class="count-text ">TCI</p>`
+                                                                                            <i class="count-icon fa fa-book fa-2x"></i>
+                                                                                            <h2 class="timer count-title count-number" data-to="${sumtci}" data-speed="1500"></h2>
+                                                                                            <p class="count-text ">TCI</p>`
             //document.getElementById("scopus").appendChild('data-to="100"');
             $.fn.countTo = function (options) {
                 options = options || {};
