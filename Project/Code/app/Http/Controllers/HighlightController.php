@@ -16,6 +16,12 @@ class HighlightController extends Controller
         return view('highlight.view', compact('highlights'));
     }
 
+    public function homePage()
+    {
+        $highlights = Highlight::with('tags')->get();
+        return view('home', compact('highlights'));
+    }
+
     // HighlightController.php
     public function view()
     {
@@ -31,11 +37,15 @@ class HighlightController extends Controller
             'title' => 'required|string|max:255',
             'detail' => 'required|string',
             'thumbnail' => 'required|image',
-            'tags' => 'required|string',
+            'tags' => 'nullable|string',
         ]);
 
         // Handle the file upload
-        $thumbnailPath = $request->file('thumbnail')->store('thumbnails', 'public');
+        $thumbnailPath = $request->file('thumbnail')->storeAs(
+            'thumbnails',
+            time() . '.' . $request->file('thumbnail')->extension(),
+            'public'
+        );
 
         // Create a new Highlight record
         $highlight = Highlight::create([
@@ -121,4 +131,6 @@ class HighlightController extends Controller
 
         return redirect()->route('highlights.index')->with('success', 'Highlight deleted successfully!');
     }
+
+
 }
