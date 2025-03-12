@@ -305,15 +305,18 @@
                             </a>
                         </li>
                     @endcan
-                    @can('expertises-list')
+
+                    <!-- @role('staff')
+                    
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('image_management.index')}}">
                             <i class="menu-icon mdi mdi-satellite"></i>
                             <span class="menu-title">{{ __('message.manage_image') }}</span>
 
-                            </a>
-                        </li>
-                    @endcan
+                        </a>
+                    </li>
+                
+                    @endrole -->
                 </ul>
             </nav>
 

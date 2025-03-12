@@ -25,8 +25,7 @@ class HomeController extends Controller
         //$papers =Paper::orderBy('paper_yearpub', 'desc')->where('paper_yearpub', '=', 1)->get();
         $years = range(Carbon::now()->year, Carbon::now()->year - 5);
 
-        //Create variable banner
-        $banners = Banner::all();
+        $banners = Highlight::where('is_favorite', 1)->get();
 
         //Create variable highlight and tag
         $highlights = Highlight::all();
@@ -229,9 +228,11 @@ class HomeController extends Controller
     }
     public function bibtex($id)
     {
-        $paper = Paper::with(['author' => function ($query) {
-            $query->select('author_name');
-        }])->find([$id])->first()->toArray();
+        $paper = Paper::with([
+            'author' => function ($query) {
+                $query->select('author_name');
+            }
+        ])->find([$id])->first()->toArray();
 
         $Path['lib'] = './../lib/';
         require_once $Path['lib'] . 'lib_bibtex.inc.php';
@@ -293,11 +294,21 @@ class HomeController extends Controller
         return redirect()->route('home.searchByTag', ['tag' => $tag]);
     }
 
-        // ฟังก์ชันนี้ show more Highlights 
-        public function showAllHighlights() {
-            $highlights = Highlight::orderBy('created_at', 'desc')->paginate(12); 
-            return view('allHighlights', compact('highlights'));
-        }
-        
-    
+    // ฟังก์ชันนี้ show more Highlights 
+    public function showAllHighlights()
+    {
+        $highlights = Highlight::orderBy('created_at', 'desc')->paginate(12);
+
+        return view('allHighlights', compact('highlights'));
+    }
+    public function showFavoriteBanners()
+    {
+        // ดึงข้อมูลที่ต้องการแสดง
+        $banners = Highlight::where('is_favorite', 1)->get();
+
+        // รีไดเร็กต์ไปที่หน้า '/'
+        return redirect()->route('home')->with('banners', $banners);
+    }
+
+
 }

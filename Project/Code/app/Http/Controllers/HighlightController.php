@@ -7,6 +7,8 @@ use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use App\Models\Image;
+
 
 class HighlightController extends Controller
 {
@@ -67,7 +69,7 @@ class HighlightController extends Controller
             }
         }
 
-        return redirect()->route('highlight.index')->with('success', 'Highlight uploaded successfully!');
+        return redirect()->route('highlight.view')->with('success', 'Highlight uploaded successfully!');
     }
 
     public function show($id)
@@ -93,34 +95,52 @@ class HighlightController extends Controller
     {
         $highlight = Highlight::findOrFail($id);
 
-        if ($highlight->user_id !== Auth::id()) {
-            return redirect()->route('highlights.index')->with('error', 'Unauthorized action.');
-        }
-
         $validatedData = $request->validate([
             'title' => 'required|string|max:255',
             'detail' => 'required|string',
-            'thumbnail' => 'nullable|image',
+            'images.*' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'tags' => 'required|string',
         ]);
 
-        if ($request->hasFile('thumbnail')) {
-            $thumbnailPath = $request->file('thumbnail')->store('thumbnails', 'public');
-            $highlight->thumbnail = $thumbnailPath;
-        }
-
+        // อัปเดต title และ detail
         $highlight->title = $request->title;
         $highlight->detail = $request->detail;
         $highlight->save();
 
+        // ลบรูปที่ถูกติ๊กให้ลบ
+        if ($request->has('remove_images')) {
+            foreach ($request->remove_images as $imageId) {
+                $image = Image::find($imageId);
+                if ($image) {
+                    Storage::disk('public')->delete($image->image_path);
+                    $image->delete();
+                }
+            }
+        }
+
+        // อัปโหลดรูปใหม่
+        if ($request->hasFile('images')) {
+            foreach ($request->file('images') as $file) {
+                $path = $file->store('images', 'public');
+                $highlight->images()->create(['image_path' => $path]);
+            }
+        }
+
+        // จัดการ tags: รับค่า tags เป็น comma separated string
         $tags = explode(',', $request->tags);
+        // ปรับ trim และกรองค่าว่างออก
+        $tags = array_filter(array_map('trim', $tags));
+
+        // ลบ tag เก่าทั้งหมดออก
         $highlight->tags()->detach();
+
+        // เพิ่ม tag ใหม่
         foreach ($tags as $tagName) {
-            $tag = Tag::firstOrCreate(['name' => trim($tagName)]);
+            $tag = Tag::firstOrCreate(['name' => $tagName]);
             $highlight->tags()->attach($tag);
         }
 
-        return redirect()->route('highlights.index')->with('success', 'Highlight updated successfully!');
+        return redirect()->route('highlight.view')->with('success', 'Highlight updated successfully!');
     }
 
     public function destroy($id)
@@ -138,6 +158,17 @@ class HighlightController extends Controller
         $highlight->tags()->detach();
         $highlight->delete();
 
-        return redirect()->route('highlights.index')->with('success', 'Highlight deleted successfully!');
+        // เปลี่ยน redirect ไปที่หน้า view
+        return redirect()->route('highlight.view')->with('success', 'Highlight deleted successfully!');
     }
+
+    public function toggleFavorite($id)
+    {
+        $highlight = Highlight::findOrFail($id);
+        $highlight->is_favorite = !$highlight->is_favorite; // สลับสถานะ
+        $highlight->save();
+
+        return response()->json(['favorited' => $highlight->is_favorite]);
+    }
+
 }

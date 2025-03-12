@@ -21,9 +21,9 @@
 
 <div class="container">
     @if ($message = Session::get('success'))
-        <div class="alert alert-success">
-            <p>{{ $message }}</p>
-        </div>
+    <div class="alert alert-success">
+        <p>{{ $message }}</p>
+    </div>
     @endif
 
     <div class="card" style="padding: 16px;">
@@ -39,6 +39,7 @@
                         <th>Additional Images</th>
                         <th>Tags</th>
                         <th>Action</th>
+                        <th>Favorite</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -53,7 +54,6 @@
                                     <img src="{{ asset('storage/' . $highlight->thumbnail) }}" width="100">
                                 @endif
                             </td>
-
                             <td>
                                 @if($highlight->images->count() > 0)
                                     @foreach($highlight->images->take(2) as $image)
@@ -64,14 +64,11 @@
                                     <span>N/A</span>
                                 @endif
                             </td>
-
-
                             <td>
                                 @foreach($highlight->tags->take(3) as $tag)
                                     <span class="badge badge-info">{{ $tag->name }}</span>
                                 @endforeach
                             </td>
-
                             <td>
                                 <form action="{{ route('highlights.destroy', $highlight->id) }}" method="POST">
                                     <a class="btn btn-outline-primary btn-sm"
@@ -89,6 +86,12 @@
                                     </button>
                                 </form>
                             </td>
+                            <td>
+                                <button class="btn btn-outline-warning btn-sm favorite-btn" data-id="{{ $highlight->id }}">
+                                    <i class="mdi {{ $highlight->is_favorite ? 'mdi-star' : 'mdi-star-outline' }}"></i>
+                                </button>
+
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>
@@ -100,25 +103,51 @@
 
 <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 <script>
-    $('.show_confirm').click(function (event) {
+    $('.show_confirm').click(function(event) {
         var form = $(this).closest("form");
         event.preventDefault();
         swal({
-            title: `Are you sure?`,
-            text: "If you delete this, it will be gone forever.",
-            icon: "warning",
-            buttons: true,
-            dangerMode: true,
-        })
+                title: `Are you sure?`,
+                text: "If you delete this, it will be gone forever.",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
             .then((willDelete) => {
                 if (willDelete) {
                     swal("Deleted Successfully", {
                         icon: "success",
-                    }).then(function () {
+                    }).then(function() {
                         form.submit();
                     });
                 }
             });
     });
 </script>
+
+<script>
+    $(document).ready(function () {
+        $('.favorite-btn').click(function () {
+            var btn = $(this);
+            var highlightId = btn.data('id');
+
+            // ส่ง AJAX เพื่อบันทึกสถานะ Favorite
+            $.ajax({
+                url: '/highlights/favorite/' + highlightId,
+                type: 'POST',
+                data: {
+                    _token: '{{ csrf_token() }}'
+                },
+                success: function (response) {
+                    if (response.favorited) {
+                        btn.find('i').removeClass('mdi-star-outline').addClass('mdi-star');
+                    } else {
+                        btn.find('i').removeClass('mdi-star').addClass('mdi-star-outline');
+                    }
+                }
+            });
+        });
+    });
+</script>
+
 @stop
