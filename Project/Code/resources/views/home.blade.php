@@ -221,16 +221,16 @@
                 <div class="carousel-indicators">
                     @foreach ($banners as $index => $banner)
                         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ $index }}"
-                            class="{{ $index == 0 ? 'active' : '' }}" aria-current="{{ $index == 0 ? 'true' : 'false' }}"
+                            class="{{ $loop->first ? 'active' : '' }}" aria-current="{{ $loop->first ? 'true' : 'false' }}"
                             aria-label="Slide {{ $index + 1 }}"></button>
                     @endforeach
                 </div>
                 <div class="carousel-inner">
-                    @foreach ($banners as $index => $banner)
-                                    <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
+                    @foreach ($banners as $banner)
+                                    <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
                                         @php
                                             // ตรวจสอบภาษาปัจจุบัน
-                                            $lang = session('applocale', 'th'); // ใช้ session('applocale', 'th') แทน
+                                            $lang = session('applocale', 'th');
 
                                             // เลือกแสดงภาพตามภาษา
                                             if ($lang === 'th') {
@@ -243,11 +243,14 @@
                                                 $imagePath = $banner->image_path_zh;
                                                 $altText = 'Banner Image ZH';
                                             } else {
-                                                $imagePath = $banner->image_path_th; // ค่าเริ่มต้นเป็นภาษาไทย
-                                                $altText = 'Banner Image TH'; // ค่าเริ่มต้นเป็นภาษาไทย
+                                                $imagePath = $banner->image_path_th;
+                                                $altText = 'Banner Image TH';
                                             }
+                                            $bannerLink = $banner->link ?? route('highlight.show', ['id' => $banner->id]);
                                         @endphp
-                                        <img src="{{ asset('storage/' . $imagePath) }}" class="d-block w-100" alt="{{ $altText }}">
+                                        <a href="{{ $bannerLink }}" target="_blank">
+                                            <img src="{{ Storage::url($banner->thumbnail) }}" class="d-block w-100" alt="{{ $altText }}">
+                                        </a>
                                     </div>
                     @endforeach
                 </div>
@@ -266,7 +269,7 @@
     </div>
 
     <!-- Highlight -->
-    <div class="col-12"
+    <div class="col-12 mt-3"
         style="background-image: url('https://api.computing.kku.ac.th//storage/images/1661921029-3.png'); background-position: center center; background-size: cover; padding: 15px; margin: 0px;">
         <div class="container">
             <div class="row mx-0">
@@ -330,7 +333,8 @@
                                                 @endif
                                                 <a href="{{ route('highlight.show', ['id' => $highlight->id]) }}"
                                                     class="highlight-title-link">
-                                                    <h3 class="highlight-title">{{ $highlight->title ?? 'ชื่อเรื่องเริ่มต้น' }}</h3>
+                                                    <h3 class="highlight-title">{{ $highlight->title ?? 'ชื่อเรื่องเริ่มต้น' }}
+                                                    </h3>
                                                 </a>
                                             </div>
                                         </a>
@@ -383,7 +387,8 @@
                                                 @endif
                                                 <a href="{{ route('highlight.show', ['id' => $highlight->id]) }}"
                                                     class="highlight-title-link">
-                                                    <h3 class="highlight-title">{{ $highlight->title ?? 'ชื่อเรื่องเริ่มต้น' }}</h3>
+                                                    <h3 class="highlight-title">{{ $highlight->title ?? 'ชื่อเรื่องเริ่มต้น' }}
+                                                    </h3>
                                                 </a>
                                             </div>
                                         </a>
@@ -397,6 +402,7 @@
             <div class="read-more-container">
                 <a href="/more-highlights" class="read-more-btn">อ่านเพิ่มเติม</a>
             </div>
+
         </div>
 
         <div class="container card-cart d-sm-flex justify-content-center mt-0">

@@ -161,4 +161,14 @@ class HighlightController extends Controller
         // เปลี่ยน redirect ไปที่หน้า view
         return redirect()->route('highlight.view')->with('success', 'Highlight deleted successfully!');
     }
+
+    public function toggleFavorite($id)
+    {
+        $highlight = Highlight::findOrFail($id);
+        $highlight->is_favorite = !$highlight->is_favorite; // สลับสถานะ
+        $highlight->save();
+
+        return response()->json(['favorited' => $highlight->is_favorite]);
+    }
+
 }
