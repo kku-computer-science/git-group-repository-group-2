@@ -1,0 +1,674 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.1.1 (Python 3.13.1 on win32)" generated="2025-02-13T00:27:59.427112" rpa="false" schemaversion="5">
+<suite id="s1" name="UAT001 SwitchLang" source="C:\Users\Lenovo\Documents\GitHub\git-group-repository-group-2\Project\Test\UAT001_SwitchLang.robot">
+<test id="s1-t1" name="Open Home" line="22">
+<kw name="Open Browser To Home Page" owner="resource">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-02-13T00:27:59.693310" level="INFO">${chrome_options} = &lt;selenium.webdriver.chrome.options.Options object at 0x000001D459EDD400&gt;</msg>
+<var>${chrome_options}</var>
+<arg>sys.modules['selenium.webdriver'].ChromeOptions()</arg>
+<arg>sys</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-02-13T00:27:59.693091" elapsed="0.000247"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-02-13T00:27:59.693614" level="INFO">${chrome_options.binary_location} = C:\Users\Lenovo\Documents\GitHub\git-group-repository-group-2\Project\Test\ChromeForTesting\chrome.exe</msg>
+<var>${chrome_options.binary_location}</var>
+<arg>${CHROME_BROWSER_PATH}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-02-13T00:27:59.693471" elapsed="0.000174"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-02-13T00:27:59.694190" level="INFO">${service} = &lt;selenium.webdriver.chrome.service.Service object at 0x000001D459EDD160&gt;</msg>
+<var>${service}</var>
+<arg>sys.modules["selenium.webdriver.chrome.service"].Service(executable_path=r"${CHROME_DRIVER_PATH}")</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-02-13T00:27:59.693732" elapsed="0.000478"/>
+</kw>
+<kw name="Create Webdriver" owner="SeleniumLibrary">
+<msg time="2025-02-13T00:27:59.694427" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<arg>Chrome</arg>
+<arg>options=${chrome_options}</arg>
+<arg>service=${service}</arg>
+<doc>Creates an instance of Selenium WebDriver.</doc>
+<status status="PASS" start="2025-02-13T00:27:59.694291" elapsed="6.358753"/>
+</kw>
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2025-02-13T00:28:06.053377" level="INFO">Opening url 'http://localhost:8000/'</msg>
+<arg>${HOME URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2025-02-13T00:28:06.053219" elapsed="2.711285"/>
+</kw>
+<kw name="Home Page Should Be Open" owner="resource">
+<kw name="Location Should Be" owner="SeleniumLibrary">
+<msg time="2025-02-13T00:28:08.810867" level="INFO">Current location is 'http://localhost:8000/'.</msg>
+<arg>${Home URL}</arg>
+<doc>Verifies that the current URL is exactly ``url``.</doc>
+<status status="PASS" start="2025-02-13T00:28:08.765273" elapsed="0.045680"/>
+</kw>
+<status status="PASS" start="2025-02-13T00:28:08.764857" elapsed="0.046181"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2025-02-13T00:28:08.811217" elapsed="0.043482"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>css=.nav-item.dropdown</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-02-13T00:28:08.854841" elapsed="0.018662"/>
+</kw>
+<status status="PASS" start="2025-02-13T00:27:59.692668" elapsed="9.180951"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-02-13T00:28:13.874485" level="INFO">Slept 5 seconds.</msg>
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-02-13T00:28:08.874087" elapsed="5.000544"/>
+</kw>
+<kw name="Home Page Should Be Open" owner="resource">
+<kw name="Location Should Be" owner="SeleniumLibrary">
+<msg time="2025-02-13T00:28:13.882138" level="INFO">Current location is 'http://localhost:8000/'.</msg>
+<arg>${Home URL}</arg>
+<doc>Verifies that the current URL is exactly ``url``.</doc>
+<status status="PASS" start="2025-02-13T00:28:13.875451" elapsed="0.006774"/>
+</kw>
+<status status="PASS" start="2025-02-13T00:28:13.875170" elapsed="0.007153"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2025-02-13T00:28:13.882658" elapsed="2.260600"/>
+</kw>
+<tag>UAT001-OpenHome</tag>
+<status status="PASS" start="2025-02-13T00:27:59.692026" elapsed="16.451934"/>
+</test>
+<test id="s1-t2" name="Open Researcher_CS" line="29">
+<kw name="Open Browser To Researcher_CS Page" owner="resource">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-02-13T00:28:16.147379" level="INFO">${chrome_options} = &lt;selenium.webdriver.chrome.options.Options object at 0x000001D459F011D0&gt;</msg>
+<var>${chrome_options}</var>
+<arg>sys.modules['selenium.webdriver'].ChromeOptions()</arg>
+<arg>sys</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-02-13T00:28:16.146936" elapsed="0.000495"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-02-13T00:28:16.148133" level="INFO">${chrome_options.binary_location} = C:\Users\Lenovo\Documents\GitHub\git-group-repository-group-2\Project\Test\ChromeForTesting\chrome.exe</msg>
+<var>${chrome_options.binary_location}</var>
+<arg>${CHROME_BROWSER_PATH}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-02-13T00:28:16.147626" elapsed="0.000615"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-02-13T00:28:16.149394" level="INFO">${service} = &lt;selenium.webdriver.chrome.service.Service object at 0x000001D459F01590&gt;</msg>
+<var>${service}</var>
+<arg>sys.modules["selenium.webdriver.chrome.service"].Service(executable_path=r"${CHROME_DRIVER_PATH}")</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-02-13T00:28:16.148479" elapsed="0.000969"/>
+</kw>
+<kw name="Create Webdriver" owner="SeleniumLibrary">
+<msg time="2025-02-13T00:28:16.150017" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<arg>Chrome</arg>
+<arg>options=${chrome_options}</arg>
+<arg>service=${service}</arg>
+<doc>Creates an instance of Selenium WebDriver.</doc>
+<status status="PASS" start="2025-02-13T00:28:16.149674" elapsed="1.152995"/>
+</kw>
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2025-02-13T00:28:17.303150" level="INFO">Opening url 'http://localhost:8000/researchers/1'</msg>
+<arg>${RESEARCHER_CS URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2025-02-13T00:28:17.302897" elapsed="2.812532"/>
+</kw>
+<kw name="Researcher_CS Page Should Be Open" owner="resource">
+<kw name="Location Should Be" owner="SeleniumLibrary">
+<msg time="2025-02-13T00:28:20.124673" level="INFO">Current location is 'http://localhost:8000/researchers/1'.</msg>
+<arg>${RESEARCHER_CS URL}</arg>
+<doc>Verifies that the current URL is exactly ``url``.</doc>
+<status status="PASS" start="2025-02-13T00:28:20.116613" elapsed="0.008149"/>
+</kw>
+<status status="PASS" start="2025-02-13T00:28:20.115996" elapsed="0.009039"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2025-02-13T00:28:20.125219" elapsed="0.044364"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>css=.nav-item.dropdown</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-02-13T00:28:20.169829" elapsed="0.045436"/>
+</kw>
+<status status="PASS" start="2025-02-13T00:28:16.146514" elapsed="4.068863"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-02-13T00:28:25.216321" level="INFO">Slept 5 seconds.</msg>
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-02-13T00:28:20.215701" elapsed="5.000848"/>
+</kw>
+<kw name="Researcher_CS Page Should Be Open" owner="resource">
+<kw name="Location Should Be" owner="SeleniumLibrary">
+<msg time="2025-02-13T00:28:25.229580" level="INFO">Current location is 'http://localhost:8000/researchers/1'.</msg>
+<arg>${RESEARCHER_CS URL}</arg>
+<doc>Verifies that the current URL is exactly ``url``.</doc>
+<status status="PASS" start="2025-02-13T00:28:25.218808" elapsed="0.010980"/>
+</kw>
+<status status="PASS" start="2025-02-13T00:28:25.218009" elapsed="0.012076"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2025-02-13T00:28:25.230788" elapsed="2.470026"/>
+</kw>
+<tag>UAT002-OpenResearcherCS</tag>
+<status status="PASS" start="2025-02-13T00:28:16.145724" elapsed="11.555344"/>
+</test>
+<test id="s1-t3" name="Open Researcher_IT" line="36">
+<kw name="Open Browser To Researcher_IT Page" owner="resource">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-02-13T00:28:27.702632" level="INFO">${chrome_options} = &lt;selenium.webdriver.chrome.options.Options object at 0x000001D459F01950&gt;</msg>
+<var>${chrome_options}</var>
+<arg>sys.modules['selenium.webdriver'].ChromeOptions()</arg>
+<arg>sys</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-02-13T00:28:27.702148" elapsed="0.000516"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-02-13T00:28:27.702930" level="INFO">${chrome_options.binary_location} = C:\Users\Lenovo\Documents\GitHub\git-group-repository-group-2\Project\Test\ChromeForTesting\chrome.exe</msg>
+<var>${chrome_options.binary_location}</var>
+<arg>${CHROME_BROWSER_PATH}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-02-13T00:28:27.702783" elapsed="0.000165"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-02-13T00:28:27.703515" level="INFO">${service} = &lt;selenium.webdriver.chrome.service.Service object at 0x000001D459F02850&gt;</msg>
+<var>${service}</var>
+<arg>sys.modules["selenium.webdriver.chrome.service"].Service(executable_path=r"${CHROME_DRIVER_PATH}")</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-02-13T00:28:27.703017" elapsed="0.000522"/>
+</kw>
+<kw name="Create Webdriver" owner="SeleniumLibrary">
+<msg time="2025-02-13T00:28:27.703782" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<arg>Chrome</arg>
+<arg>options=${chrome_options}</arg>
+<arg>service=${service}</arg>
+<doc>Creates an instance of Selenium WebDriver.</doc>
+<status status="PASS" start="2025-02-13T00:28:27.703643" elapsed="1.061962"/>
+</kw>
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2025-02-13T00:28:28.766053" level="INFO">Opening url 'http://localhost:8000/researchers/2'</msg>
+<arg>${RESEARCHER_IT URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2025-02-13T00:28:28.765843" elapsed="2.553830"/>
+</kw>
+<kw name="Researcher_IT Page Should Be Open" owner="resource">
+<kw name="Location Should Be" owner="SeleniumLibrary">
+<msg time="2025-02-13T00:28:31.325054" level="INFO">Current location is 'http://localhost:8000/researchers/2'.</msg>
+<arg>${RESEARCHER_IT URL}</arg>
+<doc>Verifies that the current URL is exactly ``url``.</doc>
+<status status="PASS" start="2025-02-13T00:28:31.320108" elapsed="0.005019"/>
+</kw>
+<status status="PASS" start="2025-02-13T00:28:31.319871" elapsed="0.005327"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2025-02-13T00:28:31.325296" elapsed="0.046428"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>css=.nav-item.dropdown</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-02-13T00:28:31.372074" elapsed="0.050130"/>
+</kw>
+<status status="PASS" start="2025-02-13T00:28:27.701978" elapsed="3.720347"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-02-13T00:28:36.423351" level="INFO">Slept 5 seconds.</msg>
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-02-13T00:28:31.422811" elapsed="5.000640"/>
+</kw>
+<kw name="Researcher_IT Page Should Be Open" owner="resource">
+<kw name="Location Should Be" owner="SeleniumLibrary">
+<msg time="2025-02-13T00:28:36.427650" level="INFO">Current location is 'http://localhost:8000/researchers/2'.</msg>
+<arg>${RESEARCHER_IT URL}</arg>
+<doc>Verifies that the current URL is exactly ``url``.</doc>
+<status status="PASS" start="2025-02-13T00:28:36.424047" elapsed="0.003660"/>
+</kw>
+<status status="PASS" start="2025-02-13T00:28:36.423844" elapsed="0.003931"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2025-02-13T00:28:36.428027" elapsed="2.510904"/>
+</kw>
+<tag>UAT003-OpenResearcherIT</tag>
+<status status="PASS" start="2025-02-13T00:28:27.701557" elapsed="11.237864"/>
+</test>
+<test id="s1-t4" name="Open Researcher_GIS" line="43">
+<kw name="Open Browser To Researcher_GIS Page" owner="resource">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-02-13T00:28:38.942728" level="INFO">${chrome_options} = &lt;selenium.webdriver.chrome.options.Options object at 0x000001D459E92FD0&gt;</msg>
+<var>${chrome_options}</var>
+<arg>sys.modules['selenium.webdriver'].ChromeOptions()</arg>
+<arg>sys</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-02-13T00:28:38.942435" elapsed="0.000327"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-02-13T00:28:38.943065" level="INFO">${chrome_options.binary_location} = C:\Users\Lenovo\Documents\GitHub\git-group-repository-group-2\Project\Test\ChromeForTesting\chrome.exe</msg>
+<var>${chrome_options.binary_location}</var>
+<arg>${CHROME_BROWSER_PATH}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-02-13T00:28:38.942891" elapsed="0.000201"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-02-13T00:28:38.943929" level="INFO">${service} = &lt;selenium.webdriver.chrome.service.Service object at 0x000001D459E93100&gt;</msg>
+<var>${service}</var>
+<arg>sys.modules["selenium.webdriver.chrome.service"].Service(executable_path=r"${CHROME_DRIVER_PATH}")</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-02-13T00:28:38.943193" elapsed="0.000785"/>
+</kw>
+<kw name="Create Webdriver" owner="SeleniumLibrary">
+<msg time="2025-02-13T00:28:38.944503" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<arg>Chrome</arg>
+<arg>options=${chrome_options}</arg>
+<arg>service=${service}</arg>
+<doc>Creates an instance of Selenium WebDriver.</doc>
+<status status="PASS" start="2025-02-13T00:28:38.944270" elapsed="1.054866"/>
+</kw>
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2025-02-13T00:28:39.999419" level="INFO">Opening url 'http://localhost:8000/researchers/3'</msg>
+<arg>${RESEARCHER_GIS URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2025-02-13T00:28:39.999289" elapsed="2.452441"/>
+</kw>
+<kw name="Researcher_GIS Page Should Be Open" owner="resource">
+<kw name="Location Should Be" owner="SeleniumLibrary">
+<msg time="2025-02-13T00:28:42.457180" level="INFO">Current location is 'http://localhost:8000/researchers/3'.</msg>
+<arg>${RESEARCHER_GIS URL}</arg>
+<doc>Verifies that the current URL is exactly ``url``.</doc>
+<status status="PASS" start="2025-02-13T00:28:42.452656" elapsed="0.004597"/>
+</kw>
+<status status="PASS" start="2025-02-13T00:28:42.452267" elapsed="0.005056"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2025-02-13T00:28:42.457423" elapsed="0.038531"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>css=.nav-item.dropdown</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-02-13T00:28:42.496441" elapsed="0.020838"/>
+</kw>
+<status status="PASS" start="2025-02-13T00:28:38.942117" elapsed="3.575417"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-02-13T00:28:47.519041" level="INFO">Slept 5 seconds.</msg>
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-02-13T00:28:42.517888" elapsed="5.001351"/>
+</kw>
+<kw name="Researcher_GIS Page Should Be Open" owner="resource">
+<kw name="Location Should Be" owner="SeleniumLibrary">
+<msg time="2025-02-13T00:28:47.530554" level="INFO">Current location is 'http://localhost:8000/researchers/3'.</msg>
+<arg>${RESEARCHER_GIS URL}</arg>
+<doc>Verifies that the current URL is exactly ``url``.</doc>
+<status status="PASS" start="2025-02-13T00:28:47.520789" elapsed="0.009895"/>
+</kw>
+<status status="PASS" start="2025-02-13T00:28:47.520215" elapsed="0.010605"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2025-02-13T00:28:47.531450" elapsed="2.543597"/>
+</kw>
+<tag>UAT004-OpenResearcherGIS</tag>
+<status status="PASS" start="2025-02-13T00:28:38.941441" elapsed="11.134043"/>
+</test>
+<test id="s1-t5" name="Open Research_Project" line="50">
+<kw name="Open Browser To Research_Project Page" owner="resource">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-02-13T00:28:50.078427" level="INFO">${chrome_options} = &lt;selenium.webdriver.chrome.options.Options object at 0x000001D459E92EA0&gt;</msg>
+<var>${chrome_options}</var>
+<arg>sys.modules['selenium.webdriver'].ChromeOptions()</arg>
+<arg>sys</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-02-13T00:28:50.078003" elapsed="0.000478"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-02-13T00:28:50.078985" level="INFO">${chrome_options.binary_location} = C:\Users\Lenovo\Documents\GitHub\git-group-repository-group-2\Project\Test\ChromeForTesting\chrome.exe</msg>
+<var>${chrome_options.binary_location}</var>
+<arg>${CHROME_BROWSER_PATH}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-02-13T00:28:50.078699" elapsed="0.000328"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-02-13T00:28:50.079960" level="INFO">${service} = &lt;selenium.webdriver.chrome.service.Service object at 0x000001D459E93360&gt;</msg>
+<var>${service}</var>
+<arg>sys.modules["selenium.webdriver.chrome.service"].Service(executable_path=r"${CHROME_DRIVER_PATH}")</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-02-13T00:28:50.079197" elapsed="0.000811"/>
+</kw>
+<kw name="Create Webdriver" owner="SeleniumLibrary">
+<msg time="2025-02-13T00:28:50.080488" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<arg>Chrome</arg>
+<arg>options=${chrome_options}</arg>
+<arg>service=${service}</arg>
+<doc>Creates an instance of Selenium WebDriver.</doc>
+<status status="PASS" start="2025-02-13T00:28:50.080190" elapsed="1.052048"/>
+</kw>
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2025-02-13T00:28:51.132520" level="INFO">Opening url 'http://localhost:8000/researchproject'</msg>
+<arg>${RESEARCH_PROJECT URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2025-02-13T00:28:51.132389" elapsed="1.655761"/>
+</kw>
+<kw name="Research_Project Page Should Be Open" owner="resource">
+<kw name="Location Should Be" owner="SeleniumLibrary">
+<msg time="2025-02-13T00:28:52.795630" level="INFO">Current location is 'http://localhost:8000/researchproject'.</msg>
+<arg>${RESEARCH_PROJECT URL}</arg>
+<doc>Verifies that the current URL is exactly ``url``.</doc>
+<status status="PASS" start="2025-02-13T00:28:52.789038" elapsed="0.006715"/>
+</kw>
+<status status="PASS" start="2025-02-13T00:28:52.788419" elapsed="0.007447"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2025-02-13T00:28:52.795998" elapsed="0.030551"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>css=.nav-item.dropdown</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-02-13T00:28:52.826846" elapsed="0.022188"/>
+</kw>
+<status status="PASS" start="2025-02-13T00:28:50.077591" elapsed="2.771641"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-02-13T00:28:57.851053" level="INFO">Slept 5 seconds.</msg>
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-02-13T00:28:52.850045" elapsed="5.001240"/>
+</kw>
+<kw name="Research_Project Page Should Be Open" owner="resource">
+<kw name="Location Should Be" owner="SeleniumLibrary">
+<msg time="2025-02-13T00:28:57.865814" level="INFO">Current location is 'http://localhost:8000/researchproject'.</msg>
+<arg>${RESEARCH_PROJECT URL}</arg>
+<doc>Verifies that the current URL is exactly ``url``.</doc>
+<status status="PASS" start="2025-02-13T00:28:57.853028" elapsed="0.012992"/>
+</kw>
+<status status="PASS" start="2025-02-13T00:28:57.852174" elapsed="0.014075"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2025-02-13T00:28:57.867059" elapsed="2.477021"/>
+</kw>
+<tag>UAT005-OpenResearchProject</tag>
+<status status="PASS" start="2025-02-13T00:28:50.076805" elapsed="10.267721"/>
+</test>
+<test id="s1-t6" name="Open Research_Group" line="57">
+<kw name="Open Browser To Research_Group Page" owner="resource">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-02-13T00:29:00.346994" level="INFO">${chrome_options} = &lt;selenium.webdriver.chrome.options.Options object at 0x000001D45A2F03B0&gt;</msg>
+<var>${chrome_options}</var>
+<arg>sys.modules['selenium.webdriver'].ChromeOptions()</arg>
+<arg>sys</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-02-13T00:29:00.346705" elapsed="0.000323"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-02-13T00:29:00.347874" level="INFO">${chrome_options.binary_location} = C:\Users\Lenovo\Documents\GitHub\git-group-repository-group-2\Project\Test\ChromeForTesting\chrome.exe</msg>
+<var>${chrome_options.binary_location}</var>
+<arg>${CHROME_BROWSER_PATH}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-02-13T00:29:00.347157" elapsed="0.000752"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-02-13T00:29:00.348669" level="INFO">${service} = &lt;selenium.webdriver.chrome.service.Service object at 0x000001D459D9BE30&gt;</msg>
+<var>${service}</var>
+<arg>sys.modules["selenium.webdriver.chrome.service"].Service(executable_path=r"${CHROME_DRIVER_PATH}")</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-02-13T00:29:00.348038" elapsed="0.000673"/>
+</kw>
+<kw name="Create Webdriver" owner="SeleniumLibrary">
+<msg time="2025-02-13T00:29:00.349113" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<arg>Chrome</arg>
+<arg>options=${chrome_options}</arg>
+<arg>service=${service}</arg>
+<doc>Creates an instance of Selenium WebDriver.</doc>
+<status status="PASS" start="2025-02-13T00:29:00.348868" elapsed="1.068875"/>
+</kw>
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2025-02-13T00:29:01.418068" level="INFO">Opening url 'http://localhost:8000/researchgroup'</msg>
+<arg>${RESEARCH_GROUP URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2025-02-13T00:29:01.417903" elapsed="2.087808"/>
+</kw>
+<kw name="Research_Group Page Should Be Open" owner="resource">
+<kw name="Location Should Be" owner="SeleniumLibrary">
+<msg time="2025-02-13T00:29:03.512177" level="INFO">Current location is 'http://localhost:8000/researchgroup'.</msg>
+<arg>${RESEARCH_GROUP URL}</arg>
+<doc>Verifies that the current URL is exactly ``url``.</doc>
+<status status="PASS" start="2025-02-13T00:29:03.507448" elapsed="0.004798"/>
+</kw>
+<status status="PASS" start="2025-02-13T00:29:03.506656" elapsed="0.005667"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2025-02-13T00:29:03.512545" elapsed="0.038871"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>css=.nav-item.dropdown</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-02-13T00:29:03.551733" elapsed="0.020773"/>
+</kw>
+<status status="PASS" start="2025-02-13T00:29:00.346281" elapsed="3.226465"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-02-13T00:29:08.574226" level="INFO">Slept 5 seconds.</msg>
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-02-13T00:29:03.573583" elapsed="5.000881"/>
+</kw>
+<kw name="Research_Group Page Should Be Open" owner="resource">
+<kw name="Location Should Be" owner="SeleniumLibrary">
+<msg time="2025-02-13T00:29:08.585311" level="INFO">Current location is 'http://localhost:8000/researchgroup'.</msg>
+<arg>${RESEARCH_GROUP URL}</arg>
+<doc>Verifies that the current URL is exactly ``url``.</doc>
+<status status="PASS" start="2025-02-13T00:29:08.576148" elapsed="0.009256"/>
+</kw>
+<status status="PASS" start="2025-02-13T00:29:08.575570" elapsed="0.009933"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2025-02-13T00:29:08.585991" elapsed="2.378298"/>
+</kw>
+<tag>UAT006-OpenResearchGroup</tag>
+<status status="PASS" start="2025-02-13T00:29:00.345653" elapsed="10.618980"/>
+</test>
+<test id="s1-t7" name="Open Research_Group_Detail" line="64">
+<kw name="Open Browser To Research_Group_Detail Page" owner="resource">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-02-13T00:29:10.966738" level="INFO">${chrome_options} = &lt;selenium.webdriver.chrome.options.Options object at 0x000001D459EC5BF0&gt;</msg>
+<var>${chrome_options}</var>
+<arg>sys.modules['selenium.webdriver'].ChromeOptions()</arg>
+<arg>sys</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-02-13T00:29:10.966533" elapsed="0.000227"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-02-13T00:29:10.966941" level="INFO">${chrome_options.binary_location} = C:\Users\Lenovo\Documents\GitHub\git-group-repository-group-2\Project\Test\ChromeForTesting\chrome.exe</msg>
+<var>${chrome_options.binary_location}</var>
+<arg>${CHROME_BROWSER_PATH}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-02-13T00:29:10.966838" elapsed="0.000121"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-02-13T00:29:10.967440" level="INFO">${service} = &lt;selenium.webdriver.chrome.service.Service object at 0x000001D459EC5370&gt;</msg>
+<var>${service}</var>
+<arg>sys.modules["selenium.webdriver.chrome.service"].Service(executable_path=r"${CHROME_DRIVER_PATH}")</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-02-13T00:29:10.967027" elapsed="0.000432"/>
+</kw>
+<kw name="Create Webdriver" owner="SeleniumLibrary">
+<msg time="2025-02-13T00:29:10.967678" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<arg>Chrome</arg>
+<arg>options=${chrome_options}</arg>
+<arg>service=${service}</arg>
+<doc>Creates an instance of Selenium WebDriver.</doc>
+<status status="PASS" start="2025-02-13T00:29:10.967541" elapsed="1.120547"/>
+</kw>
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2025-02-13T00:29:12.088366" level="INFO">Opening url 'http://localhost:8000/researchgroupdetail/3'</msg>
+<arg>${RESEARCH_GROUP_DETAIL URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2025-02-13T00:29:12.088237" elapsed="1.819197"/>
+</kw>
+<kw name="Research_Group_Detail Page Should Be Open" owner="resource">
+<kw name="Location Should Be" owner="SeleniumLibrary">
+<msg time="2025-02-13T00:29:13.915001" level="INFO">Current location is 'http://localhost:8000/researchgroupdetail/3'.</msg>
+<arg>${RESEARCH_GROUP_DETAIL URL}</arg>
+<doc>Verifies that the current URL is exactly ``url``.</doc>
+<status status="PASS" start="2025-02-13T00:29:13.907993" elapsed="0.007121"/>
+</kw>
+<status status="PASS" start="2025-02-13T00:29:13.907760" elapsed="0.007468"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2025-02-13T00:29:13.915373" elapsed="0.054007"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>css=.nav-item.dropdown</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-02-13T00:29:13.969658" elapsed="0.023899"/>
+</kw>
+<status status="PASS" start="2025-02-13T00:29:10.966303" elapsed="3.027448"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-02-13T00:29:18.994657" level="INFO">Slept 5 seconds.</msg>
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-02-13T00:29:13.994128" elapsed="5.000683"/>
+</kw>
+<kw name="Research_Group_Detail Page Should Be Open" owner="resource">
+<kw name="Location Should Be" owner="SeleniumLibrary">
+<msg time="2025-02-13T00:29:19.004770" level="INFO">Current location is 'http://localhost:8000/researchgroupdetail/3'.</msg>
+<arg>${RESEARCH_GROUP_DETAIL URL}</arg>
+<doc>Verifies that the current URL is exactly ``url``.</doc>
+<status status="PASS" start="2025-02-13T00:29:18.996425" elapsed="0.008421"/>
+</kw>
+<status status="PASS" start="2025-02-13T00:29:18.995735" elapsed="0.009180"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2025-02-13T00:29:19.005203" elapsed="2.504507"/>
+</kw>
+<tag>UAT007-OpenResearchGroupDetail</tag>
+<status status="PASS" start="2025-02-13T00:29:10.965668" elapsed="10.544521"/>
+</test>
+<test id="s1-t8" name="Open Report" line="71">
+<kw name="Open Browser To Report Page" owner="resource">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-02-13T00:29:21.514006" level="INFO">${chrome_options} = &lt;selenium.webdriver.chrome.options.Options object at 0x000001D459EC4C00&gt;</msg>
+<var>${chrome_options}</var>
+<arg>sys.modules['selenium.webdriver'].ChromeOptions()</arg>
+<arg>sys</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-02-13T00:29:21.513523" elapsed="0.000541"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-02-13T00:29:21.514700" level="INFO">${chrome_options.binary_location} = C:\Users\Lenovo\Documents\GitHub\git-group-repository-group-2\Project\Test\ChromeForTesting\chrome.exe</msg>
+<var>${chrome_options.binary_location}</var>
+<arg>${CHROME_BROWSER_PATH}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-02-13T00:29:21.514275" elapsed="0.000475"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-02-13T00:29:21.515916" level="INFO">${service} = &lt;selenium.webdriver.chrome.service.Service object at 0x000001D459EC4D10&gt;</msg>
+<var>${service}</var>
+<arg>sys.modules["selenium.webdriver.chrome.service"].Service(executable_path=r"${CHROME_DRIVER_PATH}")</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-02-13T00:29:21.514981" elapsed="0.000991"/>
+</kw>
+<kw name="Create Webdriver" owner="SeleniumLibrary">
+<msg time="2025-02-13T00:29:21.516666" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<arg>Chrome</arg>
+<arg>options=${chrome_options}</arg>
+<arg>service=${service}</arg>
+<doc>Creates an instance of Selenium WebDriver.</doc>
+<status status="PASS" start="2025-02-13T00:29:21.516275" elapsed="1.054480"/>
+</kw>
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2025-02-13T00:29:22.571170" level="INFO">Opening url 'http://localhost:8000/reports'</msg>
+<arg>${REPORT URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2025-02-13T00:29:22.570975" elapsed="2.392968"/>
+</kw>
+<kw name="Report Page Should Be Open" owner="resource">
+<kw name="Location Should Be" owner="SeleniumLibrary">
+<msg time="2025-02-13T00:29:24.973370" level="INFO">Current location is 'http://localhost:8000/reports'.</msg>
+<arg>${REPORT URL}</arg>
+<doc>Verifies that the current URL is exactly ``url``.</doc>
+<status status="PASS" start="2025-02-13T00:29:24.964802" elapsed="0.008687"/>
+</kw>
+<status status="PASS" start="2025-02-13T00:29:24.964269" elapsed="0.009342"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2025-02-13T00:29:24.973791" elapsed="0.045281"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>css=.nav-item.dropdown</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-02-13T00:29:25.019376" elapsed="0.052615"/>
+</kw>
+<status status="PASS" start="2025-02-13T00:29:21.513064" elapsed="3.559080"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-02-13T00:29:30.074130" level="INFO">Slept 5 seconds.</msg>
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-02-13T00:29:25.072774" elapsed="5.001805"/>
+</kw>
+<kw name="Report Page Should Be Open" owner="resource">
+<kw name="Location Should Be" owner="SeleniumLibrary">
+<msg time="2025-02-13T00:29:30.087809" level="INFO">Current location is 'http://localhost:8000/reports'.</msg>
+<arg>${REPORT URL}</arg>
+<doc>Verifies that the current URL is exactly ``url``.</doc>
+<status status="PASS" start="2025-02-13T00:29:30.076113" elapsed="0.011812"/>
+</kw>
+<status status="PASS" start="2025-02-13T00:29:30.075466" elapsed="0.012587"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2025-02-13T00:29:30.088570" elapsed="2.503904"/>
+</kw>
+<tag>UAT008-OpenReport</tag>
+<status status="PASS" start="2025-02-13T00:29:21.512268" elapsed="11.081521"/>
+</test>
+<status status="PASS" start="2025-02-13T00:27:59.428198" elapsed="93.173297"/>
+</suite>
+<statistics>
+<total>
+<stat pass="8" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0" skip="0">UAT001-OpenHome</stat>
+<stat pass="1" fail="0" skip="0">UAT002-OpenResearcherCS</stat>
+<stat pass="1" fail="0" skip="0">UAT003-OpenResearcherIT</stat>
+<stat pass="1" fail="0" skip="0">UAT004-OpenResearcherGIS</stat>
+<stat pass="1" fail="0" skip="0">UAT005-OpenResearchProject</stat>
+<stat pass="1" fail="0" skip="0">UAT006-OpenResearchGroup</stat>
+<stat pass="1" fail="0" skip="0">UAT007-OpenResearchGroupDetail</stat>
+<stat pass="1" fail="0" skip="0">UAT008-OpenReport</stat>
+</tag>
+<suite>
+<stat pass="8" fail="0" skip="0" id="s1" name="UAT001 SwitchLang">UAT001 SwitchLang</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
