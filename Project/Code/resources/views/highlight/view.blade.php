@@ -32,8 +32,6 @@
                         <th>Detail</th>
                         <th>Thumbnail</th>
                         <th>Tags</th>
-                        <th>Date Time</th>
-                        <th>Created By</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -54,8 +52,6 @@
                             <span class="badge badge-info">{{ $tag->name }}</span>
                             @endforeach
                         </td>
-                        <td>{{ $highlight->created_at->format('Y-m-d H:i:s') }}</td>
-                        <td>{{ optional($highlight->user)->fname_th ?? 'Unknown' }} {{ optional($highlight->user)->lname_th ?? '' }}</td>
                         <td>
                             <form action="{{ route('highlights.destroy', $highlight->id) }}" method="POST">
                                 <a class="btn btn-outline-primary btn-sm" href="{{ route('highlights.show', $highlight->id) }}">

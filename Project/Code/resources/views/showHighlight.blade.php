@@ -18,8 +18,8 @@
         width: 100%;
         height: 600px;
         object-fit: cover;
-        border-radius: 0; 
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); 
+        border-radius: 0;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
     }
 
     /* Content Container */
@@ -192,12 +192,17 @@
         <ul class="tags-list">
             @foreach($highlight->tags as $tag)
             <li class="tag-item">
-                <i class="fas fa-tag tag-icon"></i> {{ $tag->name }}
+                <i class="fas fa-tag tag-icon"></i>
+                <!-- เปลี่ยนให้เป็นลิงก์ไปยัง route searchByTag -->
+                <a href="{{ route('searchByTag', ['tag' => $tag->name]) }}" class="tag-link">
+                    {{ $tag->name }}
+                </a>
             </li>
             @endforeach
         </ul>
     </div>
     @endif
+
 </div>
 
 <div class="highlight-detail-container">
@@ -209,7 +214,7 @@
         <p class="highlight-detail">{{ $highlight->detail }}</p>
     </div>
 
-    
+
     <div class="author-container d-flex justify-content-end">
         <h6><i class="fas fa-user-circle" aria-hidden="true"></i> {{ $highlight->user->fname_th }} {{ $highlight->user->lname_th }}</h6>
     </div>
@@ -217,7 +222,7 @@
         <p><i class="fas fa-clock"></i> <strong>อัปเดตล่าสุด:</strong> {{ $highlight->updated_at->format('d/m/Y H:i') }}</p>
     </div>
 
-    
+
     <div class="text-center">
         <a href="{{ route('home') }}" class="back-btn">กลับไปหน้าแรก</a>
     </div>
