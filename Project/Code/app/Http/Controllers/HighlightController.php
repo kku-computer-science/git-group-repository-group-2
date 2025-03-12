@@ -99,8 +99,10 @@ class HighlightController extends Controller
             'title' => 'required|string|max:255',
             'detail' => 'required|string',
             'images.*' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'tags' => 'required|string',
         ]);
 
+        // อัปเดต title และ detail
         $highlight->title = $request->title;
         $highlight->detail = $request->detail;
         $highlight->save();
@@ -124,7 +126,20 @@ class HighlightController extends Controller
             }
         }
 
-        // แก้ข้อความ redirect ให้ถูกต้อง
+        // จัดการ tags: รับค่า tags เป็น comma separated string
+        $tags = explode(',', $request->tags);
+        // ปรับ trim และกรองค่าว่างออก
+        $tags = array_filter(array_map('trim', $tags));
+
+        // ลบ tag เก่าทั้งหมดออก
+        $highlight->tags()->detach();
+
+        // เพิ่ม tag ใหม่
+        foreach ($tags as $tagName) {
+            $tag = Tag::firstOrCreate(['name' => $tagName]);
+            $highlight->tags()->attach($tag);
+        }
+
         return redirect()->route('highlight.view')->with('success', 'Highlight updated successfully!');
     }
 
