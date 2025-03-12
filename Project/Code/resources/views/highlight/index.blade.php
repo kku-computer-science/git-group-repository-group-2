@@ -34,7 +34,6 @@
     .view-highlight-btn:hover {
         background-color: #0056b3;
     }
-
 </style>
 
 @section('content')
@@ -58,11 +57,21 @@
                     <textarea class="form-control" id="detail" name="detail" rows="3" required oninput="autoResize(this)"></textarea>
                 </div>
 
+                <!-- ฟิลด์สำหรับอัปโหลด thumbnail หลัก -->
                 <div class="form-group">
-                    <label for="thumbnail">Upload Image:</label>
+                    <label for="thumbnail">Upload Main Thumbnail:</label>
                     <input type="file" class="form-control-file" id="thumbnail" name="thumbnail" accept="image/*" required>
-                    <img id="preview" class="mt-2" width="150" style="display: none;">
+                    <!-- แสดง preview (ถ้าต้องการ) สามารถเพิ่ม JS เพื่อแสดงตัวอย่างได้ -->
+                    <img id="thumbnail-preview" width="150" class="mt-2" style="display:none;">
                 </div>
+
+                <!-- ฟิลด์สำหรับอัปโหลดภาพเพิ่มเติม -->
+                <div class="form-group">
+                    <label for="additional_thumbnails">Upload Additional Images:</label>
+                    <input type="file" class="form-control-file" id="additional_thumbnails" name="additional_thumbnails[]" accept="image/*" multiple>
+                    <div id="additional-preview-container" class="mt-2"></div>
+                </div>
+
 
                 <div class="form-group">
                     <label for="tags">Tags:</label>
@@ -165,5 +174,39 @@
         textarea.style.height = 'auto'; // Reset the height
         textarea.style.height = (textarea.scrollHeight) + 'px'; // Set the height to scrollHeight
     }
+
+    document.querySelector("form").addEventListener("submit", function() {
+        updateTagsInput(); // อัปเดตค่าของ #tags-input ก่อนส่งฟอร์ม
+    });
+
+    // Add event listener for blur to update tags when user leaves the input field
+    document.getElementById('tags').addEventListener('blur', function() {
+        if (this.value.trim()) {
+            const event = new KeyboardEvent('keypress', {
+                key: 'Enter'
+            });
+            this.dispatchEvent(event);
+        }
+    });
+    // Preview สำหรับ field additional_thumbnails
+    document.getElementById("additional_thumbnails").addEventListener("change", function(event) {
+        const previewContainer = document.getElementById("additional-preview-container");
+        previewContainer.innerHTML = ''; // เคลียร์ตัวอย่างเก่า
+        const files = event.target.files;
+        for (let i = 0; i < files.length; i++) {
+            const file = files[i];
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const img = document.createElement("img");
+                img.src = e.target.result;
+                img.width = 150;
+                img.style.marginRight = "10px";
+                img.style.marginBottom = "10px";
+                previewContainer.appendChild(img);
+            };
+            reader.readAsDataURL(file);
+        }
+    });
 </script>
+
 @endsection

@@ -1,3 +1,4 @@
+
 @extends('dashboards.users.layouts.user-dash-layout')
 
 <link rel="stylesheet" href="https://cdn.datatables.net/fixedheader/3.2.3/css/fixedHeader.bootstrap4.min.css">

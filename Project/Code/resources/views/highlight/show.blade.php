@@ -4,47 +4,44 @@
 <div class="container">
     <div class="card col-md-10" style="padding: 16px;">
         <div class="card-body">
-            <h4 class="card-title">{{ __('message.highlight_detail')}}</h4>
-            <p class="card-description">{{ __('message.info_highlight_detail')}}</p>
+            <h4 class="card-title">Highlight Detail</h4>
 
             <!-- แสดง Title -->
             <div class="row mt-2">
-                <p class="card-text col-sm-3"><b>{{ __('message.title')}}</b></p>
+                <p class="card-text col-sm-3"><b>Title : </b></p>
                 <p class="card-text col-sm-9">{{ $highlight->title }}</p>
-            </div>
-
-            <!-- แสดง Description -->
-            <div class="row mt-2">
-                <p class="card-text col-sm-3"><b>{{ __('message.description')}}</b></p>
-                <p class="card-text col-sm-9">{{ $highlight->description }}</p>
             </div>
 
             <!-- แสดง Detail -->
             <div class="row mt-2">
-                <p class="card-text col-sm-3"><b>{{ __('message.detail')}}</b></p>
+                <p class="card-text col-sm-3"><b>Detail : </b></p>
                 <p class="card-text col-sm-9">{{ $highlight->detail }}</p>
             </div>
 
-            <!-- แสดง Tags -->
-            <div class="row mt-2">
-                <p class="card-text col-sm-3"><b>{{ __('message.tags')}}</b></p>
-                <p class="card-text col-sm-9">
-                    @foreach($highlight->tags as $tag)
-                        <span class="badge badge-primary">{{ $tag->name }}</span>
-                    @endforeach
-                </p>
-            </div>
 
-            <!-- แสดง Image -->
+
+            <!-- แสดง Main Image -->
             <div class="row mt-2">
-                <p class="card-text col-sm-3"><b>{{ __('message.image')}}</b></p>
+                <p class="card-text col-sm-3"><b>{{ __('message.image') }}</b></p>
                 <p class="card-text col-sm-9">
                     <img src="{{ asset('storage/thumbnails/' . $highlight->thumbnail) }}" class="img-fluid" width="200px">
                 </p>
             </div>
 
+            <!-- แสดง Additional Images ถ้ามี -->
+            @if($highlight->images && $highlight->images->count() > 0)
+            <div class="row mt-2">
+                <p class="card-text col-sm-3"><b>Additional Images :</b></p>
+                <div class="card-text col-sm-9">
+                    @foreach($highlight->images as $image)
+                    <img src="{{ asset('storage/' . $image->image_path) }}" class="img-fluid" width="200px" style="margin:5px;">
+                    @endforeach
+                </div>
+            </div>
+            @endif
+
             <!-- ปุ่มกลับ -->
-            <a class="btn btn-primary mt-5" href="{{ route('highlights.index') }}">{{ __('message.back')}}</a>
+            <a class="btn btn-primary mt-5" href="{{ route('highlights.index') }}">{{ __('message.back') }}</a>
         </div>
     </div>
 </div>

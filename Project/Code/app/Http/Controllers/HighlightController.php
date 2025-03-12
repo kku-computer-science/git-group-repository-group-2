@@ -1,76 +1,89 @@
 <?php
-// app/Http/Controllers/HighlightController.php
 
 namespace App\Http\Controllers;
 
 use App\Models\Highlight;
 use App\Models\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use App\Models\Image;
+
 
 class HighlightController extends Controller
 {
     public function index()
     {
-        $highlights = Highlight::with('tags')->get();
-        return view('highlight.view', compact('highlights'));
+        $highlights = Highlight::with(['tags', 'user', 'images'])->get();
+        return view('highlight.index', compact('highlights'));
     }
 
     public function homePage()
     {
-        $highlights = Highlight::with('tags')->get();
+        $highlights = Highlight::with(['tags', 'user'])->get();
         return view('home', compact('highlights'));
     }
 
-    // HighlightController.php
     public function view()
     {
-        $highlights = Highlight::with('tags')->get(); // ดึง Highlight พร้อม Tags
+        $highlights = Highlight::with(['tags', 'user', 'images'])->get();
         return view('highlight.view', compact('highlights'));
     }
 
-
     public function store(Request $request)
     {
-        // Validate input
         $validatedData = $request->validate([
             'title' => 'required|string|max:255',
             'detail' => 'required|string',
             'thumbnail' => 'required|image',
+            'additional_thumbnails.*' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'tags' => 'nullable|string',
         ]);
 
-        // Handle the file upload
-        $thumbnailPath = $request->file('thumbnail')->storeAs(
-            'thumbnails',
-            time() . '.' . $request->file('thumbnail')->extension(),
-            'public'
-        );
+        // อัปโหลด main thumbnail
+        $thumbnailPath = $request->file('thumbnail')->store('thumbnails', 'public');
 
-        // Create a new Highlight record
+        // สร้าง Highlight ใหม่
         $highlight = Highlight::create([
             'title' => $request->title,
             'detail' => $request->detail,
             'thumbnail' => $thumbnailPath,
+            'user_id' => Auth::id(),
         ]);
 
-        // Process the tags
-        $tags = explode(',', $request->tags); // Split tags by comma
-        foreach ($tags as $tagName) {
-            // Trim whitespace and check if tag exists, otherwise create it
-            $tag = Tag::firstOrCreate(['name' => trim($tagName)]);
-            $highlight->tags()->attach($tag);
+        // จัดการ tags (ถ้ามี)
+        if (!empty($request->tags)) {
+            $tags = explode(',', $request->tags);
+            foreach ($tags as $tagName) {
+                $tag = Tag::firstOrCreate(['name' => trim($tagName)]);
+                $highlight->tags()->attach($tag);
+            }
         }
 
-        // Redirect or return a response
-        return redirect()->route('highlight.index')->with('success', 'Highlight uploaded successfully!');
+        // อัปโหลดและบันทึกภาพเพิ่มเติมในตาราง images
+        if ($request->hasFile('additional_thumbnails')) {
+            foreach ($request->file('additional_thumbnails') as $file) {
+                $path = $file->store('thumbnails/additional', 'public');
+                // บันทึกข้อมูลลงในตาราง images โดยใช้ความสัมพันธ์ใน model Highlight
+                $highlight->images()->create(['image_path' => $path]);
+            }
+        }
+
+        return redirect()->route('highlight.view')->with('success', 'Highlight uploaded successfully!');
     }
 
     public function show($id)
     {
-        $highlight = Highlight::with('tags')->findOrFail($id);
+        $highlight = Highlight::with('tags', 'user', 'images')->findOrFail($id);
         return view('highlight.show', compact('highlight'));
     }
+
+    public function moreDetails($id)
+    {
+        $highlight = Highlight::with('tags')->findOrFail($id);
+        return view('highlight.more', compact('highlight')); // ส่งข้อมูลไปยังหน้า more.blade.php
+    }
+
 
     public function edit($id)
     {
@@ -82,54 +95,56 @@ class HighlightController extends Controller
     {
         $highlight = Highlight::findOrFail($id);
 
-        // Validate input
         $validatedData = $request->validate([
             'title' => 'required|string|max:255',
             'detail' => 'required|string',
-            'thumbnail' => 'nullable|image',
-            'tags' => 'required|string',
+            'images.*' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
-        // Handle the file upload (only if there's a new file)
-        if ($request->hasFile('thumbnail')) {
-            $thumbnailPath = $request->file('thumbnail')->store('thumbnails', 'public');
-            $highlight->thumbnail = $thumbnailPath;
-        }
-
-        // Update the highlight details
         $highlight->title = $request->title;
         $highlight->detail = $request->detail;
         $highlight->save();
 
-        // Process the tags
-        $tags = explode(',', $request->tags); // Split tags by comma
-        $highlight->tags()->detach(); // Remove existing tags
-        foreach ($tags as $tagName) {
-            $tag = Tag::firstOrCreate(['name' => trim($tagName)]);
-            $highlight->tags()->attach($tag);
+        // ลบรูปที่ถูกติ๊กให้ลบ
+        if ($request->has('remove_images')) {
+            foreach ($request->remove_images as $imageId) {
+                $image = Image::find($imageId);
+                if ($image) {
+                    Storage::disk('public')->delete($image->image_path);
+                    $image->delete();
+                }
+            }
         }
 
-        // Redirect after update
-        return redirect()->route('highlights.index')->with('success', 'Highlight updated successfully!');
+        // อัปโหลดรูปใหม่
+        if ($request->hasFile('images')) {
+            foreach ($request->file('images') as $file) {
+                $path = $file->store('images', 'public');
+                $highlight->images()->create(['image_path' => $path]);
+            }
+        }
+
+        // แก้ข้อความ redirect ให้ถูกต้อง
+        return redirect()->route('highlight.view')->with('success', 'Highlight updated successfully!');
     }
 
-    // 📌 ฟังก์ชันสำหรับลบ Highlight
     public function destroy($id)
     {
         $highlight = Highlight::findOrFail($id);
 
-        // ลบรูปที่เก็บไว้
+        if ($highlight->user_id !== Auth::id()) {
+            return redirect()->route('highlights.index')->with('error', 'Unauthorized action.');
+        }
+
         if ($highlight->thumbnail) {
             Storage::disk('public')->delete($highlight->thumbnail);
         }
 
-        // ลบความสัมพันธ์กับ Tags
         $highlight->tags()->detach();
-
-        // ลบ Highlight
         $highlight->delete();
 
-        return redirect()->route('highlights.index')->with('success', 'Highlight deleted successfully!');
+        // เปลี่ยน redirect ไปที่หน้า view
+        return redirect()->route('highlight.view')->with('success', 'Highlight deleted successfully!');
     }
 
 

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Paper;
 use App\Models\Banner;
+use App\Models\Highlight;
+use App\Models\Tag;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Bibtex;
@@ -25,6 +27,10 @@ class HomeController extends Controller
 
         //Create variable banner
         $banners = Banner::all();
+
+        //Create variable highlight and tag
+        $highlights = Highlight::all();
+        $tag = Tag::all();
 
         $from = Carbon::now()->year - 16;
         $to = Carbon::now()->year - 6;
@@ -175,7 +181,7 @@ class HomeController extends Controller
         $paper_scopus_numall = $num['paper_scopus'];
         $paper_wos_numall = $num['paper_wos'];
         //return $paper_scopus_numall;
-        
+
 
         //$id = 0
 
@@ -183,7 +189,7 @@ class HomeController extends Controller
 
         //$key="watchara";
         //return response()->json($bb);
-        return view('home', compact('papers', 'banners'))->with('year', json_encode($year, JSON_NUMERIC_CHECK))
+        return view('home', compact('papers', 'banners', 'highlights'))->with('year', json_encode($year, JSON_NUMERIC_CHECK))
             ->with('paper_tci', json_encode($paper_tci, JSON_NUMERIC_CHECK))
             ->with('paper_scopus', json_encode($paper_scopus, JSON_NUMERIC_CHECK))
             ->with('paper_wos', json_encode($paper_wos, JSON_NUMERIC_CHECK))
@@ -219,7 +225,7 @@ class HomeController extends Controller
             return $query->where('source_data_id', '=', 2);
         })->whereIn('paper_type', ['Conference Proceeding', 'Journal'])->count();
 
-        return compact('paper_scopus','paper_tci','paper_wos');
+        return compact('paper_scopus', 'paper_tci', 'paper_wos');
     }
     public function bibtex($id)
     {
@@ -255,4 +261,43 @@ class HomeController extends Controller
 
         return response()->json($key, $bb);
     }
+
+
+    public function showHighlight($id)
+    {
+        // ดึงข้อมูล Highlight ตาม ID ที่ส่งมา
+        $highlight = Highlight::with('tags')->findOrFail($id);
+
+        // ส่งข้อมูลไปที่ showHighlight.blade.php
+        return view('showHighlight', compact('highlight'));
+    }
+
+    public function searchByTag($tagName)
+    {
+        // ค้นหา Tag ตามชื่อที่ได้รับ
+        $tag = Tag::where('name', $tagName)->first();
+
+        // ถ้า Tag มีอยู่จริง
+        if ($tag) {
+            // ค้นหาทุก Highlight ที่มี Tag นี้
+            $highlights = $tag->highlights;  // เชื่อมต่อผ่านความสัมพันธ์ many-to-many
+            return view('searchByTag', compact('highlights', 'tag'));
+        }
+
+        // ถ้าไม่พบ Tag ให้คืนค่าไปที่หน้าแสดงผลการค้นหาว่าง
+        return redirect()->route('home')->with('error', 'Tag not found.');
+    }
+    // ฟังก์ชันนี้จะใช้สำหรับการกลับไปยังหน้าค้นหาด้วย Tag
+    public function redirectToTagSearch($tag)
+    {
+        return redirect()->route('home.searchByTag', ['tag' => $tag]);
+    }
+
+        // ฟังก์ชันนี้ show more Highlights 
+        public function showAllHighlights() {
+            $highlights = Highlight::orderBy('created_at', 'desc')->paginate(12); 
+            return view('allHighlights', compact('highlights'));
+        }
+        
+    
 }
