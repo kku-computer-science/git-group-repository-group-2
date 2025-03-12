@@ -82,6 +82,8 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 Route::get('/showHighlight/{id}', [HomeController::class, 'showHighlight'])->name('highlight.show');
 Route::get('/search-by-tag/{tag}', [HomeController::class, 'searchByTag'])->name('searchByTag');
 Route::get('highlights/view', [HighlightController::class, 'view'])->name('highlight.view');
+// Route::get('/home', [HomeController::class, 'showFavoriteBanners'])->name('home');
+
 
 //Route::get('/researchers',[ResearcherController::class,'index'])->name('researchers');
 Route::get('researchers/{id}', [ResearcherController::class, 'request'])->name('researchers');
@@ -155,11 +157,13 @@ Route::group(['middleware' => ['auth', 'PreventBackHistory']], function () {
     // Add Hightlight route
     Route::post('/highlight/store', [HighlightController::class, 'store'])->name('highlight.store');
     Route::get('/highlight/view', [HighlightController::class, 'view'])->name('highlight.view');
+
     Route::resource('highlights', HighlightController::class);
+
+    Route::post('/highlights/favorite/{id}', [HighlightController::class, 'toggleFavorite'])->name('highlights.toggleFavorite');
 });
 
 // add route for deploy
-
 Route::get('/clear-cache', function() {
     Artisan::call('config:clear');
     Artisan::call('cache:clear');
@@ -201,7 +205,6 @@ Route::get('/migration-status', function () {
 Route::get('/highlight', function () {
     return view('highlight.index');
 })->name('highlight.index');
-
 
 
 

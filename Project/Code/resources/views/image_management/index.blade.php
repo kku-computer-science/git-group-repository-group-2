@@ -7,35 +7,47 @@
 @section('content')
 <div class="container">
     @if ($message = Session::get('success'))
-    <div class="alert alert-success">
-        <p>{{ $message }}</p>
-    </div>
+        <div class="alert alert-success">
+            <p>{{ $message }}</p>
+        </div>
     @endif
 
     <div class="card" style="padding: 16px;">
         <div class="card-body">
             <h4 class="card-title text-center">{{ __('message.img')}}</h4>
-    
+
             <form action="{{ route('banners.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
-                    <label for="image_th">{{ __('message.img_th')}}</label>
+                    <label for="title">Title:</label>
+                    <input type="text" class="form-control" id="title" name="title" value="{{ old('title') }}" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="detail">Detail:</label>
+                    <textarea class="form-control" id="detail" name="detail" rows="3"
+                        required>{{ old('detail') }}</textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="image_th">Image (TH):</label>
                     <input type="file" class="form-control" name="image_th" id="image_th">
                 </div>
-                
+
                 <div class="form-group">
-                    <label for="image_en">{{ __('message.img_en')}}</label>
+                    <label for="image_en">Image (EN):</label>
                     <input type="file" class="form-control" name="image_en" id="image_en">
                 </div>
-                
+
                 <div class="form-group">
-                    <label for="image_zh">{{ __('message.img_zh')}}</label>
+                    <label for="image_zh">Image (ZH):</label>
                     <input type="file" class="form-control" name="image_zh" id="image_zh">
                 </div>
-                
-                <button type="submit" class="btn btn-primary">{{ __('message.save')}}</button>
+
+                <button type="submit" class="btn btn-primary">บันทึก</button>
             </form>
-    
+
+
             <table id="imageTable" class="table table-striped">
                 <thead>
                     <tr>
@@ -47,36 +59,42 @@
                 <tbody>
                     @isset($banners)
                         @forelse ($banners as $banner)
-                        <tr>
-                            <td>{{ $banner->id }}</td>
-                            <td>
-                                <div style="display: flex; gap: 10px;">
-                                    <div>
-                                        <strong>TH:</strong>
-                                        <img class="image-clickable" src="{{ asset('storage/' . $banner->image_path_th) }}" width="100" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="showImageModal('{{ asset('storage/' . $banner->image_path_th) }}')">
+                            <tr>
+                                <td>{{ $banner->id }}</td>
+                                <td>
+                                    <div style="display: flex; gap: 10px;">
+                                        <div>
+                                            <strong>TH:</strong>
+                                            <img class="image-clickable" src="{{ asset('storage/' . $banner->image_path_th) }}"
+                                                width="100" data-bs-toggle="modal" data-bs-target="#imageModal"
+                                                onclick="showImageModal('{{ asset('storage/' . $banner->image_path_th) }}')">
+                                        </div>
+                                        <div>
+                                            <strong>EN:</strong>
+                                            <img class="image-clickable" src="{{ asset('storage/' . $banner->image_path_en) }}"
+                                                width="100" data-bs-toggle="modal" data-bs-target="#imageModal"
+                                                onclick="showImageModal('{{ asset('storage/' . $banner->image_path_en) }}')">
+                                        </div>
+                                        <div>
+                                            <strong>ZH:</strong>
+                                            <img class="image-clickable" src="{{ asset('storage/' . $banner->image_path_zh) }}"
+                                                width="100" data-bs-toggle="modal" data-bs-target="#imageModal"
+                                                onclick="showImageModal('{{ asset('storage/' . $banner->image_path_zh) }}')">
+                                        </div>
                                     </div>
-                                    <div>
-                                        <strong>EN:</strong>
-                                        <img class="image-clickable" src="{{ asset('storage/' . $banner->image_path_en) }}" width="100" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="showImageModal('{{ asset('storage/' . $banner->image_path_en) }}')">
-                                    </div>
-                                    <div>
-                                        <strong>ZH:</strong>
-                                        <img class="image-clickable" src="{{ asset('storage/' . $banner->image_path_zh) }}" width="100" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="showImageModal('{{ asset('storage/' . $banner->image_path_zh) }}')">
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <form action="{{ route('banners.destroy', $banner->id) }}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button class="btn btn-danger" type="submit">ลบ</button>
-                                </form>
-                            </td>
-                        </tr>
+                                </td>
+                                <td>
+                                    <form action="{{ route('banners.destroy', $banner->id) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="btn btn-danger" type="submit">ลบ</button>
+                                    </form>
+                                </td>
+                            </tr>
                         @empty
-                        <tr>
-                            <td colspan="3" class="text-center">ไม่มีข้อมูลแบนเนอร์</td>
-                        </tr>
+                            <tr>
+                                <td colspan="3" class="text-center">ไม่มีข้อมูลแบนเนอร์</td>
+                            </tr>
                         @endforelse
                     @else
                         <tr>
@@ -85,25 +103,25 @@
                     @endisset
                 </tbody>
             </table>
-    
+
         </div>
     </div>
 
     <!-- Modal สำหรับแสดงรูปภาพขนาดใหญ่ -->
     <!-- Modal -->
-<div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="imageModalLabel">ดูรูปภาพ</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body text-center">
-                <img id="modalImage" src="" class="img-fluid" alt="Expanded Image">
+    <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="imageModalLabel">ดูรูปภาพ</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <img id="modalImage" src="" class="img-fluid" alt="Expanded Image">
+                </div>
             </div>
         </div>
     </div>
-</div>
 
 </div>
 
@@ -112,13 +130,13 @@
 <script src="https://cdn.datatables.net/1.12.0/js/dataTables.bootstrap4.min.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
 <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
         $('#imageTable').DataTable({
             order: [[0, 'asc']]
         });
 
         // เมื่อคลิกที่รูปภาพ ให้แสดงใน Modal
-        $('.image-clickable').on('click', function() {
+        $('.image-clickable').on('click', function () {
             var imageSrc = $(this).data('img');
             $('#modalImage').attr('src', imageSrc);
         });
