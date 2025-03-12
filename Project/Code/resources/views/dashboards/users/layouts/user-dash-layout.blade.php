@@ -288,7 +288,9 @@
                         </a>
                     </li>
                     @endcan
-                    @can('expertises-list')
+
+                    @role('staff')
+                    
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('image_management.index')}}">
                             <i class="menu-icon mdi mdi-satellite"></i>
@@ -296,7 +298,8 @@
 
                         </a>
                     </li>
-                    @endcan
+                
+                    @endrole
                 </ul>
             </nav>
 
