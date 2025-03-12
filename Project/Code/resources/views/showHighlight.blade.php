@@ -31,6 +31,10 @@
         transition: transform 0.3s ease;
     }
 
+    .highlight-detail-container:hover {
+        transform: translateY(-5px);
+    }
+
     /* Title Styling */
     .highlight-title {
         font-size: 2.5rem;
@@ -152,31 +156,22 @@
         font-size: 1.2rem;
     }
 
-    /* ปุ่มอ่านเพิ่มเติม */
-    .read-more-container {
-        text-align: center;
-        margin-top: 10px;
-        padding-bottom: 30px;
-    }
-
-    .read-more-btn {
+    /* Back Button */
+    .back-btn {
         display: inline-block;
-        background: linear-gradient(90deg, #007bff, #00aaff);
-        color: white;
-        padding: 12px 25px;
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 1.1rem;
+        color: #fff;
+        background: #007bff;
+        padding: 10px 20px;
         border-radius: 25px;
         text-decoration: none;
         transition: background 0.3s ease, transform 0.3s ease;
-        box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
+        margin-top: 20px;
     }
 
-    .read-more-btn:hover {
-        color: white;
-        text-decoration: none;
-        background: linear-gradient(90deg, #0056b3, #0099ff);
-        box-shadow: 0 6px 12px rgba(0, 123, 255, 0.4);
+    .back-btn:hover {
+        background: #0056b3;
+        transform: translateY(-2px);
     }
 
     /* Additional Images Section */

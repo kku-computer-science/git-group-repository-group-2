@@ -17,7 +17,7 @@
 
     /* Card styling */
     .highlight-card {
-        height: 100%; 
+        height: 100%;
         display: flex;
         flex-direction: column;
         border: none;
@@ -28,15 +28,15 @@
     }
 
     .highlight-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        box-shadow: 0 10px 20px rgba(0, 86, 179, 0.15), 0 4px 6px rgba(0, 86, 179, 0.08);
+        border: 1px dashed #007bff;
     }
 
     /* Image styling */
     .highlight-card .card-img-top {
         width: 100%;
-        height: 200px; 
-        object-fit: cover; 
+        height: 200px;
+        object-fit: cover;
         border-top-left-radius: 10px;
         border-top-right-radius: 10px;
     }
@@ -58,7 +58,7 @@
         line-height: 1.2;
         overflow: hidden;
         text-overflow: ellipsis;
-        white-space: nowrap; 
+        white-space: nowrap;
     }
 
     /* Text styling */
@@ -85,7 +85,7 @@
         text-decoration: none;
         text-align: center;
         transition: background-color 0.3s ease, transform 0.3s ease;
-        align-self: flex-end; 
+        align-self: flex-end;
     }
 
     .highlight-card .read-more-btn:hover {
@@ -106,32 +106,33 @@
 
         .highlight-card .card-text {
             font-size: 0.9rem;
-            -webkit-line-clamp: 2; 
+            -webkit-line-clamp: 2;
         }
     }
 </style>
 
 @section('content')
-<div class="container mt-4">
-    <h1 class="text-center mb-4">รายการไฮไลท์ทั้งหมด</h1>
+    <div class="container mt-4">
+        <h1 class="text-center mb-4">รายการไฮไลท์ทั้งหมด</h1>
 
-    <div class="row">
-        @foreach($highlights as $highlight)
-        <div class="col-md-4 mb-4">
-            <div class="card highlight-card">
-                <img src="{{ Storage::url($highlight->thumbnail) }}" class="card-img-top" alt="Highlight Image">
-                <div class="card-body">
-                    <h5 class="card-title">{{ $highlight->title }}</h5>
-                    <p class="card-text">{{ Str::limit($highlight->detail, 100) }}</p>
-                    <a href="{{ route('highlight.show', ['id' => $highlight->id]) }}" class="read-more-btn">อ่านเพิ่มเติม</a>
+        <div class="row">
+            @foreach($highlights as $highlight)
+                <div class="col-md-4 mb-4">
+                    <a href="{{ route('highlight.show', ['id' => $highlight->id]) }}" class="text-black">
+                        <div class="card highlight-card">
+                            <img src="{{ Storage::url($highlight->thumbnail) }}" class="card-img-top" alt="Highlight Image">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ $highlight->title }}</h5>
+                                <p class="card-text">{{ Str::limit($highlight->detail, 100) }}</p>
+                            </div>
+                        </div>
                 </div>
-            </div>
+                </a>
+            @endforeach
         </div>
-        @endforeach
-    </div>
 
-    <div class="d-flex justify-content-center">
-        {{ $highlights->links() }}
+        <div class="d-flex justify-content-center">
+            {{ $highlights->links() }}
+        </div>
     </div>
-</div>
 @endsection

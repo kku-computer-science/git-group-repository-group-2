@@ -64,17 +64,18 @@
         overflow: hidden;
         transition: transform 0.3s ease, box-shadow 0.3s ease;
         margin: 0 15px 30px 15px;
+        border: 1px solid transparent;
     }
 
     .highlight-card:hover {
-
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15), 0 4px 6px rgba(0, 0, 0, 0.08);
+        box-shadow: 0 10px 20px rgba(0, 86, 179, 0.15), 0 4px 6px rgba(0, 86, 179, 0.08);
+        border: 1px dashed #007bff;
     }
 
     .image-container {
         position: relative;
         width: 100%;
-        height: 250px;
+        height: 260px;
         overflow: hidden;
     }
 
@@ -87,7 +88,7 @@
     }
 
     .highlight-details {
-        padding: 20px;
+        padding: 10px 20px;
         text-align: left;
         background: #f9f9f9;
     }
@@ -97,8 +98,9 @@
         padding: 0;
         margin: 0 0 10px 0;
         display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
+        flex-wrap: nowrap;
+        /* เพื่อให้อยู่ในบรรทัดเดียว */
+        gap: 5px;
     }
 
     .tag-item {
@@ -110,6 +112,8 @@
         border-radius: 20px;
         font-weight: 500;
         text-transform: uppercase;
+        flex-shrink: 0;
+        /* ป้องกันการย่อขนาด */
     }
 
     .no-tags {
@@ -117,6 +121,17 @@
         color: #888;
         margin: 0 0 10px 0;
         font-style: italic;
+    }
+
+    .tag-link {
+        color: white;
+        text-decoration: none;
+        text-transform: uppercase;
+        display: inline-block;
+    }
+
+    .tag-link:hover {
+        color: #e0e0e0;
     }
 
     .highlight-title {
@@ -267,9 +282,6 @@
             </div>
         </div>
     </div>
-    @endforeach
-</div>
-</div>
 
     <!-- รวมทั้งสองแถวใน col-12 เดียว -->
     <div class="col-12" style="padding: 0px; margin-top: 20px;">
@@ -485,19 +497,25 @@
             if ($(".blogBox:hidden").length != 0) {
                 $("#loadMore").show();
             }
+            $("#loadMore").on('click', function (e) {
+                e.preventDefault();
+                $(".moreBox:hidden").slice(0, 1).slideDown();
+                if ($(".moreBox:hidden").length == 0) {
+                    $("#loadMore").fadeOut('slow');
+                }
+            });
         });
-    });
-</script>
-<script>
-    var year = <?php echo $year; ?>;
-    var paper_tci = <?php echo $paper_tci; ?>;
-    var paper_scopus = <?php echo $paper_scopus; ?>;
-    var paper_wos = <?php echo $paper_wos; ?>;
-    var areaChartData = {
+    </script>
+    <script>
+        var year = <?php echo $year; ?>;
+        var paper_tci = <?php echo $paper_tci; ?>;
+        var paper_scopus = <?php echo $paper_scopus; ?>;
+        var paper_wos = <?php echo $paper_wos; ?>;
+        var areaChartData = {
 
-        labels: year,
+            labels: year,
 
-        datasets: [{
+            datasets: [{
                 label: 'SCOPUS',
                 backgroundColor: '#3994D6',
                 borderColor: 'rgba(210, 214, 222, 1)',
@@ -530,75 +548,20 @@
                 pointHighlightStroke: '#FCC29A',
                 data: paper_wos
             },
-        ]
-    }
-
-
-
-    //-------------
-    //- BAR CHART -
-    //-------------
-    var barChartCanvas = $('#barChart1').get(0).getContext('2d')
-    var barChartData = $.extend(true, {}, areaChartData)
-    var temp0 = areaChartData.datasets[0]
-    var temp1 = areaChartData.datasets[1]
-    barChartData.datasets[0] = temp1
-    barChartData.datasets[1] = temp0
-
-    var barChartOptions = {
-        responsive: true,
-        maintainAspectRatio: false,
-        datasetFill: false,
-        scales: {
-            yAxes: [{
-                formatter: function() {
-                    return Math.abs(this.value);
-                },
-                scaleLabel: {
-                    display: true,
-                    labelString: '{{ trans('
-                    message.numberChart ') }}',
-
-                },
-                ticks: {
-                    reverse: false,
-                    stepSize: 10
-                },
-            }],
-            xAxes: [{
-                scaleLabel: {
-                    display: true,
-                    labelString: '{{ trans('
-                    message.yearChart ') }}',
-                }
-            }]
-        },
-
-        title: {
-            display: true,
-            text: '{{ trans('
-            message.reporttotal ') }}',
-            fontSize: 20
+            ]
         }
 
 
-    }
 
-    new Chart(barChartCanvas, {
-        type: 'bar',
-        data: barChartData,
-        options: barChartOptions
-    })
-</script>
-<script>
-    var paper_tci = <?php echo $paper_tci_numall; ?>;
-    var paper_scopus = <?php echo $paper_scopus_numall; ?>;
-    var paper_wos = <?php echo $paper_wos_numall; ?>;
-    //console.log(paper_scopus)
-    let sumtci = paper_tci;
-    let sumsco = paper_scopus;
-    let sumwos = paper_wos;
-    (function($) {
+        //-------------
+        //- BAR CHART -
+        //-------------
+        var barChartCanvas = $('#barChart1').get(0).getContext('2d')
+        var barChartData = $.extend(true, {}, areaChartData)
+        var temp0 = areaChartData.datasets[0]
+        var temp1 = areaChartData.datasets[1]
+        barChartData.datasets[0] = temp1
+        barChartData.datasets[1] = temp0
 
         var barChartOptions = {
             responsive: true,
@@ -675,84 +638,116 @@
             $.fn.countTo = function (options) {
                 options = options || {};
 
-                function updateTimer() {
-                    value += increment;
-                    loopCount++;
+                return $(this).each(function () {
+                    // set options for current element
+                    var settings = $.extend({}, $.fn.countTo.defaults, {
+                        from: $(this).data('from'),
+                        to: $(this).data('to'),
+                        speed: $(this).data('speed'),
+                        refreshInterval: $(this).data('refresh-interval'),
+                        decimals: $(this).data('decimals')
+                    }, options);
 
+                    // how many times to update the value, and how much to increment the value on each update
+                    var loops = Math.ceil(settings.speed / settings.refreshInterval),
+                        increment = (settings.to - settings.from) / loops;
+
+                    // references & variables that will change with each update
+                    var self = this,
+                        $self = $(this),
+                        loopCount = 0,
+                        value = settings.from,
+                        data = $self.data('countTo') || {};
+
+                    $self.data('countTo', data);
+
+                    // if an existing interval can be found, clear it first
+                    if (data.interval) {
+                        clearInterval(data.interval);
+                    }
+                    data.interval = setInterval(updateTimer, settings.refreshInterval);
+
+                    // initialize the element with the starting value
                     render(value);
 
-                    if (typeof(settings.onUpdate) == 'function') {
-                        settings.onUpdate.call(self, value);
-                    }
+                    function updateTimer() {
+                        value += increment;
+                        loopCount++;
 
-                    if (loopCount >= loops) {
-                        // remove the interval
-                        $self.removeData('countTo');
-                        clearInterval(data.interval);
-                        value = settings.to;
+                        render(value);
 
-                        if (typeof(settings.onComplete) == 'function') {
-                            settings.onComplete.call(self, value);
+                        if (typeof (settings.onUpdate) == 'function') {
+                            settings.onUpdate.call(self, value);
+                        }
+
+                        if (loopCount >= loops) {
+                            // remove the interval
+                            $self.removeData('countTo');
+                            clearInterval(data.interval);
+                            value = settings.to;
+
+                            if (typeof (settings.onComplete) == 'function') {
+                                settings.onComplete.call(self, value);
+                            }
                         }
                     }
-                }
 
-                function render(value) {
-                    var formattedValue = settings.formatter.call(self, value, settings);
-                    $self.html(formattedValue);
+                    function render(value) {
+                        var formattedValue = settings.formatter.call(self, value, settings);
+                        $self.html(formattedValue);
+                    }
+                });
+            };
+
+            $.fn.countTo.defaults = {
+                from: 0, // the number the element should start at
+                to: 0, // the number the element should end at
+                speed: 1000, // how long it should take to count between the target numbers
+                refreshInterval: 100, // how often the element should be updated
+                decimals: 0, // the number of decimal places to show
+                formatter: formatter, // handler for formatting the value before rendering
+                onUpdate: null, // callback method for every time the element is updated
+                onComplete: null // callback method for when the element finishes updating
+            };
+
+            function formatter(value, settings) {
+                return value.toFixed(settings.decimals);
+            }
+        }(jQuery));
+
+        jQuery(function ($) {
+            // custom formatting example
+            $('.count-number').data('countToOptions', {
+                formatter: function (value, options) {
+                    return value.toFixed(options.decimals).replace(/\B(?=(?:\d{3})+(?!\d))/g, ',');
                 }
             });
-        };
 
-        $.fn.countTo.defaults = {
-            from: 0, // the number the element should start at
-            to: 0, // the number the element should end at
-            speed: 1000, // how long it should take to count between the target numbers
-            refreshInterval: 100, // how often the element should be updated
-            decimals: 0, // the number of decimal places to show
-            formatter: formatter, // handler for formatting the value before rendering
-            onUpdate: null, // callback method for every time the element is updated
-            onComplete: null // callback method for when the element finishes updating
-        };
+            // start all the timers
+            $('.timer').each(count);
 
-        function formatter(value, settings) {
-            return value.toFixed(settings.decimals);
-        }
-    }(jQuery));
-
-    jQuery(function($) {
-        // custom formatting example
-        $('.count-number').data('countToOptions', {
-            formatter: function(value, options) {
-                return value.toFixed(options.decimals).replace(/\B(?=(?:\d{3})+(?!\d))/g, ',');
+            function count(options) {
+                var $this = $(this);
+                options = $.extend({}, options || {}, $this.data('countToOptions') || {});
+                $this.countTo(options);
             }
         });
-
-        // start all the timers
-        $('.timer').each(count);
-
-        function count(options) {
-            var $this = $(this);
-            options = $.extend({}, options || {}, $this.data('countToOptions') || {});
-            $this.countTo(options);
-        }
-    });
-</script>
-<script>
-    $(document).on('click', '.open_modal', function() {
-        //var url = "domain.com/yoururl";
-        var tour_id = $(this).val();
-        $.get('/bib/' + tour_id, function(data) {
-            //success data
-            console.log(data);
-            $(".bibtex-biblio").remove();
-            document.getElementById("name").innerHTML += `${data}`
-            // $('#tour_id').val(data.id);
-            // $('#name').val(data);
-            // $('#details').val(data.details);
-            // $('#btn-save').val("update");
-            $('#myModal').modal('show');
-        })
-    });
-</script>
+    </script>
+    <script>
+        $(document).on('click', '.open_modal', function () {
+            //var url = "domain.com/yoururl";
+            var tour_id = $(this).val();
+            $.get('/bib/' + tour_id, function (data) {
+                //success data
+                console.log(data);
+                $(".bibtex-biblio").remove();
+                document.getElementById("name").innerHTML += `${data}`
+                // $('#tour_id').val(data.id);
+                // $('#name').val(data);
+                // $('#details').val(data.details);
+                // $('#btn-save').val("update");
+                $('#myModal').modal('show');
+            })
+        });
+    </script>
 @endsection
