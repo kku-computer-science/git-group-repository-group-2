@@ -306,7 +306,7 @@
                         </li>
                     @endcan
 
-                    @role('staff')
+                    <!-- @role('staff')
                     
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('image_management.index')}}">
@@ -316,7 +316,7 @@
                         </a>
                     </li>
                 
-                    @endrole
+                    @endrole -->
                 </ul>
             </nav>
 
