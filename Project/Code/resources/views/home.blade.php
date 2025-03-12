@@ -348,16 +348,6 @@
                                         srcset="{{ Storage::url($highlight->thumbnail) }} 640w, {{ Storage::url($highlight->thumbnail) }} 768w, {{ Storage::url($highlight->thumbnail) }} 1024w"
                                         style="height: auto; width: 100%;">
                                 </div>
-                                <div class="highlight-details">
-                                    @if($highlight->tags->count() > 0)
-                                    <ul class="tags-list">
-                                        @foreach($highlight->tags as $tag)
-                                        <li class="tag-item">{{ $tag->name }}</li>
-                                        @endforeach
-                                    </ul>
-                                    @else
-                                    <p class="no-tags">No tags available for this highlight.</p>
-                                    @endif
                                     <h3 class="highlight-title">{{ $highlight->title ?? 'ชื่อเรื่องเริ่มต้น' }}</h3>
                                 </div>
                             </a>

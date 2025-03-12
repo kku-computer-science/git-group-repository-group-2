@@ -198,20 +198,6 @@
         </ul>
     </div>
     @endif
-<<<<<<< HEAD
-
-    <!-- Dates Section -->
-    <div class="dates-container">
-        <p><strong>Created At:</strong> {{ $highlight->created_at->format('d M Y, H:i') }}</p>
-        <p><strong>Updated At:</strong> {{ $highlight->updated_at->format('d M Y, H:i') }}</p>
-    </div>
-
-    <!-- Back Button -->
-    <a href="{{ route('home') }}" class="back-btn">Back to Home</a>
-</div>
-@endsection
-
-=======
 </div>
 
 <div class="highlight-detail-container">
@@ -240,4 +226,3 @@
 <p>ไม่มีข้อมูล</p>
 @endif
 @endsection
->>>>>>> 44be5cf9069b18c8dc2f5022bc743096f4de8ffc
