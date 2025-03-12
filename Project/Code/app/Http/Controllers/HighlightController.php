@@ -12,8 +12,8 @@ class HighlightController extends Controller
 {
     public function index()
     {
-        $highlights = Highlight::with(['tags', 'user'])->get();
-        return view('highlight.view', compact('highlights'));
+        $highlights = Highlight::with(['tags', 'user', 'images'])->get();
+        return view('highlight.index', compact('highlights'));
     }
 
     public function homePage()
@@ -24,7 +24,7 @@ class HighlightController extends Controller
 
     public function view()
     {
-        $highlights = Highlight::with(['tags', 'user'])->get();
+        $highlights = Highlight::with(['tags', 'user', 'images'])->get();
         return view('highlight.view', compact('highlights'));
     }
 
@@ -34,22 +34,37 @@ class HighlightController extends Controller
             'title' => 'required|string|max:255',
             'detail' => 'required|string',
             'thumbnail' => 'required|image',
+            'additional_thumbnails.*' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'tags' => 'nullable|string',
         ]);
 
+        // อัปโหลด main thumbnail
         $thumbnailPath = $request->file('thumbnail')->store('thumbnails', 'public');
 
+        // สร้าง Highlight ใหม่
         $highlight = Highlight::create([
             'title' => $request->title,
             'detail' => $request->detail,
             'thumbnail' => $thumbnailPath,
-            'user_id' => Auth::id(), // บันทึก ID ของผู้ที่อัปโหลด
+            'user_id' => Auth::id(),
         ]);
 
-        $tags = explode(',', $request->tags);
-        foreach ($tags as $tagName) {
-            $tag = Tag::firstOrCreate(['name' => trim($tagName)]);
-            $highlight->tags()->attach($tag);
+        // จัดการ tags (ถ้ามี)
+        if (!empty($request->tags)) {
+            $tags = explode(',', $request->tags);
+            foreach ($tags as $tagName) {
+                $tag = Tag::firstOrCreate(['name' => trim($tagName)]);
+                $highlight->tags()->attach($tag);
+            }
+        }
+
+        // อัปโหลดและบันทึกภาพเพิ่มเติมในตาราง images
+        if ($request->hasFile('additional_thumbnails')) {
+            foreach ($request->file('additional_thumbnails') as $file) {
+                $path = $file->store('thumbnails/additional', 'public');
+                // บันทึกข้อมูลลงในตาราง images โดยใช้ความสัมพันธ์ใน model Highlight
+                $highlight->images()->create(['image_path' => $path]);
+            }
         }
 
         return redirect()->route('highlight.index')->with('success', 'Highlight uploaded successfully!');
@@ -57,7 +72,7 @@ class HighlightController extends Controller
 
     public function show($id)
     {
-        $highlight = Highlight::with('tags', 'user')->findOrFail($id);
+        $highlight = Highlight::with('tags', 'user', 'images')->findOrFail($id);
         return view('highlight.show', compact('highlight'));
     }
 

@@ -149,10 +149,22 @@
         overflow: hidden;
         text-overflow: ellipsis;
         max-width: 100%;
+        text-decoration: none;
     }
 
     .highlight-title:hover {
         color: #0056b3;
+        text-decoration: none;
+    }
+
+    .highlight-title-link {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    .highlight-title-link:hover {
+        color: #0056b3;
+        text-decoration: none;
     }
 
     .col-md-4 {
@@ -316,7 +328,10 @@
                                                 @else
                                                     <p class="no-tags">No tags available for this highlight.</p>
                                                 @endif
-                                                <h3 class="highlight-title">{{ $highlight->title ?? 'ชื่อเรื่องเริ่มต้น' }}</h3>
+                                                <a href="{{ route('highlight.show', ['id' => $highlight->id]) }}"
+                                                    class="highlight-title-link">
+                                                    <h3 class="highlight-title">{{ $highlight->title ?? 'ชื่อเรื่องเริ่มต้น' }}</h3>
+                                                </a>
                                             </div>
                                         </a>
                                     </div>
@@ -366,7 +381,10 @@
                                                 @else
                                                     <p class="no-tags">No tags available for this highlight.</p>
                                                 @endif
-                                                <h3 class="highlight-title">{{ $highlight->title ?? 'ชื่อเรื่องเริ่มต้น' }}</h3>
+                                                <a href="{{ route('highlight.show', ['id' => $highlight->id]) }}"
+                                                    class="highlight-title-link">
+                                                    <h3 class="highlight-title">{{ $highlight->title ?? 'ชื่อเรื่องเริ่มต้น' }}</h3>
+                                                </a>
                                             </div>
                                         </a>
                                     </div>
@@ -601,21 +619,22 @@
             //console.log(sum);
             //$("#scopus").append('data-to="100"');
             document.getElementById("all").innerHTML += `
-                                                                                                                            <i class="count-icon fa fa-book fa-2x"></i>
-                                                                                                                            <h2 class="timer count-title count-number" data-to="${sum}" data-speed="1500"></h2>
-                                                                                                                            <p class="count-text ">SUMMARY</p>`
+
+                                                                                                                                        <i class="count-icon fa fa-book fa-2x"></i>
+                                                                                                                                        <h2 class="timer count-title count-number" data-to="${sum}" data-speed="1500"></h2>
+                                                                                                                                        <p class="count-text ">SUMMARY</p>`
             document.getElementById("scopus").innerHTML += `
-                                                                                                                            <i class="count-icon fa fa-book fa-2x"></i>
-                                                                                                                            <h2 class="timer count-title count-number" data-to="${sumsco}" data-speed="1500"></h2>
-                                                                                                                            <p class="count-text ">SCOPUS</p>`
+                                                                                                                                        <i class="count-icon fa fa-book fa-2x"></i>
+                                                                                                                                        <h2 class="timer count-title count-number" data-to="${sumsco}" data-speed="1500"></h2>
+                                                                                                                                        <p class="count-text ">SCOPUS</p>`
             document.getElementById("wos").innerHTML += `
-                                                                                                                            <i class="count-icon fa fa-book fa-2x"></i>
-                                                                                                                            <h2 class="timer count-title count-number" data-to="${sumwos}" data-speed="1500"></h2>
-                                                                                                                            <p class="count-text ">WOS</p>`
+                                                                                                                                        <i class="count-icon fa fa-book fa-2x"></i>
+                                                                                                                                        <h2 class="timer count-title count-number" data-to="${sumwos}" data-speed="1500"></h2>
+                                                                                                                                        <p class="count-text ">WOS</p>`
             document.getElementById("tci").innerHTML += `
-                                                                                                                            <i class="count-icon fa fa-book fa-2x"></i>
-                                                                                                                            <h2 class="timer count-title count-number" data-to="${sumtci}" data-speed="1500"></h2>
-                                                                                                                            <p class="count-text ">TCI</p>`
+                                                                                                                                        <i class="count-icon fa fa-book fa-2x"></i>
+                                                                                                                                        <h2 class="timer count-title count-number" data-to="${sumtci}" data-speed="1500"></h2>
+                                                                                                                                        <p class="count-text ">TCI</p>`
             //document.getElementById("scopus").appendChild('data-to="100"');
             $.fn.countTo = function (options) {
                 options = options || {};
