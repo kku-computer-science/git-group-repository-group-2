@@ -69,7 +69,7 @@ class HighlightController extends Controller
             }
         }
 
-        return redirect()->route('highlight.index')->with('success', 'Highlight uploaded successfully!');
+        return redirect()->route('highlight.view')->with('success', 'Highlight uploaded successfully!');
     }
 
     public function show($id)
@@ -99,12 +99,10 @@ class HighlightController extends Controller
             'title' => 'required|string|max:255',
             'detail' => 'required|string',
             'images.*' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            // ฯลฯ
         ]);
 
         $highlight->title = $request->title;
         $highlight->detail = $request->detail;
-        // ฯลฯ
         $highlight->save();
 
         // ลบรูปที่ถูกติ๊กให้ลบ
@@ -112,9 +110,7 @@ class HighlightController extends Controller
             foreach ($request->remove_images as $imageId) {
                 $image = Image::find($imageId);
                 if ($image) {
-                    // ลบไฟล์ออกจาก storage
                     Storage::disk('public')->delete($image->image_path);
-                    // ลบ record ในตาราง images
                     $image->delete();
                 }
             }
@@ -128,11 +124,9 @@ class HighlightController extends Controller
             }
         }
 
-        // จัดการ tags หรือฟิลด์อื่น ๆ ตามต้องการ
-
-        return redirect()->route('highlights.index')->with('success', 'Highlight updated successfully!');
+        // แก้ข้อความ redirect ให้ถูกต้อง
+        return redirect()->route('highlight.view')->with('success', 'Highlight updated successfully!');
     }
-
 
     public function destroy($id)
     {
@@ -149,6 +143,7 @@ class HighlightController extends Controller
         $highlight->tags()->detach();
         $highlight->delete();
 
-        return redirect()->route('highlights.index')->with('success', 'Highlight deleted successfully!');
+        // เปลี่ยน redirect ไปที่หน้า view
+        return redirect()->route('highlight.view')->with('success', 'Highlight deleted successfully!');
     }
 }
