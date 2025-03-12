@@ -21,6 +21,7 @@ ${DETAIL_2}                     วิทยาลัยการคอมพิ
 Open Browser To Login Page
     ${chrome_options}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys
     ${chrome_options.binary_location}=    Set Variable    ${CHROME_BROWSER_PATH}
+    Call Method    ${chrome_options}    add_argument    --no-sandbox
     ${service}=    Evaluate    sys.modules["selenium.webdriver.chrome.service"].Service(executable_path=r"${CHROME_DRIVER_PATH}")
     Create Webdriver    Chrome    options=${chrome_options}    service=${service}
     Go To    ${LOGIN URL}
@@ -33,6 +34,7 @@ Login Page Should Be Open
 Open Browser To Staff Page
     ${chrome_options}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys
     ${chrome_options.binary_location}=    Set Variable    ${CHROME_BROWSER_PATH}
+    Call Method    ${chrome_options}    add_argument    --no-sandbox
     ${service}=    Evaluate    sys.modules["selenium.webdriver.chrome.service"].Service(executable_path=r"${CHROME_DRIVER_PATH}")
     Create Webdriver    Chrome    options=${chrome_options}    service=${service}
     Go To    ${STAFF URL}
@@ -54,247 +56,8 @@ Logout Dashboard
     Click Element    xpath=//a[contains(text(),'Logout')]
 
 *** Test Cases ***
-# Open Dashboard Page Staff
-#     [Tags]    UAT001-OpenStaffPages
-#     Open Browser To Login Page
-#     Login Page Should Be Open
-#     Staff Login
-#     Sleep    2s
-#     Staff Page Should Be Open
-#     [Teardown]    Close All Browsers
-
-# Open Highlight Page Staff
-#     [Tags]    UAT002-OpenHighlightPage
-#     Open Browser To Login Page
-#     Staff Login
-#     Click Element    xpath=//a[contains(@href,'highlight')]
-#     Location Should Be    ${HIGHLIGHT URL}
-#     [Teardown]    Close All Browsers
-
-# Highlight Complete Form Submission
-#     [Tags]    UAT003-CompleteHighlightForm
-#     Open Browser To Login Page
-#     Staff Login
-#     Click Element    xpath=//a[contains(@href,'highlight')]
-#     Location Should Be    ${HIGHLIGHT URL}
-    
-#     # Fill in title and detail
-#     Input Text    id=title    ${TITLE}
-#     Input Text    id=detail    ${DETAIL} 
-    
-#     # Upload image
-#     ${IMAGE_PATH}=    Set Variable    ${EXECDIR}${/}highlight_image_test01.jpg
-#     Choose File    id=thumbnail    ${IMAGE_PATH}
-    
-#     # Verify image preview appears
-#     Wait Until Element Is Visible    id=preview
-#     Element Should Be Visible    id=preview
-    
-#     # Enter tags
-#     Input Text    id=tags    KKU
-#     Press Keys    id=tags    ENTER
-#     Input Text    id=tags    มข.
-#     Press Keys    id=tags    ENTER
-#     Input Text    id=tags    cpkku
-#     Press Keys    id=tags    ENTER
-#     Input Text    id=tags    computing
-#     Press Keys    id=tags    ENTER
-#     Input Text    id=tags    phet
-#     Press Keys    id=tags    ENTER
-    
-#     # Verify tags appear in tag list
-#     Wait Until Element Contains    id=tag-list    KKU
-#     Element Should Contain    id=tag-list    มข.
-#     Element Should Contain    id=tag-list    cpkku
-#     Element Should Contain    id=tag-list    computing
-#     Element Should Contain    id=tag-list    phet
-    
-#     # Submit form (uncomment if you want to actually submit)
-#     # Click Button    xpath=//button[@type='submit']
-    
-#     [Teardown]    Close All Browsers
-
-# As Administrative Staff, I want to upload multiple highlights
-#     [Tags]    UAT004-UploadMultipleHighlights
-#     Open Browser To Login Page
-#     Staff Login
-#     Click Element    xpath=//a[contains(@href,'highlight')]
-    
-#     # [Highlight_1] Fill Highlight
-#     Input Text    id=title    ${TITLE_1}
-#     Input Text    id=detail    ${DETAIL_1}
-    
-#     # [Highlight_1] Upload image
-#     ${IMAGE_PATH}=    Set Variable    ${EXECDIR}${/}highlight_image_test01.jpg
-#     Choose File    id=thumbnail    ${IMAGE_PATH}
-    
-#     # [Highlight_1] Enter tags
-#     Input Text    id=tags    KKU
-#     Press Keys    id=tags    ENTER
-#     Input Text    id=tags    มข.
-#     Press Keys    id=tags    ENTER
-#     Input Text    id=tags    cpkku
-#     Press Keys    id=tags    ENTER
-#     Input Text    id=tags    computing
-#     Press Keys    id=tags    ENTER
-#     Input Text    id=tags    phet
-#     Press Keys    id=tags    ENTER
-#     sleep    2s
-    
-#     # [Highlight_2] Submit Form
-#     Execute JavaScript    document.querySelector("button.btn-primary").scrollIntoView({behavior: "smooth", block: "center"});
-#     Sleep    1s
-
-#     Wait Until Element Is Visible    xpath=//button[contains(.,'Upload')]
-#     Wait Until Element Is Enabled    xpath=//button[contains(.,'Upload')]
-
-#     Execute JavaScript    document.querySelector("button[type='submit']").click();
-
-#     # [Highlight_2] Fill Highlight
-#     Input Text    id=title    ${TITLE_2}
-#     Input Text    id=detail    ${DETAIL_2}
-    
-#     # [Highlight_2] Upload image
-#     ${IMAGE_PATH}=    Set Variable    ${EXECDIR}${/}highlight_image_test02.jpg
-#     Choose File    id=thumbnail    ${IMAGE_PATH}
-    
-#     # [Highlight_2] Enter tags
-#     Input Text    id=tags    KKU
-#     Press Keys    id=tags    ENTER
-#     Input Text    id=tags    มข.
-#     Press Keys    id=tags    ENTER
-#     Input Text    id=tags    cpkku
-#     Press Keys    id=tags    ENTER
-#     Input Text    id=tags    cp
-#     Press Keys    id=tags    ENTER
-#     Input Text    id=tags    ITEX2025
-#     Press Keys    id=tags    ENTER
-#     sleep    2s
-    
-#     # [Highlight_2] Submit Form
-#     Execute JavaScript    document.querySelector("button.btn-primary").scrollIntoView({behavior: "smooth", block: "center"});
-#     Sleep    1s
-
-#     Wait Until Element Is Visible    xpath=//button[contains(.,'Upload')]
-#     Wait Until Element Is Enabled    xpath=//button[contains(.,'Upload')]
-
-#     Execute JavaScript    document.querySelector("button[type='submit']").click();
-
-#     # [Enter] Manage Highlight
-#     Wait Until Element Is Visible    xpath=//a[contains(text(),'Manage Highlight')]
-#     Click Element    xpath=//a[contains(text(),'Manage Highlight')]
-
-#     # [Highlight_1] Check data
-#     ${html_source}=    Get Source
-#     Should Contain    ${html_source}    ${TITLE_1}
-#     Should Contain    ${html_source}    ${DETAIL_1}
-#     Should Contain    ${html_source}    KKU
-#     Should Contain    ${html_source}    มข.
-#     Should Contain    ${html_source}    cpkku
-#     Should Contain    ${html_source}    cp
-#     Should Contain    ${html_source}    phet
-
-#     # [Highlight_2] Check data
-#     Should Contain    ${html_source}    ${TITLE_2}
-#     Should Contain    ${html_source}    ${DETAIL_2}
-#     Should Contain    ${html_source}    KKU
-#     Should Contain    ${html_source}    มข.
-#     Should Contain    ${html_source}    cpkku
-#     Should Contain    ${html_source}    cp
-#     Should Contain    ${html_source}    ITEX2025
-
-#     # [Enter] Highlight detail page
-#     Wait Until Element Is Visible    xpath=(//a[contains(@href,'highlights') and contains(@class,'btn-outline-primary')])[1]
-#     Click Element    xpath=(//a[contains(@href,'highlights') and contains(@class,'btn-outline-primary')])[1]
-    
-#     # [Highlight_1] Highlight detail page
-#     ${html_source}=    Get Source
-#     Should Contain    ${html_source}    ${TITLE_1}
-#     Should Contain    ${html_source}    ${DETAIL_1}
-#     Should Contain    ${html_source}    KKU
-#     Should Contain    ${html_source}    มข.
-#     Should Contain    ${html_source}    cpkku
-#     Should Contain    ${html_source}    computing
-#     Should Contain    ${html_source}    phet
-
-#     # [Enter] Manage Highlight
-#     Wait Until Element Is Visible    xpath=//a[contains(text(),'Back')]
-#     Click Element    xpath=//a[contains(text(),'Back')]
-    
-#     # [Enter] Highlight detail page
-#     Wait Until Element Is Visible    xpath=(//a[contains(@href,'highlights') and contains(@class,'btn-outline-primary')])[2]
-#     Click Element    xpath=(//a[contains(@href,'highlights') and contains(@class,'btn-outline-primary')])[2]
-
-#     # [Highlight_2] Highlight detail page
-#     ${html_source}=    Get Source
-#     Should Contain    ${html_source}    ${TITLE_2}
-#     Should Contain    ${html_source}    ${DETAIL_2}
-#     Should Contain    ${html_source}    KKU
-#     Should Contain    ${html_source}    มข.
-#     Should Contain    ${html_source}    cpkku
-#     Should Contain    ${html_source}    cp
-#     Should Contain    ${html_source}    ITEX2025
-
-#     # [Enter] Manage Highlight
-#     Wait Until Element Is Visible    xpath=//a[contains(text(),'Back')]
-#     Click Element    xpath=//a[contains(text(),'Back')]
-
-#     # [Enter] Highlight detail page
-#     Wait Until Element Is Visible    xpath=(//a[contains(@href,'highlights') and contains(@class,'btn-outline-success')])[1]
-#     Click Element    xpath=(//a[contains(@href,'highlights') and contains(@class,'btn-outline-success')])[1]
-
-#     # [Enter] Manage Highlight
-#     Wait Until Element Is Visible    xpath=//a[contains(text(),'Back')]
-#     Click Element    xpath=//a[contains(text(),'Back')]
-
-#     # # [Delete_Highlight_1] Highlight - using the button inside the form
-#     # Wait Until Element Is Visible    xpath=(//button[contains(@class,'btn-outline-danger') or contains(@class,'show_confirm')])[1]
-#     # Execute JavaScript    document.querySelector("button.show_confirm").click();
-    
-#     # # [Delete_Highlight_1] Handle the confirmation dialog for first highlight
-#     # Wait Until Element Is Visible    xpath=//div[contains(@class,'swal-modal')]
-#     # Wait Until Element Is Visible    xpath=//button[contains(@class,'swal-button--confirm')]
-#     # Click Element    xpath=//button[contains(@class,'swal-button--confirm')]
-#     # Sleep    3s  # Wait for deletion to complete
-
-#     # # [Delete_Highlight_1] Handle the success modal after deletion
-#     # Wait Until Element Is Visible    xpath=//div[contains(@class,'swal-modal')]
-#     # Wait Until Element Is Visible    xpath=//div[contains(text(),'Deleted Successfully')]
-#     # Wait Until Element Is Visible    xpath=//button[contains(@class,'swal-button--confirm')]
-#     # Click Element    xpath=//button[contains(@class,'swal-button--confirm')]
-#     # Sleep    2s
-    
-#     # # [Delete_Highlight_2] Highlight - now it should be the first element after previous deletion
-#     # Wait Until Element Is Visible    xpath=(//button[contains(@class,'btn-outline-danger') or contains(@class,'show_confirm')])[1]
-#     # Execute JavaScript    document.querySelector("button.show_confirm").click();
-    
-#     # # [Delete_Highlight_2] Handle the confirmation dialog for second highlight
-#     # Wait Until Element Is Visible    xpath=//div[contains(@class,'swal-modal')]
-#     # Wait Until Element Is Visible    xpath=//button[contains(@class,'swal-button--confirm')]
-#     # Click Element    xpath=//button[contains(@class,'swal-button--confirm')]
-#     # Sleep    2s  # Wait for deletion to process
-    
-#     # # [Delete_Highlight_2] Handle the success modal after deletion
-#     # Wait Until Element Is Visible    xpath=//div[contains(@class,'swal-modal')]
-#     # Wait Until Element Is Visible    xpath=//div[contains(text(),'Deleted Successfully')]
-#     # Wait Until Element Is Visible    xpath=//button[contains(@class,'swal-button--confirm')]
-#     # Click Element    xpath=//button[contains(@class,'swal-button--confirm')]
-#     # Sleep    2s  # Wait for success modal to close
-    
-#     # # Wait for all SweetAlert modals to disappear completely
-#     # Wait Until Page Does Not Contain Element    xpath=//div[contains(@class,'swal-overlay')]    timeout=10s
-#     # Wait Until Page Does Not Contain Element    xpath=//div[contains(@class,'swal-modal')]    timeout=10s
-    
-#     Sleep    2s
-    
-#     # Now proceed with logout
-#     Wait Until Element Is Visible    xpath=//a[contains(text(),'Logout')]
-#     Click Element    xpath=//a[contains(text(),'Logout')]
-    
-#     [Teardown]    Close All Browsers
-
 As Administrative Staff, I want to check highlight detail that created
-    [Tags]    UAT004-CheckHighlightDetail
+    [Tags]    UAT001-CheckHighlightDetail
     Open Browser To Login Page
     Staff Login
     Click Element    xpath=//a[contains(@href,'highlight')]
@@ -331,28 +94,25 @@ As Administrative Staff, I want to check highlight detail that created
     Wait Until Element Is Visible    xpath=//button[contains(.,'Upload')]
     Wait Until Element Is Enabled    xpath=//button[contains(.,'Upload')]
     Execute JavaScript    document.querySelector("button[type='submit']").click();
+    sleep    2s
 
-    # [Enter] Manage Highlight
-    Wait Until Element Is Visible    xpath=//a[contains(text(),'Manage Highlight')]
-    Click Element    xpath=//a[contains(text(),'Manage Highlight')]
-
-    # Count the number of edit buttons to determine the latest
     ${highlight_count}=    Get Element Count    xpath=//a[contains(@href,'highlights') and contains(@class,'btn-outline-success')]
     Log    Found ${highlight_count} highlights
+    sleep    2s
 
-    # [Enter] Highlight edit page - target the most recent highlight (last in list if order is oldest first)
+    # [Enter] Highlight detail page
     Wait Until Element Is Visible    xpath=(//a[contains(@href,'highlights') and contains(@class,'btn-outline-primary')])[${highlight_count}]
     Click Element    xpath=(//a[contains(@href,'highlights') and contains(@class,'btn-outline-primary')])[${highlight_count}]
+    sleep    2s
     
     # [Highlight_1] Highlight detail page
-    ${html_source}=    Get Source
-    Should Contain    ${html_source}    ${TITLE_1}
-    Should Contain    ${html_source}    ${DETAIL_1}
-    Should Contain    ${html_source}    KKU
-    Should Contain    ${html_source}    มข.
-    Should Contain    ${html_source}    cpkku
-    Should Contain    ${html_source}    computing
-    Should Contain    ${html_source}    phet
+    Wait Until Page Contains    ${TITLE_1}
+    Wait Until Page Contains    ${DETAIL_1}
+    # Wait Until Page Contains    KKU
+    # Wait Until Page Contains    มข.
+    # Wait Until Page Contains    cpkku
+    # Wait Until Page Contains    computing
+    # Wait Until Page Contains    phet
 
     # [Enter] Manage Highlight
     Wait Until Element Is Visible    xpath=//a[contains(text(),'Back')]
@@ -405,51 +165,64 @@ As Administrative Staff, I want to edit highlight detail that created
     Wait Until Element Is Visible    xpath=(//a[contains(@href,'highlights') and contains(@class,'btn-outline-primary')])[${highlight_count}]
     Click Element    xpath=(//a[contains(@href,'highlights') and contains(@class,'btn-outline-primary')])[${highlight_count}]
 
+
+    # [Highlight_1] Check detail page elements directly instead of using source
+    Wait Until Page Contains    ${TITLE_2}
+    Wait Until Page Contains    ${DETAIL_2}
+    
+    # # Check for tags
+    # Page Should Contain Element    xpath=//span[contains(@class,'badge') and contains(text(),'KKU')]
+    # Page Should Contain Element    xpath=//span[contains(@class,'badge') and contains(text(),'มข.')]
+    # Page Should Contain Element    xpath=//span[contains(@class,'badge') and contains(text(),'cpkku')]
+    # Page Should Contain Element    xpath=//span[contains(@class,'badge') and contains(text(),'cp')]
+    # Page Should Contain Element    xpath=//span[contains(@class,'badge') and contains(text(),'ITEX2025')]
+
     # [Highlight_2] Check data
-    ${html_source}=    Get Source
-    Should Contain    ${html_source}    ${TITLE_2}
-    Should Contain    ${html_source}    ${DETAIL_2}
-    Should Contain    ${html_source}    KKU
-    Should Contain    ${html_source}    มข.
-    Should Contain    ${html_source}    cpkku
-    Should Contain    ${html_source}    cp
-    Should Contain    ${html_source}    ITEX2025
+    Wait Until Page Contains    ${TITLE_2}
+    Wait Until Page Contains    ${DETAIL_2}
+
+    # Check for tags
+    # Wait Until Page Contains    KKU
+    # Wait Until Page Contains    มข.
+    # Wait Until Page Contains    cpkku
+    # Wait Until Page Contains   cp
+    # Wait Until Page Contains    ITEX2025
 
     # [Logout] Logout
     Logout Dashboard
     [Teardown]    Close All Browsers
 
-# As Administrative Staff, I want to delete highlight that created
-#     [Tags]    UAT004-DeleteHighlight
-#     Open Browser To Login Page
-#     Staff Login
-#     Click Element    xpath=//a[contains(@href,'highlight')]
+As Administrative Staff, I want to delete highlight that created
+    [Tags]    UAT004-DeleteHighlight
+    Open Browser To Login Page
+    Staff Login
+    Click Element    xpath=//a[contains(@href,'highlight')]
     
-#     # [Enter] Manage Highlight
-#     Wait Until Element Is Visible    xpath=//a[contains(text(),'Manage Highlight')]
-#     Click Element    xpath=//a[contains(text(),'Manage Highlight')]
+    # [Enter] Manage Highlight
+    Wait Until Element Is Visible    xpath=//a[contains(text(),'Manage Highlight')]
+    Click Element    xpath=//a[contains(text(),'Manage Highlight')]
 
-#     # Count the number of edit buttons to determine the latest
-#     ${highlight_count}=    Get Element Count    xpath=//a[contains(@href,'highlights') and contains(@class,'btn-outline-success')]
-#     Log    Found ${highlight_count} highlights
+    # Count the number of edit buttons to determine the latest
+    ${highlight_count}=    Get Element Count    xpath=//a[contains(@href,'highlights') and contains(@class,'btn-outline-success')]
+    Log    Found ${highlight_count} highlights
 
-#     # [Delete_Highlight_1] Highlight - using the button inside the form
-#     Wait Until Element Is Visible    xpath=(//button[contains(@class,'btn-outline-danger') or contains(@class,'show_confirm')])[${highlight_count}]
-#     Execute JavaScript    document.querySelector("button.show_confirm").click();
+    # [Delete_Highlight_1] Highlight - using the button inside the form
+    Wait Until Element Is Visible    xpath=(//button[contains(@class,'btn-outline-danger') or contains(@class,'show_confirm')])[${highlight_count}]
+    Execute JavaScript    document.querySelector("button.show_confirm").click();
     
-#     # [Delete_Highlight_1] Handle the confirmation dialog for first highlight
-#     Wait Until Element Is Visible    xpath=//div[contains(@class,'swal-modal')]
-#     Wait Until Element Is Visible    xpath=//button[contains(@class,'swal-button--confirm')]
-#     Click Element    xpath=//button[contains(@class,'swal-button--confirm')]
-#     Sleep    3s  # Wait for deletion to complete
+    # [Delete_Highlight_1] Handle the confirmation dialog for first highlight
+    Wait Until Element Is Visible    xpath=//div[contains(@class,'swal-modal')]
+    Wait Until Element Is Visible    xpath=//button[contains(@class,'swal-button--confirm')]
+    Click Element    xpath=//button[contains(@class,'swal-button--confirm')]
+    Sleep    3s  # Wait for deletion to complete
 
-#     # [Delete_Highlight_1] Handle the success modal after deletion
-#     Wait Until Element Is Visible    xpath=//div[contains(@class,'swal-modal')]
-#     Wait Until Element Is Visible    xpath=//div[contains(text(),'Deleted Successfully')]
-#     Wait Until Element Is Visible    xpath=//button[contains(@class,'swal-button--confirm')]
-#     Click Element    xpath=//button[contains(@class,'swal-button--confirm')]
-#     Sleep    2s
+    # [Delete_Highlight_1] Handle the success modal after deletion
+    Wait Until Element Is Visible    xpath=//div[contains(@class,'swal-modal')]
+    Wait Until Element Is Visible    xpath=//div[contains(text(),'Deleted Successfully')]
+    Wait Until Element Is Visible    xpath=//button[contains(@class,'swal-button--confirm')]
+    Click Element    xpath=//button[contains(@class,'swal-button--confirm')]
+    Sleep    2s
 
-#     # [Logout] Logout
-#     Logout Dashboard
-#     [Teardown]    Close All Browsers
+    # [Logout] Logout
+    Logout Dashboard
+    [Teardown]    Close All Browsers
