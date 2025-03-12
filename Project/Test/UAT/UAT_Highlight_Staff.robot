@@ -58,19 +58,22 @@ Logout Dashboard
 *** Test Cases ***
 As Administrative Staff, I want to check highlight detail that created
     [Tags]    UAT001-CheckHighlightDetail
+    # [Enter] Login page
     Open Browser To Login Page
     Staff Login
+    # [Enter] Highlight page
     Click Element    xpath=//a[contains(@href,'highlight')]
 
-    # [Highlight_1] Fill Highlight
+    # [Highlight_1] Fill Highlight title and detail
     Input Text    id=title    ${TITLE_1}
     Input Text    id=detail    ${DETAIL_1}
     
-    # [Highlight_1] Upload image
+    # [Highlight_1] Upload main image
     ${IMAGE_PATH}=    Set Variable    ${EXECDIR}${/}highlight_image_test01.jpg
     Choose File    id=thumbnail    ${IMAGE_PATH}
     sleep    2s
 
+    # [Highlight_1] Upload additional image
     ${IMAGE_PATH}=    Set Variable    ${EXECDIR}${/}highlight_image_test01.jpg
     Choose File    id=additional_thumbnails    ${IMAGE_PATH}
     sleep    2s
@@ -88,7 +91,7 @@ As Administrative Staff, I want to check highlight detail that created
     Press Keys    id=tags    ENTER
     sleep    2s
     
-    # [Highlight_1] Submit Form
+    # [Submit] Highlight form
     Execute JavaScript    document.querySelector("button.btn-primary").scrollIntoView({behavior: "smooth", block: "center"});
     Sleep    1s
     Wait Until Element Is Visible    xpath=//button[contains(.,'Upload')]
@@ -96,6 +99,7 @@ As Administrative Staff, I want to check highlight detail that created
     Execute JavaScript    document.querySelector("button[type='submit']").click();
     sleep    2s
 
+    # [Check] Highlight count
     ${highlight_count}=    Get Element Count    xpath=//a[contains(@href,'highlights') and contains(@class,'btn-outline-success')]
     Log    Found ${highlight_count} highlights
     sleep    2s
@@ -105,34 +109,40 @@ As Administrative Staff, I want to check highlight detail that created
     Click Element    xpath=(//a[contains(@href,'highlights') and contains(@class,'btn-outline-primary')])[${highlight_count}]
     sleep    2s
     
-    # [Highlight_1] Highlight detail page
+    # [Verify] Highlight detail content
     Wait Until Page Contains    ${TITLE_1}
     Wait Until Page Contains    ${DETAIL_1}
-    # Wait Until Page Contains    KKU
-    # Wait Until Page Contains    มข.
-    # Wait Until Page Contains    cpkku
-    # Wait Until Page Contains    computing
-    # Wait Until Page Contains    phet
+    Wait Until Page Contains    KKU
+    Wait Until Page Contains    มข.
+    Wait Until Page Contains    cpkku
+    Wait Until Page Contains    computing
+    Wait Until Page Contains    phet
+
+    # [Verify] Additional image loaded
+    ${is_loaded}=    Execute JavaScript    return document.querySelector("img[src*='storage/thumbnails/additional']").complete && document.querySelector("img[src*='storage/thumbnails/additional']").naturalHeight !== 0
+    Should Be True    ${is_loaded}
 
     # [Enter] Manage Highlight
     Wait Until Element Is Visible    xpath=//a[contains(text(),'Back')]
     Click Element    xpath=//a[contains(text(),'Back')]
 
-    # [Logout] Logout
+    # [Logout] Dashboard
     Logout Dashboard
     [Teardown]    Close All Browsers
 
 As Administrative Staff, I want to edit highlight detail that created
     [Tags]    UAT004-EditHighlight
+    # [Enter] Login page
     Open Browser To Login Page
     Staff Login
+    # [Enter] Highlight page
     Click Element    xpath=//a[contains(@href,'highlight')]
 
     # [Enter] Manage Highlight
     Wait Until Element Is Visible    xpath=//a[contains(text(),'Manage Highlight')]
     Click Element    xpath=//a[contains(text(),'Manage Highlight')]
 
-    # Count the number of edit buttons to determine the latest
+    # [Check] Highlight count
     ${highlight_count}=    Get Element Count    xpath=//a[contains(@href,'highlights') and contains(@class,'btn-outline-success')]
     Log    Found ${highlight_count} highlights
 
@@ -140,89 +150,84 @@ As Administrative Staff, I want to edit highlight detail that created
     Wait Until Element Is Visible    xpath=(//a[contains(@href,'highlights') and contains(@class,'btn-outline-success')])[${highlight_count}]
     Click Element    xpath=(//a[contains(@href,'highlights') and contains(@class,'btn-outline-success')])[${highlight_count}]
 
-    # [Edit_Highlight_1] Change highlight_1 to new values
+    # [Edit] Change highlight to new values
     Input Text    name=title    ${TITLE_2}
     Input Text    name=detail    ${DETAIL_2}
     ${IMAGE_PATH}=    Set Variable    ${EXECDIR}${/}highlight_image_test02.jpg
     Choose File    name=thumbnails[]    ${IMAGE_PATH}
     Input Text    name=tags    KKU,มข.,cpkku,cp,ITEX2025
 
-    # Submit the edited highlight form
+    # [Submit] Edited highlight form
     Wait Until Element Is Visible    xpath=//button[@type='submit' and contains(@class,'btn-primary')]
     Execute JavaScript    document.querySelector("button[type='submit'].btn-primary").scrollIntoView({behavior: "smooth", block: "center"});
     Sleep    1s
-    Execute JavaScript    document.querySelector("button[type='submit'].btn-primary").click();
+    Execute JavaScript    document.querySelector("button[type='submit'].btn-primary').click();
 
+    # [Enter] Highlight view page
     Sleep    3s
     Go To    ${HIGHLIGHT URL}/view
     Sleep    2s
 
-    # Count the number of edit buttons to determine the latest
+    # [Check] Updated highlight count
     ${highlight_count}=    Get Element Count    xpath=//a[contains(@href,'highlights') and contains(@class,'btn-outline-success')]
     Log    Found ${highlight_count} highlights
 
-    # [Enter] Highlight edit page - target the most recent highlight (last in list if order is oldest first)
+    # [Enter] Updated highlight detail page
     Wait Until Element Is Visible    xpath=(//a[contains(@href,'highlights') and contains(@class,'btn-outline-primary')])[${highlight_count}]
     Click Element    xpath=(//a[contains(@href,'highlights') and contains(@class,'btn-outline-primary')])[${highlight_count}]
 
-
-    # [Highlight_1] Check detail page elements directly instead of using source
-    Wait Until Page Contains    ${TITLE_2}
-    Wait Until Page Contains    ${DETAIL_2}
-    
-    # # Check for tags
-    # Page Should Contain Element    xpath=//span[contains(@class,'badge') and contains(text(),'KKU')]
-    # Page Should Contain Element    xpath=//span[contains(@class,'badge') and contains(text(),'มข.')]
-    # Page Should Contain Element    xpath=//span[contains(@class,'badge') and contains(text(),'cpkku')]
-    # Page Should Contain Element    xpath=//span[contains(@class,'badge') and contains(text(),'cp')]
-    # Page Should Contain Element    xpath=//span[contains(@class,'badge') and contains(text(),'ITEX2025')]
-
-    # [Highlight_2] Check data
+    # [Verify] Updated highlight data
     Wait Until Page Contains    ${TITLE_2}
     Wait Until Page Contains    ${DETAIL_2}
 
-    # Check for tags
-    # Wait Until Page Contains    KKU
-    # Wait Until Page Contains    มข.
-    # Wait Until Page Contains    cpkku
-    # Wait Until Page Contains   cp
-    # Wait Until Page Contains    ITEX2025
+    # [Verify] Updated tags
+    Wait Until Page Contains    KKU
+    Wait Until Page Contains    มข.
+    Wait Until Page Contains    cpkku
+    Wait Until Page Contains    cp
+    Wait Until Page Contains    ITEX2025
 
-    # [Logout] Logout
+    # [Verify] Updated image loaded
+    ${is_loaded}=    Execute JavaScript    return document.querySelector("img[src*='storage/thumbnails/additional']").complete && document.querySelector("img[src*='storage/thumbnails/additional']").naturalHeight !== 0
+    Should Be True    ${is_loaded}
+
+    # [Logout] Dashboard
     Logout Dashboard
     [Teardown]    Close All Browsers
 
 As Administrative Staff, I want to delete highlight that created
     [Tags]    UAT004-DeleteHighlight
+    # [Enter] Login page
     Open Browser To Login Page
     Staff Login
+    # [Enter] Highlight page
     Click Element    xpath=//a[contains(@href,'highlight')]
     
     # [Enter] Manage Highlight
     Wait Until Element Is Visible    xpath=//a[contains(text(),'Manage Highlight')]
     Click Element    xpath=//a[contains(text(),'Manage Highlight')]
 
-    # Count the number of edit buttons to determine the latest
+    # [Check] Highlight count
     ${highlight_count}=    Get Element Count    xpath=//a[contains(@href,'highlights') and contains(@class,'btn-outline-success')]
     Log    Found ${highlight_count} highlights
 
-    # [Delete_Highlight_1] Highlight - using the button inside the form
+    # [Delete] Highlight using button
     Wait Until Element Is Visible    xpath=(//button[contains(@class,'btn-outline-danger') or contains(@class,'show_confirm')])[${highlight_count}]
     Execute JavaScript    document.querySelector("button.show_confirm").click();
     
-    # [Delete_Highlight_1] Handle the confirmation dialog for first highlight
+    # [Confirm] Delete in confirmation dialog
     Wait Until Element Is Visible    xpath=//div[contains(@class,'swal-modal')]
     Wait Until Element Is Visible    xpath=//button[contains(@class,'swal-button--confirm')]
     Click Element    xpath=//button[contains(@class,'swal-button--confirm')]
     Sleep    3s  # Wait for deletion to complete
 
-    # [Delete_Highlight_1] Handle the success modal after deletion
+    # [Verify] Delete success message
     Wait Until Element Is Visible    xpath=//div[contains(@class,'swal-modal')]
     Wait Until Element Is Visible    xpath=//div[contains(text(),'Deleted Successfully')]
     Wait Until Element Is Visible    xpath=//button[contains(@class,'swal-button--confirm')]
     Click Element    xpath=//button[contains(@class,'swal-button--confirm')]
     Sleep    2s
 
-    # [Logout] Logout
+    # [Logout] Dashboard
     Logout Dashboard
     [Teardown]    Close All Browsers
