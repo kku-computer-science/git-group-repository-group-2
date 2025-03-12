@@ -187,7 +187,7 @@
             <h1 class="section-title">Highlights</h1>
 
             @foreach($highlights as $highlight)
-            <div class="highlight-item">
+            <div class="highlight-item" style="display: none;"> <!-- Set display: none initially -->
                 <a href="{{ route('highlight.show', $highlight->id) }}" class="highlight-link">
                     <h2 class="highlight-title">{{ $highlight->title }}</h2>
                     <p class="highlight-detail">{{ $highlight->detail }}</p>
@@ -196,7 +196,7 @@
                         <img class="highlight-thumbnail" src="{{ Storage::url($highlight->thumbnail) }}" alt="Thumbnail">
                     </div>
 
-                    @if($highlight->tags->count() > 0)
+                    @if($highlight->tags->count() > 3)
                     <ul class="tags-list">
                         @foreach($highlight->tags as $tag)
                         <li class="tag-item">{{ $tag->name }}</li>
@@ -207,7 +207,7 @@
             </div>
             @endforeach
 
-            <!-- ปุ่ม "More" ถ้ามีการ์ดเพิ่มเติม -->
+            <!-- Show the "More" button only if there are more than 3 highlights -->
             @if($highlights->count() > 3)
             <button id="load-more" class="load-more-btn">More</button>
             @endif
@@ -550,31 +550,30 @@
     });
 </script>
 <script>
-    $(document).on('click', '.open_modal', function() {
-        //var url = "domain.com/yoururl";
-        var tour_id = $(this).val();
-        $.get('/bib/' + tour_id, function(data) {
-            //success data
-            console.log(data);
-            $(".bibtex-biblio").remove();
-            document.getElementById("name").innerHTML += `${data}`
-            // $('#tour_id').val(data.id);
-            // $('#name').val(data);
-            // $('#details').val(data.details);
-            // $('#btn-save').val("update");
-            $('#myModal').modal('show');
-        })
-        $(document).ready(function() {
-            $(".highlight-item").slice(0, 3).show(); // แสดงการ์ด 3 ใบแรก
-            if ($(".highlight-item:hidden").length != 0) {
-                $("#load-more").show(); // แสดงปุ่ม "More" ถ้ามีการ์ดเพิ่มเติม
+    $(document).ready(function() {
+        // Initialize the "load more" functionality
+        $(".highlight-item").slice(0, 3).show(); // Show the first 3 cards
+        if ($(".highlight-item:hidden").length != 0) {
+            $("#load-more").show(); // Show the "More" button if there are hidden cards
+        }
+
+        $("#load-more").on('click', function(e) {
+            e.preventDefault();
+            $(".highlight-item:hidden").slice(0, 3).slideDown(); // Show 3 more hidden cards
+            if ($(".highlight-item:hidden").length == 0) {
+                $("#load-more").fadeOut('slow'); // Hide the "More" button when there are no more cards
             }
-            $("#load-more").on('click', function(e) {
-                e.preventDefault();
-                $(".highlight-item:hidden").slice(0, 3).slideDown(); // แสดงการ์ดที่ซ่อนอยู่ 3 ใบ
-                if ($(".highlight-item:hidden").length == 0) {
-                    $("#load-more").fadeOut('slow'); // ซ่อนปุ่ม "More" เมื่อไม่มีการ์ดให้แสดงแล้ว
-                }
+        });
+
+        // Open modal and load content
+        $(document).on('click', '.open_modal', function() {
+            var tour_id = $(this).val();
+            $.get('/bib/' + tour_id, function(data) {
+                // success data
+                console.log(data);
+                $(".bibtex-biblio").remove(); // Remove any existing content
+                document.getElementById("name").innerHTML += `${data}`; // Add the new content
+                $('#myModal').modal('show'); // Show the modal
             });
         });
     });
