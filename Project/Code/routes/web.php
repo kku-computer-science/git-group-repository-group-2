@@ -83,6 +83,7 @@ Route::get('/showHighlight/{id}', [HomeController::class, 'showHighlight'])->nam
 Route::get('/search-by-tag/{tag}', [HomeController::class, 'searchByTag'])->name('searchByTag');
 Route::get('/more-highlights', action: [HomeController::class, 'showAllHighlights'])->name('allHighlights');
 
+
 //Route::get('/researchers',[ResearcherController::class,'index'])->name('researchers');
 Route::get('researchers/{id}', [ResearcherController::class, 'request'])->name('researchers');
 Route::get('researchers/{id}/search', [ResearcherController::class, 'search'])->name('searchresearchers');
