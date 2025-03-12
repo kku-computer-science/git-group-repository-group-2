@@ -12,8 +12,8 @@ class HighlightController extends Controller
 {
     public function index()
     {
-        $highlights = Highlight::with(['tags', 'user'])->get();
-        return view('highlight.view', compact('highlights'));
+        $highlights = Highlight::with(['tags', 'user', 'images'])->get();
+        return view('highlight.index', compact('highlights'));
     }
 
     public function homePage()
@@ -69,7 +69,6 @@ class HighlightController extends Controller
 
         return redirect()->route('highlight.index')->with('success', 'Highlight uploaded successfully!');
     }
-
 
     public function show($id)
     {
@@ -139,6 +138,6 @@ class HighlightController extends Controller
         $highlight->tags()->detach();
         $highlight->delete();
 
-        return redirect()->route('highlights.index')->with('success', 'Highlight deleted successfully!');
+        return redirect()->route('highlights.show')->with('success', 'Highlight deleted successfully!');
     }
 }
