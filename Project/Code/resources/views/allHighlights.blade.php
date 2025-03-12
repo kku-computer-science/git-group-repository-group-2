@@ -15,6 +15,20 @@
         margin-bottom: 2rem;
     }
 
+    .highlight-title {
+        font-size: 1.1rem;
+        font-weight: bold;
+        color: #333;
+        margin: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        white-space: normal;
+    }
+
+
     /* Card styling */
     .highlight-card {
         height: 100%;
@@ -58,20 +72,29 @@
         line-height: 1.2;
         overflow: hidden;
         text-overflow: ellipsis;
-        white-space: nowrap;
+        display: -webkit-box;
+        /* เพิ่ม */
+        -webkit-line-clamp: 2;
+        /* จำกัด 2 บรรทัด */
+        -webkit-box-orient: vertical;
+        /* เพิ่ม */
+        white-space: normal;
+        /* เปลี่ยนจาก nowrap เป็น normal */
     }
 
     /* Text styling */
     .highlight-card .card-text {
         font-size: 1rem;
-        color: #6c757d;
-        margin-bottom: 15px;
-        flex-grow: 1;
+        color: #666;
+        margin-top: 5px;
+        margin-bottom: 10px;
         overflow: hidden;
         text-overflow: ellipsis;
         display: -webkit-box;
         -webkit-line-clamp: 3;
+        /* จำกัดให้แสดง 3 บรรทัด */
         -webkit-box-orient: vertical;
+        white-space: normal;
     }
 
     /* Button styling */
@@ -95,18 +118,21 @@
     }
 
     /* Responsive adjustments */
-    @media (max-width: 768px) {
+    @media (max-width: 576px) {
         .highlight-card .card-img-top {
             height: 150px;
         }
 
         .highlight-card .card-title {
             font-size: 1.1rem;
+            -webkit-line-clamp: 2;
+            /* ยังคงจำกัด 2 บรรทัด */
         }
 
         .highlight-card .card-text {
             font-size: 0.9rem;
             -webkit-line-clamp: 2;
+            /* ปรับจากโค้ดเดิมให้เหลือ 2 บรรทัดในหน้าจอเล็ก */
         }
     }
 </style>
@@ -117,17 +143,18 @@
 
         <div class="row">
             @foreach($highlights as $highlight)
-                <div class="col-md-4 mb-4">
-                    <a href="{{ route('highlight.show', ['id' => $highlight->id]) }}" class="text-black">
+                <div class="col-4 mb-4"> <!-- เปลี่ยนจาก col-md-4 เป็น col-4 เพื่อบังคับ 3 การ์ดต่อแถว -->
+                    <a href="{{ route('highlight.show', ['id' => $highlight->id]) }}" class="text-black text-decoration-none">
                         <div class="card highlight-card">
                             <img src="{{ Storage::url($highlight->thumbnail) }}" class="card-img-top" alt="Highlight Image">
                             <div class="card-body">
-                                <h5 class="card-title">{{ $highlight->title }}</h5>
-                                <p class="card-text">{{ Str::limit($highlight->detail, 100) }}</p>
+                                <h5 class="highlight-title">{{ $highlight->title }}</h5>
+                                <p class="card-text">{{ $highlight->detail }}</p>
+                                <!-- เอาค่า Str::limit ออกเพื่อให้ CSS จัดการ -->
                             </div>
                         </div>
+                    </a>
                 </div>
-                </a>
             @endforeach
         </div>
 

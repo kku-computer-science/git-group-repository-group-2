@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Tag;
+use App\Models\Image;
+
 
 class Highlight extends Model
 {
@@ -31,6 +33,6 @@ class Highlight extends Model
     }
     public function images()
     {
-        return $this->hasMany(Image::class);
+        return $this->hasMany(Image::class, 'highlight_id');
     }
 }
