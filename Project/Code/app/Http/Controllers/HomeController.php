@@ -292,4 +292,12 @@ class HomeController extends Controller
     {
         return redirect()->route('home.searchByTag', ['tag' => $tag]);
     }
+
+        // ฟังก์ชันนี้ show more Highlights 
+        public function showAllHighlights() {
+            $highlights = Highlight::orderBy('created_at', 'desc')->paginate(12); 
+            return view('allHighlights', compact('highlights'));
+        }
+        
+    
 }

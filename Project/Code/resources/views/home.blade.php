@@ -392,10 +392,10 @@
             </div>
             @endforeach
         </div>
-        <!-- ปุ่มอ่านเพิ่มเติม -->
+        <!-- ปุ่มเพิ่มเติม -->
         <div class="read-more-container">
-            <a href="/more-highlights" class="read-more-btn">อ่านเพิ่มเติม</a>
-        </div>
+        <a href="{{ route('allHighlights') }}" class="read-more-btn">เพิ่มเติม</a>        </div>
+
     </div>
 </div>
 
