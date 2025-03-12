@@ -192,7 +192,11 @@
         <ul class="tags-list">
             @foreach($highlight->tags as $tag)
             <li class="tag-item">
-                <i class="fas fa-tag tag-icon"></i> {{ $tag->name }}
+                <i class="fas fa-tag tag-icon"></i>
+                <!-- เปลี่ยนให้เป็นลิงก์ไปยัง route searchByTag -->
+                <a href="{{ route('searchByTag', ['tag' => $tag->name]) }}" class="tag-link">
+                    {{ $tag->name }}
+                </a>
             </li>
             @endforeach
         </ul>
