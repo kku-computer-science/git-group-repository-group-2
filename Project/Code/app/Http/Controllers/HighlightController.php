@@ -24,7 +24,7 @@ class HighlightController extends Controller
 
     public function view()
     {
-        $highlights = Highlight::with(['tags', 'user'])->get();
+        $highlights = Highlight::with(['tags', 'user', 'images'])->get();
         return view('highlight.view', compact('highlights'));
     }
 
@@ -72,7 +72,7 @@ class HighlightController extends Controller
 
     public function show($id)
     {
-        $highlight = Highlight::with('tags', 'user')->findOrFail($id);
+        $highlight = Highlight::with('tags', 'user', 'images')->findOrFail($id);
         return view('highlight.show', compact('highlight'));
     }
 
@@ -138,6 +138,6 @@ class HighlightController extends Controller
         $highlight->tags()->detach();
         $highlight->delete();
 
-        return redirect()->route('highlights.show')->with('success', 'Highlight deleted successfully!');
+        return redirect()->route('highlights.index')->with('success', 'Highlight deleted successfully!');
     }
 }
