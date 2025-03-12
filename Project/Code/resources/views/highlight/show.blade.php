@@ -18,7 +18,17 @@
                 <p class="card-text col-sm-9">{{ $highlight->detail }}</p>
             </div>
 
-
+            <!-- แสดง Tags -->
+            @if($highlight->tags->count() > 0)
+            <div class="row mt-2">
+                <p class="card-text col-sm-3"><b>Tags : </b></p>
+                <div class="card-text col-sm-9">
+                    @foreach($highlight->tags as $tag)
+                    <span class="badge badge-primary">{{ $tag->name }}</span>
+                    @endforeach
+                </div>
+            </div>
+            @endif
 
             <!-- แสดง Main Image -->
             <div class="row mt-2">
