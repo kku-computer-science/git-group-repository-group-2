@@ -14,6 +14,13 @@ class HighlightController extends Controller
     {
         $highlights = Highlight::with('tags')->get();
         return view('highlight.view', compact('highlights'));
+        return view('home', compact('highlights'));
+    }
+
+    public function homePage()
+    {
+        $highlights = Highlight::with('tags')->get();
+        return view('home', compact('highlights'));
     }
 
     public function homePage()
@@ -71,6 +78,13 @@ class HighlightController extends Controller
         $highlight = Highlight::with('tags')->findOrFail($id);
         return view('highlight.show', compact('highlight'));
     }
+
+    public function moreDetails($id)
+    {
+        $highlight = Highlight::with('tags')->findOrFail($id);
+        return view('highlight.more', compact('highlight')); // ส่งข้อมูลไปยังหน้า more.blade.php
+    }
+
 
     public function edit($id)
     {
