@@ -48,6 +48,27 @@
                     </div>
                 </div>
 
+                <!-- อัปโหลดรูปใหม่ (หลายไฟล์) -->
+                <div class="form-group">
+                    <label for="images">Additional Images:</label>
+                    <input type="file" class="form-control-file" id="images" name="images[]" multiple>
+                </div>
+
+                <!-- แสดงรูปเก่าจากตาราง images -->
+                <div class="form-group">
+                    <label>Current Images:</label>
+                    <div>
+                        @foreach($highlight->images as $image)
+                            <div style="display:inline-block; margin:5px; text-align:center;">
+                                <img src="{{ asset('storage/' . $image->image_path) }}" width="100"><br>
+                                <label>
+                                    <input type="checkbox" name="remove_images[]" value="{{ $image->id }}">
+                                    <span style="color:red; font-weight:bold; cursor:pointer;">X</span>
+                                </label>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
 
                 <div class="form-group row">
                     <p class="col-sm-3"><b>Tags : </b></p>

@@ -7,10 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Image extends Model
 {
     protected $fillable = [
-        'highlight_id', 'image_path'
+        'highlight_id',
+        'image_path'
     ];
 
-    // ความสัมพันธ์กับ Highlight
     public function highlight()
     {
         return $this->belongsTo(Highlight::class);

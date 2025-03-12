@@ -7,6 +7,8 @@ use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use App\Models\Image;
+
 
 class HighlightController extends Controller
 {
@@ -24,7 +26,7 @@ class HighlightController extends Controller
 
     public function view()
     {
-        $highlights = Highlight::with(['tags', 'user'])->get();
+        $highlights = Highlight::with(['tags', 'user', 'images'])->get();
         return view('highlight.view', compact('highlights'));
     }
 
@@ -67,12 +69,12 @@ class HighlightController extends Controller
             }
         }
 
-        return redirect()->route('highlight.index')->with('success', 'Highlight uploaded successfully!');
+        return redirect()->route('highlight.view')->with('success', 'Highlight uploaded successfully!');
     }
 
     public function show($id)
     {
-        $highlight = Highlight::with('tags', 'user')->findOrFail($id);
+        $highlight = Highlight::with('tags', 'user', 'images')->findOrFail($id);
         return view('highlight.show', compact('highlight'));
     }
 
@@ -93,34 +95,37 @@ class HighlightController extends Controller
     {
         $highlight = Highlight::findOrFail($id);
 
-        if ($highlight->user_id !== Auth::id()) {
-            return redirect()->route('highlights.index')->with('error', 'Unauthorized action.');
-        }
-
         $validatedData = $request->validate([
             'title' => 'required|string|max:255',
             'detail' => 'required|string',
-            'thumbnail' => 'nullable|image',
-            'tags' => 'required|string',
+            'images.*' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
-
-        if ($request->hasFile('thumbnail')) {
-            $thumbnailPath = $request->file('thumbnail')->store('thumbnails', 'public');
-            $highlight->thumbnail = $thumbnailPath;
-        }
 
         $highlight->title = $request->title;
         $highlight->detail = $request->detail;
         $highlight->save();
 
-        $tags = explode(',', $request->tags);
-        $highlight->tags()->detach();
-        foreach ($tags as $tagName) {
-            $tag = Tag::firstOrCreate(['name' => trim($tagName)]);
-            $highlight->tags()->attach($tag);
+        // ลบรูปที่ถูกติ๊กให้ลบ
+        if ($request->has('remove_images')) {
+            foreach ($request->remove_images as $imageId) {
+                $image = Image::find($imageId);
+                if ($image) {
+                    Storage::disk('public')->delete($image->image_path);
+                    $image->delete();
+                }
+            }
         }
 
-        return redirect()->route('highlights.index')->with('success', 'Highlight updated successfully!');
+        // อัปโหลดรูปใหม่
+        if ($request->hasFile('images')) {
+            foreach ($request->file('images') as $file) {
+                $path = $file->store('images', 'public');
+                $highlight->images()->create(['image_path' => $path]);
+            }
+        }
+
+        // แก้ข้อความ redirect ให้ถูกต้อง
+        return redirect()->route('highlight.view')->with('success', 'Highlight updated successfully!');
     }
 
     public function destroy($id)
@@ -138,6 +143,7 @@ class HighlightController extends Controller
         $highlight->tags()->detach();
         $highlight->delete();
 
-        return redirect()->route('highlights.show')->with('success', 'Highlight deleted successfully!');
+        // เปลี่ยน redirect ไปที่หน้า view
+        return redirect()->route('highlight.view')->with('success', 'Highlight deleted successfully!');
     }
 }

@@ -12,6 +12,11 @@
         max-width: 200px;
         /* กำหนดขนาดสูงสุดของข้อความ */
     }
+
+    /* กำหนดสไตล์สำหรับ additional images */
+    .additional-img {
+        margin-right: 5px;
+    }
 </style>
 
 <div class="container">
@@ -31,6 +36,7 @@
                         <th>Title</th>
                         <th>Detail</th>
                         <th>Thumbnail</th>
+                        <th>Additional Images</th>
                         <th>Tags</th>
                         <th>Action</th>
                     </tr>
@@ -47,6 +53,18 @@
                             <img src="{{ asset('storage/' . $highlight->thumbnail) }}" width="100">
                             @endif
                         </td>
+                        
+                        <td>
+                            @if($highlight->images->count() > 0)
+                            @foreach($highlight->images->take(2) as $image)
+                            <img class="additional-img" src="{{ Storage::url($image->image_path) }}" width="50" alt="Additional Image">
+                            @endforeach
+                            @else
+                            <span>N/A</span>
+                            @endif
+                        </td>
+
+
                         <td>
                             @foreach($highlight->tags as $tag)
                             <span class="badge badge-info">{{ $tag->name }}</span>
